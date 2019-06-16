@@ -1,0 +1,260 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif !important;
+}
+a:hover{
+    text-decoration: none !important;
+    color:#FF353A !important; 
+}
+
+/* 
+.main-banner{
+    margin-top: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../image/desktop_bg.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;   
+}
+
+.city_select{
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.city_select option{
+  color: #000 !important;
+}
+.logo{
+    margin-right:1%; 
+}
+.mr-1{
+    margin: 1%;
+}
+.mr-t-1{
+    margin-top:1%;
+
+}
+
+.mr-l-1{
+    margin-left:1%;
+}
+
+
+ul {
+    line-height: 60px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+} */
+
+.mr-b-1{
+    margin-bottom: 1%;
+}
+.mr-b-8{
+    margin-bottom: 8%;
+}
+header {
+    width: 100%;
+    height: 83vh;
+    background: url(../image/desktop_bg.jpg) no-repeat ;
+    background-size: cover;
+}
+
+.content {
+    /* width: 94%; */
+    margin: 4em auto;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.logo {
+    line-height: 30px;
+    position: fixed;
+    float: left;
+    margin: 16px 46px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    line-height: 60px;
+}
+
+nav ul {
+    line-height: 30px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 22px;;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.menu-icon {
+    line-height: 60px;
+    width: 100%;
+    background: #000;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+
+
+@media(max-width: 786px) {
+
+    .logo {
+          position: fixed;
+          top: 0;
+          margin-top: 16px;
+    }
+
+    nav ul {
+          max-height: 0px;
+          background: #000;
+    }
+
+    nav.black ul {
+          background: #000;
+    }
+
+    .showing {
+          max-height: 34em;
+    }
+
+    nav ul li {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 24px;
+          text-align: center;
+    }
+
+    .menu-icon {
+          display: block;
+    }
+
+}
+
+.greeting_format{
+    margin-top: 1%;
+    font-weight: 600 ;
+    font-size: 17px;
+    line-height: 33px;
+    color:#585858;
+}
+.star{
+    color:#ca2121;
+}
+.home-second-hedding{
+    margin-top: 3%;
+    font-weight: 700;
+    padding-left: 1%;
+    font-size: 24px;
+    text-align: center;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 51px;
+    padding: 0.6%;
+    box-shadow: -1px 1px 16px 6px #b1989873;
+    margin-bottom: 4%;
+}
+.p-card-img{
+
+border-radius: 5px;
+}
+.card-content{
+    border: 1px solid #e2e2e2;
+    padding: 1%;
+    border-radius: 5px;
+    
+}
+.card-city_name{
+    text-align: center;
+    font-size: 1.3vw;
+    font-weight: 550;
+    margin: 3% 0;
+}
+.card-detail{
+    color:#FF353A;
+    text-decoration: none !important;
+}
+
+.card-detail:hover{
+    font-weight: 550;
+    color:#FF353A;
+}
+.how-work-icon{
+    width: 30%;
+    margin: 0 auto;
+padding-top: 1%;
+}
+.border-none{
+    border:none !important;
+}
+.how-work-title{
+    margin-top: 4%;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.how-work-desp{
+ color:#7D7C7A;
+ font-size: 12px;
+}
+.footer{
+    background: #000;
+    color: #fff;
+    padding: 1% 1%;
+    font-size: 14px;
+}
+.footer-link{
+    color:#fff !important;
+}
