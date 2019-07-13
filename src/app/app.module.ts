@@ -15,6 +15,13 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { VenueRegisterComponent } from './venue-register/venue-register.component';
 import { VenueloginComponent } from './venuelogin/venuelogin.component';
 import { VenueprofileComponent } from './venueprofile/venueprofile.component';
+import { VenderregisterComponent } from './venderregister/venderregister.component';
+import { VenderGridComponent } from './vender-grid/vender-grid.component';
+import { VenueGridComponent } from './venue-grid/venue-grid.component';
+import { VenueDetailComponent } from './venue-detail/venue-detail.component';
+import { VenderDetailComponent } from './vender-detail/vender-detail.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
@@ -22,9 +29,16 @@ const appRoutes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'newVenue', component: VenueRegisterComponent },
+  { path: 'venueRegister', component: VenueRegisterComponent },
   { path: 'Venueprofile', component: VenueprofileComponent },
-];
+  { path: 'VenderRegister', component: VenderregisterComponent },
+  { path: 'venders', component: VenderGridComponent },
+  { path: 'VenderDetail', component: VenderDetailComponent },
+  { path: 'Venues', component: VenueGridComponent },
+  { path: 'VenueDetail', component: VenueDetailComponent },
+  { path: 'About', component: AboutComponent },
+  { path: 'Contact', component: ContactComponent },
+ ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +51,14 @@ const appRoutes = [
     MainHeaderComponent,
     VenueRegisterComponent,
     VenueloginComponent,
-    VenueprofileComponent
+    VenueprofileComponent,
+    VenderregisterComponent,
+    VenderGridComponent,
+    VenueGridComponent,
+    VenueDetailComponent,
+    VenderDetailComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

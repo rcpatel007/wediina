@@ -10,6 +10,19 @@ a:hover{
     font-weight: 600;
     border-bottom: 1px solid #fff;
 }
+.pointer{
+    cursor: pointer;
+}
+
+.he-24{
+    height: 24%;
+}
+.pos-fix{
+    position: fixed;
+}
+.carousel{
+    z-index: -1;
+}
 /* border class */
 .b-1{
     border: 1px solid #6c757ddb;
@@ -18,7 +31,7 @@ a:hover{
     border: 1px solid #e2e2e2;
 }
 .br-1{
-    border-right: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2 !important;
 }
 
 /* 
@@ -82,15 +95,48 @@ nav ul li a {
     color: #fff;
     font-size: 16px;
 } */
+.width-50{
+    width:40% !important;
+}
+.mr-1{
+    margin: 1%;
+}
+.pad-6{
+    padding-bottom: 6% !important;
+}
+.mr-t-9{
+    margin-top: 9% !important;
+}
 
+.mr-t-64{
+    margin-top: 64%;
+}
+
+.mr-t-42
+{
+    margin-top: 42% !important; 
+}
+.mr-t-3{
+    margin-top: 3%;
+}
 .pad-0{
     padding: 0 !important;
+}
+.mr-t-41{
+    margin-top: 41%;
 }
 .mr-b-1{
     margin-bottom: 1%;
 }
+.pad-b-8{
+    padding-bottom: 8.9%;
+}
+
 .mr-t-13{
     margin-top: 13%;
+}
+.mr-l-13{
+    margin-left: 13%;
 }
 .mr-b-22{
     margin-bottom: 22%;
@@ -98,17 +144,33 @@ nav ul li a {
 .mr-t-5{
     margin-top: 5%;
 }
+.l-16{
+    left:16%;
+}
+.pad-t-2{
+    padding-top:2%;
+}
 .mr-b-8{
     margin-bottom: 8%;
 }
 .mr-t-10{
     margin-top: 10%;
 }
+.mr-l-25{
+    margin-left: 25%;
+}
+.mr-l-12{
+    margin-left: 12%;
+}
+
 .mr-b-10{
     margin-bottom: 10%;
 }
 .mr-6{
     margin: 6%;
+}
+.mr-t-17{
+    margin-top: 17%;
 }
 .mr-t-8{
     margin-top: 8%;
@@ -117,8 +179,14 @@ nav ul li a {
 margin: 5%;
 }
 
+.mr-l-17{
+margin-left: 17%;
+}
 .mr-b-36{
     margin-bottom: 36%;
+}
+.mr-5{
+    margin: 5%;
 }
 .pad-2{
     padding: 2%;
@@ -238,12 +306,30 @@ nav ul li a {
     width: 100%;
     height:83vh;
 }
+.v_carousel_img{
+    width: 100%;
+    height:60vh;
+}
 .greeting_format{
     margin-top: 1%;
     font-weight: 600 ;
     font-size: 17px;
     line-height: 33px;
     color:#585858;
+}
+.r_greeting_format{
+    margin-top: 2%;
+    font-weight: 600 ;
+    font-size: 17px;
+    line-height: 33px;
+    color:#585858;
+}
+.greeting_head{
+    font-size: 1.4em;
+    font-weight: 550;
+    color: #000;
+
+
 }
 .star{
     color:#ca2121;
@@ -252,7 +338,7 @@ nav ul li a {
     margin-top: 3%;
     font-weight: 700;
     padding-left: 1%;
-    font-size: 24px;
+    font-size: 1.3em    ;
     text-align: center;
     background-color: #000000;
     color: #fff;
@@ -273,7 +359,7 @@ border-radius: 5px;
 }
 .card-city_name{
     text-align: center;
-    font-size: 1.3vw;
+    /* font-size: 1.3vw; */
     font-weight: 550;
     margin: 3% 0;
 }
@@ -339,7 +425,7 @@ font-size:25px;
     height: 15vh;
  }
  .headding-text{
-    padding-top: 10%;
+    padding-top: 7%;
     font-size: 52px;
     font-weight: 550;
     border-bottom: 3px solid #e2e2e2;
@@ -434,3 +520,292 @@ margin-bottom:10%;
 
 
 }
+.signupTitle {
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 1.6em;
+}
+.slide_text{
+    text-align: center;
+    font-size: 3.4em;
+    color: #fff;
+    font-weight: 550;
+    margin-top: -12%;
+    position: absolute;
+    left: 39%;
+}
+
+.r_head{
+    background: #000;
+    color: #fff;
+    padding: 0.7%;
+    cursor: pointer;
+}
+
+.r_head:hover{
+    background-color: #FF353A;
+    font-weight: 550;
+}
+
+.r_l_form{
+    border: 1px solid #e2e2e2;
+    padding: 2%;
+    border-right: none;
+}
+
+.r_r_form{
+    border: 1px solid #e2e2e2;
+    padding: 2%;
+    border-left: none;
+}
+
+.form_control_m{
+    border: 0 !important;
+    border-bottom: 1px solid #e2e2e1 !important;
+    color: #565654 !important;
+    font-weight: 500 !important;
+    height: 38px !important;
+    border-radius: 0;
+    font-size: 14px !important;
+}
+.form_control_m:hover{
+    box-shadow:none !important;
+    border-bottom: 1px solid #FF353A !important;
+}
+.form_control_m:focus{
+    box-shadow:none !important;
+    border-bottom: 1px solid #FF353A !important;
+}
+.f_lable{
+
+    font-size: 21px !important;
+    font-weight: 550;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    background: #000;
+    padding: 2%;
+    border-radius: 45px;
+}
+.filter_head{
+    font-size: 20px;
+    font-weight: 550;
+    padding-top: 9%;
+}
+
+.area_filter{
+    background: #FF353A !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    padding: 2% !important;
+    border-radius: 35px !important;
+}
+.f-text-area{
+height: 20% !important;
+width:100% ;
+}
+.f-text-area:hover{
+    box-shadow:none !important;
+    border-bottom: 1px solid #FF353A !important;
+}
+.f-text-area:focus{
+    box-shadow:none !important;
+    border-bottom: 1px solid #FF353A !important;
+}
+.grid_main{
+border: 1px solid #e2e2e2;
+    padding: 1%;
+    border-radius: 6px;
+}
+.grid_img{
+    width: 70%;
+}
+.grid_address{
+    font-size: 12px;
+}
+.grid_title{
+    font-size: 22px;
+    font-weight: 550;
+}
+
+.grid_price{
+    background-color: #e2e2e2;
+    padding: 3%;
+}
+
+.price_number{
+ font-size: 24px;
+ font-weight: 660;
+ color: green;
+}
+
+.filter{
+    height: 100vh;
+}
+.like_display{
+    padding: 10% 0;
+    font-size: 22px;
+    position: absolute;
+    right: 0%;
+}
+
+.title_section{
+    background-color: #e2e2e2;
+    background: #e2e2e23b;
+    padding: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+}
+.v_desp{
+    color: #000;
+    margin-top: 4%;
+    text-align: justify;
+    border-top: 3px solid #e2e2e2;
+    padding: 4% 2%;
+    font-size: 13px;
+    background: #f8f9fa;
+    border-radius: 7px;
+    box-shadow: 0px 2px 12px 9px #e2e2e2e2;
+}
+
+.send_btn{
+        /* position: fixed; */
+        right: 0;
+        text-align: center;
+        /* background: #e2e2e2; */
+        /* padding: 5% 0; */
+        /* top: 46%; */
+}
+
+.testimonial_user{
+    background: #e2e2e2;
+    padding: 4%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 550;
+    margin-bottom: 2% !important;
+}
+.test_user{
+    padding: 3%;
+    font-size: 30px;
+}
+.inquery_btn{
+    background: #FF353A !important;
+    color: #fff !important;
+    margin-top: 2% !important;
+    width: 59% !important;   
+}
+.inquery_btn:hover{
+    background-color: #000 !important;
+
+}
+.review_btn{
+    background: #ffc107 !important;
+    color: #000 !important;
+    margin-top: 2% !important;
+    width: 59% !important;
+}
+.review_btn:hover{
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.review{
+    margin-left: 7%;
+    background: #fff;
+    padding: 1% 3%;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    border-radius: 24px !important;
+}
+.star_rating{
+    color:#fff;
+    background-color: #ffc107;
+    border-radius: 10px;
+    padding: 1%;
+
+}
+.detail_block{
+    background-color: #fff;
+    text-align: center;
+    border-radius: 35px;
+    padding: 5%;
+    margin: 1%;
+    font-size: 18px;
+}
+.detail_title{
+    font-size: 20px;
+    color: #FF353A;
+}
+
+.videostroy_title{
+    font-size: 20px;
+    background: #000;
+    color: #fff;
+    padding: 3%;
+    margin-top: 8%;
+    border-radius: 55px;
+}
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .headding-text{
+        padding-top: 26%; 
+    }
+    .mob_pad_t-13{
+        padding-top: 13%;
+    }
+    .mob_mr_t-13{
+        margin-top: 13%;
+    }
+    .mob_l_m_28{
+        left: -8%;
+    }
+    .pos-fix{
+        position: unset;
+    }
+    .p_main_section{
+        margin-right: 0;
+    }
+    .mob_l_0{
+        margin-left: 0;
+        left: 0;
+    }
+    .mob_mr_l_0{
+        margin-left: 0;
+    }
+    .mob_f_3{
+        font-size: 3em;
+    }
+
+    .slide_text{
+        margin-top: -42%;
+        left: 14%;
+    }
+    .mob_btn_pos{
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+
+        height: 8%;
+    }
+
+    .he-24{
+        height: 36%;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

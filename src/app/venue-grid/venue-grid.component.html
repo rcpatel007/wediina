@@ -1,0 +1,124 @@
+<app-header></app-header>
+<section id="home" class="top_cont_outer contanier">
+  <div class="top_cont_inner">
+    <div class="">
+      <div class="top_content pad-0">
+        <carousel [interval]=2000 [showIndicators]="false" [noPause]="false">
+          <slide class="fadding">
+            <img class="background-img" src="../../assets/image/page_slide.jpg" />
+            <div class="slide_text">
+              Our Venues
+            </div>
+          </slide>
+
+        </carousel>
+        <div class=" center">
+          <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
+            <p class="text-center">
+              <b class="greeting_head">Find Better place to your Function</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contaier mr-t-9">
+  <div class="col-12 col-lg-12 col-md-12">
+    <div class="col-lg-3 col-md-3 col-xl-3 col-12 filter float-left">
+      <div class="form-group text-center">
+        <label class="f_lable">Filter </label>
+        <!-- location -->
+        <div class="">
+          <label class="filter_head">Location <i class="fa fa-map-marker"></i></label>
+          <div class="form-group">
+            <input class="form-control" list="city" name="city">
+            <datalist id="city">
+              <option value="Ahmedabad">
+              <option value=Baroda>
+              <option value="Surat">
+              <option value="Jamnagar">
+            </datalist>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item area_filter">Area</li>
+            <li class="list-group-item">Kalawad Road</li>
+            <li class="list-group-item">Mahudi area</li>
+            <li class="list-group-item">Raiya Road</li>
+            <li class="list-group-item">Morbi Road</li>
+            <li class="list-group-item">150ft Ring Road</li>
+          </ul>
+        </div>
+        <!-- datewise -->
+        <div>
+          <label class="filter_head area_filter w-100 mr-t-9 ">Select Date <i class="fa fa-calendar-day"></i></label>
+          <div style="overflow:hidden;">
+            <div class="form-group">
+              <input type="date" class="form-control"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-12  float-left mr-1 grid_main">
+      <div class="col-lg-3 col-md-3 col-xl-3 col-12 float-left">
+        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid " />
+      </div>
+      <div class="col-lg-6 col-md-6 col-xl-6 col-12 float-left">
+        <div class="grid_title"> The Green Pearl, Bodakdev</div>
+        <div class="grid_address">The Green Pearl, Opp. Sattva Vikas School, Sindhu Bhavan Road, Bodakdev,ahmedabad
+        </div>
+        <div class="text-center mr-t-13"><button class="btn btn-danger" [routerLink]="['/VenueDetail']">Detail</button>
+        </div>
+      </div>
+      <div class="text-center col-12 col-lg-3 col-md-3 col-xl-3 float-left grid_price">
+        <div class="price_text">
+          <button class="btn btn-success price_number">GET PRICE</button>
+          <p>price per day</p>
+          <p>capsity : 900 person </p>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-12 float-left mr-1 grid_main">
+      <div class="col-lg-3 col-md-3 col-xl-3 col-12 float-left">
+        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid " />
+      </div>
+      <div class="col-lg-6 col-md-6 col-xl-6 col-12 float-left">
+        <div class="grid_title"> The Green Pearl, Bodakdev</div>
+        <div class="grid_address">The Green Pearl, Opp. Sattva Vikas School, Sindhu Bhavan Road, Bodakdev,ahmedabad
+        </div>
+        <div class="text-center mr-t-13"><button class="btn btn-danger" [routerLink]="['/VenueDetail']">Detail</button>
+        </div>
+      </div>
+      <div class="text-center col-12 col-lg-3 col-md-3 col-xl-3 float-left grid_price">
+        <div class="price_text">
+          <button class="btn btn-success price_number">GET PRICE</button>
+          <p>price per day</p>
+          <p>capsity : 900 person </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-xl-8 col-12 float-left mr-1 grid_main">
+      <div class="col-lg-3 col-md-3 col-xl-3 col-12 float-left">
+        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid " />
+      </div>
+      <div class="col-lg-6 col-md-6 col-xl-6 col-12 float-left">
+        <div class="grid_title"> The Green Pearl, Bodakdev</div>
+        <div class="grid_address">The Green Pearl, Opp. Sattva Vikas School, Sindhu Bhavan Road, Bodakdev,ahmedabad
+        </div>
+        <div class="text-center mr-t-13"><button class="btn btn-danger" [routerLink]="['/VenueDetail']">Detail</button>
+        </div>
+      </div>
+      <div class="text-center col-12 col-lg-3 col-md-3 col-xl-3 float-left grid_price">
+        <div class="price_text">
+          <button class="btn btn-success price_number">GET PRICE</button>
+          <p>price per day</p>
+          <p>capsity : 900 person </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="mr-t-64">
+  <app-footer></app-footer>
+</div> -->

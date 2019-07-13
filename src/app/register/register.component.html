@@ -1,1 +1,105 @@
 <app-header></app-header>
+<section id="home" class="top_cont_outer contanier">
+    <div class="top_cont_inner">
+        <div class="">
+            <div class="top_content pad-0">
+                <carousel [interval]=2000 [showIndicators]="false" [noPause]="false">
+                    <slide class="fadding">
+                        <img class="background-img" src="../../assets/image/page_slide.jpg" />
+                        <div class="slide_text">
+                            Registation
+                        </div>
+                    </slide>
+
+                </carousel>
+                <div class=" center">
+                    <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
+                        <p class="text-center">
+                            <b class="greeting_head">Regitration your profile</b>
+                            <br /> we provid better Serivce 
+                            <br />by partnering with us</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 text-center pad-t-2">
+        <div class="col-12 col-lg-4 col-md-4 col-xl-4 col-xs-4 float-left">
+            <div class="card border-none text-center">
+                <div class="how-work-icon ">
+                    <img src="../../assets/image/icon/home_discover.png" class="img-fluid" />
+                </div>
+                <div class="how-work-title"> Partnership with us </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-4 col-xl-4 col-xs-4 float-left">
+            <div class="card border-none text-center">
+                <div class="how-work-icon ">
+                    <img src="../../assets/image/icon/home_discover.png" class="img-fluid" />
+                </div>
+                <div class="how-work-title">build your business in new way </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-4 col-xl-4 col-xs-4 float-left">
+            <div class="card border-none text-center">
+                <div class="how-work-icon ">
+                    <img src="../../assets/image/icon/home_discover.png" class="img-fluid" />
+                </div>
+                <div class="how-work-title"> get increase your business </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- form section -->
+    <div class="col-lg-12 text-center signupTitle mr-t-17">
+        Already Registered?<b class="text-danger"> Sign In </b>
+        <br />Or
+        <br />Fill In The Form Below To Get Started
+    </div>
+    <div>
+        <div class="col-12 col-lg-12 col-md-12 col-xl-12 text-center mr-t-5">
+            <div class="col-3 col-lg-3 col-md-3 col-xl-3  float-left mr-l-13 r_head " [routerLink]="['/register']">
+                Customer
+            </div>
+            <div class="col-3 col-lg-3 col-md-3 col-xl-3  float-left  r_head" [routerLink]="['/venueRegister']">
+                Venues
+            </div>
+            <div class="col-3 col-lg-3 col-md-3 col-xl-3  float-left r_head" [routerLink]="['/VenderRegister']">
+                Vender
+            </div>
+
+        </div>
+        <div class="col-lg-12 mx-auto">
+            <form id="Vender" action="">
+                <div class="col-12 col-lg-4 col-md-4 col-xl-4  r_l_form mr-l-17 float-left mob_l_0 l-16 br-1">
+                        
+                    <div class="form-group">
+                        <label for="fname" class="">Your Name</label><span class="text-danger">*</span>
+                        <input type="text" class="form-control form_control_m" id="fname" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="fname" class="">contact No.</label><span class="text-danger">*</span>
+                        <input type="text" class="form-control form_control_m" id="fname" placeholder="Contact No.">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="fname" class="">Email</label><span class="text-danger">*</span>
+                            <input type="email" class="form-control form_control_m" id="fname" placeholder="Email">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-17">
+                                <input type="button" value="Submit" class="btn btn-success">
+                            </div>
+        
+
+                </div>
+               
+            </form>
+        </div>
+    </div>
+
+    <!-- form section -->
+    <!-- <div  class="mr-t-41">
+<app-footer></app-footer>
+</div> -->
