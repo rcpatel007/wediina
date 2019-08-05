@@ -2,9 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 import { CarouselModule } from 'ngx-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+
+
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,6 +26,7 @@ import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 import { VenderDetailComponent } from './vender-detail/vender-detail.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ConnectionService } from './services/connection.service';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
@@ -32,10 +37,10 @@ const appRoutes = [
   { path: 'venueRegister', component: VenueRegisterComponent },
   { path: 'Venueprofile', component: VenueprofileComponent },
   { path: 'VenderRegister', component: VenderregisterComponent },
-  { path: 'venders', component: VenderGridComponent },
-  { path: 'VenderDetail', component: VenderDetailComponent },
+  { path: 'vendors', component: VenderGridComponent },
+  { path: 'VenderDetail/:id', component: VenderDetailComponent },
   { path: 'Venues', component: VenueGridComponent },
-  { path: 'VenueDetail', component: VenueDetailComponent },
+  { path: 'VenueDetail/:id', component: VenueDetailComponent },
   { path: 'About', component: AboutComponent },
   { path: 'Contact', component: ContactComponent },
  ];
@@ -62,10 +67,19 @@ const appRoutes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     CarouselModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // Ng2CompleterModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
+  
   ],
-  providers: [],
+  providers: [ConnectionService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,22 +4,22 @@
         <div class="">
             <div class="top_content pad-0">
                 <carousel [interval]=2000 [showIndicators]="false" [noPause]="false">
-                    <slide class="fadding">
-                        <img class="background-img" class="carousel_img" src="../../assets/image/why-weddingz.jpg" />
+                    <slide class="fadding" *ngFor="let s of homeslider">
+                        <img class="background-img" class="carousel_img" src="{{s.image}}" />
                     </slide>
-                    <slide class="fadding">
+                    <!-- <slide class="fadding">
                         <img class="background-img " class="carousel_img" src="../../assets/image/desktop_bg.jpg" />
-                    </slide>
+                    </slide> -->
 
                 </carousel>
                 <div class=" center">
                     <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 greeting_format ">
                         <p class="text-center">
-                            Hassle Free Planning & Booking at Our Guaranteed Best Prices. 10,000+
+                            Hassle Free Planning & Booking at Our Guaranteed Best Prices.
                             <br /> <i class="fa fa-star star"></i> Events Organized till Date <i
                                 class="fa fa-star star"></i>
-                            <br /> Present in 25 Cities
-                            Over 20,000+ Wedding Venues & Vendors</p>
+                            <br /> Present in your city
+                            Over Top Wedding Venues & Vendors is Here</p>
                     </div>
 
                 </div>
@@ -38,119 +38,36 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8">
-                <div class="home-second-hedding">Venues and Vendors from different Cities</div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                <div class="home-second-hedding">Populer Venues and Vendors</div>
+                <div *ngFor="let venue of homeads_venue" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                   <a [routerLink]="['/VenueDetail/',venue._id]">
                     <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
+                        <img src="{{venue.image}}" class="img-fluid p-card-img" />
                         <div class="card-city_name card-title">
-                            Ahmedabad
+                            {{venue.name}}
                         </div>
                         <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
+                            {{venue.city}}
                         </div>
 
                     </div>
+                </a>
                 </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                <div *ngFor="let vendor of homeads_vendor" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                  <a [routerLink]="['/VenderDetail/',vendor._id]">
                     <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
+                        <img src="{{vendor.image}}" class="img-fluid p-card-img" />
                         <div class="card-city_name card-title">
-                            Ahmedabad
+                            {{vendor.name}}
                         </div>
                         <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
+                            {{vendor.city}}
                         </div>
 
                     </div>
+                    </a>
                 </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                    <div class="card card-content ">
-                        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            Ahmedabad
-                        </div>
-                        <div class="text-center pad-2">
-                            <a href="#" class="card-detail">Venues
-                            </a> | <a href="#" class="card-detail">Vendors
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
+                
             </div>
             <!-- main part end -->
             <!-- second part start -->

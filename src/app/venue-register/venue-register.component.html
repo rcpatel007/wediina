@@ -55,7 +55,7 @@
 </section>
 <!-- form section -->
 <div class="col-lg-12 text-center signupTitle mr-t-17">
-    Already Registered?<b class="text-danger"> Sign In </b>
+    Already Registered?<b class="text-danger" [routerLink]="['/login']"> Sign In </b>
     <br />Or
     <br />Fill In The Form Below To Get Started
 </div>
@@ -64,7 +64,7 @@
         <div class="col-3 col-lg-3 col-md-3 col-xl-3 float-left mr-l-13 r_head" [routerLink]="['/register']">
             Customer
         </div>
-        <div class="col-3 col-lg-3 col-md-3 col-xl-3 float-left  r_head" [routerLink]="['/venueRegister']">
+        <div class="col-3 col-lg-3 col-md-3 col-xl-3 float-left back_red  r_head" [routerLink]="['/venueRegister']">
             Venues
         </div>
         <div class="col-3 col-lg-3 col-md-3 col-xl-3 float-left r_head" [routerLink]="['/VenderRegister']">
@@ -78,22 +78,26 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" class=" ">Business Name</label><span
                         class="text-danger">*</span>
-                    <select class="form-control form_control_m" id="exampleFormControlSelect1">
-                        <option>party Plot</option>
-                        <option>Banquet hall</option>
+                    <select class="form-control form_control_m" name="catVal" [(ngModel)]="catVal" id="exampleFormControlSelect1">
+                        <option *ngFor="let c of venue_category" value="{{c._id}}">{{c.venue_cat_name}}</option>
+                        
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="fname" class=" ">Company Name</label><span class="text-danger">*</span>
+                    <label for="fname" name="cname" [(ngModel)]="cname" class=" ">Company Name</label><span class="text-danger">*</span>
                     <input type="text" class="form-control form_control_m" id="fname" placeholder="Compnay Name">
                 </div>
                 <div class="form-group">
-                    <label for="fname" class=" ">Your Name</label><span class="text-danger">*</span>
-                    <input type="text" class="form-control form_control_m" id="fname" placeholder="Your Name">
+                    <label for="fname" class=" ">First Name</label><span class="text-danger">*</span>
+                    <input type="text"  class="form-control form_control_m" id="fname" placeholder="Your Name">
                 </div>
                 <div class="form-group">
+                        <label for="fname" class=" ">Last Name</label><span class="text-danger">*</span>
+                        <input type="text" class="form-control form_control_m" id="fname" name="lname" [(ngModel)]="lname" placeholder="Your Name">
+                    </div>
+                <div class="form-group">
                     <label for="fname" class=" ">contact No.</label><span class="text-danger">*</span>
-                    <input type="text" class="form-control form_control_m" id="fname" placeholder="Contact No.">
+                    <input type="text" class="form-control form_control_m" id="fname" name="contact_no" [(ngModel)]="contact_no" placeholder="Contact No.">
                 </div>
 
                
@@ -102,7 +106,7 @@
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 pad-b-8 r_r_form float-left ">
                     <div class="form-group">
                             <label for="fname" class=" ">Email</label><span class="text-danger">*</span>
-                            <input type="email" class="form-control form_control_m" id="fname" placeholder="Email">
+                            <input type="email" name="email" [(ngModel)]="email" class="form-control form_control_m" id="fname" placeholder="Email">
                         </div>
         
                 <div class="form-group">
@@ -111,10 +115,6 @@
                         class="text-danger">*</span>
                     <select class="form-control form_control_m" id="exampleFormControlSelect1">
                         <option>Rajkot</option>
-                        <option>Ahmedabad</option>
-                        <option>Surat</option>
-                        <option>Baroda</option>
-                        <option>Jamnagar</option>
                     </select>
                 </div>
                 <div class="form-group">

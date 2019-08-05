@@ -15,7 +15,7 @@
         <div class=" center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
-              <b class="greeting_head">Thakar Party plot</b></p>
+              <b class="greeting_head">{{name}}</b></p>
 
           </div>
         </div>
@@ -29,143 +29,219 @@
       <div class="">
         <div class="title_section col-12 col-sm-12 col-8 col-lg-8 col-md-8 col-xl-8 float-left">
           <div class="price_text">
-           
+
             <p class="price_number"><i class="fa fa-star float-right star_rating"> &nbsp; &nbsp;4.5/5</i></p>
-            <div class="pointer">Click : <a href="https://www.google.com/maps/place/Globalbits+Technology/@23.0169341,72.4737139,17z/data=!3m1!4b1!4m5!3m4!1s0x395e9b776a1d204f:0x2f5838c28b1b53d6!8m2!3d23.0169292!4d72.4759026" target="_blank" class="btn btn-success"><i class="fa fa-map-marker"></i> Location</a></div>
+            <div class="pointer"> <a href="{{location}}" target="_blank" class="btn btn-success"><i
+                  class="fa fa-map-marker"></i> Location</a></div>
 
             <!-- <p>capsity : 900 person </p> -->
           </div>
         </div>
         <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
           <div class="like_display">
-            <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
-            <br><i class="fa fa-heart"></i> &nbsp;&nbsp;&nbsp;10
+            <!-- <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
+            <br><i class="fa fa-heart"></i> &nbsp;&nbsp;&nbsp;10 -->
           </div>
         </div>
 
       </div>
       <carousel [interval]=2000 [showIndicators]="true" [noPause]="true">
-        <slide class="fadding">
-          <img class="background-img" class="v_carousel_img" src="../../assets/image/why-weddingz.jpg" />
-        </slide>
-        <slide class="fadding">
-          <img class="background-img " class="v_carousel_img" src="../../assets/image/desktop_bg.jpg" />
+        <slide *ngFor="let s of images" class="fadding">
+          <img class="background-img" class="v_carousel_img" src="{{s}}" />
         </slide>
 
       </carousel>
       <div class="v_despcol-12 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
         <h4>Details</h4>
-          <div class="detail_block col-12 col-sm-12 col-3 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Area</h5>
-            <p>36000 sq.ft</p>
-          </div>
-          <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Parking area</h5>
-            <p>6000 sq.ft</p>
-          </div>
-          <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Capasity</h5>
-            <p>1000 Person</p>
-          </div>
-          <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Out side Catring </h5>
-            <p>Allowed</p>
-          </div>
-          <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Theme Decoration</h5>
-            <p>Not Allowed</p>
-          </div>
-          <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
-            <h5  class="detail_title">Time Duration </h5>
-            <p>12 AM</p>
-          </div>
+        <div class="detail_block col-12 col-sm-12 col-3 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Area</h5>
+          <p>{{area}}</p>
+        </div>
+        <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Parking area</h5>
+          <p>{{p_area}}</p>
+        </div>
+        <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Capasity</h5>
+          <p>{{capasity}} Person</p>
+        </div>
+        <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Out side Catring </h5>
+          <p>{{catring}}</p>
+        </div>
+        <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Theme Decoration</h5>
+          <p>{{theme}}</p>
+        </div>
+        <div class="detail_block col-12 col-sm-12 col-xl-3 col-sm-3 col-md-3 float-left">
+          <h5 class="detail_title">Time Duration </h5>
+          <p>{{time}}</p>
+        </div>
 
       </div>
 
       <div class="v_desp">
         <h4>Summray</h4>
         <p>
-          The Green Pearl, Bodakdev, Ahmedabad is a gorgeous venue to host your wedding and reception ceremony. It is
-          located on Sindhu Bhavan Marg which is a known place for the people living nearby. The Green Pearl, Bodakdev
-          serves multi-cuisine delicacies in both vegetarian and non-vegetarian food to their guests. The fabulous décor
-          of the venue gives a special touch to your big day.
-
-          The Green Pearl, Ahmedabad has a sprawling lawn that is amidst lush greenery which will refresh your senses.
-          It also has a banquet hall that is ideal for having a medium-sized function. The venue has an inviting
-          ambience which makes everyone feel welcomed. So what's stopping you? Plan your events at The Green Pearl,
-          Bodakdev, Ahmedabad to make them outstanding.
+          {{detail}}
         </p>
       </div>
       <div class="mr-t-9 v_desp">
         <h4>Testimonial</h4>
         <div class="testimonial_user">
-          <div><i class="fa fa-user test_user"></i>Chirag Ramani <i class="fa fa-star float-right star_rating"> &nbsp; &nbsp;4.5/5</i></div>
+          <div><i class="fa fa-user test_user"></i>Chirag Ramani <i class="fa fa-star float-right star_rating"> &nbsp;
+              &nbsp;4.5/5</i></div>
           <div class="review">
-              This party plot is best in Rajkot 
-            </div>
+            This party plot is best in Rajkot
+          </div>
         </div>
 
-        <div class="testimonial_user">
-            <div><i class="fa fa-user test_user"></i>Chirag Ramani <i class="fa fa-star float-right star_rating"> &nbsp; &nbsp;4.5/5</i></div>
-            <div class="review">
-                This party plot is best in Rajkot 
-              </div>
-          </div>
+       
 
-          <div class="testimonial_user">
-              <div><i class="fa fa-user test_user"></i>Chirag Ramani <i class="fa fa-star float-right star_rating"> &nbsp; &nbsp;4.5/5</i></div>
-              <div class="review">
-                  This party plot is best in Rajkot 
-                </div>
-            </div>
-    
       </div>
     </div>
     <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left send_btn mob_mr_t-13 ">
-      <button class=" btn btn_danger mob_btn_pos inquery_btn">Send Inquery</button>
+      <button class=" btn btn_danger mob_btn_pos inquery_btn" data-toggle="modal"
+      data-target="#sendInquiry">Send Inquery</button>
       <div>
-      <button class="btn btn_danger mob_btn_pos mob_l_m_28 review_btn">Add Review</button>
-    </div>
-    <div>
-      <h6 class="videostroy_title">Video Story</h6>
-      <div class="col-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 order-first float-left"  data-toggle="modal" data-target="#myModal">
-        <img src="../../assets/image/Ahmedabad.jpg" class="img-thumbnail"/>
+        <button data-toggle="modal"
+        data-target="#review" class="btn btn_danger mob_btn_pos mob_l_m_28 review_btn">Add Review</button>
+      </div>
+      <div>
+        <h6 class="videostroy_title">Video Story</h6>
+        <div *ngFor="let v of video;let i= index"
+          class="col-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 order-first float-left" data-toggle="modal"
+          data-target="#myModal">
+          <img src="../../assets/image/Ahmedabad.jpg" (click)="getvideo(v)" class="img-thumbnail" />
+
+        </div>
 
       </div>
-      <div class="col-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 float-left"  data-toggle="modal" data-target="#myModal">
-          <img src="../../assets/image/Ahmedabad.jpg" class="img-thumbnail" />
-  
-        </div>
     </div>
-  </div>
   </div>
 
 </section>
-   
+
 <!-- The Modal -->
 <div class="modal" id="myModal">
+  <div class="modal-dialog  modal-full    ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Video Stroy</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" id="video" src="https://www.youtube.com/embed/t53c-tLZS7E"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="modal_video" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- send Inquiry -->
+
+<div class="modal" id="sendInquiry">
     <div class="modal-dialog  modal-full    ">
       <div class="modal-content">
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Video Stroy</h4>
+          <h4 class="modal-title">Send Inquiry</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
   
         <!-- Modal body -->
         <div class="modal-body">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-              </div>
-                    </div>
+      
+            <div class="form-group">
+                <label for="fname" class=""> Name</label><span class="text-danger">*</span>
+                <input type="text" class="form-control form_control_m" id="name" placeholder="Enter your Name">
+            </div>
+            <div class="form-group">
+                <label for="fname" class="">Email</label><span class="text-danger">*</span>
+                <input type="email" class="form-control form_control_m" id="email" placeholder="enter your Email">
+            </div>
+            <div class="form-group">
+                <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
+                <input type="text" class="form-control form_control_m" id="mno" placeholder=" enter your Mobile no">
+            </div>
+            <div class="form-group">
+                <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
+                <input type="date" class="form-control form_control_m" id="date" placeholder="Enter your Date">
+            </div>
+            <div class="form-group">
+                <label for="fname" class="">No of Person</label><span class="text-danger">*</span>
+                <input type="text" class="form-control form_control_m" id="fname" placeholder="Enter No of Person">
+            </div>
+            <div class="form-group">
+                <label for="fname" class="">purpose</label><span class="text-danger">*</span>
+                <input type="text" class="form-control form_control_m" id="purpose" placeholder="Please Write a purpose why are you need this place.">
+            </div>
+        </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success w-100"  data-dismiss="modal">Send</button>
         </div>
   
       </div>
     </div>
   </div>
-<!-- <app-footer></app-footer> -->
+
+  <!-- review -->
+  <div class="modal" id="review">
+      <div class="modal-dialog  modal-full    ">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Review</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+        
+            <div class="form-group">
+              <span class="rating fa fa-star"></span>
+              <span class="rating fa fa-star"></span>
+              <span class="rating fa fa-star"></span>
+              <span class="rating fa fa-star"></span>
+              <span class=" rating fa fa-star"></span>
+            </div>
+              <div class="form-group">
+                  <label for="fname" class="">Comment</label><span class="text-danger">*</span>
+                  <textarea class="form-control form_control_m" id="cmt" rows="15" placeholder="Please Enter your valuable feedback"></textarea>
+              </div>
+              
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success w-100"  data-dismiss="modal">Send</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+
+  <!-- <app-footer></app-footer> -->
+<script type="text/javascript">
+$('#modal_video').click(function() {
+      $('#video').pause();
+  });
+
+</script>
