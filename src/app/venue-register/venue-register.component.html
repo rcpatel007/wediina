@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" class=" ">Business Name</label><span
                         class="text-danger">*</span>
-                    <select class="form-control form_control_m" name="catVal" [(ngModel)]="catVal" id="exampleFormControlSelect1">
+                    <select class="form-control form_control_m" name="catValue" [(ngModel)]="catValue" id="exampleFormControlSelect1">
                         <option *ngFor="let c of venue_category" value="{{c._id}}">{{c.venue_cat_name}}</option>
                         
                     </select>
@@ -97,7 +97,7 @@
                     </div>
                 <div class="form-group">
                     <label for="fname" class=" ">contact No.</label><span class="text-danger">*</span>
-                    <input type="text" class="form-control form_control_m" id="fname" name="contact_no" [(ngModel)]="contact_no" placeholder="Contact No.">
+                    <input type="text" class="form-control form_control_m" id="fname" name="cno" [(ngModel)]="cno" placeholder="Contact No.">
                 </div>
 
                
