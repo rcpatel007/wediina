@@ -3,16 +3,20 @@
     <div class="top_cont_inner">
         <div class="">
             <div class="top_content pad-0">
-                <carousel [interval]=2000 [showIndicators]="false" [noPause]="false">
-                    <slide class="fadding" *ngFor="let s of homeslider">
-                        <img class="background-img" class="carousel_img" src="{{s.image}}" />
+                <carousel [interval]=3000 [showIndicators]="false" >
+                    <slide class="faddin" *ngFor="let s of homeslider; let index=index">
+                        <img class="background-img " class="carousel_img" src="{{s.image}}" />
+                        <div class="carousel-caption">
+                            <h3 class="slide_head">The Wedding Venue</h3>
+                            <p class="slide_cap mr-r-l-8">We Are serve best location  for your any type of Function.</p>
+                          </div>
                     </slide>
                     <!-- <slide class="fadding">
                         <img class="background-img " class="carousel_img" src="../../assets/image/desktop_bg.jpg" />
                     </slide> -->
 
                 </carousel>
-                <div class=" center">
+                <!-- <div class=" center">
                     <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 greeting_format ">
                         <p class="text-center">
                             Hassle Free Planning & Booking at Our Guaranteed Best Prices.
@@ -22,7 +26,7 @@
                             Over Top Wedding Venues & Vendors is Here</p>
                     </div>
 
-                </div>
+</div> -->
                 <!-- 
               <div>
                 <div>
@@ -34,47 +38,69 @@
         </div>
     </div>
 </section>
-<div class="wapper">
+<div class="wapper parallax">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8">
-                <div class="home-second-hedding">Populer Venues and Vendors</div>
-                <div *ngFor="let venue of homeads_venue" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                   <a [routerLink]="['/VenueDetail/',venue._id]">
-                    <div class="card card-content ">
-                        <img src="{{venue.image}}" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            {{venue.name}}
-                        </div>
-                        <div class="text-center pad-2">
-                            {{venue.city}}
-                        </div>
-
-                    </div>
-                </a>
+            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
+                <div class="home-second-hedding">THE VENUES
+                    
                 </div>
-                <div *ngFor="let vendor of homeads_vendor" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
-                  <a [routerLink]="['/VenderDetail/',vendor._id]">
-                    <div class="card card-content ">
-                        <img src="{{vendor.image}}" class="img-fluid p-card-img" />
-                        <div class="card-city_name card-title">
-                            {{vendor.name}}
+                <div class="head-title">Glimpse through the latest trends – handpicked by us, for you.
+                    
+                </div>
+                <hr class="title">
+                <div *ngFor="let venue of homeads_venue" 
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+                    <a [routerLink]="['/VenueDetail/',venue._id]">
+                        <div class="card card-con mr-b-6 card-size card-content ">
+                            <img src="{{venue.image}}" class="img-fluid p-card-img" />
+                           
+                            <div class="text-center pad-2">
+                                                      </div>
+                                  <div class="card-bottom text-center">
+                                   <a>  {{venue.name}}</a>
+                                  </div>
                         </div>
-                        <div class="text-center pad-2">
-                            {{vendor.city}}
-                        </div>
-
-                    </div>
                     </a>
                 </div>
-                
+               
+
+            </div>
+            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
+                <div class="home-second-hedding">THE Vendors
+                    
+                </div>
+                <div class="head-title">Glimpse through the latest trends – handpicked by us, for you.
+                    
+                </div>
+                <hr class="title">
+              
+                <div *ngFor="let vendor of homeads_vendor" data-aos="flip-left"
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                    <a [routerLink]="['/VenderDetail/',vendor._id]">
+                        <div class="card card-size mr-b-6 card-con card-content ">
+                            <img src="{{vendor.image}}" class="img-fluid p-card-img" />
+                           
+                            <div class="text-center pad-2">
+                               
+                                  <div class="card-bottom text-center">
+                                    <a>{{vendor.name}}</a>
+                                   </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
             </div>
             <!-- main part end -->
             <!-- second part start -->
-            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8">
+            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
                 <div class="home-second-hedding">How it's Work</div>
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left">
-                    <div class="card border-none text-center">
+                <hr class="title">
+                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
+     data-aos-anchor-placement="center-center">
+                    <div class="card border-none pad-t-b-5 text-center">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_discover.png" class="img-fluid" />
                         </div>
@@ -83,8 +109,9 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left">
-                    <div class="card border-none text-center">
+                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
+     data-aos-anchor-placement="center-center">
+                    <div class="card border-none pad-t-b-5 text-center">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_book.png" class="img-fluid" />
                         </div>
@@ -93,8 +120,9 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left">
-                    <div class="card border-none text-center">
+                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
+     data-aos-anchor-placement="center-center">
+                    <div class="card border-none text-center pad-t-b-5">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_vendor.png" class="img-fluid" />
                         </div>
@@ -103,8 +131,9 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left">
-                    <div class="card border-none text-center">
+                <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
+     data-aos-anchor-placement="center-center">
+                    <div class="card border-none text-center pad-t-b-5">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_visits.png" class="img-fluid" />
                         </div>
@@ -112,6 +141,63 @@
                         <div class="how-work-desp">Input your requirements & see our recommendations & prices.</div>
                     </div>
                 </div>
+            </div>
+            <!-- second part end -->
+
+              <!-- second part start -->
+              <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
+                <div class="home-second-hedding">Let's Talk to Business</div>
+                <hr class="title">
+                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12  float-left" >
+                    <div class="card border-none text-center">
+                     
+                        <div class="contact-text">
+                            <i class="fa fa-whatsapp wp-icon"></i> &nbsp;&nbsp;
+                            <a href="https://api.whatsapp.com/send?phone=918160042027&text=">+91 9712129465 </a>  
+                        </div>
+                        <div class="contact-text">
+                            <i class="fa fa-envelope email-icon"></i> &nbsp;&nbsp;  <a href="mailto:info@wediina.com">
+                                info@wediina.com</a>
+                        </div>
+                        <div>
+                            <i class="fa fa-facebook social-icon"></i>
+                            <i class="fa fa-instagram social-icon"></i>
+                            <!-- <i class="fa fa-facebook"></i> -->
+                            <i class="fa fa-twitter social-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12 float-left">
+                    <div class="card  pad-5  border-none text-center">
+                        <div class="form-group">
+                            <!-- <label for="exampleFormControlFile1">Example file input</label> -->
+                            <input type="text" class="form-control" id="name" placeholder="Name">
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="exampleFormControl1">Example  input</label> -->
+                            <input type="text" class="form-control" id="email" placeholder="Email">
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="exampleFormControl1">Example  input</label> -->
+                            <input type="text" class="form-control" id="mobileno" placeholder="Mobile No">
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="exampleFormControl1">Example  input</label> -->
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="exampleFormControl1">Example  input</label> -->
+                            <textarea class="form-control" id="msg" placeholder="Message" rows="5"></textarea>
+                          </div>
+                          <div class="form-group ">
+                              <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                          </div>
+                    </div>
+                </div>
+
+              
             </div>
             <!-- second part end -->
         </div>

@@ -16,28 +16,80 @@
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
               <b class="greeting_head">Find Better place to your Function</b></p>
-          </div>
+              <hr class="title">
+         
+            </div>
         </div>
-        <div class="center">
-            <div class="col-12 mx-auto col-lg-12  col-md-12 col-xl-12 col-xs-12 r_greeting_format ">
+        <div class="row justify-content-center center filter_section">
+            <!-- <star-rating [starType]="'svg'" [rating]="5"></star-rating>    -->
+            <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4  float-left">
+              <!-- <b>Filter</b>  -->
+                <div class="form-group">
+                    <select class="form-control form_control_m" id="exampleFormControlSelect1">                      
+                        <option selected disabled>City</option>
+                        <option>Rajkot</option>
+                        <option>Surat</option>
+                        <option>Ahmedabad</option>
+                        <option>Vadodra</option>
+                        <!-- <option>flower decoration</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4  float-left">
+                <!-- <b>Filter</b>  -->
+                
+                  <div class="form-group">
+                     
+                    <input type="date"  placeholder="Select your function date"  class="form-control"/>
+                  </div>
+  
+              </div>      
+          <!-- <div class="col-12 mx-auto col-lg-12  col-md-12 col-xl-12 col-xs-12 r_greeting_format ">
                 <div *ngFor="let vcat of venueCategory" class="text-center col-3 mx-auto col-lg-3  col-md-3 col-xl-3 col-xs-3 float-left">
                <b class="cat" (click)="getcategoryId(vcat._id)">{{vcat.venue_cat_name}}</b>
               </div>
-            
+             -->
                 
                    
-              </div>
+              <!-- </div> -->
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="contaier mr-t-9">
-  <div class="col-12 col-lg-12 col-md-12">
+
+<section class="inner-part">
+    <div class="row ">
+      <div class="col-lg-3 float-left venue-grid" *ngFor="let v of venues">
+        <div class="card venue-card" [routerLink]="['/VenueDetail',v._id]">
+            <img src="{{v.image}}" class="grid_img"  />
+           <div class="card-bottom justify-content-center">
+              <div class="star-rating">
+                  <span class="fa fa-star-o"  data-rating="1"></span>
+                  <span class="fa fa-star-o"  data-rating="2"></span>
+                  <span class="fa fa-star-o"  data-rating="3"></span>
+                  <span class="fa fa-star-o"  data-rating="4"></span>
+                  <span class="fa fa-star-o"  data-rating="5"></span>
+                  <input type="hidden" name="whatever1" class="rating-value" value="3">
+                </div>
+
+                <div class="grid_title pad-5"> {{v.companyName}}</div>
+           </div>
+            <div>
+
+            </div>
+          </div>
+        
+      </div>
+    </div>
+</section>
+
+<!-- <section class="contaier inner-part mr-t-9"> -->
+
+  <!-- <div class="col-12 col-lg-12 col-md-12">
     <div class="col-lg-3 col-md-3 col-xl-3 col-12 filter float-left">
       <div class="form-group text-center">
         <label class="f_lable">Filter </label>
-        <!-- location -->
         <div class="">
           <label class="filter_head">Location <i class="fa fa-map-marker"></i></label>
           <div class="form-group">
@@ -53,7 +105,6 @@
           
           </ul>
         </div>
-        <!-- datewise -->
         <div>
           <label class="filter_head area_filter w-100 mr-t-9 ">Select Date <i class="fa fa-calendar-day"></i></label>
           <div style="overflow:hidden;">
@@ -84,46 +135,9 @@
 
       </div>
     </div>
-    <!-- <div class="col-lg-8 col-md-8 col-xl-8 col-12 float-left mr-1 grid_main">
-      <div class="col-lg-3 col-md-3 col-xl-3 col-12 float-left">
-        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid " />
-      </div>
-      <div class="col-lg-6 col-md-6 col-xl-6 col-12 float-left">
-        <div class="grid_title"> The Green Pearl, Bodakdev</div>
-        <div class="grid_address">The Green Pearl, Opp. Sattva Vikas School, Sindhu Bhavan Road, Bodakdev,ahmedabad
-        </div>
-        <div class="text-center mr-t-13"><button class="btn btn-danger" [routerLink]="['/VenueDetail']">Detail</button>
-        </div>
-      </div>
-      <div class="text-center col-12 col-lg-3 col-md-3 col-xl-3 float-left grid_price">
-        <div class="price_text">
-          <button class="btn btn-success price_number">GET PRICE</button>
-          <p>price per day</p>
-          <p>capsity : 900 person </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-8 col-md-8 col-xl-8 col-12 float-left mr-1 grid_main">
-      <div class="col-lg-3 col-md-3 col-xl-3 col-12 float-left">
-        <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid " />
-      </div>
-      <div class="col-lg-6 col-md-6 col-xl-6 col-12 float-left">
-        <div class="grid_title"> The Green Pearl, Bodakdev</div>
-        <div class="grid_address">The Green Pearl, Opp. Sattva Vikas School, Sindhu Bhavan Road, Bodakdev,ahmedabad
-        </div>
-        <div class="text-center mr-t-13"><button class="btn btn-danger" [routerLink]="['/VenueDetail']">Detail</button>
-        </div>
-      </div>
-      <div class="text-center col-12 col-lg-3 col-md-3 col-xl-3 float-left grid_price">
-        <div class="price_text">
-          <button class="btn btn-success price_number">GET PRICE</button>
-          <p>price per day</p>
-          <p>capsity : 900 person </p>
-        </div>
-      </div>
-    </div> -->
-  </div>
-</section>
+ 
+  </div> -->
+<!-- </section> -->
 <!-- <div class="mr-t-64">
   <app-footer></app-footer>
 </div> -->

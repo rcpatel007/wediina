@@ -24,7 +24,7 @@
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">Contact</a></li>
+    <li><a href="#">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -37,15 +37,50 @@
          </div>
          <div class="logo">
             <img src="../../assets/image/wediina-logo.png" class="img-fluid"/>
-         </div>
+
+        </div>
+         
          <div class="menu">
+                <div class="form-group city-menu">
+                        <select class="form-control  city_select_menu" id="exampleFormControlSelect1">                      
+                            <!-- <option selected disabled>City</option> -->
+                            <option>Rajkot</option>
+                            <option>Surat</option>
+                            <option>Ahmedabad</option>
+                            <option>Vadodra</option>
+                            <!-- <option>flower decoration</option> -->
+                        </select>
+                    </div>
+        
             <ul>
                <li><a href="#">Home</a></li>
-               <li><a href="#" [routerLink]="['/vendors']">vendor</a></li>
-               <li><a href="#" [routerLink]="['/Venues']">Venues</a></li>
+               <li class="subnav"><a href="#" class="subnavbtn">Vendor</a>
+            
+                <ul class="subnav-content" style="padding: 0;">
+                   
+                    <li *ngFor="let ve of vendorCategory"><a href="javascript:void(0);"  [routerLink]="['/vendors',ve._id]">{{ve.vendor_cat_name}}</a></li>
+                    
+                    <li style="background: red;"  ><a style="" class="premium-pk"[routerLink]="['/PremiumPhotographer']" href="#">Premium Photographers </a></li> 
+                </ul>
+            </li>
+
+            <li class="subnav"><a href="#" class="subnavbtn">Venues</a>
+            
+                <ul class="subnav-content">
+                   
+                    <li *ngFor="let ve of venueCategory"><a [routerLink]="['/Venues',ve._id]" href="#">{{ve.venue_cat_name}}</a></li>
+                   
+                  </ul>
+            </li>
+
+               
+               <!-- <li><a href="#" [routerLink]="['/Venues']">Venues</a></li> -->
                <li><a href="javascript:void(0)" [routerLink]="['/login']" class="user-icon"><i class="fa fa-user" ></i></a></li>
             </ul>
-         </div>
+            </div>
       </nav>
    </header>
+   <div class="child-menu">
+
+   </div>
 <!-- end header -->

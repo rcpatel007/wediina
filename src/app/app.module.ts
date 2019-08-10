@@ -7,7 +7,8 @@ import { HttpModule } from '@angular/http';
 import { CarouselModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-
+import { StarRatingModule } from 'angular-star-rating';
+// import { StarRatingModule } from '@angular-star-rating-lib/angular-star-rating';
 
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -27,6 +28,8 @@ import { VenderDetailComponent } from './vender-detail/vender-detail.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ConnectionService } from './services/connection.service';
+import { PremiumPhotographerComponent } from './premium-photographer/premium-photographer.component';
+import { PremiumPhotographerDetailComponent } from './premium-photographer-detail/premium-photographer-detail.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
@@ -37,11 +40,13 @@ const appRoutes = [
   { path: 'venueRegister', component: VenueRegisterComponent },
   { path: 'Venueprofile', component: VenueprofileComponent },
   { path: 'VenderRegister', component: VenderregisterComponent },
-  { path: 'vendors', component: VenderGridComponent },
+  { path: 'vendors/:id', component: VenderGridComponent },
   { path: 'VenderDetail/:id', component: VenderDetailComponent },
-  { path: 'Venues', component: VenueGridComponent },
+  { path: 'Venues/:id', component: VenueGridComponent },
   { path: 'VenueDetail/:id', component: VenueDetailComponent },
   { path: 'About', component: AboutComponent },
+  { path: 'PremiumPhotographer', component: PremiumPhotographerComponent },
+  { path: 'PremiumPhotographerDetail', component: PremiumPhotographerDetailComponent },
   { path: 'Contact', component: ContactComponent },
  ];
 @NgModule({
@@ -63,12 +68,15 @@ const appRoutes = [
     VenueDetailComponent,
     VenderDetailComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    PremiumPhotographerComponent,
+    PremiumPhotographerDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    StarRatingModule.forRoot(),
     CarouselModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     BrowserModule,
