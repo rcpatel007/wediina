@@ -12,7 +12,7 @@
           </slide>
 
         </carousel>
-        <div class=" center">
+        <div class="inner-part center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
               <b class="greeting_head">Find Better place to your Function</b></p>
@@ -20,11 +20,12 @@
          
             </div>
         </div>
-        <div class="row justify-content-center center filter_section">
+        <div class="row justify-content-center center inner-part">
             <!-- <star-rating [starType]="'svg'" [rating]="5"></star-rating>    -->
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4  float-left">
               <!-- <b>Filter</b>  -->
                 <div class="form-group">
+                  <label class="them-color">Select your Function City</label>
                     <select class="form-control form_control_m" id="exampleFormControlSelect1">                      
                         <option selected disabled>City</option>
                         <option>Rajkot</option>
@@ -39,8 +40,8 @@
                 <!-- <b>Filter</b>  -->
                 
                   <div class="form-group">
-                     
-                    <input type="date"  placeholder="Select your function date"  class="form-control"/>
+                     <label class="them-color">Select your Function Date</label>
+                    <input type="date"  placeholder="Select your function date"  class="form-control form-control_m"/>
                   </div>
   
               </div>      
@@ -61,7 +62,8 @@
 <section class="inner-part">
     <div class="row ">
       <div class="col-lg-3 float-left venue-grid" *ngFor="let v of venues">
-        <div class="card venue-card" [routerLink]="['/VenueDetail',v._id]">
+        <div class="" [routerLink]="['/VenueDetail',v._id]">
+          <div class="filp-top"></div>
             <img src="{{v.image}}" class="grid_img"  />
            <div class="card-bottom justify-content-center">
               <div class="star-rating">
@@ -75,6 +77,7 @@
 
                 <div class="grid_title pad-5"> {{v.companyName}}</div>
            </div>
+           <div class="filp-bottom"></div>
             <div>
 
             </div>

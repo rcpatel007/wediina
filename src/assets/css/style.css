@@ -1,13 +1,59 @@
 body{
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     font-family: 'Montserrat', sans-serif !important;
 }
+.them-color{
+    color: #ed2437;
+}
+::-webkit-scrollbar{
+    /* display: none; */
+    border: 1px solid #000;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    
+  }
+  .menu_bottom{
+    background: #ed2437;
+    position: fixed;
+    bottom: 35.5%;
+    width: 17.5%;
+    transition: 0.3s;
+  }
+  .menu_bottom:hover{
+      background: #000;
+      color: #fff;
+  }
+  .menu_ul{
+    padding: 0;
+    height: 55vh;
+    overflow-y: scroll;
+    border: 1px solid #e6e6e6;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ed2437; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
 .star-rating {
     line-height:32px;
     font-size:1.25em;
     text-align: center;
-    color: #ffb901;
+    color: #000;
   }
   .star-rating:hover{
       color:#ffb901;
@@ -148,6 +194,7 @@ border-bottom: 1px solid #FF353A;
 .grid_img{
     width: 100% !important;
     height: 37vh;
+    background: #fff;
 }
 .h-70vh{
     height: 70vh;
@@ -158,24 +205,61 @@ border-bottom: 1px solid #FF353A;
     padding: 2% 8% !important;
 }
 .card-bottom{
-    /* background: #000; */
+    background: #fff;
     padding: 11% 0;
     color: #000;
     font-weight: 550;
     padding-bottom: 0;
     
 }
+.back-part{
+    background: #f8f9fa !important;
+    padding: 2%;
+    border-radius: 6px;
+}
+.website_link{
+    color: #ed2437 !important; 
+    font-weight: 700 !important;
+    font-size: 1.1em !important;
+    transition: 0.3s;
+}
+.website_link:hover{
+    padding: 2%;
+    border-radius: 5px;
+    background: #000;
+    color: #fff !important;
+    font-weight: 550 !important;
+}
+
+.filp-top {
+    background: url('../image/flip-top.png') bottom center no-repeat;
+    width: 100%;
+    height: 37px;
+    background-size: contain;
+}
+.filp-bottom {
+    background: url('../image/flip-bottom.png') top center no-repeat;
+    width: 100%;
+    height: 37px;
+    background-size: contain;
+}
+.form-control:focus{
+    box-shadow: none !important;
+}
 .city_select_menu{
     background: transparent !important;
     font-weight: 550 !important;
-    color: #000 !important;
     width: 100% !important;
     border: 1px solid #000 !important;
     border-radius: 5px !important;
 
 }
+.city_select_menu:hover{
+    color: #ed2437 !important;
+  border: 1px solid #ed2437;
+}
 .city-menu{
-
+    display: none;
     position: absolute;
     /* background: #000; */
     margin-left: 25%;
@@ -587,27 +671,27 @@ hr.title {
 }
 .p-card-img{
 
-border-radius: 5px;
+/* border-radius: 5px; */
 width: auto;
     height: 45vh !important;
 
 }
 .card-con{
-    box-shadow: 0 15px 35px rgba(50, 50, 90, .1), 0 5px 15px rgba(0, 0, 0, .07);
+    /* box-shadow: 0 15px 35px rgba(50, 50, 90, .1), 0 5px 15px rgba(0, 0, 0, .07); */
     color: #000;
 }
 
 .card-size{
     min-width: 245px !important;
     min-height: 280px !important;
-    box-shadow: 0px 1px 6px 0px;
+    /* box-shadow: 0px 1px 6px 0px; */
     transition: 0.5s;
 }
 .card-size:hover{
     transform: scale(1.1);
 }
 .card-content{
-    border: 1px solid #e2e2e2;
+    /* border: 1px solid #e2e2e2; */
     padding: 1%;
     border-radius: 5px;
     
@@ -716,7 +800,7 @@ border-bottom:1px solid #e2e2e2;
 
 .forget-text{
     
-    color: red;
+    color: #ed2437;
 margin-bottom:10%; 
 }
 

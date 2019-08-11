@@ -52,14 +52,18 @@
                 <div *ngFor="let venue of homeads_venue" 
                     class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
                     <a [routerLink]="['/VenueDetail/',venue._id]">
-                        <div class="card card-con mr-b-6 card-size card-content ">
+                        <div class=" card-con mr-b-6 card-size card-content ">
+                                <div class="filp-top"></div>
+                        
                             <img src="{{venue.image}}" class="img-fluid p-card-img" />
                            
-                            <div class="text-center pad-2">
+                            <div class="text-center ">
                                                       </div>
                                   <div class="card-bottom text-center">
                                    <a>  {{venue.name}}</a>
                                   </div>
+                                  <div class="filp-bottom"></div>
+                          
                         </div>
                     </a>
                 </div>
@@ -78,16 +82,18 @@
                 <div *ngFor="let vendor of homeads_vendor" data-aos="flip-left"
                     class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
                     <a [routerLink]="['/VenderDetail/',vendor._id]">
-                        <div class="card card-size mr-b-6 card-con card-content ">
+                        <div class="card-size mr-b-6 card-con card-content ">
+                            <div class="filp-top"></div>
                             <img src="{{vendor.image}}" class="img-fluid p-card-img" />
                            
-                            <div class="text-center pad-2">
+                            <div class="text-center ">
                                
                                   <div class="card-bottom text-center">
                                     <a>{{vendor.name}}</a>
                                    </div>
                             </div>
-
+                            <div class="filp-bottom"></div>
+                           
                         </div>
                     </a>
                 </div>
@@ -153,7 +159,7 @@
                      
                         <div class="contact-text">
                             <i class="fa fa-whatsapp wp-icon"></i> &nbsp;&nbsp;
-                            <a href="https://api.whatsapp.com/send?phone=918160042027&text=">+91 9712129465 </a>  
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=918160042027&text=">+91 9712129465 </a>  
                         </div>
                         <div class="contact-text">
                             <i class="fa fa-envelope email-icon"></i> &nbsp;&nbsp;  <a href="mailto:info@wediina.com">

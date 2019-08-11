@@ -12,7 +12,7 @@
           </slide>
 
         </carousel>
-        <div class=" center">
+        <div class=" inner-part center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
               <b class="greeting_head">{{companyName}}</b></p>
@@ -23,20 +23,31 @@
     </div>
   </div>
 </section>
-<section class="container mr-t-9">
+<section class="container-fluid  inner-part" style="margin-top: -1%;">
   <div class="row">
     <div class="col-12 col-sm-12 col-lg-8 col-md-8 col-xl-8 float-left">
       <div class="">
-        <div class="title_section col-12 col-sm-12 col-8 col-lg-8 col-md-8 col-xl-8 float-left">
-          <div class="price_text">
-
-            <p class="price_number"><i class="fa fa-star float-right star_rating"> &nbsp; &nbsp;4.5/5</i></p>
-            <!-- <div class="pointer"> <a href="{{location}}" target="_blank" class="btn btn-success"><i
-                  class="fa fa-map-marker"></i> Location</a></div> -->
-
-            <!-- <p>capsity : 900 person </p> -->
+          <div class="title_section col-12 col-sm-12 col-12 col-lg-12 col-md-12 col-xl-12 float-left">
+              <div class="col-lg-6  float-left">
+                  <div class="pointer text-left"> <a href="{{location}}" target="_blank" class="btn btn-success"><i
+                    class="fa fa-map-marker"></i> Location</a></div>
+    
+              </div>
+            <div class="price_text col-lg-6 float-right">
+              
+                <div class="star-rating text-right">
+                    <span class="fa fa-star-o"  data-rating="1"></span>
+                    <span class="fa fa-star-o"  data-rating="2"></span>
+                    <span class="fa fa-star-o"  data-rating="3"></span>
+                    <span class="fa fa-star-o"  data-rating="4"></span>
+                    <span class="fa fa-star-o"  data-rating="5"></span>
+                    <input type="hidden" name="whatever1" class="rating-value" value="3">
+                  </div>
+             
+              <!-- <p>capsity : 900 person </p> -->
+            </div>
+           
           </div>
-        </div>
         <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
           <div class="like_display">
             <!-- <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
@@ -51,7 +62,7 @@
         </slide>
 
       </carousel>
-      <div class="v_despcol-12 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
+      <div class="v_despcol-12 back-part col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
         <h4>Address</h4>
         <div class="detail_block col-12 col-sm-12 col-12 col-xl-12 col-sm-12 col-md-12 float-left">
           <!-- <h5 class="detail_title">Area</h5> -->
@@ -61,21 +72,36 @@
       
       </div>
 
-      <div class="v_desp">
+      <div class="v_desp back-part">
         <h4>Summray</h4>
         <p>
           {{detail}}
         </p>
       </div>
-      <div class="mr-t-9 v_desp">
+      <div class="mr-t-9 v_desp back-part">
         <h4>Testimonial</h4>
         <div class="testimonial_user">
-          <div><i class="fa fa-user test_user"></i>Chirag Ramani <i class="fa fa-star float-right star_rating"> &nbsp;
-              &nbsp;4.5/5</i></div>
-          <div class="review">
-            This party plot is best in Rajkot
+            <div>
+              <div class="col-lg-6 float-left">
+                <i class="fa fa-user test_user"></i>Chirag Ramani 
+              </div>          
+              <div class="star-rating col-lg-6 float-right   text-right">
+                  <span class="fa fa-star-o"  data-rating="1"></span>
+                  <span class="fa fa-star-o"  data-rating="2"></span>
+                  <span class="fa fa-star-o"  data-rating="3"></span>
+                  <span class="fa fa-star-o"  data-rating="4"></span>
+                  <span class="fa fa-star-o"  data-rating="5"></span>
+                  <input type="hidden" name="whatever1" class="rating-value" value="3">
+                </div> 
+              
+              </div>
+            <div class="review">
+              This party plot is best in Rajkot
+            </div>
           </div>
-        </div>
+  
+  
+  
 
        
 
@@ -86,7 +112,7 @@
       data-target="#sendInquiry">Send Inquery</button>
       <div>
         <button data-toggle="modal"
-        data-target="#review" class="btn btn_danger mob_btn_pos mob_l_m_28 review_btn">Add Review</button>
+        data-target="#review" class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn">Add Review</button>
       </div>
       <div>
         <h6 class="videostroy_title">Video Story</h6>
