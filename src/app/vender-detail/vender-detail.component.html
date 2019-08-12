@@ -27,27 +27,7 @@
   <div class="row">
     <div class="col-12 col-sm-12 col-lg-8 col-md-8 col-xl-8 float-left">
       <div class="">
-          <div class="title_section col-12 col-sm-12 col-12 col-lg-12 col-md-12 col-xl-12 float-left">
-              <div class="col-lg-6  float-left">
-                  <div class="pointer text-left"> <a href="" target="_blank" class="btn btn-success"><i
-                    class="fa fa-map-marker"></i> Location</a></div>
-    
-              </div>
-            <div class="price_text col-lg-6 float-right">
-              
-                <div class="star-rating text-right">
-                    <span class="fa fa-star-o"  data-rating="1"></span>
-                    <span class="fa fa-star-o"  data-rating="2"></span>
-                    <span class="fa fa-star-o"  data-rating="3"></span>
-                    <span class="fa fa-star-o"  data-rating="4"></span>
-                    <span class="fa fa-star-o"  data-rating="5"></span>
-                    <input type="hidden" name="whatever1" class="rating-value" value="3">
-                  </div>
-             
-              <!-- <p>capsity : 900 person </p> -->
-            </div>
-           
-          </div>
+       
         <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
           <div class="like_display">
             <!-- <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
@@ -81,6 +61,37 @@
       <div class="mr-t-9 v_desp back-part">
         <h4>Testimonial</h4>
         <div class="testimonial_user">
+            <form >
+          <div>
+            Add your Feedback
+            <div class="star-rating col-lg-6 float-right   text-right">
+                <span class="fa fa-star-o"  data-rating="1"></span>
+                <span class="fa fa-star-o"  data-rating="2"></span>
+                <span class="fa fa-star-o"  data-rating="3"></span>
+                <span class="fa fa-star-o"  data-rating="4"></span>
+                <span class="fa fa-star-o"  data-rating="5"></span>
+                <input type="hidden" name="whatever1" class="rating-value" value="0">
+              </div> 
+            <div class="col-lg-12 float-left">
+              <div class="form-group">
+                <input type="text" class="form-control " placeholder="enter Your Name" />
+              </div>
+
+              </div>          
+            
+            
+            </div>
+          <div class=" ">
+            <div class="form-group">
+              <textarea rows="5" class="form-control w-100" maxlength="200" placeholder="Enter your feedback here.... "></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class="form-control btn btn-danger" type="submit" value="Submit" />
+          </div>
+        </form>
+        </div>
+        <div class="testimonial_user">
             <div>
               <div class="col-lg-6 float-left">
                 <i class="fa fa-user test_user"></i>Chirag Ramani 
@@ -108,11 +119,19 @@
       </div>
     </div>
     <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left send_btn mob_mr_t-13 ">
+        <div class="star-rating  text-center">
+            <span class="fa fa-star-o"  data-rating="1"></span>
+            <span class="fa fa-star-o"  data-rating="2"></span>
+            <span class="fa fa-star-o"  data-rating="3"></span>
+            <span class="fa fa-star-o"  data-rating="4"></span>
+            <span class="fa fa-star-o"  data-rating="5"></span>
+            <input type="hidden" name="whatever1" class="rating-value" value="0">
+          </div> 
       <button class=" btn btn_danger mob_btn_pos inquery_btn" data-toggle="modal"
       data-target="#sendInquiry">Send Inquery</button>
       <div>
-        <button data-toggle="modal"
-        data-target="#review" class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn">Add Review</button>
+          <a class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn" href="{{location}}" style="color: #fff;" target="_blank"><i
+            class="fa fa-map-marker"></i> Location</a>
       </div>
       <div>
         <h6 class="videostroy_title">Video Story</h6>

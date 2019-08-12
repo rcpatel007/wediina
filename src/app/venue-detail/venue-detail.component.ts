@@ -18,7 +18,7 @@ export class VenueDetailComponent implements OnInit {
   name:String;
   location:String;
   video=[];
-  images=[];
+  images:any;
   area:String;
   p_area:String;
   capasity:String;
@@ -35,7 +35,27 @@ export class VenueDetailComponent implements OnInit {
       this.id = params['id'];
     });
   
-  //   $('#myModal').on('hidden.bs.modal', function () {
+    var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+
+$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function() {
+  
+});  //   $('#myModal').on('hidden.bs.modal', function () {
   //     callPlayer('yt-player', 'stopVideo');
   // });
  

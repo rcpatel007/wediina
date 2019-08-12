@@ -118,7 +118,7 @@ body{
   }
 
   .home-section-back{
-    background: #efefef;
+    /* background: #efefef; */
     padding: 2%;
     border-radius: 5px;
     margin-top: 2%;
@@ -164,7 +164,7 @@ border-bottom: 1px solid #FF353A;
     transition: 0.5s;
 }
 .carousel{
-    z-index: -1;
+    z-index: 1;
 }
 
 .pad-5{
@@ -180,6 +180,7 @@ border-bottom: 1px solid #FF353A;
 .bt-1{
     border: 1px solid #e2e2e2;
 }
+
 .b-t-1{
     border-top: 1px solid #000;
 }
@@ -204,11 +205,16 @@ border-bottom: 1px solid #FF353A;
     background: url(../image/detail-back.jpg) 0 0 repeat;
     padding: 2% 8% !important;
 }
+
+.card-img{
+    box-shadow: 2px -4px 13px 0px;
+}
 .card-bottom{
     background: #fff;
     padding: 11% 0;
     color: #000;
     font-weight: 550;
+    box-shadow: 2px 12px 16px 0px;
     padding-bottom: 0;
     
 }
@@ -241,6 +247,8 @@ border-bottom: 1px solid #FF353A;
     background: url('../image/flip-bottom.png') top center no-repeat;
     width: 100%;
     height: 37px;
+    margin-top: -0.2%;
+    width: 100%;
     background-size: contain;
 }
 .form-control:focus{
@@ -518,6 +526,7 @@ transition: 0.5s;
 nav {
     position: fixed;
     width: 100%;
+    z-index: 2;
     line-height: 60px;
 }
 
@@ -608,7 +617,8 @@ nav ul li a {
 /* carousel */
 
 .carousel_img{
-    width: 100%;
+    width: auto;
+    align-items: center;
     height:100vh;
 }
 .v_carousel_img{
@@ -642,12 +652,12 @@ nav ul li a {
 .home-second-hedding{
     margin-top: 3%;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 2.3em;
     text-align: center;
     /* color: #ff353a; */
     /* border-radius: 51px; */
     padding: .6%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Courgette', cursive;
     /* border-bottom: 2px solid #000; */
     /* box-shadow: -1px 1px 16px 6px #b1989873; */
     /* margin-bottom: 4%; */
@@ -655,6 +665,7 @@ nav ul li a {
 .head-title{
     text-align: center;
     margin-bottom: 2%;
+    font-family: 'Courgette', cursive;
 
 }
 hr.title {
@@ -1210,7 +1221,9 @@ td{
     /* transition: .5s ease; */
     background-color: #008CBA;
 }
-
+.form-control:focus{
+    border-color: #ca2121 !important;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -1218,6 +1231,9 @@ td{
         padding-top: 26%; 
     }
     
+    .home-section-back{
+        background: #efefef;
+    }    
     .logo {
         position: fixed;
         top: 0;
@@ -1273,6 +1289,15 @@ td{
     .he-24{
         height: 36%;
     }
+
+    .logo-scroll{
+        width: 54% !important;
+    }
+    .city-box{
+        /* display: block; */
+    width: 100%;
+    margin-left: 0;
+    }
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -1285,4 +1310,24 @@ td{
 @media only screen and (min-width: 992px) {} 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1024px) {
+
+    .r-mr-l-r-2{
+        margin: 0 2% !important;
+    }
+    .subnav-content{
+        width: 21% !important;
+    }
+    .menu_bottom {
+        background: #ed2437;
+        position: fixed;
+        bottom: 34.4%;
+        width: 20.9%;
+        transition: 0.3s;
+    }
+    .premium-pk {
+        font-size: 0.8rem;
+        color: #fff !important;
+        font-weight: 550;
+    }
+}

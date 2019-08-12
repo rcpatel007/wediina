@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
-                <div class="home-second-hedding">THE VENUES
+                <div class="home-second-hedding">The Venues
                     
                 </div>
                 <div class="head-title">Glimpse through the latest trends – handpicked by us, for you.
@@ -50,12 +50,12 @@
                 </div>
                 <hr class="title">
                 <div *ngFor="let venue of homeads_venue" 
-                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left r-mr-l-r-2  mr-b-1">
                     <a [routerLink]="['/VenueDetail/',venue._id]">
                         <div class=" card-con mr-b-6 card-size card-content ">
-                                <div class="filp-top"></div>
+                                <!-- <div class="filp-top"></div> -->
                         
-                            <img src="{{venue.image}}" class="img-fluid p-card-img" />
+                            <img src="{{venue.image}}" class="img-fluid p-card-img card-img" />
                            
                             <div class="text-center ">
                                                       </div>
@@ -67,27 +67,20 @@
                         </div>
                     </a>
                 </div>
-               
-
-            </div>
-            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
-                <div class="home-second-hedding">THE Vendors
-                    
+               </div>
+            <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 r-mr-l-r-2 home-section-back">
+                <div class="home-second-hedding">The Vendors
                 </div>
                 <div class="head-title">Glimpse through the latest trends – handpicked by us, for you.
-                    
                 </div>
                 <hr class="title">
-              
                 <div *ngFor="let vendor of homeads_vendor" data-aos="flip-left"
-                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left mr-b-1">
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left mr-b-1">
                     <a [routerLink]="['/VenderDetail/',vendor._id]">
                         <div class="card-size mr-b-6 card-con card-content ">
-                            <div class="filp-top"></div>
-                            <img src="{{vendor.image}}" class="img-fluid p-card-img" />
-                           
+                            <!-- <div class="filp-top"></div> -->
+                            <img src="{{vendor.image}}" class="img-fluid p-card-img card-img" />
                             <div class="text-center ">
-                               
                                   <div class="card-bottom text-center">
                                     <a>{{vendor.name}}</a>
                                    </div>
@@ -106,7 +99,7 @@
                 <hr class="title">
                 <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
      data-aos-anchor-placement="center-center">
-                    <div class="card border-none pad-t-b-5 text-center">
+                    <div class="card border-none pad-t-b-5 inner-part text-center">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_discover.png" class="img-fluid" />
                         </div>
@@ -117,7 +110,7 @@
 
                 <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
      data-aos-anchor-placement="center-center">
-                    <div class="card border-none pad-t-b-5 text-center">
+                    <div class="card border-none pad-t-b-5 inner-part text-center">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_book.png" class="img-fluid" />
                         </div>
@@ -128,7 +121,7 @@
 
                 <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
      data-aos-anchor-placement="center-center">
-                    <div class="card border-none text-center pad-t-b-5">
+                    <div class="card border-none text-center inner-part pad-t-b-5">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_vendor.png" class="img-fluid" />
                         </div>
@@ -139,7 +132,7 @@
 
                 <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3  float-left" data-aos="fade-up"
      data-aos-anchor-placement="center-center">
-                    <div class="card border-none text-center pad-t-b-5">
+                    <div class="card border-none text-center  inner-part pad-t-b-5">
                         <div class="how-work-icon ">
                             <img src="../../assets/image/icon/home_visits.png" class="img-fluid" />
                         </div>
@@ -154,8 +147,8 @@
               <div class="col-12 col-lg-12  col-md-12 col-xl-12 col-xs-12 mr-b-8 home-section-back">
                 <div class="home-second-hedding">Let's Talk to Business</div>
                 <hr class="title">
-                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12  float-left" >
-                    <div class="card border-none text-center">
+                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12   float-left" >
+                    <div class="card border-none inner-part text-center">
                      
                         <div class="contact-text">
                             <i class="fa fa-whatsapp wp-icon"></i> &nbsp;&nbsp;
@@ -174,8 +167,8 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12 float-left">
-                    <div class="card  pad-5  border-none text-center">
+                <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12  float-left">
+                    <div class="card  pad-5 inner-part  border-none text-center">
                         <div class="form-group">
                             <!-- <label for="exampleFormControlFile1">Example file input</label> -->
                             <input type="text" class="form-control" id="name" placeholder="Name">
@@ -197,7 +190,7 @@
                             <textarea class="form-control" id="msg" placeholder="Message" rows="5"></textarea>
                           </div>
                           <div class="form-group ">
-                              <button type="submit" class="btn btn-success float-right">Submit</button>
+                              <button type="submit" class="btn btn-danger float-right">Submit</button>
 
                           </div>
                     </div>
