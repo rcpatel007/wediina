@@ -106,7 +106,7 @@ body{
 
 .parallax {
     /* The image used */
-    background-image: url("../image/back-banner.jpg");
+    background-image: url("../image/back_banner.jpg");
   
     /* Set a specific height */
     min-height: 500px; 
