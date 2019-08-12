@@ -54,6 +54,11 @@ $star_rating.on('click', function() {
 
 SetRatingStar();
 $(document).ready(function() {
+
+  $('#mainvideomodel').click(function() {
+  //  alert('hey'); 
+    $("#videopopup").attr("src","");
+  });
   
 });  //   $('#myModal').on('hidden.bs.modal', function () {
   //     callPlayer('yt-player', 'stopVideo');
@@ -61,6 +66,8 @@ $(document).ready(function() {
  
 this.getvenueDetail();
 }
+
+
 
 
 getvenueDetail(){
@@ -88,8 +95,7 @@ getvenueDetail(){
   
 getvideo(v){
   this.playvideo = v;
+  $("#videopopup").attr("src",v);
   console.log(this.playvideo);
-  
-
 }
 }
