@@ -25,14 +25,12 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/style.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "https://raw.githubusercontent.com/kartik-v/bootstrap-star-rating/master/css/star-rating.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "https://unpkg.com/aos@2.3.1/dist/aos.js"
-
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            
              
             ]
           },
