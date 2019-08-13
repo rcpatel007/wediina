@@ -1226,11 +1226,29 @@ td{
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .headding-text{
         padding-top: 26%; 
     }
+    .slide_cap {
+        color: #fff;
+        font-weight: 550;
+        font-size: 0.8rem;
+    }
     
+    .slide_head {
+        font-size: 2.05rem;
+        color: #fff;
+        font-weight: 580;
+    }
+    .carousel_img {
+        width: auto;
+        align-items: center;
+        height: 40vh;
+    }
+    .carousel-item{
+        margin-top:25%;
+    }
     .home-section-back{
         background: #efefef;
     }    
