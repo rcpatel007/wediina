@@ -12,48 +12,73 @@ import { ConnectionService } from '../services/connection.service';
   styleUrls: ['./vender-grid.component.css']
 })
 export class VenderGridComponent implements OnInit {
-
+  id:string;
   venueCategory = [];
   venues = [];
   city = [];
   area = [];
 
-  constructor(private router: Router, private conectionservice: ConnectionService) { }
+  constructor(private route: ActivatedRoute,private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
-    this.getvenue();
-    this.getCategory();
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    this.getvendors();
+    // this.getCategory();
 
   }
 
-  getCategory() {
-    this.conectionservice.getVendorCategory()
-      .subscribe(res => {
-        this.venueCategory = res;
-      });
-  }
+  // getCategory() {
+  //   this.conectionservice.getVendorCategory()
+  //     .subscribe(res => {
+  //       this.venueCategory = res;
+  //     });
+  // }
 
-  getcategoryId(id) {
-    let v_id = id;
-    this.conectionservice.getVendorCategoryById(v_id)
-      .subscribe(res => {
-        for (let index = 0; index < res.length; index++) {
-          this.venues.push(res[index]);
-        }
+  // getcategoryId(id) {
+  //   let v_id = id;
+  //   this.conectionservice.getVendorCategoryById(v_id)
+  //     .subscribe(res => {
+  //       for (let index = 0; index < res.length; index++) {
+  //         this.venues.push(res[index]);
+  //       }
 
-      });
-  }
-  getvenue() {
+  //     });
+  // }
+  getvendors() {
     this.conectionservice.getVendors()
       .subscribe(res => {
-        this.venues = res;
+        // this.venues = res;
 
         for (let index = 0; index < res.length; index++) {
-          this.city.push(res[index].city);
-          this.area.push(res[index].area);
-
+ 
+          if (res[index].vendor_cat_id == this.id) {
+            this.venues.push(res[index]);
+            
+            this.city.push(res[index].city);
+         
+          }
         }
-        console.log(res);
+        console.log(this.venues);
+
+      });
+  }
+
+  getcitywise() {
+
+    this.conectionservice.getVendors()
+      .subscribe(res => {
+        // this.venues = res;
+
+        for (let index = 0; index < res.length; index++) {
+ 
+          if (res[index].vendor_cat_id == this.id) {
+            this.venues.push(res[index]);
+            
+          }
+        }
+        console.log(this.city);
 
       });
   }

@@ -14,14 +14,19 @@ declare var $: any;
   styleUrls: ['./venue-grid.component.css']
 })
 export class VenueGridComponent implements OnInit {
-
+id:String;
   venueCategory = [];
   venues = [];
   city = [];
   area = [];
-  constructor(private router: Router, private conectionservice: ConnectionService) { }
+  constructor(private route: ActivatedRoute,private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
+
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+  
     var $star_rating = $('.star-rating .fa');
 
 var SetRatingStar = function() {
@@ -45,35 +50,37 @@ $(document).ready(function() {
 });
 
     this.getvenue();
-    this.getCategory();
+    // this.getCategory();
   }
 
-  getCategory() {
-    this.conectionservice.getVenueCategory()
-      .subscribe(res => {
-        this.venueCategory = res;
-      });
-  }
+  // getCategory() {
+  //   this.conectionservice.getVenueCategory()
+  //     .subscribe(res => {
+  //       this.venueCategory = res;
+  //     });
+  // }
 
-  getcategoryId(id) {
-    let v_id = id;
-    this.conectionservice.getVenues()
-      .subscribe(res => {
-        for (let index = 0; index < res.length; index++) {
-          this.venues.push(res[index]);
-        }
+  // getcategoryId(id) {
+  //   let v_id = id;
+  //   this.conectionservice.getVenues()
+  //     .subscribe(res => {
+  //       for (let index = 0; index < res.length; index++) {
+  //         this.venues.push(res[index]);
+  //       }
 
-      });
-  }
+  //     });
+  // }
   getvenue() {
     this.conectionservice.getVenues()
       .subscribe(res => {
-        this.venues = res;
+        // this.venues = res;
 
         for (let index = 0; index < res.length; index++) {
-          this.city.push(res[index].city);
-          this.area.push(res[index].area);
-
+      
+          if (res[index].venue_cat_id == this.id) {
+            
+            this.venues.push(res[index]);
+          }
         }
         console.log(this.venues);
 

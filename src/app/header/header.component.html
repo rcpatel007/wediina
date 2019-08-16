@@ -35,7 +35,7 @@
         <div class="menu-icon">
             <i class="fa fa-bars fa-2x"></i>
         </div>
-        <div class="logo">
+        <div class="logo" [routerLink]="['/']"> 
             <img src="../../assets/image/wediina-logo.png" class="img-fluid" />
 
         </div>
@@ -43,7 +43,7 @@
         <div class="menu">
             <div class="form-group city-box city-menu">
 
-                <input type="text" list="city" placeholder="City" style="font-weight: 660 !important;" class=" form-control" />
+                <input type="text" list="city" (change)="cityselect();" name="city" [(ngModel)]="city" placeholder="City" style="font-weight: 660 !important;" class=" form-control" />
                 <datalist id="city">
                     <option selected value="Rajkot">Rajkot</option>
                     <option value="Ahmedabad">Ahmedabad</option>

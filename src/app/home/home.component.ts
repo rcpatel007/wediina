@@ -14,37 +14,32 @@ import { ConnectionService } from '../services/connection.service';
 export class HomeComponent implements OnInit {
 
   homeslider:any;
-  homeads_venue=[];
-  homeads_vendor=[];
+  venue_category=[];
+  vendor_category=[];
   constructor(private router: Router,private conectionservice:ConnectionService) { }
 
   ngOnInit() {
-    this.getHomeAds();
+    this.getcategory();
     this.getHomeSlider();
 
   
   }
 
-  getHomeAds(){
-    this.conectionservice.getHomeads()
+  getcategory(){
+    this.conectionservice.getVenueCategory()
     .subscribe(res=>{
-      for (let index = 0; index < res.length; index++) {
-
-        if (res[index].venue_id!=null) {
-          this.homeads_venue.push(res[index]);
-          
-        }
-        if (res[index].vendor_id!=null) {
-          this.homeads_vendor.push(res[index]);
-          
-        }        
-      }
-
-console.log('0'+res);
-console.log("1", this.homeads_venue);
-console.log("1", this.homeads_vendor);
-
+      this.venue_category =res;
+      console.log(res);
+      
     });
+   
+    this.conectionservice.getVendorCategory()
+    .subscribe(res=>{
+      this.vendor_category =res;
+      console.log(this.vendor_category);
+      
+    });
+  
   }
 
   getHomeSlider(){
