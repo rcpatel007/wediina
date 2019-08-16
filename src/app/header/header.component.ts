@@ -14,6 +14,7 @@ declare var $: any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+city:String;
   venueCategory = [];
   vendorCategory=[];
   constructor(private router: Router, private conectionservice: ConnectionService) { }

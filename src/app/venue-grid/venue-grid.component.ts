@@ -19,12 +19,16 @@ id:String;
   venues = [];
   city = [];
   area = [];
-  constructor(private route: ActivatedRoute,private router: Router, private conectionservice: ConnectionService) { }
+  constructor(private route: ActivatedRoute,private router: Router,
+     private conectionservice: ConnectionService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      // this.initialiseState();
     });
   
     var $star_rating = $('.star-rating .fa');
@@ -71,10 +75,12 @@ $(document).ready(function() {
   //     });
   // }
   getvenue() {
+    // location.reload();
+    // window.history.replaceState({},'/Venues/'+this.id);
     this.conectionservice.getVenues()
       .subscribe(res => {
         // this.venues = res;
-
+        // this.router.navigateByUrl('/Venues/'+this.id);
         for (let index = 0; index < res.length; index++) {
       
           if (res[index].venue_cat_id == this.id) {

@@ -65,10 +65,10 @@
 
                     <ul class="subnav-content menu_ul" style="padding: 0;">
 
-                        <li *ngFor="let ve of vendorCategory"><a href="JavaScript:Void(0);"
-                                [routerLink]="['/vendors',ve._id]">{{ve.vendor_cat_name}}</a></li>
-
-                        <li class="menu_bottom"><a style="" class="premium-pk" [routerLink]="['/PremiumPhotographer']"
+                        <li *ngFor="let ve of vendorCategory" [routerLink]="['/vendors',ve._id]"><a href="JavaScript:Void(0);"
+                                >{{ve.vendor_cat_name}}</a></li>
+                            <li></li>
+                        <li class="menu_bottom" [routerLink]="['/PremiumPhotographer']"><a style="" class="premium-pk" 
                                 href="JavaScript:Void(0);">Premium Photographers </a></li>
                     </ul>
                 </li>
@@ -77,7 +77,7 @@
 
                     <ul class="subnav-content">
 
-                        <li *ngFor="let ve of venueCategory"><a [routerLink]="['/Venues',ve._id]"
+                        <li *ngFor="let ve of venueCategory" [routerLink]="['/Venues',ve._id]"><a 
                                 href="JavaScript:Void(0);">{{ve.venue_cat_name}}</a></li>
 
                     </ul>
