@@ -18,7 +18,10 @@ export class VenderGridComponent implements OnInit {
   city = [];
   area = [];
 
-  constructor(private route: ActivatedRoute,private router: Router, private conectionservice: ConnectionService) { }
+  constructor(private route: ActivatedRoute,private router: Router, 
+    private conectionservice: ConnectionService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+     }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

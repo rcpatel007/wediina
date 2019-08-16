@@ -213,9 +213,10 @@ border-bottom: 1px solid #FF353A;
     background: #fff;
     padding: 11% 0;
     color: #000;
-    font-weight: 550;
+    font-weight: 650;
     box-shadow: 2px 12px 16px 0px;
     padding-bottom: 0;
+    font-size: 1.1rem;
     
 }
 .back-part{
@@ -560,6 +561,9 @@ nav ul li {
     padding: 16px 22px;;
 }
 
+nav ul li:focus{
+
+}
 nav ul li a {
     text-decoration: none;
     color: #fff ;
@@ -710,6 +714,7 @@ width: auto;
     /* border: 1px solid #e2e2e2; */
     padding: 1%;
     border-radius: 5px;
+    margin-bottom: 20%;
     
 }
 .card-city_name{
