@@ -5,7 +5,7 @@ import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-vender-detail',
   templateUrl: './vender-detail.component.html',
@@ -24,7 +24,8 @@ export class VenderDetailComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private conectionservice: ConnectionService) { }
+    private router: Router, private conectionservice: ConnectionService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
@@ -36,7 +37,8 @@ export class VenderDetailComponent implements OnInit {
 
 
   getvendor(){
-
+    // this.spinner.show();
+  
     this.conectionservice.getVendorById(this.id)
     .subscribe(res =>{
       this.address= res.address;
@@ -47,6 +49,7 @@ export class VenderDetailComponent implements OnInit {
       this.video=res.video_story;
       this.sub_images =res.sub_images;
     
+      // this.spinner.hide();
   
       console.log(res);
         

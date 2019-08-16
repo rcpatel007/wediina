@@ -5,6 +5,7 @@ import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,10 @@ export class HomeComponent implements OnInit {
   homeslider:any;
   venue_category=[];
   vendor_category=[];
-  constructor(private router: Router,private conectionservice:ConnectionService) { }
+  constructor(private router: Router,
+    private conectionservice:ConnectionService,
+    private spinner: NgxSpinnerService
+    ) { }
 
   ngOnInit() {
     this.getcategory();
@@ -26,6 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   getcategory(){
+    this.spinner.show();
     this.conectionservice.getVenueCategory()
     .subscribe(res=>{
       this.venue_category =res;
@@ -37,6 +42,7 @@ export class HomeComponent implements OnInit {
     .subscribe(res=>{
       this.vendor_category =res;
       console.log(this.vendor_category);
+      this.spinner.hide();  
       
     });
   

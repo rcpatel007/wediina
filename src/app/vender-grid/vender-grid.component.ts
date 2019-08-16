@@ -5,6 +5,7 @@ import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-vender-grid',
@@ -19,7 +20,8 @@ export class VenderGridComponent implements OnInit {
   area = [];
 
   constructor(private route: ActivatedRoute,private router: Router, 
-    private conectionservice: ConnectionService) {
+    private conectionservice: ConnectionService,
+    private spinner: NgxSpinnerService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
      }
 
@@ -50,6 +52,7 @@ export class VenderGridComponent implements OnInit {
   //     });
   // }
   getvendors() {
+    this.spinner.show();
     this.conectionservice.getVendors()
       .subscribe(res => {
         // this.venues = res;
@@ -64,7 +67,7 @@ export class VenderGridComponent implements OnInit {
           }
         }
         console.log(this.venues);
-
+        this.spinner.hide();
       });
   }
 

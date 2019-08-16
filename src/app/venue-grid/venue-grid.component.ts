@@ -6,6 +6,7 @@ import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import {} from "angular-star-rating";
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare var $: any;
 @Component({
@@ -20,7 +21,8 @@ id:String;
   city = [];
   area = [];
   constructor(private route: ActivatedRoute,private router: Router,
-     private conectionservice: ConnectionService) {
+     private conectionservice: ConnectionService,
+     private spinner: NgxSpinnerService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       }
 
@@ -75,6 +77,8 @@ $(document).ready(function() {
   //     });
   // }
   getvenue() {
+    this.spinner.show();
+   
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
     this.conectionservice.getVenues()
@@ -89,7 +93,8 @@ $(document).ready(function() {
           }
         }
         console.log(this.venues);
-
+        this.spinner.hide();
+   
       });
   }
 

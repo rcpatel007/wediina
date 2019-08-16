@@ -8,6 +8,7 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { NgxSpinnerModule } from "ngx-spinner";
 // import { StarRatingModule } from '@angular-star-rating-lib/angular-star-rating';
 
 import { HomeComponent } from './home/home.component';
@@ -82,9 +83,11 @@ const appRoutes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     // Ng2CompleterModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   
   ],
   providers: [ConnectionService ],
