@@ -119,8 +119,8 @@ export class VenueRegisterComponent implements OnInit {
   }
 
   addVenue(){
-  let video = this.videolink.split(",");
-  console.log(video);
+  // let video = this.videolink.split(",");
+  // console.log(video);
   
 
 
@@ -128,27 +128,27 @@ export class VenueRegisterComponent implements OnInit {
         venue_cat_id: this.catValue,
         fname: this.fname,
         lname:this.lname ,
-        package_time:this.package,
+        package_time:null,
         companyName: this.cname,
         contactno: this.cno ,
         email:this.email ,
-        gstno: this.gstno ,
-        status: this.status,
+        gstno: null,
+        status:false,
         password: this.pwd,
-        address: this.address,
+        address: null,
         city: this.city,
-        state: this.state ,
-        parking:this.parking,
-        catringValue: this.catringValue,
-        themepermission: this.themepermission,
-        p_img: this.p_img,
-        oimg: this.oimg,
-        timeper:this.timeper,
-        areavenue:this.area,
-        cop:this.cop,
-        location:this.location,
+        state: null ,
+        parking:null,
+        catringValue: null,
+        themepermission:null,
+        p_img: null,
+        oimg: null,
+        timeper:null,
+        areavenue:null,
+        cop:null,
+        location:null,
         desp:this.desp,
-        video_story:video,
+        video_story:null,
         }
 
         console.log(venue);
@@ -158,8 +158,8 @@ export class VenueRegisterComponent implements OnInit {
 
           console.log(res);
           
-
-        });
+          this.router.navigate(["/login"]);
+              });
   }
 
 

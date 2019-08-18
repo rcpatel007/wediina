@@ -73,7 +73,7 @@
 
     </div>
     <div class="col-lg-12 mx-auto">
-        <form id="Vender" action="">
+        <form id="Vender" action="" (click)="addVenue()" >
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4  r_l_form mr-l-17  mob_mr_l_0 pad-6 float-left ">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" class=" ">Business Name</label><span
@@ -84,16 +84,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="fname" name="cname" [(ngModel)]="cname" class=" ">Company Name</label><span class="text-danger">*</span>
-                    <input type="text" class="form-control form_control_m" id="fname" placeholder="Compnay Name">
+                    <label for="fname"  class=" ">Company Name</label><span class="text-danger">*</span>
+                    <input type="text" name="cname" [(ngModel)]="cname" class="form-control form_control_m" id="fname" placeholder="Compnay Name">
                 </div>
                 <div class="form-group">
                     <label for="fname" class=" ">First Name</label><span class="text-danger">*</span>
-                    <input type="text"  class="form-control form_control_m" id="fname" placeholder="Your Name">
+                    <input type="text"  class="form-control form_control_m" name="fname" [(ngModel)]="fname" id="fname" placeholder="Your Name">
                 </div>
                 <div class="form-group">
                         <label for="fname" class=" ">Last Name</label><span class="text-danger">*</span>
-                        <input type="text" class="form-control form_control_m" id="fname" name="lname" [(ngModel)]="lname" placeholder="Your Name">
+                        <input type="text" class="form-control form_control_m" id="lname" name="lname" [(ngModel)]="lname" placeholder="Your Name">
                     </div>
                 <div class="form-group">
                     <label for="fname" class=" ">contact No.</label><span class="text-danger">*</span>
@@ -108,20 +108,24 @@
                             <label for="fname" class=" ">Email</label><span class="text-danger">*</span>
                             <input type="email" name="email" [(ngModel)]="email" class="form-control form_control_m" id="fname" placeholder="Email">
                         </div>
+                        <div class="form-group">
+                            <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
+                            <input type="email" name="password" [(ngModel)]="password" class="form-control form_control_m" id="fname" placeholder="Email">
+                        </div>
         
                 <div class="form-group">
                
                     <label for="exampleFormControlSelect1" class=" ">City</label><span
                         class="text-danger">*</span>
-                    <select class="form-control form_control_m" id="exampleFormControlSelect1">
+                    <select class="form-control form_control_m" name="city" [(ngModel)]="city" id="exampleFormControlSelect1">
                         <option>Rajkot</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="fname" class=" ">Comments</label><span class="text-danger">*</span>
-                    <textarea placeholder="Extra Note" cols="50" rows="5" class="f-text-area form_control_m"></textarea>
-                </div>
-                <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-9">
+                    <textarea placeholder="Extra Note" name="desp" [(ngModel)]="desp" cols="50" rows="5" class="f-text-area form_control_m"></textarea>
+                </div> -->
+                <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-26">
                     <input type="button" value="Submit" class="btn btn-success">
                 </div>
 
