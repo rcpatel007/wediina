@@ -42,11 +42,40 @@ customer(){
       console.log(res,'customerdetail');
       
     });
-
-
-
-
 }
 
 
+
+venueLogin(){
+
+  let customer ={
+    email:this.email,
+    password:this.password
+  }
+
+  console.log(customer);
+  
+  this.conectionservice.venueLogin(customer)
+    .subscribe(res=>{
+      console.log(res,'customerdetail');
+      
+    });
+}
+
+
+vendorLogin(){
+
+  let customer ={
+    email:this.email,
+    password:this.password
+  }
+
+  console.log(customer);
+  
+  this.conectionservice.vendorLogin(customer)
+    .subscribe(res=>{
+      console.log(res,'customerdetail');
+      
+    });
+}
 }

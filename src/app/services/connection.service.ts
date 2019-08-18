@@ -55,7 +55,7 @@ imgurotherImage(otherbase64){
 
 
 venueLogin(venue){
-  return this.http.get(environment.api_url + '/venueLogin/',venue)
+  return this.http.get(environment.api_url + '/venueLogin',venue)
    .pipe(map( res => res.json()));
 
 }
@@ -113,7 +113,7 @@ return this.http.put(environment.api_url + '/venue_update/'+id, updateVenue)
 
 
 vendorLogin(vendor){
-  return this.http.get(environment.api_url + '/vendorLogin/',vendor)
+  return this.http.get(environment.api_url + '/vendorLogin',vendor)
    .pipe(map( res => res.json()));
 
 }
