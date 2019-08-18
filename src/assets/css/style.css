@@ -219,6 +219,19 @@ border-bottom: 1px solid #FF353A;
     font-size: 1.1rem;
     
 }
+.card-bottom-p a:hover{
+    color:#000 !important; 
+}
+.card-bottom-p{
+    background: #FF353A;
+    padding: 11% 0;
+    color: #fff;
+    font-weight: 550;
+    box-shadow: 2px 12px 16px 0px;
+    padding-bottom: 0;
+    font-size: 1.1rem;
+    
+}
 .back-part{
     background: #f8f9fa !important;
     padding: 2%;
@@ -252,6 +265,14 @@ border-bottom: 1px solid #FF353A;
     width: 100%;
     background-size: contain;
 }
+.filp-bottom-p {
+    background: url('../image/flip-bottom-p.png') top center no-repeat;
+    width: 100%;
+    height: 37px;
+    margin-top: -0.2%;
+    width: 100%;
+    background-size: contain;
+}
 .form-control:focus{
     box-shadow: none !important;
 }
@@ -274,6 +295,7 @@ border-bottom: 1px solid #FF353A;
     margin-left: 25%;
     margin-top: 1%;
     width: 16%;
+    /* z-index: -1; */
 }
 .venue-card{
     box-shadow: 0px 15px 17px 0px;
@@ -558,7 +580,8 @@ nav.black ul {
 
 nav ul li {
     display: inline-block;
-    padding: 16px 22px;;
+    padding: 16px 22px;
+    cursor: pointer;
 }
 
 nav ul li:focus{
@@ -604,9 +627,20 @@ nav ul li a {
     }
 
     nav.black ul {
-          background: #000;
+          background: #000 !important;
+    }
+    .subnav-content{
+        width: 80%  !important;
+        background: #000 !important;
     }
 
+    .menu_bottom {
+        background: #ed2437;
+        position: fixed;
+        bottom: 9.5%;
+        width: 79%;
+        transition: 0.3s;
+    }
     .showing {
           max-height: 34em;
     }
@@ -626,7 +660,7 @@ nav ul li a {
 /* carousel */
 
 .carousel_img{
-    width: auto;
+    width: 100%;
     align-items: center;
     height:100vh;
 }
@@ -807,6 +841,7 @@ font-size:25px;
     /* border-right: 2px solid #e2e2e2; */
     padding: 4% !important;
 border-bottom:1px solid #e2e2e2; 
+cursor: pointer;
 }
 
 .login-tab-text:hover{
@@ -814,6 +849,10 @@ border-bottom:1px solid #e2e2e2;
     color: #fff;
 }
 
+.login-tab-text:focus{
+    background: #000;
+    color: #fff;
+}
 .login-tab-text:focus-visible{
     background: #000;
     color: #fff;
@@ -822,7 +861,8 @@ border-bottom:1px solid #e2e2e2;
 .forget-text{
     
     color: #ed2437;
-margin-bottom:10%; 
+    margin-bottom:10%; 
+    cursor: pointer;
 }
 
 .sign-text{
@@ -1002,6 +1042,7 @@ font-weight: 600;
     color: #000;
     text-decoration: none;
     text-shadow: none;
+    font-weight: 700;
   }
   
   /* Add a grey background color on hover */
@@ -1169,6 +1210,7 @@ td{
     font-size: 3.75rem;
     color: #fff;
     font-weight: 580;
+    cursor: pointer;
 
 }
 
@@ -1239,6 +1281,9 @@ td{
 @media (max-width: 700px) and (min-width:200px) {
     .headding-text{
         padding-top: 26%; 
+    }
+    .city-menu{
+        z-index: -1;
     }
     .slide_cap {
         color: #fff;

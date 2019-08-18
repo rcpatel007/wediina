@@ -9,9 +9,9 @@
     </div>
     <div class="main-login-content col-12  col-lg-3 col-md-12 col-xl-3 mx-auto mr-5">
       <div class=" login-tab m-p-5 bt-1">
-        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1"> Vender</div>
-        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1">Venues</div>
-        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text ">Customer</div>
+        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1" (click)="vendorLogin()"> Vender</div>
+        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1" (click)="venueLogin()">Venues</div>
+        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text " (click)="customer()">Customer</div>
       </div>
     </div>
     <div class="col-12  col-lg-3 col-md-12 col-xl-3 mx-auto">
@@ -19,10 +19,11 @@
       
       <form class="mr-t-10 mr-b-10">
         <div class=" form-group">
-          <input type="email" placeholder="Enter Email" class="form-control" id="email">
+          <input type="email" placeholder="Enter Email" class="form-control" name="email" [(ngModel)]="email" id="email">
         </div>
         <div class="form-group">
-          <input type="password" placeholder="Enter Password" class="form-control" id="password">
+          <input type="password" placeholder="Enter Password" class="form-control" name="password" [(ngModel)]="password
+          " id="password">
         </div>
         <div class="form-group">
           <input type="submit" placeholder="Enter Password" class="btn  btn-success">

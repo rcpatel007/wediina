@@ -54,6 +54,11 @@ imgurotherImage(otherbase64){
 // venue
 
 
+venueLogin(venue){
+  return this.http.get(environment.api_url + '/venueLogin/',venue)
+   .pipe(map( res => res.json()));
+
+}
 
 getVenueCategory() {
   //  headers = new Headers();    
@@ -106,6 +111,12 @@ return this.http.put(environment.api_url + '/venue_update/'+id, updateVenue)
 
 // vendor
 
+
+vendorLogin(vendor){
+  return this.http.get(environment.api_url + '/vendorLogin/',vendor)
+   .pipe(map( res => res.json()));
+
+}
 getVendorCategory() {
   //  headers = new Headers();    
     return this.http.get(environment.api_url + '/vendor_cat')
@@ -160,4 +171,11 @@ addcustomer(customer) {
 
 }
 
+
+
+customerLogin(customer){
+  return this.http.get('https://wediina-api.herokuapp.com/customerLogin',customer)
+   .pipe(map( res => res.json()));
+
+}
 }

@@ -7,7 +7,6 @@ color = "#000000"
 type = "ball-clip-rotate"
 [fullScreen] = "true"
 >
-<p style="color: white" > Loading... </p>
 </ngx-spinner>
 
 <section id="home" class="top_cont_outer">
@@ -60,8 +59,8 @@ type = "ball-clip-rotate"
                     
                 </div>
                 <hr class="title">
-                <div *ngFor="let venue of venue_category" 
-                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left r-mr-l-r-2  mr-b-1">
+                <div *ngFor="let venue of venue_category" data-aos="flip-left"
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left   mr-b-1">
                     <a [routerLink]="['/Venues/',venue._id]">
                         <div class=" card-con mr-b-6 card-size card-content ">
                                 <!-- <div class="filp-top"></div> -->
@@ -87,6 +86,22 @@ type = "ball-clip-rotate"
                 <div class="head-title">Glimpse through the latest trends – handpicked by us, for you.
                 </div>
                 <hr class="title">
+                <div data-aos="flip-left"
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left mr-b-1">
+                    <a [routerLink]="['/PremiumPhotographer']">
+                        <div class="card-size mr-b-6 card-con card-content ">
+                            <!-- <div class="filp-top"></div> -->
+                            <img src="../../assets/image/photographer/images (1).jpg" class="img-fluid p-card-img card-img" />
+                            <div class="text-center">
+                                  <div class="card-bottom-p text-center">
+                                    <a>Prime Photographers</a>
+                                   </div>
+                            </div>
+                            <div class="filp-bottom-p"></div>
+                           
+                        </div>
+                    </a>
+                </div>
                 <div *ngFor="let vendor of vendor_category" data-aos="flip-left"
                     class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left mr-b-1">
                     <a [routerLink]="['/vendors/',vendor._id]">
