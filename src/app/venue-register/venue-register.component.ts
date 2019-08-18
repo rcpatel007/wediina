@@ -19,7 +19,7 @@ export class VenueRegisterComponent implements OnInit {
   cname:String;
   cno:Number;
   email:String;
-  pwd:String;
+  password:String;
   catValue:String;
   gstno:String;
   area:String;
@@ -134,7 +134,7 @@ export class VenueRegisterComponent implements OnInit {
         email:this.email ,
         gstno: null,
         status:false,
-        password: this.pwd,
+        password: this.password,
         address: null,
         city: this.city,
         state: null ,
