@@ -737,7 +737,7 @@ hr.title {
     margin-bottom: 4%;
 }
 .p-card-img{
-    z-index: -1 !important;
+    z-index: -9 !important;
 
 /* border-radius: 5px; */
 width: auto;
