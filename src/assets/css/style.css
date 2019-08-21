@@ -763,6 +763,7 @@ width: auto;
     padding: 1%;
     border-radius: 5px;
     margin-bottom: 20%;
+    z-index: -1;
     
 }
 .card-city_name{
