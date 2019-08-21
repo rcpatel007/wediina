@@ -28,9 +28,15 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     $("script[src='assets/css/style.css']").remove();
+    $("script[src='node_modules/bootstrap/dist/css/bootstrap.min.css']").remove();
+    $("script[src='node_modules/jquery/dist/jquery.min.js']").remove();
+    $("script[src='node_modules/bootstrap/dist/js/bootstrap.min.js']").remove();
     
     var dynamicScripts = [
-    "assets/css/style.css"
+    "assets/css/style.css",
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/bootstrap/dist/js/bootstrap.min.js"
     ];
 
     for (var i = 0; i < dynamicScripts.length; i++) {
