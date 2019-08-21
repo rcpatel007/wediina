@@ -29,8 +29,9 @@ city:String;
     // Scrolling Effect
 
     $(window).on("scroll", function () {
-      if ($(window).scrollTop()) {
-        $('nav').addClass('black').css({"box-shadow":"0px -1px 7px","z-index":"2"});
+      if ($(window).scrollTop()) {  
+        $('.menu-icon').css("background","#e2e2e2 !important");
+        $('nav').addClass('black').css({"box-shadow":"0px -1px 7px","z-index":"2","background":"#e2e2e2"});
         $('.city-menu').css("display","block");
         $('.logo').addClass('logo-scroll');
         $('nav ul li a').css({"color":"black","transition":"0.5s","text-shadow":"none"});
@@ -38,6 +39,8 @@ city:String;
 
       else {
         $('.logo').removeClass('logo-scroll');
+        $('.menu-icon').removeAttr("style");
+
         $('nav').removeClass('black').removeAttr("style");
         $("nav ul li a").removeAttr("style")
         $(".city-menu").removeAttr("style")

@@ -665,6 +665,8 @@ nav ul li a {
 
     .menu-icon {
           display: block;
+          background: none;
+          line-height: 40px;
     }
 
 }
@@ -1322,7 +1324,7 @@ td{
         height: 40vh;
     }
     .carousel-item{
-        margin-top:25%;
+        /* margin-top:25%; */
     }
     .home-section-back{
         background: #efefef;
