@@ -26,6 +26,23 @@ city:String;
       });
     });
 
+    
+    $("script[src='assets/css/style.css']").remove();
+    
+    var dynamicScripts = [
+    "assets/css/style.css"
+    ];
+
+    for (var i = 0; i < dynamicScripts.length; i++) {
+      let node = document.createElement('script');
+      node.src = dynamicScripts[i];
+      node.type = 'text/javascript';
+      node.async = false;
+      node.charset = 'utf-8';
+      document.getElementsByTagName('head')[0].appendChild(node);
+    }
+
+
     // Scrolling Effect
 
     $(window).on("scroll", function () {
