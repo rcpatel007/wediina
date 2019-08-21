@@ -27,26 +27,26 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    $("script[src='assets/css/style.css']").remove();
-    $("script[src='node_modules/bootstrap/dist/css/bootstrap.min.css']").remove();
-    $("script[src='node_modules/jquery/dist/jquery.min.js']").remove();
-    $("script[src='node_modules/bootstrap/dist/js/bootstrap.min.js']").remove();
+    // $("script[src='assets/css/style.css']").remove();
+    // $("script[src='node_modules/bootstrap/dist/css/bootstrap.min.css']").remove();
+    // $("script[src='node_modules/jquery/dist/jquery.min.js']").remove();
+    // $("script[src='node_modules/bootstrap/dist/js/bootstrap.min.js']").remove();
     
-    var dynamicScripts = [
-    "assets/css/style.css",
-    "node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "node_modules/jquery/dist/jquery.min.js",
-    "node_modules/bootstrap/dist/js/bootstrap.min.js"
-    ];
+    // var dynamicScripts = [
+    // "assets/css/style.css",
+    // "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    // "node_modules/jquery/dist/jquery.min.js",
+    // "node_modules/bootstrap/dist/js/bootstrap.min.js"
+    // ];
 
-    for (var i = 0; i < dynamicScripts.length; i++) {
-      let node = document.createElement('script');
-      node.src = dynamicScripts[i];
-      node.type = 'text/javascript';
-      node.async = false;
-      node.charset = 'utf-8';
-      document.getElementsByTagName('head')[0].appendChild(node);
-    }
+    // for (var i = 0; i < dynamicScripts.length; i++) {
+    //   let node = document.createElement('script');
+    //   node.src = dynamicScripts[i];
+    //   node.type = 'text/javascript';
+    //   node.async = false;
+    //   node.charset = 'utf-8';
+    //   document.getElementsByTagName('head')[0].appendChild(node);
+    // }
 
 
 

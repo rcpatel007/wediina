@@ -1,0 +1,131 @@
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 700px) and (min-width:200px) {
+    .headding-text{
+        padding-top: 26%; 
+    }
+    .city-menu{
+        z-index: -1;
+    }
+    .v_profile_section{
+        position: unset;
+    }
+    .slide_cap {
+        color: #fff;
+        font-weight: 550;
+        font-size: 0.8rem;
+    }
+    
+    .slide_head {
+        font-size: 2.05rem;
+        color: #fff;
+        font-weight: 580;
+    }
+    .carousel_img {
+        width: auto;
+        align-items: center;
+        height: 40vh;
+    }
+    .carousel-item{
+        /* margin-top:25%; */
+    }
+    .home-section-back{
+        background: #efefef;
+    }    
+    .logo {
+        position: fixed;
+        top: 0;
+        margin-top: 11px;
+        width: 54%;
+        margin-left: 2%;
+    }
+    nav ul li a{
+        color: #fff !important;
+    }
+    .text-black{
+        color: #000 !important;
+     
+    }
+    .mob_pad_t-13{
+        padding-top: 13%;
+    }
+    .mob_mr_t-13{
+        margin-top: 13%;
+    }
+    .mob_l_m_28{
+        left: -8%;
+    }
+    .pos-fix{
+        position: unset;
+    }
+    .p_main_section{
+        margin-right: 0;
+    }
+    .mob_l_0{
+        margin-left: 0;
+        left: 0;
+    }
+    .mob_mr_l_0{
+        margin-left: 0;
+    }
+    .mob_f_3{
+        font-size: 3em;
+    }
+
+    .slide_text{
+        margin-top: -42%;
+        left: 14%;
+    }
+    .mob_btn_pos{
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+
+        height: 8%;
+    }
+
+    .he-24{
+        height: 36%;
+    }
+
+    .logo-scroll{
+        width: 54% !important;
+    }
+    .city-box{
+        /* display: block; */
+    width: 100%;
+    margin-left: 0;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1024px) {
+
+    .r-mr-l-r-2{
+        margin: 0 2% !important;
+    }
+    .subnav-content{
+        width: 21% !important;
+    }
+    .menu_bottom {
+        background: #ed2437;
+        position: fixed;
+        bottom: 34.4%;
+        width: 20.9%;
+        transition: 0.3s;
+    }
+    .premium-pk {
+        font-size: 0.8rem;
+        color: #fff !important;
+        font-weight: 550;
+    }
+}
