@@ -36,6 +36,9 @@ address:String;
    gst:string;
    city:String;
    desp:String;
+   p_img:String;
+   email:String;
+   state:String;
   
 
   constructor(private route: ActivatedRoute,
