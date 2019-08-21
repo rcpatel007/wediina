@@ -13,14 +13,17 @@
       </div>
       <div class="mr-t-8">
         <div class="profile_menu">
-          My detail
+          <a href="#profile"> My detail</a>
         </div>
         <div class="profile_menu">
-          My Venue
+  <a href="#myvenue">My Venue</a>          
+        </div>
+        <div class="profile_menu">
+     <a href="#bookingdate">  Booking Close (Date)</a>
         </div>
         
         <div class="profile_menu">
-          My Order
+         <a href="#myorder"> My Order</a>
         </div>
         <div class="profile_menu">
           Logout
@@ -33,50 +36,48 @@
   <div id="profile" class="col-sm-12 col-12 col-lg-8 col-md-8 col-xl-8 float-right p_main_section">
     <div>
       <div class="text-center venueprofile_head s_headding-text">
-        welcome to your dashbord <b>chirag</b> !
+        welcome to your dashbord <b>{{fname}} {{lname}}</b> !
       </div>
       <form action="">
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">First Name</label>
-            <input type="text" class="form-control" id="fname" placeholder="First Name">
+            <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="fname" placeholder="First Name">
           </div>
+         
 
           <div class="form-group">
             <label for="mobileno">Mobile No.</label>
-            <input type="text" class="form-control" id="mobileno" placeholder="Mobile No">
+            <input type="text" class="form-control" id="mobileno" name="mno" [(ngModel)]="mno"  placeholder="Mobile No">
           </div>
-          <div class="form-group">
-            <label for="cname">Company Name</label>
-            <input type="text" class="form-control" id="cname" placeholder="Compnay Name">
-          </div>
+         
 
           <div class="form-group">
             <label for="formGroupExampleInput">Address</label>
-            <textarea placeholder="Address" class="w-100" cols="41" rows="3"></textarea>
+            <textarea placeholder="Address" class="w-100" cols="41" name="address" [(ngModel)]="address" rows="3"></textarea>
           </div>
         </div>
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left">
           <div class="form-group">
             <label for="lname">Last Name</label>
-            <input type="text" class="form-control" id="lname" placeholder="Last Name">
+            <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="lname" placeholder="Last Name">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email">
+            <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
           </div>
           <div class="form-group">
             <label for="cname">GST No.</label>
-            <input type="text" class="form-control" id="cname" placeholder="Compnay Name">
+            <input type="text" class="form-control" id="cname" placeholder="" name="gst" [(ngModel)]="gst">
           </div>
 
           <div class="form-group">
             <label for="city">City</label>
-            <input type="text" class="form-control" id="city" placeholder="First Name">
+            <input type="text" class="form-control" id="city" placeholder="" name="city" [(ngModel)]="city">
           </div>
           <div class="form-group">
             <label for="state">State</label>
-            <input type="text" class="form-control" id="state" placeholder="First Name">
+            <input type="text" class="form-control" id="state" placeholder="state" name="state" [(ngModel)]="state">
           </div>
           <div class="form-group">
             <label for="state"></label>
@@ -90,7 +91,7 @@
 
     </div>
   </div>
-  <div id="myvenue" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+  <div class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
     <div>
       <div class="text-center venueprofile_head s_headding-text">
         My Venues
@@ -99,28 +100,28 @@
         <div class="col-sm-12 col-12 col-xs-12  col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">Venue Name</label>
-            <input type="text" class="form-control" id="fname" placeholder="First Name">
+            <input type="text" class="form-control" id="cname" name="cname" [(ngModel)]="cname" placeholder="First Name">
           </div>
           <div class="form-group">
               <label for="mimage">Sub Image</label>
-              <input type="file" multiple class="form-control" id="mimage" placeholder="Select multiple Image">
+              <input type="file" class="form-control" id="mimage" name="p_img" [(ngModel)]="p_img" placeholder="Select Image">
             </div>
   
             <div class="form-group">
                 <label for="fname">parking Area (sq.Ft.)</label>
-                <input type="text" class="form-control" id="fname" placeholder="First Name">
+                <input type="text" class="form-control" id="parking" name="parking" [(ngModel)]="parking" placeholder="First Name">
               </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" class=" ">Out Side Catring</label><span
                         class="text-danger">*</span>
-                    <select class="form-control form_control_m" id="exampleFormControlSelect1">
-                        <option>Allowed</option>
-                        <option>Not Allowed</option>
+                    <select class="form-control form_control_m" name="catring" [(ngModel)]="catring" id="exampleFormControlSelect1">
+                        <option value="allowed">Allowed</option>
+                        <option value="not Allowed">Not Allowed</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="fname">Time permission</label>
-                    <input type="time" class="form-control" id="fname" placeholder="First Name">
+                    <input type="time" class="form-control" id="fname" name="time"  [(ngModel)]="time" placeholder="First Name">
                   </div>
 
 
@@ -128,24 +129,24 @@
         <div class="col-sm-12 col-12 col-xs-12 col-lg-6 col-md-6 col-xl-6 float-left">
             <div class="form-group">
                 <label for="fname">Area (Sq.Ft.)</label>
-                <input type="text" class="form-control" id="fname" placeholder="First Name">
+                <input type="text" class="form-control" id="area" placeholder="First Name" name="area" [(ngModel)]="area">
               </div>
   
           <div class="form-group">
-            <label for="simage">Main Image</label>
-            <input type="file" class="form-control" id="simage" placeholder="Select main Image">
+            <label for="simage">Sub Image</label>
+            <input type="file" multiple class="form-control" id="o_img" placeholder="Select sub Image">
           </div>
           <div class="form-group">
               <label for="fname">Capasity No. of Person</label>
-              <input type="text" class="form-control" id="fname" placeholder="First Name">
+              <input type="text" class="form-control" id="fname" name="capasity" [(ngModel)]="capasity"  placeholder="First Name">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1" class=" ">Theme Decoration</label><span
                     class="text-danger">*</span>
-                <select class="form-control form_control_m" id="exampleFormControlSelect1">
-                    <option>Allowed</option>
-                    <option>Not Allowed</option>
+                <select class="form-control form_control_m" name="theme" [(ngModel)] ="theme" id="exampleFormControlSelect1">
+                  <option value="allowed">Allowed</option>
+                  <option value="not Allowed">Not Allowed</option>
                 </select>
             </div>
 
@@ -164,52 +165,38 @@
   <!-- detail old venue -->
   <div id="myvenue" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
     <div>
-      <div class="venueprofile_head s_headding-text">
-        <label>Thakar party plot</label>
-        <label class="float-right">Price : 5,00,000</label>
+      <div class="venueprofile_head s_headding-text text-center">
+        <label>{{cname}}</label>
+        <!-- <label class="float-right">Price : 5,00,000</label> -->
       </div>
       <form action="">
         <div class="">
-          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-            <div class="card card-content ">
-              <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
+            <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+                <div class="card card-content ">
+                  <img src="{{image}}" class="img-fluid p-card-img" />
+                  <div class="card-city_name card-title">
+                
+                  </div>
+    
+                </div>
+              </div>
+            
+          <div *ngFor="let s of images" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+         
+            <div  class="card card-content ">
+              <img src="{{s}}" class="img-fluid p-card-img" />
               <div class="card-city_name card-title">
-                Front Image
               </div>
 
             </div>
           </div>
-          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-            <div class="card card-content ">
-              <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-              <div class="card-city_name card-title">
-               other Images 
-              </div>
-
-            </div>
-          </div>
-          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-            <div class="card card-content ">
-              <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-              <div class="card-city_name card-title">
-                  other Images
-              </div>
-
-            </div>
-          </div>
-          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-            <div class="card card-content ">
-              <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-              <div class="card-city_name card-title">
-                  other Images
-              </div>
-            </div>
-          </div>
+          
+         
 
           <div class="col-md-12">
               <div class="form-group">
-                  <label for="venue_detail"><b>Venue Detail </b></label>
-                  <textarea placeholder=" Enter your Venue Detail " class="w-100" cols="80" rows="20"></textarea>
+                  <!-- <label for="venue_detail"><b>Venue Detail </b></label> -->
+                  <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100" cols="50" rows="20"></textarea>
                 </div>
           </div>
         
@@ -220,6 +207,46 @@
 
     </div>
   </div>
+  <div id="bookingdate" class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        Booking close Date
+      </div>
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#No</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>22/06/2019 </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>22/06/2019 </td>
+
+              </tr>
+              <tr>
+                  <th scope="row">3</th>
+                  <td>22/06/2019 </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>22/06/2019 </td>
+
+                  </tr>
+          </tbody>
+        </table>
+    </div>
+    <div>
+
+    </div>
+  </div>
+
   <div id="myorder" class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
       <div>
         <div class="text-center venueprofile_head s_headding-text">
