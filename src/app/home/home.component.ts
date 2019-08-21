@@ -7,6 +7,9 @@ import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
+declare var $: any;
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
