@@ -68,13 +68,17 @@
     .mob_mr_l_0{
         margin-left: 0;
     }
+    .r-h-27vh{
+        height: 27vh;
+    }
     .mob_f_3{
         font-size: 3em;
     }
 
     .slide_text{
-        margin-top: -42%;
-        left: 14%;
+        margin-top: -20%;
+    left: 18%;
+    font-size: 2em;
     }
     .mob_btn_pos{
         position: fixed;
