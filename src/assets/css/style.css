@@ -19,9 +19,14 @@ a:focus{
 }
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
-    
+    width: 10px;
+
   }
+/* 
+  ::-webkit-scrollbar:hover {
+    width: 15px;
+  } */
+
   .menu_bottom{
     background: #ed2437;
     position: fixed;
@@ -54,6 +59,8 @@ a:focus{
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
+
+    
   }
 .star-rating {
     line-height:32px;
@@ -569,7 +576,7 @@ nav {
 }
 
 nav ul {
-    line-height: 30px;
+    line-height: 34px;
     list-style: none;
     background: transparent;
     overflow: hidden;
@@ -594,6 +601,17 @@ nav ul li {
     cursor: pointer;
     outline: none;
 }
+input[type="date"]::before{
+    color: #ffffff;
+    content: attr(placeholder) ": ";
+ }
+ input[type="date"]:focus::before {
+    content: "" !important;
+ }
+.subnav-content::-webkit-scrollbar {
+    width: 5px;
+
+  }
 
 nav ul li:focus{
 

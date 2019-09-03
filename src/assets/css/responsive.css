@@ -75,6 +75,11 @@
         font-size: 3em;
     }
 
+    .prime_slide_text{
+        margin-top: -28% !important;
+    left: -3% !important;
+    font-size: 2em !important;
+    }
     .slide_text{
         margin-top: -20%;
     left: 18%;
@@ -107,7 +112,7 @@
 @media only screen and (min-width: 1024px) {
 
     .r-mr-l-r-2{
-        margin: 0 2% !important;
+        margin: -2% 2% !important;
     }
     .subnav-content{
         width: 21% !important;
