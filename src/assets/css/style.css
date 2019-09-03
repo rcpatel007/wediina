@@ -665,9 +665,9 @@ nav ul li a {
 
     .menu_bottom {
         background: #ed2437;
-        position: fixed;
-        bottom: 5.5%;
-        width: 79%;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
         transition: 0.3s;
     }
     .showing {
