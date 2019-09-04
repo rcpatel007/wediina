@@ -63,8 +63,8 @@ city:String;
         $('.menu-icon').removeAttr("style");
 
         $('nav').removeClass('black').removeAttr("style");
-        $("nav ul li a").removeAttr("style")
-        $(".city-menu").removeAttr("style")
+        $("nav ul li a").removeAttr("style");
+        $(".city-menu").removeAttr("style");
         // $('').removeClass('text-black');
 
       }

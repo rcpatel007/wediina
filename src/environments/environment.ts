@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://wediina-api.herokuapp.com'
+  api_url: 'https://api-wediina.herokuapp.com',
+  venue_id:String,
+  vendor_id:String,
+  customer_id:String
 
 };
 

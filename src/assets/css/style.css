@@ -194,6 +194,19 @@ border-bottom: 1px solid #FF353A;
     border: 1px solid #e2e2e2;
 }
 
+.mr-2{
+    margin:2%;
+}
+
+.errormsg{
+color: red;
+font-weight: 600;
+
+}
+
+.mr-t-05{
+    margin-top: -0.5% !important;
+}
 .b-t-1{
     border-top: 1px solid #000;
 }

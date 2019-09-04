@@ -31,6 +31,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ConnectionService } from './services/connection.service';
 import { PremiumPhotographerComponent } from './premium-photographer/premium-photographer.component';
 import { PremiumPhotographerDetailComponent } from './premium-photographer-detail/premium-photographer-detail.component';
+import { VendorprofileComponent } from './vendorprofile/vendorprofile.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
@@ -71,7 +72,8 @@ const appRoutes = [
     AboutComponent,
     ContactComponent,
     PremiumPhotographerComponent,
-    PremiumPhotographerDetailComponent
+    PremiumPhotographerDetailComponent,
+    VendorprofileComponent
   ],
   imports: [
     BrowserModule,

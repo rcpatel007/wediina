@@ -119,9 +119,9 @@
     }
     .menu_bottom {
         background: #ed2437;
-        position: fixed;
-        bottom: 34.4%;
-        width: 20.9%;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
         transition: 0.3s;
     }
     .premium-pk {
@@ -129,4 +129,12 @@
         color: #fff !important;
         font-weight: 550;
     }
+}
+
+@media only screen and (min-width: 1200px) {
+
+.nav ul{
+    line-height: 80px;
+}
+
 }
