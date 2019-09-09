@@ -41,6 +41,7 @@ const appRoutes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'venueRegister', component: VenueRegisterComponent },
   { path: 'Venueprofile/:id', component: VenueprofileComponent },
+  { path: 'Vendorprofile/:id', component: VendorprofileComponent },
   { path: 'VenderRegister', component: VenderregisterComponent },
   { path: 'vendors/:id', component: VenderGridComponent },
   { path: 'VenderDetail/:id', component: VenderDetailComponent },

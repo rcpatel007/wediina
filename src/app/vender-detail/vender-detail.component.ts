@@ -21,8 +21,9 @@ export class VenderDetailComponent implements OnInit {
   detail:String;
   video=[];
   sub_images =[];
-
-
+  email:String;
+  password:String;
+  customer:boolean;
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService) { }
@@ -32,6 +33,7 @@ export class VenderDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+    this.customerfetch();
   this.getvendor();
   }
 
@@ -58,4 +60,43 @@ export class VenderDetailComponent implements OnInit {
   }
 
 
+  customerfetch(){
+    if(environment.customer_id !=null)
+  {
+    this.customer = true;
+  }
+  else{
+    this.customer =false;
+  }
+  
+  console.log(this.customer);
+  
+  }
+  
+  
+  login(){
+  
+    this.spinner.show();
+     
+    // this.router.navigate(["/home"]);
+  
+    let customer = {
+      email: this.email,
+      password: this.password
+    }
+  
+    console.log(customer);
+  
+    this.conectionservice.customerLogin(customer)
+      .subscribe(res => {
+        environment.customer_id = res._id;
+        environment.venue_id = null;
+        environment.vendor_id =null; 
+        this.spinner.hide();
+   this.customer =true;
+        console.log(res, 'customerdetail');
+  
+      });
+  
+  }
 }

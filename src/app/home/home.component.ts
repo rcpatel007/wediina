@@ -16,7 +16,7 @@ declare var $: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  successmsg:String;
   homeslider:any;
   venue_category=[];
   vendor_category=[];
@@ -84,4 +84,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+  contactSubmit(){
+
+    this.successmsg ="your  Request accepted  We are  Contact you Soon....."
+  }
 }

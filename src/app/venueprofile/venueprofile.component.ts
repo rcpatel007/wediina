@@ -5,6 +5,7 @@ import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare var $: any;
 
@@ -42,7 +43,7 @@ address:String;
   
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private conectionservice: ConnectionService) { }
+    private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -78,6 +79,8 @@ address:String;
   }
 
   getvenueDetail(){
+    this.spinner.show();
+   
     this.conectionservice.getVenueById(this.id)
     .subscribe(res=>{
       console.log(res );
@@ -104,6 +107,7 @@ address:String;
      this.detail=res.comment;
      this.desp=res.desp;
       console.log(res);
+      this.spinner.hide();
       
     });
     

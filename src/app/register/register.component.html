@@ -1,4 +1,14 @@
 <app-header></app-header>
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#fff"
+size = "large"
+color = "#000000"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
 <section id="home" class="top_cont_outer contanier">
     <div class="top_cont_inner">
         <div class="">
@@ -7,7 +17,7 @@
                     <slide class="fadding">
                         <img class="background-img r-h-27vh" src="../../assets/image/page_slide.jpg"  style="width: 100%;"/>
                         <div class="slide_text">
-                            Registation
+                            Registration
                         </div>
                     </slide>
 
@@ -72,29 +82,63 @@
 
         </div>
         <div class="col-lg-12 mx-auto">
-            <form id="Vender" (click)="customerRegister()" action="">
+            <form id="Vender" #frm1="ngForm" (ngSubmit)="customerRegister()">
                 <div class="col-12 col-lg-4 col-md-4 col-xl-4  r_l_form mr-l-17 float-left mob_l_0 l-16 br-1">
-                        
                     <div class="form-group">
                         <label for="fname" class="">Your Name</label><span class="text-danger">*</span>
-                        <input type="text" class="form-control form_control_m"  name="name" [(ngModel)]="name" id="name" placeholder="Your Name">
+                        <input type="text" #company="ngModel"  required
+                        ngModel  class="form-control form_control_m"  name="name" [(ngModel)]="name" id="name" placeholder="Your Name">
+                        <div *ngIf="company?.touched">
+                            <div class="red-text left" *ngIf="company.errors?.required">
+                               Name Required*
+                            </div>
+                           
+                          </div>
+                    
                     </div>
                     <div class="form-group">
                         <label for="fname" class="">contact No.</label><span class="text-danger">*</span>
-                        <input type="text" class="form-control form_control_m" id="contact_no" name="contact_no" [(ngModel)]="contact_no" placeholder="Contact No.">
+                        <input type="text" class="form-control form_control_m" minlength="10" maxlength="10" #mobile="ngModel"
+                        pattern="[0-9]+" required ngModel  id="contact_no" name="contact_no" [(ngModel)]="contact_no" placeholder="Contact No.">
+                        <div *ngIf="mobile?.touched">
+                            <div class="red-text left" *ngIf="mobile.errors?.required">
+                              Contact No Required*
+                            </div>
+                            <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
+                              Please enter valid Contact No
+                            </div>
+                          </div>
+                    
                     </div>
 
                     <div class="form-group">
                             <label for="fname" class="">Email</label><span class="text-danger">*</span>
-                            <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="Email">
+                            <input type="email" #remail="ngModel"  required
+                            ngModel  class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="Email">
+                            <div *ngIf="remail?.touched">
+                                <div class="red-text left" *ngIf="remail.errors?.required">
+                                   Email Required*
+                                </div>
+                              </div>
+                        
+                        
                         </div>
                         
                     <div class="form-group">
                             <label for="fname" class="">password</label><span class="text-danger">*</span>
-                            <input type="email" class="form-control form_control_m" id="password" name="password" [(ngModel)]="password" placeholder="password">
+                            <input type="password" #pwd="ngModel"  required
+                            ngModel class="form-control form_control_m" id="password" name="password" [(ngModel)]="password" placeholder="password">
+                            <div *ngIf="pwd?.touched">
+                                <div class="red-text left" *ngIf="pwd.errors?.required">
+                                   Password Required*
+                                </div>
+                              </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-17">
-                                <input type="button" value="Submit" class="btn btn-success">
+                            <div class="text-center red">{{errormsg}}</div>
+                  
+                            
+                            <input type="submit"  [disabled]="frm1.invalid"  value="Submit" class="btn btn-success">
                             </div>
         
 

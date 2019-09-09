@@ -166,6 +166,11 @@ return this.http.put(environment.api_url + '/vendor_update/'+id, updateVendor)
 
 }
 
+// ***********************************************************
+// Customer
+// **************************************************************
+
+
 addcustomer(customer) {    
   return this.http.post(environment.api_url + '/new_customer/',customer)
    .pipe(map( res => res.json()));
@@ -175,8 +180,35 @@ addcustomer(customer) {
 
 
 customerLogin(customer){
-  return this.http.post('https://wediina-api.herokuapp.com/customerLogin',customer)
+  return this.http.post(environment.api_url + '/customerLogin',customer)
    .pipe(map( res => res.json()));
 
 }
+
+
+getCustomerById(id) {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/customer/' +id)
+    .pipe(map( res => res.json()));
+
+}
+
+getCustomer() {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/customer')
+    .pipe(map( res => res.json()));
+
+}
+
+// add product
+
+// edit product
+
+editCustomer(id,updateVenue) {
+return this.http.put(environment.api_url + '/customer/'+id, updateVenue)
+.pipe(map( res => res.json()));
+
+}
+
+
 }

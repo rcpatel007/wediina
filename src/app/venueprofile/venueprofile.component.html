@@ -1,4 +1,7 @@
 <app-header></app-header>
+<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="large" color="#000000" type="ball-clip-rotate" [fullScreen]="true">
+</ngx-spinner>
+
 <div class="col-12 col-lg-12 col-md-12 col-xs-12 col-xl-12 text-center pad-0">
   <div class="s_header-part ">
 
@@ -16,20 +19,20 @@
           <a href="#profile"> My detail</a>
         </div>
         <div class="profile_menu">
-  <a href="#myvenue">My Venue</a>          
+          <a href="#myvenue">My Venue</a>
         </div>
         <div class="profile_menu">
-     <a href="#bookingdate">  Booking Close (Date)</a>
+          <a href="#bookingdate"> Booking Close (Date)</a>
         </div>
-        
+
         <div class="profile_menu">
-         <a href="#myorder"> My Order</a>
+          <a href="#myorder"> My Order</a>
         </div>
         <div class="profile_menu">
           Logout
         </div>
       </div>
-      
+
     </div>
   </div>
   <!-- content section -->
@@ -42,19 +45,21 @@
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">First Name</label>
-            <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="fname" placeholder="First Name">
+            <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="fname"
+              placeholder="First Name">
           </div>
-         
+
 
           <div class="form-group">
             <label for="mobileno">Mobile No.</label>
-            <input type="text" class="form-control" id="mobileno" name="mno" [(ngModel)]="mno"  placeholder="Mobile No">
+            <input type="text" class="form-control" id="mobileno" name="mno" [(ngModel)]="mno" placeholder="Mobile No">
           </div>
-         
+
 
           <div class="form-group">
             <label for="formGroupExampleInput">Address</label>
-            <textarea placeholder="Address" class="w-100" cols="41" name="address" [(ngModel)]="address" rows="3"></textarea>
+            <textarea placeholder="Address" class="w-100" cols="41" name="address" [(ngModel)]="address"
+              rows="3"></textarea>
           </div>
         </div>
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left">
@@ -75,10 +80,10 @@
             <label for="city">City</label>
             <input type="text" class="form-control" id="city" placeholder="" name="city" [(ngModel)]="city">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="state">State</label>
             <input type="text" class="form-control" id="state" placeholder="state" name="state" [(ngModel)]="state">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="state"></label>
             <input type="submit" class="float-right btn btn-success" id="state" value="update">
@@ -100,59 +105,62 @@
         <div class="col-sm-12 col-12 col-xs-12  col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">Venue Name</label>
-            <input type="text" class="form-control" id="cname" name="cname" [(ngModel)]="cname" placeholder="First Name">
+            <input type="text" class="form-control" id="cname" name="cname" [(ngModel)]="cname"
+              placeholder="First Name">
           </div>
           <div class="form-group">
-              <label for="mimage">Sub Image</label>
-              <input type="file" class="form-control" id="mimage" name="p_img" [(ngModel)]="p_img" placeholder="Select Image">
-            </div>
-  
-            <div class="form-group">
-                <label for="fname">parking Area (sq.Ft.)</label>
-                <input type="text" class="form-control" id="parking" name="parking" [(ngModel)]="parking" placeholder="First Name">
-              </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1" class=" ">Out Side Catring</label><span
-                        class="text-danger">*</span>
-                    <select class="form-control form_control_m" name="catring" [(ngModel)]="catring" id="exampleFormControlSelect1">
-                        <option value="allowed">Allowed</option>
-                        <option value="not Allowed">Not Allowed</option>
-                    </select>
-                </div>
-                <div class="form-group">
+            <label for="mimage">Sub Image</label>
+            <input type="file" class="form-control" id="mimage" name="p_img" [(ngModel)]="p_img"
+              placeholder="Select Image">
+          </div>
+
+          <div class="form-group">
+            <label for="fname">parking Area (sq.Ft.)</label>
+            <input type="text" class="form-control" id="parking" name="parking" [(ngModel)]="parking"
+              placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" class=" ">Out Side Catring</label><span class="text-danger">*</span>
+            <select class="form-control form_control_m" name="catring" [(ngModel)]="catring"
+              id="exampleFormControlSelect1">
+              <option value="allowed">Allowed</option>
+              <option value="Not Allowed">Not Allowed</option>
+            </select>
+          </div>
+          <!-- <div class="form-group">
                     <label for="fname">Time permission</label>
                     <input type="time" class="form-control" id="fname" name="time"  [(ngModel)]="time" placeholder="First Name">
-                  </div>
+                  </div> -->
 
 
         </div>
         <div class="col-sm-12 col-12 col-xs-12 col-lg-6 col-md-6 col-xl-6 float-left">
-            <div class="form-group">
-                <label for="fname">Area (Sq.Ft.)</label>
-                <input type="text" class="form-control" id="area" placeholder="First Name" name="area" [(ngModel)]="area">
-              </div>
-  
+          <div class="form-group">
+            <label for="fname">Area (Sq.Ft.)</label>
+            <input type="text" class="form-control" id="area" placeholder="First Name" name="area" [(ngModel)]="area">
+          </div>
+
           <div class="form-group">
             <label for="simage">Sub Image</label>
             <input type="file" multiple class="form-control" id="o_img" placeholder="Select sub Image">
           </div>
           <div class="form-group">
-              <label for="fname">Capasity No. of Person</label>
-              <input type="text" class="form-control" id="fname" name="capasity" [(ngModel)]="capasity"  placeholder="First Name">
-            </div>
+            <label for="fname">Capasity No. of Person</label>
+            <input type="text" class="form-control" id="fname" name="capasity" [(ngModel)]="capasity"
+              placeholder="First Name">
+          </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1" class=" ">Theme Decoration</label><span
-                    class="text-danger">*</span>
-                <select class="form-control form_control_m" name="theme" [(ngModel)] ="theme" id="exampleFormControlSelect1">
-                  <option value="allowed">Allowed</option>
-                  <option value="not Allowed">Not Allowed</option>
-                </select>
-            </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" class=" ">Theme Decoration</label><span class="text-danger">*</span>
+            <select class="form-control form_control_m" name="theme" [(ngModel)]="theme" id="exampleFormControlSelect1">
+              <option value="allowed">Allowed</option>
+              <option value="Not Allowed">Not Allowed</option>
+            </select>
+          </div>
 
           <div class="form-group">
             <label for="state"> </label>
-            <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Submit">
+            <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
           </div>
 
         </div>
@@ -171,35 +179,36 @@
       </div>
       <form action="">
         <div class="">
-            <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-                <div class="card card-content ">
-                  <img src="{{image}}" class="img-fluid p-card-img" />
-                  <div class="card-city_name card-title">
-                
-                  </div>
-    
-                </div>
+          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+            <div class=" card-content ">
+              <img src="{{image}}" class="img-fluid p-card-img" />
+              <div class="card-city_name card-title">
+
               </div>
-            
+
+            </div>
+          </div>
+
           <div *ngFor="let s of images" class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-         
-            <div  class="card card-content ">
+
+            <div class="card card-content ">
               <img src="{{s}}" class="img-fluid p-card-img" />
               <div class="card-city_name card-title">
               </div>
 
             </div>
           </div>
-          
-         
+
+
 
           <div class="col-md-12">
-              <div class="form-group">
-                  <!-- <label for="venue_detail"><b>Venue Detail </b></label> -->
-                  <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100" cols="50" rows="20"></textarea>
-                </div>
+            <div class="form-group">
+              <!-- <label for="venue_detail"><b>Venue Detail </b></label> -->
+              <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100" cols="50"
+                rows="20"></textarea>
+            </div>
           </div>
-        
+
         </div>
       </form>
     </div>
@@ -207,103 +216,102 @@
 
     </div>
   </div>
-  <div id="bookingdate" class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+  <div id="bookingdate"
+    class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
     <div>
       <div class="text-center venueprofile_head s_headding-text">
         Booking close Date
       </div>
+      <div class="text-right"><button class="btn btn-success" data-toggle="modal" data-target="#bookedDate">Add Date</button></div>
       <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#No</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>22/06/2019 </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>22/06/2019 </td>
+        <thead>
+          <tr>
+            <th scope="col">#No</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>22/06/2019 </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <div>
+    </div>
+  </div>
 
-              </tr>
-              <tr>
-                  <th scope="row">3</th>
-                  <td>22/06/2019 </td>
+  <div id="myorder"
+    class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        My Inquiries
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#No</th>
+            <th>Date</th>
+            <th scope="col">customer Name</th>
+            <th scope="col">email</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Detail</th>
 
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>22/06/2019 </td>
-
-                  </tr>
-          </tbody>
-        </table>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>22/06/2019 </td>
+            <td>chirag </td>
+            <td>chiragramani145@gmail.com</td>
+            <td>+911234567890</td>
+            <td width=100%><b>person</b>: 5000 <br /> <b>days</b> : 1 night <br /> <b>purpose</b> : marriage Function
+            </td>
+          </tr>
+          
+        
+        </tbody>
+      </table>
     </div>
     <div>
 
     </div>
   </div>
 
-  <div id="myorder" class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
-      <div>
-        <div class="text-center venueprofile_head s_headding-text">
-          My Inquiries
-        </div>
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#No</th>
-                <th>Date</th>
-                <th scope="col">customer Name</th>
-                <th scope="col">email</th>
-                <th scope="col">Mobile No</th>
-                <th scope="col">Detail</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>22/06/2019 </td>
-                <td>chirag </td>
-                <td>chiragramani145@gmail.com</td>
-                <td>+911234567890</td>
-                <td width=100%><b>person</b>: 5000 <br /> <b>days</b> : 1 night  <br/>  <b>purpose</b> : marriage Function</td>
-              </tr>
-              <tr>
-                  <th scope="row">2</th>
-                  <td>22/06/2019 </td>
-                  <td>chirag </td>
-                  <td>chiragramani145@gmail.com</td>
-                  <td>+911234567890</td>
-                  <td width="auto"><b>person</b>: 5000 <br /> <b>days</b> : 1 night  <br/>  <b>purpose</b> : marriage Function</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>22/06/2019 </td>
-                    <td>chirag </td>
-                    <td>chiragramani145@gmail.com</td>
-                    <td>+911234567890</td>
-                    <td width="auto"><b>person</b>: 5000 <br /> <b>days</b> : 1 night  <br/>  <b>purpose</b> : marriage Function</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">4</th>
-                      <td>22/06/2019 </td>
-                      <td>chirag </td>
-                      <td>chiragramani145@gmail.com</td>
-                      <td>+911234567890</td>
-                      <td width="auto"><b>person</b>: 5000 <br /> <b>days</b> : 1 night  <br/>  <b>purpose</b> : marriage Function</td>
-                    </tr>
-            </tbody>
-          </table>
-      </div>
-      <div>
-  
-      </div>
-    </div>
-  
 </div>
+
+
+<div class="modal" id="bookedDate">
+  <div class="modal-dialog  modal-full    ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Booked Date</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+      
+        <div class="form-group">
+          <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
+          <input type="date" class="form-control"/>
+        </div>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success w-100" data-dismiss="modal">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- <app-footer></app-footer> -->

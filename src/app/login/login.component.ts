@@ -86,6 +86,9 @@ export class LoginComponent implements OnInit {
 
 
   customer() {
+    this.spinner.show();
+   
+    // this.router.navigate(["/home"]);
 
     let customer = {
       email: this.email,
@@ -97,8 +100,11 @@ export class LoginComponent implements OnInit {
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
         environment.customer_id = res._id;
-        this.router.navigate(["/profile", res._id]);
-
+        environment.venue_id = null;
+        environment.vendor_id =null; 
+        this.router.navigate(["/home"]);
+        this.spinner.hide();
+   
         console.log(res, 'customerdetail');
 
       });
@@ -107,7 +113,8 @@ export class LoginComponent implements OnInit {
 
 
   venueLogin() {
-
+    this.spinner.show();
+   
     let venue_login = {
       email: this.email,
       password: this.password
@@ -118,6 +125,10 @@ export class LoginComponent implements OnInit {
     this.conectionservice.venueLogin(venue_login)
       .subscribe(res => {
         environment.venue_id = res._id;
+        environment.customer_id =null;
+        environment.vendor_id =null;
+        this.spinner.hide();
+   
         this.router.navigate(["/Venueprofile", res._id]);
 
         console.log(res, 'venuedetail');
@@ -127,6 +138,8 @@ export class LoginComponent implements OnInit {
 
 
   vendorLogin() {
+    this.spinner.show();
+   
 
     let customer = {
       email: this.email,
@@ -138,6 +151,10 @@ export class LoginComponent implements OnInit {
     this.conectionservice.vendorLogin(customer)
       .subscribe(res => {
         environment.vendor_id = res._id;
+        environment.customer_id =null;
+        environment.venue_id =null;
+        this.spinner.hide();
+   
         this.router.navigate(["/VenderDetail", res._id]);
 
         console.log(res, 'vendor_detail');

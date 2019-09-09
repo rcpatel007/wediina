@@ -92,4 +92,23 @@ this.getvendorCategory();
         
       });
   }
+
+  userfetch(){
+    if (environment.customer_id != null) {
+      this.router.navigate(["/profile",environment.customer_id]);
+    }
+    
+   else if (environment.venue_id !=null) {
+      this.router.navigate(["/Venueprofile",environment.venue_id]);
+    }
+    
+   else if (environment.vendor_id !=null) {
+      this.router.navigate(["/Vendorprofile",environment.vendor_id]);
+    }
+
+    else{
+      this.router.navigate(["/login"]);
+
+    }
+  }
 }

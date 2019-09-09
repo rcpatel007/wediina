@@ -87,7 +87,7 @@ type = "ball-clip-rotate"
                 </div>
                 <hr class="title">
                 <div data-aos="fade-right" data-aos-duration="1500"
-                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left mr-b-1">
+                    class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-12 float-left">
                     <a [routerLink]="['/PremiumPhotographer']">
                         <div class=" mr-b-6 card-con  ">
                             <!-- <div class="filp-top"></div> -->
@@ -202,30 +202,76 @@ type = "ball-clip-rotate"
 
                 <div class="col-12 col-lg-6 col-md-6 col-xl-6 col-xs-12  float-left">
                     <div class="card  pad-5 inner-part  border-none text-center">
+                    <form #frm1="ngForm" (ngSubmit)="contactSubmit()">
                         <div class="form-group">
                             <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-                            <input type="text" class="form-control" id="name" placeholder="Name">
-                          </div>
+                            <input type="text" #company="ngModel"  required
+                            ngModel  class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Name">
+                            <div *ngIf="company?.touched">
+                                <div class="red-text left" *ngIf="company.errors?.required">
+                                   Name Required*
+                                </div>
+                               
+                              </div>
+                        </div>
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
-                            <input type="text" class="form-control" id="email" placeholder="Email">
-                          </div>
+                            <input type="email" #cemail="ngModel"  required
+                            ngModel  class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Email" >
+                            <div *ngIf="cemail?.touched">
+                                <div class="red-text left" *ngIf="cemail.errors?.required">
+                                   Email Required*
+                                </div>
+                               
+                              </div>  
+                        </div>
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
-                            <input type="text" class="form-control" id="mobileno" placeholder="Mobile No">
-                          </div>
+                            <input type="text" class="form-control" minlength="10" maxlength="10" #mobile="ngModel"
+                            pattern="[0-9]+" required ngModel  id="contact_no" name="contact_no" [(ngModel)]="contact_no" 
+                            placeholder="Mobile No">
+
+                            <div *ngIf="mobile?.touched">
+                                <div class="red-text left" *ngIf="mobile.errors?.required">
+                                  Contact No Required*
+                                </div>
+                                <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
+                                  Please enter valid Contact No
+                                </div>
+                              </div>
+                        
+                        
+                        </div>
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
-                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                          </div>
+                            <input type="text" class="form-control" #cno="ngModel"  required
+                            ngModel id="subject" placeholder="Subject" name="subject" [(ngModel)]="subject">
+                            <div *ngIf="cno?.touched">
+                                <div class="red-text left" *ngIf="cno.errors?.required">
+                                   Subject Required*
+                                </div>
+                               
+                              </div> 
+                        </div>
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
-                            <textarea class="form-control" id="msg" placeholder="Message" rows="5"></textarea>
-                          </div>
+                            <textarea class="form-control"  #cmsg="ngModel"  required
+                            ngModel  id="msg" name="msg" [(ngModel)]="msg" placeholder="Message" rows="5"></textarea>
+                            <div *ngIf="cmsg?.touched">
+                                <div class="red-text left" *ngIf="cmsg.errors?.required">
+                                   Please Leave your Message
+                                </div>
+                               
+                              </div>  
+                        </div>
                           <div class="form-group ">
-                              <button type="submit" class="btn btn-danger float-right">Submit</button>
+                              <button type="submit" [disabled]="frm1.invalid"  class="btn btn-success float-right">Submit</button>
 
                           </div>
+                          <br />
+                         
+                        </form>
+                        <div *ngIf="successmsg!=null" class="contact-msg" >{{successmsg}}</div>
                     </div>
                 </div>
 

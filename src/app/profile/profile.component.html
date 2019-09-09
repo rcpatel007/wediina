@@ -1,4 +1,14 @@
 <app-header></app-header>
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#fff"
+size = "large"
+color = "#000000"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
 <div class="col-12 col-lg-12 col-md-12 col-xs-12 col-xl-12 text-center pad-0">
   <div class="s_header-part ">
     
@@ -36,46 +46,46 @@
   <div id="profile" class="col-sm-12 col-12 col-lg-8 col-md-8 col-xl-8 float-right p_main_section">
     <div>
       <div class="text-center venueprofile_head s_headding-text">
-        welcome to your dashbord <b>chirag</b> !
+        welcome to your dashbord <b>{{name}}</b> !
       </div>
       <form action="">
         <div class="col-12 col-sm-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" class="form-control" id="fname" placeholder="First Name">
+            <label for="fname">Your Name</label>
+            <input type="text" class="form-control" id="fname" name="name" [(ngModel)]="name" placeholder="First Name">
           </div>
           
           <div class="form-group">
             <label for="mobileno">Mobile No.</label>
-            <input type="text" class="form-control" id="mobileno" placeholder="Mobile No">
+            <input type="text" class="form-control" id="mobileno" placeholder="Mobile No" name="contactno" [(ngModel)]="contactno">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="formGroupExampleInput">Address</label>
             <textarea placeholder="Address" class="w-100" cols="41" rows="3"></textarea>
-          </div>
+          </div> -->
         </div>
         <div class="col-12 col-sm-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left">
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="lname">Last Name</label>
             <input type="text" class="form-control" id="lname" placeholder="Last Name">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email">
+            <input type="text" name="email" [(ngModel)]="email" class="form-control"  id="email" placeholder="Email">
           </div>
          
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="city">City</label>
             <input type="text" class="form-control" id="city" placeholder="First Name">
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="state">State</label>
             <input type="text" class="form-control" id="state" placeholder="First Name">
           </div>
           <div class="form-group">
             <label for="state"></label>
             <input type="submit" class="float-right btn btn-success" id="state" value="update">
-          </div>
+          </div> -->
           
         </div>
       </form>

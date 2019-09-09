@@ -5,6 +5,7 @@ import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare var $: any;
 @Component({
@@ -27,8 +28,11 @@ export class VenueDetailComponent implements OnInit {
   time:String;
   detail:String;
   playvideo:String;
+  customer:boolean;
+  email:String;
+  password:String;
   constructor(private route: ActivatedRoute,
-    private router: Router, private conectionservice: ConnectionService) { }
+    private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -63,10 +67,10 @@ $(document).ready(function() {
 });  //   $('#myModal').on('hidden.bs.modal', function () {
   //     callPlayer('yt-player', 'stopVideo');
   // });
- 
+
+this.customerfetch(); 
 this.getvenueDetail();
 }
-
 
 
 
@@ -97,5 +101,45 @@ getvideo(v){
   this.playvideo = v;
   $("#videopopup").attr("src",v);
   console.log(this.playvideo);
+}
+
+
+customerfetch(){
+  if(environment.customer_id !=null)
+{
+  this.customer = true;
+}
+else{
+  this.customer =false;
+}
+
+console.log(this.customer);
+
+}
+
+login(){
+
+  this.spinner.show();
+   
+  // this.router.navigate(["/home"]);
+
+  let customer = {
+    email: this.email,
+    password: this.password
+  }
+
+  console.log(customer);
+
+  this.conectionservice.customerLogin(customer)
+    .subscribe(res => {
+      environment.customer_id = res._id;
+      environment.venue_id = null;
+      environment.vendor_id =null; 
+      this.spinner.hide();
+ this.customer =true;
+      console.log(res, 'customerdetail');
+
+    });
+
 }
 }

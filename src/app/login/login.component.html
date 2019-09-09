@@ -1,4 +1,13 @@
 <app-header></app-header>
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#fff"
+size = "large"
+color = "#000000"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
 
 <div class="">
   <div class="col-12 col-lg-12 col-md-12 col-xs-12 col-xl-12 text-center pad-0">
@@ -10,24 +19,25 @@
     <div class="errormsg">{{errormsg}}</div>
     <div class="main-login-content col-12  col-lg-3 col-md-12 col-xl-3 mx-auto mr-5 mr-t-05">
       <div class=" login-tab m-p-5 bt-1">
-        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1" id="vendor" (click)="selectRoll(1)" > Vender</div>
+        <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1" id="vendor" (click)="selectRoll(1)" > Vendor</div>
         <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text br-1" id="venue" (click)="selectRoll(2)" >Venues</div>
         <div class="col-4 col-lg-4 col-md-4 col-xl-4 float-left login-tab-text " id="customer" (click)="selectRoll(3)" >Customer</div>
       </div>
     </div>
     <div class="col-12  col-lg-3 col-md-12 col-xl-3 mx-auto">
-        <div class="mob_pad_t-13"> If you are new then <a href="javascript:void(0)" [routerLink]="['/register']" ><b class="sign-text">sign In</b></a></div>
+        <div class="mob_pad_t-13"> If you are new then <a href="javascript:void(0)" [routerLink]="['/register']" ><b class="sign-text">sign up</b></a></div>
       
-      <form class="mr-t-10 mr-b-10" >
+      <form class="mr-t-10 mr-b-10" (ngSubmit)="login()">
         <div class=" form-group"> 
-          <input type="email" placeholder="Enter Email" class="form-control" name="email" [(ngModel)]="email" id="email">
+          <input type="email" required placeholder="Enter Email" class="form-control" name="email" [(ngModel)]="email" id="email">
+        
         </div>
         <div class="form-group">
-          <input type="password" placeholder="Enter Password" class="form-control" name="password" [(ngModel)]="password
+          <input type="password" required placeholder="Enter Password" class="form-control" name="password" [(ngModel)]="password
           " id="password">
         </div>
         <div class="form-group">
-          <input type="submit" (click)="login()" placeholder="Enter Password" class="btn  btn-success">
+          <input type="submit"  class="btn  btn-success">
         </div>
       </form>
           <div class=" forget-text">Forget Password ?</div>
