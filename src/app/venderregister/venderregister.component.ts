@@ -14,12 +14,28 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class VenderregisterComponent implements OnInit {
 
+  vendorCategory=[];
+  mno:String;
+
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService,private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
+    this.getvendorCategory(); 
   
-  
+  }
+
+  getvendorCategory() {
+    this.conectionservice.getVendorCategory()
+      .subscribe(res => {
+        this.vendorCategory = res;
+        console.log(this.vendorCategory,'vnedor');
+        
+      });
+  }
+
+  Venderadd(){
+
   }
 
 }

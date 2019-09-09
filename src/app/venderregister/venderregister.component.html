@@ -89,11 +89,8 @@ type = "ball-clip-rotate"
                     <label for="exampleFormControlSelect1" class="">Business Name</label><span
                         class="text-danger">*</span>
                     <select class="form-control form_control_m" id="exampleFormControlSelect1">
-                        <option>Mahendi Artist</option>
-                        <option>Dj artist</option>
-                        <option>Catering Serivce</option>
-                        <option>Ghodi vala</option>
-                        <option>flower decoration</option>
+                        <option *ngFor="let vc of vendorCategory" value="vc.vendor_cat_name">{{vc.vendor_cat_name}}</option>
+                       
                     </select>
                 </div>
                 <div class="form-group">
