@@ -20,6 +20,12 @@ export class HomeComponent implements OnInit {
   homeslider:any;
   venue_category=[];
   vendor_category=[];
+
+name:String;
+email:String;
+contact_no:String;
+subject:String;
+msg:String;
   constructor(private router: Router,
     private conectionservice:ConnectionService,
     private spinner: NgxSpinnerService
