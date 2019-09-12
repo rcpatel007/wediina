@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   venueCategory = [];
   vendorCategory = [];
   cityarray = [];
+  ca:String;
   constructor(private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
