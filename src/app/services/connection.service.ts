@@ -118,7 +118,7 @@ venueBookindDate(id, updatedate) {
   
   
 venueInquiry(vinquiry) {    
-  return this.http.post(environment.api_url + '/vendor_inquiry/',vinquiry)
+  return this.http.post(environment.api_url + '/venue_inquiry',vinquiry)
    .pipe(map( res => res.json()));
 
 }

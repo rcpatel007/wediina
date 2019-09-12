@@ -176,8 +176,8 @@ sendInquiry()
 {
   this.spinner.show();
   let inquiry ={
-    customer_name:this.cname,
-		v_email:this.v_email,
+        customer_name:this.cname,
+		    v_email:this.v_email,
         venue_id: this.id,
         date:this.date,
         email: this.cemail,
