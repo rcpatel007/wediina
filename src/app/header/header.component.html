@@ -35,7 +35,7 @@
         <div class="menu-icon">
             <i class="fa fa-bars fa-2x"></i>
         </div>
-        <div class="logo" [routerLink]="['/']" style="z-index: 3;"> 
+        <div class="logo" [routerLink]="['/']" style="z-index: 3;">
             <img src="../../assets/image/wediina-logo.png" class="img-fluid" />
 
         </div>
@@ -43,13 +43,11 @@
         <div class="menu">
             <div class="form-group city-box city-menu" style="z-index: -1%;">
 
-                <input type="text" list="city"  name="city" [(ngModel)]="city" placeholder="City" style="font-weight: 660 !important;" class=" form-control" />
+                <input type="text" list="city" name="c" (change)="getcityName(c)" [(ngModel)]="c" placeholder="City"
+                    style="font-weight: 660 !important;" class=" form-control" />
                 <datalist id="city">
-                    <option selected value="Rajkot">Rajkot</option>
-                    <option value="Ahmedabad">Ahmedabad</option>
-                    <option value="Gandhinagar">Gandhinagar</option>
-                    <option value="Surat">Surat</option>
-                    <option value="Vadodra">Vadodra</option>
+                    <option selected disabled>City</option>
+                    <option *ngFor="let c of cityarray" value="{{c.city}}">{{c.city}}</option>
                 </datalist>
                 <!-- <select class="form-control  city_select_menu" id="exampleFormControlSelect1">
                     <option>Rajkot</option>
@@ -65,10 +63,10 @@
 
                     <ul class="subnav-content menu_ul" style="padding: 0;">
 
-                        <li *ngFor="let ve of vendorCategory" [routerLink]="['/vendors',ve._id]"><a href="JavaScript:Void(0);"
-                                >{{ve.vendor_cat_name}}</a></li>
-                            <!-- <li></li> -->
-                        <li class="menu_bottom" [routerLink]="['/PremiumPhotographer']"><a style="" class="premium-pk" 
+                        <li *ngFor="let ve of vendorCategory" [routerLink]="['/vendors',ve._id]"><a
+                                href="JavaScript:Void(0);">{{ve.vendor_cat_name}}</a></li>
+                        <!-- <li></li> -->
+                        <li class="menu_bottom" [routerLink]="['/PremiumPhotographer']"><a style="" class="premium-pk"
                                 href="JavaScript:Void(0);">Prime Photographers </a></li>
                     </ul>
                 </li>
@@ -77,7 +75,7 @@
 
                     <ul class="subnav-content">
 
-                        <li *ngFor="let ve of venueCategory" [routerLink]="['/Venues',ve._id]"><a 
+                        <li *ngFor="let ve of venueCategory" [routerLink]="['/Venues',ve._id]"><a
                                 href="JavaScript:Void(0);">{{ve.venue_cat_name}}</a></li>
 
                     </ul>
@@ -85,8 +83,8 @@
 
 
                 <!-- <li><a href="#" [routerLink]="['/Venues']">Venues</a></li> -->
-                <li><a href="javascript:void(0)" (click)="userfetch()" class="user-icon"><i
-                            class="fa fa-user"></i></a></li>
+                <li><a href="javascript:void(0)" (click)="userfetch()" class="user-icon"><i class="fa fa-user"></i></a>
+                </li>
             </ul>
         </div>
     </nav>

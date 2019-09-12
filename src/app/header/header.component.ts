@@ -14,9 +14,10 @@ declare var $: any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-city:String;
+  citynm: String;
   venueCategory = [];
-  vendorCategory=[];
+  vendorCategory = [];
+  cityarray = [];
   constructor(private router: Router, private conectionservice: ConnectionService) { }
 
   ngOnInit() {
@@ -30,7 +31,7 @@ city:String;
     // $("script[src='node_modules/bootstrap/dist/css/bootstrap.min.css']").remove();
     // $("script[src='node_modules/jquery/dist/jquery.min.js']").remove();
     // $("script[src='node_modules/bootstrap/dist/js/bootstrap.min.js']").remove();
-    
+
     // var dynamicScripts = [
     // "assets/css/style.css",
     // "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -50,12 +51,12 @@ city:String;
     // Scrolling Effect
 
     $(window).on("scroll", function () {
-      if ($(window).scrollTop()) {  
-        $('.menu-icon').css("background","#e2e2e2 !important");
-        $('nav').addClass('black').css({"box-shadow":"0px -1px 7px","z-index":"3","background":"#e2e2e2"});
-        $('.city-menu').css("display","block");
+      if ($(window).scrollTop()) {
+        $('.menu-icon').css("background", "#e2e2e2 !important");
+        $('nav').addClass('black').css({ "box-shadow": "0px -1px 7px", "z-index": "3", "background": "#e2e2e2" });
+        $('.city-menu').css("display", "block");
         $('.logo').addClass('logo-scroll');
-        $('nav ul li a').css({"color":"black","transition":"0.5s","text-shadow":"none"});
+        $('nav ul li a').css({ "color": "black", "transition": "0.5s", "text-shadow": "none" });
       }
 
       else {
@@ -70,43 +71,60 @@ city:String;
       }
     })
 
-this.getvendorCategory();
+    this.getvendorCategory();
     this.getvenueCategory();
+    this.getcity();
   }
+
+  getcity() {
+    this.conectionservice.getcity()
+      .subscribe(res => {
+        this.cityarray = res;
+        console.log(res);
+
+      });
+  }
+
+  getcityName(c) {
+
+    environment.city = c;
+  }
+
+
 
   getvendorCategory() {
     this.conectionservice.getVendorCategory()
       .subscribe(res => {
         this.vendorCategory = res;
-        console.log(this.vendorCategory,'vnedor');
-        
+        console.log(this.vendorCategory, 'vnedor');
+
       });
   }
 
-  
+
   getvenueCategory() {
     this.conectionservice.getVenueCategory()
       .subscribe(res => {
         this.venueCategory = res;
-        console.log(this.venueCategory,'venue');
-        
+        console.log(this.venueCategory, 'venue');
+
       });
   }
 
-  userfetch(){
+  userfetch() {
     if (environment.customer_id != null) {
-      this.router.navigate(["/profile",environment.customer_id]);
-    }
-    
-   else if (environment.venue_id !=null) {
-      this.router.navigate(["/Venueprofile",environment.venue_id]);
-    }
-    
-   else if (environment.vendor_id !=null) {
-      this.router.navigate(["/Vendorprofile",environment.vendor_id]);
+      this.router.navigate(["/profile", environment.customer_id]);
     }
 
-    else{
+    else if (environment.venue_id != null) {
+      this.router.navigate(["/Venueprofile", environment.venue_id]);
+    }
+
+    else if (environment.vendor_id != null) {
+      this.router.navigate(["/Vendorprofile", environment.vendor_id]);
+    }
+
+    else {
       this.router.navigate(["/login"]);
 
     }

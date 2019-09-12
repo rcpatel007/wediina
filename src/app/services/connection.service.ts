@@ -56,7 +56,7 @@ imgurotherImage(otherbase64){
 
 venueLogin(venue_login){
   // let headers = new Headers();
-  return this.http.post(environment.api_url + '/venueLogin',venue_login)
+  return this.http.post(environment.api_url + '/venueLogin/',venue_login)
    .pipe(map( res => res.json()));
 
 }
@@ -106,6 +106,20 @@ addVenue(venue) {
 editVenue(id,updateVenue) {
 return this.http.put(environment.api_url + '/venue_update/'+id, updateVenue)
 .pipe(map( res => res.json()));
+
+}
+
+
+venueBookindDate(id, updatedate) {
+  return this.http.put(environment.api_url + '/venue_bookdate/'+id, updatedate)
+    .pipe(map( res => res.json()));
+  
+  }
+  
+  
+venueInquiry(vinquiry) {    
+  return this.http.post(environment.api_url + '/vendor_inquiry/',vinquiry)
+   .pipe(map( res => res.json()));
 
 }
 /******************************************************* */
@@ -159,12 +173,23 @@ addVendor(vendor) {
 
 }
 
+vendorInquiry(vinquiry) {    
+  return this.http.post(environment.api_url + '/venue_inquiry/',vinquiry)
+   .pipe(map( res => res.json()));
+
+}
 
   editVendor(id, updateVendor) {
 return this.http.put(environment.api_url + '/vendor_update/'+id, updateVendor)
   .pipe(map( res => res.json()));
 
 }
+vendorBookindDate(id, updatedate) {
+  return this.http.put(environment.api_url + '/vendor_bookdate/'+id, updatedate)
+    .pipe(map( res => res.json()));
+  
+  }
+  
 
 // ***********************************************************
 // Customer
@@ -180,7 +205,11 @@ addcustomer(customer) {
 
 
 customerLogin(customer){
-  return this.http.post(environment.api_url + '/customerLogin',customer)
+  // let headers = new Headers;
+  //  headers.append('Access-Control-Allow-Origin',' *');
+  // headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token');
+  return this.http.post(environment.api_url + '/customerLogin/',customer)
    .pipe(map( res => res.json()));
 
 }
@@ -209,6 +238,52 @@ return this.http.put(environment.api_url + '/customer/'+id, updateVenue)
 .pipe(map( res => res.json()));
 
 }
+/*********************************************************************** */
+// review
+/********************************************************** */
 
 
+getreviewById(id) {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/review/' +id)
+    .pipe(map( res => res.json()));
+
+}
+
+
+getreview() {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/review')
+    .pipe(map( res => res.json()));
+
+}
+
+// get Product by id
+
+getreviewId(id) {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/review/' +id)
+    .pipe(map( res => res.json()));
+
+}
+
+// add product
+
+addreview(review) {   
+  let headers = new Headers;
+   headers.append('Access-Control-Allow-Origin',' *');
+  headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token'); 
+   return this.http.post(environment.api_url + '/review',review,{headers :headers})
+    .pipe(map( res => res.json()));
+
+}
+
+
+getcity() {
+  
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/city')
+    .pipe(map( res => res.json()));
+}
 }

@@ -90,6 +90,7 @@ address:String;
      this.lname=res.lname;
      this.mno=res.contactno;
     this.gst=res.gstno;
+    this.email = res.email;
     this.parking=res.parking;
       this.image =res.image;
      this.cname=res.companyName;

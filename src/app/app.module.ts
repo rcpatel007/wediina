@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { RatingModule } from 'ng-starrating';
 // import { StarRatingModule } from '@angular-star-rating-lib/angular-star-rating';
 
 import { HomeComponent } from './home/home.component';
@@ -85,6 +86,7 @@ const appRoutes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
+    RatingModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
     // Ng2CompleterModule,

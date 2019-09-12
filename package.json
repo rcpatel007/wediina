@@ -28,6 +28,7 @@
     "css-star-rating": "^1.2.4",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
+    "ng-starrating": "^1.0.7",
     "ngx-bootstrap": "^4.2.0",
     "ngx-spinner": "^7.2.0",
     "rxjs": "~6.3.3",

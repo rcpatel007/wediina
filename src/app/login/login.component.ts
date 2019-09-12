@@ -101,7 +101,8 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         environment.customer_id = res._id;
         environment.venue_id = null;
-        environment.vendor_id =null; 
+        environment.vendor_id =null;
+        environment.vemail =res.email; 
         this.router.navigate(["/home"]);
         this.spinner.hide();
    
@@ -127,6 +128,7 @@ export class LoginComponent implements OnInit {
         environment.venue_id = res._id;
         environment.customer_id =null;
         environment.vendor_id =null;
+        environment.vemail =res.email;
         this.spinner.hide();
    
         this.router.navigate(["/Venueprofile", res._id]);
@@ -153,6 +155,7 @@ export class LoginComponent implements OnInit {
         environment.vendor_id = res._id;
         environment.customer_id =null;
         environment.venue_id =null;
+        environment.vemail =res.email;
         this.spinner.hide();
    
         this.router.navigate(["/VenderDetail", res._id]);

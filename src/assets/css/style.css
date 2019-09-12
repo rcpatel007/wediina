@@ -741,10 +741,10 @@ nav ul li a {
     color:#585858;
 }
 .greeting_head{
-    font-size: 1.4em;
-    font-weight: 550;
+    font-size: 2em;
+    font-weight: 700;
     color: #000;
-
+    font-family: 'Courgette', cursive;
 
 }
 .star{

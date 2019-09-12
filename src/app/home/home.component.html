@@ -13,8 +13,8 @@ type = "ball-clip-rotate"
     <div class="top_cont_inner">
         <div class="">
             <div class="top_content pad-0">
-                <carousel [interval]=3000 [showIndicators]="false" >
-                    <slide class="faddin" *ngFor="let s of homeslider; let index=index">
+                <carousel  class=" carousel slide" [interval]=3000 [showIndicators]="true"  >
+                    <slide  class="carousel-inner" *ngFor="let s of homeslider; let index=index">
                         <img  class="background-img carousel_img " src="{{s.image}}" />
                         <div class="carousel-caption">
                             <h3 class="slide_head">The Wedding Venue</h3>

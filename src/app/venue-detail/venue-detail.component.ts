@@ -6,7 +6,7 @@ import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
-
+import { StarRatingComponent } from 'ng-starrating';
 declare var $: any;
 @Component({
   selector: 'app-venue-detail',
@@ -31,6 +31,16 @@ export class VenueDetailComponent implements OnInit {
   customer:boolean;
   email:String;
   password:String;
+  feedback:String;
+  rat:Number;
+  cname:String;
+  cemail:String;
+  mno:string;
+  date:Date;
+  person:number;
+  purpose:String;
+  v_email:String;
+
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
@@ -70,9 +80,15 @@ $(document).ready(function() {
 
 this.customerfetch(); 
 this.getvenueDetail();
+this.fetchemail();
 }
 
-
+onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+  alert(`Old Value:${$event.oldValue}, 
+    New Value: ${$event.newValue}, 
+    Checked Color: ${$event.starRating.checkedcolor}, 
+    Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+}
 
 getvenueDetail(){
   this.conectionservice.getVenueById(this.id)
@@ -135,11 +151,63 @@ login(){
       environment.customer_id = res._id;
       environment.venue_id = null;
       environment.vendor_id =null; 
+      environment.vemail =res.email;
       this.spinner.hide();
  this.customer =true;
+//  this.addFeedback();
       console.log(res, 'customerdetail');
 
     });
+
+}
+
+fetchemail(){
+  let id = this.id;
+  this.conectionservice.getVenueById(id)
+  .subscribe(res =>{
+    this.v_email =res.email;
+
+    console.log(this.v_email);
+    
+  });
+
+}
+sendInquiry()
+{
+  this.spinner.show();
+  let inquiry ={
+    customer_name:this.cname,
+		v_email:this.v_email,
+        venue_id: this.id,
+        date:this.date,
+        email: this.cemail,
+        mobileNo: this.mno,
+        no_of_person: this.person,
+        purpose:this.purpose
+  }
+
+  this.conectionservice.venueInquiry(inquiry)
+  .subscribe(res=>{
+    console.log(res);
+    this.spinner.hide();
+  });
+}
+addFeedback(){
+let review = {
+  customer_id:environment.customer_id,
+  venue_id: this.id,
+  vendor_id: null,
+  rating:this.rat,
+  comment:this.feedback
+}
+
+console.log("review",review);
+
+this.spinner.show();
+  this.conectionservice.addreview(review)
+  .subscribe(res=>{
+this.spinner.hide();
+  });
 
 }
 }
