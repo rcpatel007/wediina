@@ -42,7 +42,7 @@ export class PremiumPhotographerDetailComponent implements OnInit {
   photo_img: String;
   datearray = [];
   review= [];
-  private placeholder: string = 'Select a date';
+ placeholder: string = 'Select a date';
 
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
