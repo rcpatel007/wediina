@@ -24,6 +24,16 @@ export class VenderDetailComponent implements OnInit {
   email:String;
   password:String;
   customer:boolean;
+  feedback:String;
+  rat:Number;
+  cname:String;
+  cemail:String;
+  mno:string;
+  date:Date;
+  location:String;
+  purpose:String;
+  v_email:String;
+
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService) { }
@@ -99,4 +109,43 @@ export class VenderDetailComponent implements OnInit {
       });
   
   }
+  sendInquiry()
+{
+  this.spinner.show();
+  let inquiry ={
+        customer_name:this.cname,
+		    v_email:this.v_email,
+        vendor_id: this.id,
+        venue_id:null,
+        date:this.date,
+        email: this.cemail,
+        mobileNo: this.mno,
+        location: this.location,
+        purpose:this.purpose
+  }
+
+  this.conectionservice.vendorInquiry(inquiry)
+  .subscribe(res=>{
+    console.log(res);
+    this.spinner.hide();
+  });
+}
+addFeedback(){
+let review = {
+  customer_id:environment.customer_id,
+  venue_id: null,
+  vendor_id: this.id,
+  rating:this.rat,
+  comment:this.feedback
+}
+
+console.log("review",review);
+
+this.spinner.show();
+  this.conectionservice.addreview(review)
+  .subscribe(res=>{
+this.spinner.hide();
+  });
+
+}
 }

@@ -204,27 +204,27 @@ type = "ball-clip-rotate"
       
             <div class="form-group">
                 <label for="fname" class=""> Name</label><span class="text-danger">*</span>
-                <input type="text" class="form-control form_control_m" id="name" placeholder="Enter your Name">
+                <input type="text" class="form-control form_control_m" name="cname" [(ngModel)]="cname" id="name" placeholder="Enter your Name">
             </div>
             <div class="form-group">
                 <label for="fname" class="">Email</label><span class="text-danger">*</span>
-                <input type="email" class="form-control form_control_m" id="email" placeholder="enter your Email">
+                <input type="email" class="form-control form_control_m" id="email" name="cemail" [(ngModel)]="cemail" placeholder="enter your Email">
             </div>
             <div class="form-group">
                 <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
-                <input type="text" class="form-control form_control_m" id="mno" placeholder=" enter your Mobile no">
+                <input type="text" class="form-control form_control_m" id="mno" name="mno" [(ngModel)]="mno" placeholder=" enter your Mobile no">
             </div>
             <div class="form-group">
                 <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
-                <input type="date" class="form-control form_control_m" id="date" placeholder="Enter your Date">
+                <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date">
             </div>
             <div class="form-group">
                 <label for="fname" class="">Location</label><span class="text-danger">*</span>
-                <input type="text" class="form-control form_control_m" id="fname" placeholder="Enter Location">
+                <input type="text" class="form-control form_control_m" id="fname" name="location" [(ngModel)]="location" placeholder="Enter Location">
             </div>
             <div class="form-group">
                 <label for="fname" class="">purpose</label><span class="text-danger">*</span>
-                <input type="text" class="form-control form_control_m" id="purpose" placeholder="Please Write a purpose why are you need this place.">
+                <input type="text" class="form-control form_control_m" id="purpose" name="purpose" [(ngModel)]="purpose" placeholder="Please Write a purpose why are you need this place.">
             </div>
         </div>
   

@@ -18,6 +18,7 @@ export class VenderGridComponent implements OnInit {
   venues = [];
   city = [];
   area = [];
+  cityget:String;
 
   constructor(private route: ActivatedRoute,private router: Router, 
     private conectionservice: ConnectionService,
@@ -71,22 +72,94 @@ export class VenderGridComponent implements OnInit {
       });
   }
 
-  getcitywise() {
+  fetchcity(cityget){
 
+    environment.city = cityget;
+    this.cityfilter();
+  }
+  
+  // getcitywise() {
+
+  //   this.conectionservice.getVendors()
+  //     .subscribe(res => {
+  //       // this.venues = res;
+
+  //       for (let index = 0; index < res.length; index++) {
+ 
+  //         if (res[index].vendor_cat_id == this.id) {
+  //           this.venues.push(res[index]);
+            
+  //         }
+  //       }
+  //       console.log(this.city);
+
+  //     });
+  // }
+  
+  cityfilter(){
+    this.spinner.show();
+     this.venues =[];
+    // location.reload();
+    // window.history.replaceState({},'/Venues/'+this.id);
     this.conectionservice.getVendors()
       .subscribe(res => {
         // this.venues = res;
-
+        // this.router.navigateByUrl('/Venues/'+this.id);
         for (let index = 0; index < res.length; index++) {
- 
+      
           if (res[index].vendor_cat_id == this.id) {
-            this.venues.push(res[index]);
-            
+  
+              if (res[index].city == environment.city) {
+                this.venues.push(res[index]);
+              }
+              
+      
           }
         }
-        console.log(this.city);
-
+        console.log(this.venues);
+        this.spinner.hide();
+   
       });
+  
+  
+  
+  }
+
+  datefilter(booking){
+    this.venues = [];
+   
+    let book =booking;
+    console.log(book);
+    
+    this.spinner.show();
+    // location.reload();
+    // window.history.replaceState({},'/Venues/'+this.id);
+    this.conectionservice.getVenues()
+      .subscribe(res => {
+        // this.venues = res;
+        // this.router.navigateByUrl('/Venues/'+this.id);
+   
+        for (let index = 0; index < res.length; index++) {
+
+          if (res[index].venue_cat_id == this.id) {
+
+            for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
+              // console.log("database date",res[index].bookingdate);
+              if (res[index].bookingdate[secondindex] != book.formatted) {
+                console.log("database date",res[index].bookingdate[secondindex]);
+              
+               console.log("date",book.formatted);
+               
+                this.venues.push(res[index]);
+              } 
+            }
+          }
+        }
+        console.log(this.venues);
+        this.spinner.hide();
+      });
+
+
   }
 
 }

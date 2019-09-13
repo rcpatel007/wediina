@@ -11,6 +11,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RatingModule } from 'ng-starrating';
 // import { StarRatingModule } from '@angular-star-rating-lib/angular-star-rating';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -92,6 +93,7 @@ const appRoutes = [
     // Ng2CompleterModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    MyDatePickerModule
     
   
   ],
