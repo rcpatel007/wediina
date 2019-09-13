@@ -6,6 +6,7 @@ import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import {IMyDpOptions} from 'mydatepicker';
 
 @Component({
   selector: 'app-vender-grid',
@@ -19,7 +20,11 @@ export class VenderGridComponent implements OnInit {
   city = [];
   area = [];
   cityget:String;
-
+  booking:Date;
+  public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+};
   constructor(private route: ActivatedRoute,private router: Router, 
     private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService) {
@@ -67,6 +72,13 @@ export class VenderGridComponent implements OnInit {
          
           }
         }
+
+        this.city.forEach((item, index) => {
+          if (index !== this.city.findIndex(i => i.name === item.name)) {
+              this.city.splice(index, 1);
+          }
+          
+      });
         console.log(this.venues);
         this.spinner.hide();
       });

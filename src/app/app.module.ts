@@ -51,7 +51,7 @@ const appRoutes = [
   { path: 'VenueDetail/:id', component: VenueDetailComponent },
   { path: 'About', component: AboutComponent },
   { path: 'PremiumPhotographer', component: PremiumPhotographerComponent },
-  { path: 'PremiumPhotographerDetail', component: PremiumPhotographerDetailComponent },
+  { path: 'PremiumPhotographerDetail/:id', component: PremiumPhotographerDetailComponent },
   { path: 'Contact', component: ContactComponent },
  ];
 @NgModule({

@@ -25,15 +25,19 @@
             <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12  float-left">
               <!-- <b>Filter</b>  -->
               <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 text-center float-left">  
-                  <div class="form-group" style="margin-left: 21%;">
-                      <input type="date" placeholder="Your Date" style="width: 75% !important;" class=" form-control inquery_btn" />
-                    </div>
+                  <!-- <div class="form-group" style="margin-left: 21%;"> -->
+                      <!-- <input type="date" placeholder="Your Date" style="width: 75% !important;" class=" form-control inquery_btn" /> -->
+                      <my-date-picker name="booking" [(ngModel)]="booking" [placeholder]="placeholder"   [options]="myDatePickerOptions" [(ngModel)]="booking"  
+                      style="margin-left: 21%;" 
+                      (dateChanged)="datefilter($event)" required></my-date-picker>
+      
+                    <!-- </div> -->
                 <a href="" class="btn btn-success inquery_btn"><i class="fa fa-map-marker"></i> &nbsp;&nbsp;&nbsp; Location</a>
               
             </div>
            
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left text-center">
-                <a href="http://fotofactorystudio.in" class="website_link" target="_blank" >Go to Our Website</a>
+                <a href="{{weblink}}" class="website_link" target="_blank" >Go to Our Website</a>
             </div>
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 text-center float-right">
                 <button data-toggle="modal" data-target="#review" class="btn btn_danger inquery_btn mob_btn_pos mob_l_m_28 ">Add
@@ -79,9 +83,9 @@
   </div>
     <div class="row ">
       
-      <div class="col-lg-3 float-left venues mr-b-4 venue-grid" data-toggle="modal" data-target=".video_modal">
+      <div  *ngFor="let v of video" class="col-lg-3 float-left venues mr-b-4 venue-grid" data-toggle="modal" data-target=".video_modal">
         <div class="venue-card">
-            <img src="../../assets/image/photographer/24-Hero-Aadi-and-Aruna-Marriage-Photos-Wedding-HD-Photos-Gallery-Stills.jpg" class="grid_img"  />
+            <img src="../../assets/image/photographer/24-Hero-Aadi-and-Aruna-Marriage-Photos-Wedding-HD-Photos-Gallery-Stills.jpg" (click)="getvideo(v)"  class="grid_img"  />
            
             <div>
 
@@ -89,46 +93,7 @@
           </div>
         
       </div>
-      <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
-        <div class="venue-card">
-            <img src="../../assets/image/photographer/4efff61978857d2949e64b6001191009.jpg" class="grid_img"  />
-           
-            <div>
-
-            </div>
-          </div>
-        
-      </div>
-      <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
-        <div class="venue-card">
-            <img src="../../assets/image/photographer/Happy Wedding HD Movie Stills Photo Gallery8.jpg" class="grid_img"  />
-           
-            <div>
-
-            </div>
-          </div>
-        
-      </div>
-      <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
-        <div class="venue-card">
-            <img src="../../assets/image/photographer/punjabi-couple-images-33.jpg" class="grid_img"  />
-           
-            <div>
-
-            </div>
-          </div>
-        
-      </div>
-      <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
-        <div class="venue-card">
-            <img src="../../assets/image/photographer/tamil-brahmin-wedding-photography-14.jpg" class="grid_img"  />
-           
-            <div>
-
-            </div>
-          </div>
-        
-      </div>
+      
     </div>
 </section>
 
@@ -141,9 +106,9 @@
     </div>
       <div class="row ">
         
-        <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
+        <div *ngFor="let photo of sub_images" class="col-lg-3 float-left venues mr-b-4 venue-grid" >
           <div class="venue-card" data-toggle="modal" data-target=".bd-example-modal-lg">
-              <img src="../../assets/image/photographer/24-Hero-Aadi-and-Aruna-Marriage-Photos-Wedding-HD-Photos-Gallery-Stills.jpg" class="grid_img"  />
+              <img src="{{photo}}" class="grid_img" (click)="getimg(photo)"  />
              
               <div>
   
@@ -151,7 +116,7 @@
             </div>
           
         </div>
-        <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
+        <!-- <div class="col-lg-3 float-left venues mr-b-4 venue-grid" >
           <div class="venue-card">
               <img src="../../assets/image/photographer/4efff61978857d2949e64b6001191009.jpg" class="grid_img"  />
              
@@ -190,27 +155,30 @@
               </div>
             </div>
           
-        </div>
+        </div> -->
       </div>
       <div class="mr-t-9 v_desp card">
           <h4>Testimonial</h4>
-          <div class="testimonial_user">
+          <div *ngFor="let r of review" class="testimonial_user">
             <div>
               <div class="col-lg-6 float-left">
-                <i class="fa fa-user test_user"></i>Chirag Ramani 
+                <i class="fa fa-user test_user"></i>{{r.c_name}} 
               </div>          
               <div class="star-rating col-lg-6 float-right   text-right">
-                  <span class="fa fa-star-o"  data-rating="1"></span>
+                  <!-- <span class="fa fa-star-o"  data-rating="1"></span>
                   <span class="fa fa-star-o"  data-rating="2"></span>
                   <span class="fa fa-star-o"  data-rating="3"></span>
                   <span class="fa fa-star-o"  data-rating="4"></span>
                   <span class="fa fa-star-o"  data-rating="5"></span>
-                  <input type="hidden" name="whatever1" class="rating-value" value="3">
+                  <input type="hidden" name="whatever1" class="rating-value" value="3"> -->
+                  <span class="review_span">
+                  {{r.rating}}/5
+                </span>
                 </div> 
               
               </div>
             <div class="review">
-              Thanks for the creat our memory 
+              {{r.commnet}} 
             </div>
           </div>
   
@@ -219,21 +187,21 @@
         </div>
   </section>
   
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg"   tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <img src="../../assets/image/photographer/punjabi-couple-images-33.jpg" class="img-fluid h-70vh" style="height: 70vh;"  />
+            <img src="{{photo_img}}" class="img-fluid h-70vh" style="height: 70vh;"  />
               
         </div>
       </div>
     </div>
 
     
-  <div class="modal fade video_modal bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade video_modal bd-example-modal-lg" id="mainvideomodel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <iframe class="embed-responsive-item h-70vh" id="video" src="https://www.youtube.com/embed/t53c-tLZS7E"
-            allowfullscreen></iframe>     
+            <iframe class="embed-responsive-item h-70vh" id="videopopup" src="{{playvideo}}"
+            allowfullscreen></iframe>       
         </div>
       </div>
     </div>
@@ -248,42 +216,42 @@
           <h4 class="modal-title">Send Inquiry</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-  
+  <form (ngSubmit)="sendInquiry()">
         <!-- Modal body -->
         <div class="modal-body">
   
           <div class="form-group">
             <label for="fname" class=""> Name</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="name" placeholder="Enter your Name">
+            <input type="text" class="form-control form_control_m" name="cname" [(ngModel)]="cname"  id="name" placeholder="Enter your Name">
           </div>
           <div class="form-group">
             <label for="fname" class="">Email</label><span class="text-danger">*</span>
-            <input type="email" class="form-control form_control_m" id="email" placeholder="enter your Email">
+            <input type="email" class="form-control form_control_m" id="email" name="cname" [(ngModel)]="cname" placeholder="enter your Email">
           </div>
           <div class="form-group">
             <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="mno" placeholder=" enter your Mobile no">
+            <input type="text" class="form-control form_control_m" name="mno" [(ngModel)]="mno" id="mno" placeholder=" enter your Mobile no">
           </div>
           <div class="form-group">
             <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
-            <input type="date" class="form-control form_control_m" id="date" placeholder="Enter your Date">
+            <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date">
           </div>
           <div class="form-group">
-            <label for="fname" class="">No of Person</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="fname" placeholder="Enter No of Person">
+            <label for="fname" class="">Location</label><span class="text-danger">*</span>
+            <input type="text" class="form-control form_control_m" id="fname" name="location" [(ngModel)]="location" placeholder="Enter your Function location">
           </div>
           <div class="form-group">
             <label for="fname" class="">purpose</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="purpose"
+            <input type="text" class="form-control form_control_m" id="purpose" name="purpose" [(ngModel)]="purpose"
               placeholder="Please Write a purpose why are you need this place.">
           </div>
         </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success w-100" data-dismiss="modal">Send</button>
+          <button type="submit" class="btn btn-success w-100" data-dismiss="modal">Send</button>
         </div>
-  
+      </form>
       </div>
       <div *ngIf="customer == false" class="modal-content">
   
@@ -331,7 +299,7 @@
           <h4 class="modal-title">Review</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-  
+  <form (ngSubmit)="addFeedback()">
         <!-- Modal body -->
         <div class="modal-body">
   
@@ -341,11 +309,11 @@
                 <span class="fa fa-star-o"  data-rating="3"></span>
                 <span class="fa fa-star-o"  data-rating="4"></span>
                 <span class="fa fa-star-o"  data-rating="5"></span>
-                <input type="hidden" name="whatever1" class="rating-value" value="3">
+                <input type="hidden" name="rat" [(ngModel)]="rat" class="rating-value" value="3">
               </div>
           <div class="form-group">
             <label for="fname" class="">Comment</label><span class="text-danger">*</span>
-            <textarea class="form-control form_control_m" id="cmt" rows="15"
+            <textarea class="form-control form_control_m" id="cmt" rows="15" maxlength="200" name="feedback" [(ngModel)]="feedback"
               placeholder="Please Enter your valuable feedback"></textarea>
           </div>
   
@@ -353,8 +321,9 @@
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success w-100" data-dismiss="modal">Send</button>
+          <button type="button" class="btn btn-success w-100" >Send</button>
         </div>
+      </form>
   
       </div>
       <div *ngIf="customer == false" class="modal-content">

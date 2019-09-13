@@ -149,7 +149,7 @@ type = "ball-clip-rotate"
            
             <form (ngSubmit)="addFeedback();">
                
-              <div class="star-rating col-lg-6 float-right   text-right">
+              <div class="star-rating col-lg-6 float-right text-right">
                     <span class="fa fa-star-o"  data-rating="1"></span>
                     <span class="fa fa-star-o"  data-rating="2"></span>
                     <span class="fa fa-star-o"  data-rating="3"></span>
@@ -160,17 +160,53 @@ type = "ball-clip-rotate"
               <div class="form-group">
                     <textarea rows="5" class="form-control w-100" name="feedback" [(ngModel)]="feedback"  maxlength="200" placeholder="Enter your feedback here.... "></textarea>
                   </div>
-                 
-                
                 <div class="form-group">
                   <input class="form-control btn btn-danger"  type="submit" value="Submit" />
                   <!-- <input class="form-control btn btn-danger" *ngIf="customer == false" type="button" value="Submit" data-toggle="modal" data-target="#review" /> -->
                 </div>
             </form>
             </div>
-          <div class="review">
-            This party plot is best in Rajkot
-          </div>
+            <!-- <div class="testimonial_user">
+                <div>
+                  <div class="col-lg-6 float-left">
+                    <i class="fa fa-user test_user"></i>Chirag Ramani 
+                  </div>          
+                  <div class="star-rating col-lg-6 float-right   text-right">
+                      <span class="fa fa-star-o"  data-rating="1"></span>
+                      <span class="fa fa-star-o"  data-rating="2"></span>
+                      <span class="fa fa-star-o"  data-rating="3"></span>
+                      <span class="fa fa-star-o"  data-rating="4"></span>
+                      <span class="fa fa-star-o"  data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="3">
+                    </div> 
+                  
+                  </div>
+                <div class="review">
+                  This party plot is best in Rajkot
+                </div>
+              </div> -->
+              <div *ngFor="let r of review" class="testimonial_user">
+                  <div>
+                    <div class="col-lg-6 float-left">
+                      <i class="fa fa-user test_user"></i>{{r.c_name}} 
+                    </div>          
+                    <div class="star-rating col-lg-6 float-right   text-right">
+                        <!-- <span class="fa fa-star-o"  data-rating="1"></span>
+                        <span class="fa fa-star-o"  data-rating="2"></span>
+                        <span class="fa fa-star-o"  data-rating="3"></span>
+                        <span class="fa fa-star-o"  data-rating="4"></span>
+                        <span class="fa fa-star-o"  data-rating="5"></span>
+                        <input type="hidden" name="whatever1" class="rating-value" value="3"> -->
+                        <span class="review_span">
+                        {{r.rating}}/5
+                      </span>
+                      </div> 
+                    
+                    </div>
+                  <div class="review">
+                    {{r.commnet}} 
+                  </div>
+                </div>
         </div>
        
 
@@ -223,7 +259,7 @@ type = "ball-clip-rotate"
       <!-- Modal body -->
       <div class="modal-body">
         <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/t53c-tLZS7E"
+        <iframe class="embed-responsive-item"  src="{{playvideo}}"
             allowfullscreen></iframe>
         </div>
       </div>
@@ -240,7 +276,7 @@ type = "ball-clip-rotate"
 <div class="modal fade video_modal bd-example-modal-lg" id="mainvideomodel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-          <iframe class="embed-responsive-item h-70vh" id="videopopup" src="https://www.youtube.com/embed/t53c-tLZS7E"
+          <iframe class="embed-responsive-item h-70vh" id="videopopup" src="{{playvideo}}"
           allowfullscreen></iframe>     
       </div>
     </div>

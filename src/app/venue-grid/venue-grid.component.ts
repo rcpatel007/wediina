@@ -105,6 +105,12 @@ export class VenueGridComponent implements OnInit {
             this.city.push(res[index].city);
           }
         }
+        this.city.forEach((item, index) => {
+          if (index !== this.city.findIndex(i => i.name === item.name)) {
+              this.city.splice(index, 1);
+          }
+       
+        });
         console.log(this.venues);
         this.spinner.hide();
 

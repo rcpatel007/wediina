@@ -6,6 +6,8 @@ import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
+declare var $: any;
+
 @Component({
   selector: 'app-vender-detail',
   templateUrl: './vender-detail.component.html',
@@ -20,6 +22,7 @@ export class VenderDetailComponent implements OnInit {
   contactno:String;
   detail:String;
   video=[];
+  playvideo:String;
   sub_images =[];
   email:String;
   password:String;
@@ -33,7 +36,7 @@ export class VenderDetailComponent implements OnInit {
   location:String;
   purpose:String;
   v_email:String;
-
+  review=[];
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService) { }
@@ -43,8 +46,19 @@ export class VenderDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+
+    $(document).ready(function() {
+
+      $('#mainvideomodel').click(function() {
+      //  alert('hey'); 
+        $("#videopopup").attr("src","");
+      });
+      
+    });
     this.customerfetch();
   this.getvendor();
+
+  this.getfeedback();
   }
 
 
@@ -69,6 +83,11 @@ export class VenderDetailComponent implements OnInit {
     });
   }
 
+  getvideo(v){
+    this.playvideo = v;
+    $("#videopopup").attr("src",v);
+    console.log(this.playvideo);
+  }
 
   customerfetch(){
     if(environment.customer_id !=null)
@@ -128,6 +147,41 @@ export class VenderDetailComponent implements OnInit {
   .subscribe(res=>{
     console.log(res);
     this.spinner.hide();
+  });
+}
+
+getfeedback(){
+  // let feed:any;
+  let c_id:String;
+  // let c_name:String;
+  // let comment:String;
+  // let rating:String;
+    this.conectionservice.getreview()
+    .subscribe(res =>{
+  
+  console.log(res);
+  for (let index = 0; index < res.length; index++) {
+  
+    if (res[index].vendor_id == this.id) {
+      
+      c_id = res[index].customer_id;
+  
+      this.conectionservice.getCustomerById(c_id)
+      .subscribe(result =>{
+        let feed ={
+          c_name:result.name,
+          commnet:res[index].comment,
+          rating:res[index].rating
+        }
+  
+        this.review.push(feed);
+  
+  
+      });
+    }
+  }
+  console.log("review1",this.review);
+ 
   });
 }
 addFeedback(){

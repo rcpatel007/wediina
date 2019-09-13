@@ -40,7 +40,7 @@ export class VenueDetailComponent implements OnInit {
   person:number;
   purpose:String;
   v_email:String;
-
+  review=[];
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
@@ -81,6 +81,7 @@ $(document).ready(function() {
 this.customerfetch(); 
 this.getvenueDetail();
 this.fetchemail();
+this.getfeedback();
 }
 
 onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
@@ -171,6 +172,42 @@ fetchemail(){
     
   });
 
+}
+
+
+getfeedback(){
+  // let feed:any;
+  let c_id:String;
+  // let c_name:String;
+  // let comment:String;
+  // let rating:String;
+    this.conectionservice.getreview()
+    .subscribe(res =>{
+  
+  console.log(res);
+  for (let index = 0; index < res.length; index++) {
+  
+    if (res[index].venue_id == this.id) {
+      
+      c_id = res[index].customer_id;
+  
+      this.conectionservice.getCustomerById(c_id)
+      .subscribe(result =>{
+        let feed ={
+          c_name:result.name,
+          commnet:res[index].comment,
+          rating:res[index].rating
+        }
+  
+        this.review.push(feed);
+  
+  
+      });
+    }
+  }
+  console.log("review1",this.review);
+ 
+  });
 }
 sendInquiry()
 {

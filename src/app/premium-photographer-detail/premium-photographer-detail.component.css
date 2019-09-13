@@ -1,0 +1,12 @@
+.mydp{
+    width: 60% !important;
+    margin-left: -21% !important; 
+}
+.mydp .selection{
+    background: #ff353a !important;
+    color:#fff !important;
+}
+.selection::placeholder{
+    color:#fff;
+    font-size: 1rem;
+}
