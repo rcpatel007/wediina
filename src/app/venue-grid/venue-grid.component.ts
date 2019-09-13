@@ -21,7 +21,7 @@ export class VenueGridComponent implements OnInit {
   city = [];
   area = [];
   cityget: String;
-  booking:Date;
+  booking:String;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',

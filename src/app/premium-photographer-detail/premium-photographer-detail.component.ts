@@ -26,6 +26,7 @@ export class PremiumPhotographerDetailComponent implements OnInit {
   contactno: String;
   detail: String;
   video = [];
+  booking:String;
   playvideo: String;
   sub_images = [];
   feedback: String;
