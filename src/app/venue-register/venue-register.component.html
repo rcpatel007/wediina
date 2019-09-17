@@ -1,12 +1,5 @@
 <app-header></app-header>
-<ngx-spinner
-bdOpacity = 0.9
-bdColor = "#fff"
-size = "large"
-color = "#000000"
-type = "ball-clip-rotate"
-[fullScreen] = "true"
->
+<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="large" color="#000000" type="ball-clip-rotate" [fullScreen]="true">
 </ngx-spinner>
 
 <section id="home" class="top_cont_outer contanier">
@@ -15,7 +8,8 @@ type = "ball-clip-rotate"
             <div class="top_content pad-0">
                 <carousel [interval]=2000 [showIndicators]="false" [noPause]="false">
                     <slide class="fadding">
-                        <img class="background-img r-h-27vh" src="../../assets/image/page_slide.jpg" style="width: 100%;" />
+                        <img class="background-img r-h-27vh" src="../../assets/image/page_slide.jpg"
+                            style="width: 100%;" />
                         <div class="slide_text">
                             Registration
                         </div>
@@ -78,69 +72,120 @@ type = "ball-clip-rotate"
             Venues
         </div>
         <div class="col-3 col-lg-3 col-md-3 col-xl-3 float-left r_head" [routerLink]="['/VenderRegister']">
-            Vender
+            Vendor
         </div>
 
     </div>
     <div class="col-lg-12 mx-auto">
-        <form id="Vender" action="" #frm1="ngForm" (ngSubmit)="addVenue()" >
+        <form id="Vender" action="" #frm1="ngForm" (ngSubmit)="addVenue()">
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4  r_l_form mr-l-17  mob_mr_l_0 pad-6 float-left ">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1" class=" ">Business Name</label><span
+                    <label for="exampleFormControlSelect1" class=" ">Venue Type</label><span
                         class="text-danger">*</span>
-                    <select class="form-control form_control_m" name="catValue" [(ngModel)]="catValue" id="exampleFormControlSelect1">
+                    <select class="form-control form_control_m" name="catValue" #selected="ngModel" required ngModel
+                        [(ngModel)]="catValue" id="exampleFormControlSelect1">
                         <option *ngFor="let c of venue_category" value="{{c._id}}">{{c.venue_cat_name}}</option>
-                        
+
                     </select>
+                    <div *ngIf="selected?.touched">
+                        <div class="red-text left" *ngIf="selected.errors?.required">
+                            Please select your venue Type*
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="fname"  class=" ">Company Name</label><span class="text-danger">*</span>
-                    <input type="text" name="cname" [(ngModel)]="cname" class="form-control form_control_m" id="fname" placeholder="Compnay Name">
-                
+                    <label for="fname" class=" ">Company Name</label><span class="text-danger">*</span>
+                    <input type="text" name="cname" [(ngModel)]="cname" #category="ngModel" required
+                        class="form-control form_control_m" id="fname" placeholder="Compnay Name">
+                    <div *ngIf="category?.touched">
+                        <div class="red-text left" *ngIf="category.errors?.required">
+                            Company Name Required*
+                        </div>
+
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="fname" class=" ">First Name</label><span class="text-danger">*</span>
-                    <input type="text"  class="form-control form_control_m" name="fname" [(ngModel)]="fname" id="fname" placeholder="Your Name">
+                    <input type="text" class="form-control form_control_m" #fnm="ngModel" required name="fname"
+                        [(ngModel)]="fname" id="fname" placeholder="Your Name">
+                    <div *ngIf="fnm?.touched">
+                        <div class="red-text left" *ngIf="fnm.errors?.required">
+                            First Name Required*
+                        </div>
+
+                    </div>
                 </div>
                 <div class="form-group">
-                        <label for="fname" class=" ">Last Name</label><span class="text-danger">*</span>
-                        <input type="text" class="form-control form_control_m" id="lname" name="lname" [(ngModel)]="lname" placeholder="Your Name">
+                    <label for="fname" class=" ">Last Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control form_control_m" #lnm="ngModel" required id="lname"
+                        name="lname" [(ngModel)]="lname" placeholder="Your Name">
+                    <div *ngIf="lnm?.touched">
+                        <div class="red-text left" *ngIf="lnm.errors?.required">
+                            First Name Required*
+                        </div>
+
                     </div>
+                </div>
                 <div class="form-group">
                     <label for="cno" class=" ">contact No.</label><span class="text-danger">*</span>
-                    <input type="text" minlength="10" maxlength="10" #mobile="ngModel"
-                    pattern="[0-9]+" required ngModel   class="form-control form_control_m" id="cno"  name="cno" [(ngModel)]="cno" placeholder="Contact No.">
+                    <input type="text" minlength="10" maxlength="10" #mobile="ngModel" pattern="[0-9]+" required ngModel
+                        class="form-control form_control_m" id="cno" name="cno" [(ngModel)]="cno"
+                        placeholder="Contact No.">
                     <div *ngIf="mobile?.touched">
                         <div class="red-text left" *ngIf="mobile.errors?.required">
-                          Contact No Required*
+                            Contact No Required*
                         </div>
                         <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
-                          Please enter valid Contact No
+                            Please enter valid Contact No
                         </div>
-                      </div>
-               
-                </div>
+                    </div>
 
-               
+                </div>
 
             </div>
             <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 pad-b-8 r_r_form float-left ">
-                    <div class="form-group">
-                            <label for="fname" class=" ">Email</label><span class="text-danger">*</span>
-                            <input type="email" name="email" [(ngModel)]="email" class="form-control form_control_m" id="fname" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
-                            <input type="email" name="password" [(ngModel)]="password" class="form-control form_control_m" id="fname" placeholder="Email">
-                        </div>
-        
                 <div class="form-group">
-               
-                    <label for="exampleFormControlSelect1" class=" ">City</label><span
-                        class="text-danger">*</span>
-                    <select class="form-control form_control_m" name="city" [(ngModel)]="city" id="exampleFormControlSelect1">
-                        <option>Rajkot</option>
+                    <label for="fname" class=" ">Email</label><span class="text-danger">*</span>
+                    <input type="email" name="email" [(ngModel)]="email" #mail="ngModel"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required
+                        class="form-control form_control_m" id="fname" placeholder="Email">
+                    <div *ngIf="mail?.touched">
+                        <div class="red-text left" *ngIf="mail.errors?.required">
+                            Email Required*
+                        </div>
+                        <div class="red-text left" *ngIf="mail.errors?.pattern">
+                            Please Enter valid Email*
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
+                    <input type="email" name="password" minlength="6" #pwd="ngModel" [(ngModel)]="password" class="form-control form_control_m"
+                        id="fname" placeholder="password">
+                        <div *ngIf="pwd?.touched">
+                            <div class="red-text left" *ngIf="pwd.errors?.required">
+                                please Set your password*
+                            </div>
+                            <div [hidden]="!pwd?.hasError('minlength')" class="red-text">
+                                Please set your password min 6 character
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+
+                    <label for="exampleFormControlSelect1" class=" ">City</label><span class="text-danger">*</span>
+                    <select class="form-control form_control_m" #cityname="ngModel" required name="city" [(ngModel)]="city"
+                        id="exampleFormControlSelect1">
+                        <option selected="Select" disabled>Select</option>
+                        <option *ngFor="let c of cityarray"value="{{c.city}}">{{c.city}}</option>
                     </select>
+                    <div *ngIf="cityname?.touched">
+                        <div class="red-text left" *ngIf="cityname.errors?.required">
+                          City Required*
+                        </div>
+                      </div>
                 </div>
                 <!-- <div class="form-group">
                     <label for="fname" class=" ">Comments</label><span class="text-danger">*</span>

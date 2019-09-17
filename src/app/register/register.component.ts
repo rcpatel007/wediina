@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
             }
           this.conectionservice.addcustomer(customer)
           .subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.spinner.hide();
          
       this.router.navigate(["/login"]);

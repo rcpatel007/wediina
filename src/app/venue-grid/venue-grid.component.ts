@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { } from "angular-star-rating";
 import { NgxSpinnerService } from "ngx-spinner";
-import {IMyDpOptions} from 'mydatepicker';
+import { IMyDpOptions } from 'mydatepicker';
 declare var $: any;
 @Component({
   selector: 'app-venue-grid',
@@ -21,11 +21,11 @@ export class VenueGridComponent implements OnInit {
   city = [];
   area = [];
   cityget: String;
-  booking:String;
+  booking: String;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
-};
+  };
   constructor(private route: ActivatedRoute, private router: Router,
     private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService) {
@@ -107,11 +107,11 @@ export class VenueGridComponent implements OnInit {
         }
         this.city.forEach((item, index) => {
           if (index !== this.city.findIndex(i => i.name === item.name)) {
-              this.city.splice(index, 1);
+            this.city.splice(index, 1);
           }
-       
+
         });
-        console.log(this.venues);
+        //console.log(this.venues);
         this.spinner.hide();
 
       });
@@ -137,18 +137,18 @@ export class VenueGridComponent implements OnInit {
 
           }
         }
-        console.log(this.venues);
+        //console.log(this.venues);
         this.spinner.hide();
       });
   }
 
 
-  datefilter(booking){
+  datefilter(booking) {
     this.venues = [];
-   
-    let book =booking;
-    console.log(book);
-    
+
+    let book = booking;
+    //console.log(book);
+
     this.spinner.show();
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
@@ -156,24 +156,26 @@ export class VenueGridComponent implements OnInit {
       .subscribe(res => {
         // this.venues = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
-   
+
         for (let index = 0; index < res.length; index++) {
 
           if (res[index].venue_cat_id == this.id) {
 
             for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
-              // console.log("database date",res[index].bookingdate);
+              // //console.log("database date",res[index].bookingdate);
               if (res[index].bookingdate[secondindex] != book.formatted) {
-                console.log("database date",res[index].bookingdate[secondindex]);
-              
-               console.log("date",book.formatted);
-               
+                //console.log("database date", res[index].bookingdate[secondindex]);
+
+                //console.log("date", book.formatted);
+
                 this.venues.push(res[index]);
-              } 
+                //console.log(this.venues);
+                
+              }
             }
           }
-        }
-        console.log(this.venues);
+        }   
+        //console.log(this.venues);
         this.spinner.hide();
       });
 

@@ -81,7 +81,7 @@ export class HeaderComponent implements OnInit {
     this.conectionservice.getcity()
       .subscribe(res => {
         this.cityarray = res;
-        console.log(res);
+        //console.log(res);
 
       });
   }
@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
     this.conectionservice.getVendorCategory()
       .subscribe(res => {
         this.vendorCategory = res;
-        console.log(this.vendorCategory, 'vnedor');
+        //console.log(this.vendorCategory, 'vnedor');
 
       });
   }
@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
     this.conectionservice.getVenueCategory()
       .subscribe(res => {
         this.venueCategory = res;
-        console.log(this.venueCategory, 'venue');
+        //console.log(this.venueCategory, 'venue');
 
       });
   }

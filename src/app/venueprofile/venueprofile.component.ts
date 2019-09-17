@@ -83,7 +83,7 @@ address:String;
    
     this.conectionservice.getVenueById(this.id)
     .subscribe(res=>{
-      console.log(res );
+      //console.log(res );
       
      this.venue=res;
      this.fname=res.fname;
@@ -107,7 +107,7 @@ address:String;
      this.time=res.time_permission;
      this.detail=res.comment;
      this.desp=res.desp;
-      console.log(res);
+      //console.log(res);
       this.spinner.hide();
       
     });

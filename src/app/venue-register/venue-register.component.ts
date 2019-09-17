@@ -41,7 +41,7 @@ export class VenueRegisterComponent implements OnInit {
   status = true;
   base64: any;
   otherbase64: any;
-  
+  cityarray=[];
 
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService) { }
@@ -49,14 +49,14 @@ export class VenueRegisterComponent implements OnInit {
   ngOnInit() {
 
     this.getCategory();
-   
+   this.getcity();
   }
 
   getCategory(){
     this.conectionservice.getVenueCategory()
       .subscribe(res => {
        this.venue_category =res;
-        console.log(this.venue_category);
+        // // console.log(this.venue_category);
       });
 }
 
@@ -79,12 +79,12 @@ export class VenueRegisterComponent implements OnInit {
   imagetoBase64(readerEvt) {
     var binaryString = readerEvt.target.result;
     this.base64 = btoa(binaryString);
-      // console.log(this.base64);
+      // // console.log(this.base64);
       
-    // console.log(btoa(binaryString));
+    // // console.log(btoa(binaryString));
     this.conectionservice.imgurImage(this.base64)
       .subscribe((result) => {
-        console.log(result);
+        // console.log(result);
         this.p_img = result.data.link;
 
       });
@@ -93,7 +93,7 @@ export class VenueRegisterComponent implements OnInit {
   /*add or remove input tag*/
   otherImageUpload(event) {
     let files = [].slice.call(event.target.files);
-    // console.log(files);
+    // // console.log(files);
     // input = files.map(f => f.name).join(', ');
     for (let i = 0; i < files.length; i++) {
       if (files) {
@@ -107,20 +107,20 @@ export class VenueRegisterComponent implements OnInit {
   otherimagetoBase64(readeEvent) {
     var binaryString = readeEvent.target.result;
     this.otherbase64 = btoa(binaryString);
-    // console.log(btoa(binaryString));
+    // // console.log(btoa(binaryString));
     this.conectionservice.imgurotherImage(this.otherbase64)
       .subscribe((result) => {
-        console.log(result);
+        // console.log(result);
         this.oimg.push(result.data.link);
-        console.log(this.oimg);
+        // console.log(this.oimg);
 
       });
-    // console.log(this.oimg);
+    // // console.log(this.oimg);
   }
 
   addVenue(){
   // let video = this.videolink.split(",");
-  // console.log(video);
+  // // console.log(video);
   
 
 
@@ -151,17 +151,25 @@ export class VenueRegisterComponent implements OnInit {
         video_story:null,
         }
 
-        console.log(venue);
+        // console.log(venue);
         
         this.conectionservice.addVenue(venue)
         .subscribe(res=>{
 
-          console.log(res);
+          // console.log(res);
           
           this.router.navigate(["/login"]);
               });
   }
 
+  getcity() {
+    this.conectionservice.getcity()
+      .subscribe(res => {
+        this.cityarray = res;
+        // console.log(res);
+
+      });
+  }
 
 
 

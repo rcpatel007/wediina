@@ -63,7 +63,7 @@ customerDetail(){
 let cid = this.id;
   this.conectionservice.getCustomerById(cid)
   .subscribe(res=>{
-console.log(res);
+//console.log(res);
 
 this.name = res.name;
 this.email = res.email;

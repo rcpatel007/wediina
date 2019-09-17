@@ -77,7 +77,7 @@ export class VenderDetailComponent implements OnInit {
     
       // this.spinner.hide();
   
-      console.log(res);
+      //console.log(res);
         
       
     });
@@ -86,7 +86,7 @@ export class VenderDetailComponent implements OnInit {
   getvideo(v){
     this.playvideo = v;
     $("#videopopup").attr("src",v);
-    console.log(this.playvideo);
+    //console.log(this.playvideo);
   }
 
   customerfetch(){
@@ -98,7 +98,7 @@ export class VenderDetailComponent implements OnInit {
     this.customer =false;
   }
   
-  console.log(this.customer);
+  //console.log(this.customer);
   
   }
   
@@ -114,7 +114,7 @@ export class VenderDetailComponent implements OnInit {
       password: this.password
     }
   
-    console.log(customer);
+    //console.log(customer);
   
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
@@ -123,7 +123,7 @@ export class VenderDetailComponent implements OnInit {
         environment.vendor_id =null; 
         this.spinner.hide();
    this.customer =true;
-        console.log(res, 'customerdetail');
+        //console.log(res, 'customerdetail');
   
       });
   
@@ -145,7 +145,7 @@ export class VenderDetailComponent implements OnInit {
 
   this.conectionservice.vendorInquiry(inquiry)
   .subscribe(res=>{
-    console.log(res);
+    //console.log(res);
     this.spinner.hide();
   });
 }
@@ -159,7 +159,7 @@ getfeedback(){
     this.conectionservice.getreview()
     .subscribe(res =>{
   
-  console.log(res);
+  //console.log(res);
   for (let index = 0; index < res.length; index++) {
   
     if (res[index].vendor_id == this.id) {
@@ -180,7 +180,7 @@ getfeedback(){
       });
     }
   }
-  console.log("review1",this.review);
+  //console.log("review1",this.review);
  
   });
 }
@@ -193,7 +193,7 @@ let review = {
   comment:this.feedback
 }
 
-console.log("review",review);
+//console.log("review",review);
 
 this.spinner.show();
   this.conectionservice.addreview(review)

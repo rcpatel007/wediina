@@ -77,7 +77,7 @@ type = "ball-clip-rotate"
                 Venues
             </div>
             <div class="col-3 col-lg-3 col-md-3 col-xl-3  float-left r_head" [routerLink]="['/VenderRegister']">
-                Vender
+                Vendor
             </div>
 
         </div>
@@ -113,26 +113,35 @@ type = "ball-clip-rotate"
 
                     <div class="form-group">
                             <label for="fname" class="">Email</label><span class="text-danger">*</span>
-                            <input type="email" #remail="ngModel"  required
-                            ngModel  class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="Email">
-                            <div *ngIf="remail?.touched">
-                                <div class="red-text left" *ngIf="remail.errors?.required">
-                                   Email Required*
+                            <input type="email" #mail="ngModel"
+                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required
+                            ngModel  class="form-control form_control_m" id="email" name="email"
+                             [(ngModel)]="email" placeholder="Email">
+                            <div *ngIf="mail?.touched">
+                                <div class="red-text left" *ngIf="mail.errors?.required">
+                                    Email Required*
                                 </div>
-                              </div>
+                                <div class="red-text left" *ngIf="mail.errors?.pattern">
+                                    Please Enter valid Email*
+                                </div>
+        
+                            </div>
                         
                         
                         </div>
                         
                     <div class="form-group">
                             <label for="fname" class="">password</label><span class="text-danger">*</span>
-                            <input type="password" #pwd="ngModel"  required
+                            <input type="password" #pwd="ngModel"  minlength="6" required
                             ngModel class="form-control form_control_m" id="password" name="password" [(ngModel)]="password" placeholder="password">
                             <div *ngIf="pwd?.touched">
                                 <div class="red-text left" *ngIf="pwd.errors?.required">
-                                   Password Required*
+                                    please Set your password*
                                 </div>
-                              </div>
+                                <div [hidden]="!pwd?.hasError('minlength')" class="red-text">
+                                    Please set your password min 6 character
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-17">
                             <div class="text-center red">{{errormsg}}</div>

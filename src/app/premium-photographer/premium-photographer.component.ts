@@ -62,7 +62,7 @@ export class PremiumPhotographerComponent implements OnInit {
           }
           
       });
-        console.log(this.venues);
+        //console.log(this.venues);
         this.spinner.hide();
       });
   }
@@ -86,7 +86,7 @@ export class PremiumPhotographerComponent implements OnInit {
             
   //         }
   //       }
-  //       console.log(this.city);
+  //       //console.log(this.city);
 
   //     });
   // }
@@ -111,7 +111,7 @@ export class PremiumPhotographerComponent implements OnInit {
       
           }
         }
-        console.log(this.venues);
+        //console.log(this.venues);
         this.spinner.hide();
    
       });
@@ -124,7 +124,7 @@ datefilter(booking){
   this.venues = [];
  
   let book =booking;
-  console.log(book);
+  //console.log(book);
   
   this.spinner.show();
   // location.reload();
@@ -139,18 +139,18 @@ datefilter(booking){
         if (res[index].venue_cat_id == this.id) {
 
           for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
-            // console.log("database date",res[index].bookingdate);
+            // //console.log("database date",res[index].bookingdate);
             if (res[index].bookingdate[secondindex] != book.formatted) {
-              console.log("database date",res[index].bookingdate[secondindex]);
+              //console.log("database date",res[index].bookingdate[secondindex]);
             
-             console.log("date",book.formatted);
+             //console.log("date",book.formatted);
              
               this.venues.push(res[index]);
             } 
           }
         }
       }
-      console.log(this.venues);
+      //console.log(this.venues);
       this.spinner.hide();
     });
 

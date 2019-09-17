@@ -90,7 +90,7 @@ this.getfeedback();
         this.datearray = res.bookingdate;
         // this.spinner.hide();
 
-        console.log(res);
+        //console.log(res);
 
 
       });
@@ -99,7 +99,7 @@ this.getfeedback();
   getvideo(v) {
     this.playvideo = v;
     $("#videopopup").attr("src", v);
-    console.log(this.playvideo);
+    //console.log(this.playvideo);
   }
 
 
@@ -116,7 +116,7 @@ this.getfeedback();
       this.customer = false;
     }
 
-    console.log(this.customer);
+    //console.log(this.customer);
 
   }
 
@@ -132,7 +132,7 @@ this.getfeedback();
       password: this.password
     }
 
-    console.log(customer);
+    //console.log(customer);
 
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
@@ -141,7 +141,7 @@ this.getfeedback();
         environment.vendor_id = null;
         this.spinner.hide();
         this.customer = true;
-        console.log(res, 'customerdetail');
+        //console.log(res, 'customerdetail');
 
       });
 
@@ -164,13 +164,13 @@ this.getfeedback();
   
     this.conectionservice.vendorInquiry(inquiry)
     .subscribe(res=>{
-      console.log(res);
+      //console.log(res);
       this.spinner.hide();
     });
   }
   datefilter(booking) {
     let book = booking;
-    console.log(book);
+    //console.log(book);
     let status = false;
     for (let index = 0; index < this.datearray.length; index++) {
 
@@ -198,7 +198,7 @@ let c_id:String;
   this.conectionservice.getreview()
   .subscribe(res =>{
 
-console.log(res);
+//console.log(res);
 for (let index = 0; index < res.length; index++) {
 
   if (res[index].vendor_id == this.id) {
@@ -219,7 +219,7 @@ for (let index = 0; index < res.length; index++) {
     });
   }
 }
-console.log("review1",this.review);
+//console.log("review1",this.review);
  
   });
 }
@@ -232,7 +232,7 @@ console.log("review1",this.review);
       comment:this.feedback
     }
     
-    console.log("review",review);
+    //console.log("review",review);
     
     this.spinner.show();
       this.conectionservice.addreview(review)

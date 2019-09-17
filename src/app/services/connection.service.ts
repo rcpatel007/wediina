@@ -205,11 +205,11 @@ addcustomer(customer) {
 
 
 customerLogin(customer){
-  // let headers = new Headers;
+  let headers = new Headers;
   //  headers.append('Access-Control-Allow-Origin',' *');
   // headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
   // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token');
-  return this.http.post(environment.api_url + '/customerLogin/',customer)
+  return this.http.post(environment.api_url + '/customerLogin/',customer,{headers:headers})
    .pipe(map( res => res.json()));
 
 }

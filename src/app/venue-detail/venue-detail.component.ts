@@ -107,7 +107,7 @@ getvenueDetail(){
    this.time=res.time_permission;
    this.detail=res.comment;
    
-    console.log(res);
+    //console.log(res);
     
   });
   
@@ -117,7 +117,7 @@ getvenueDetail(){
 getvideo(v){
   this.playvideo = v;
   $("#videopopup").attr("src",v);
-  console.log(this.playvideo);
+  //console.log(this.playvideo);
 }
 
 
@@ -130,7 +130,7 @@ else{
   this.customer =false;
 }
 
-console.log(this.customer);
+//console.log(this.customer);
 
 }
 
@@ -145,7 +145,7 @@ login(){
     password: this.password
   }
 
-  console.log(customer);
+  //console.log(customer);
 
   this.conectionservice.customerLogin(customer)
     .subscribe(res => {
@@ -156,7 +156,7 @@ login(){
       this.spinner.hide();
  this.customer =true;
 //  this.addFeedback();
-      console.log(res, 'customerdetail');
+      //console.log(res, 'customerdetail');
 
     });
 
@@ -168,7 +168,7 @@ fetchemail(){
   .subscribe(res =>{
     this.v_email =res.email;
 
-    console.log(this.v_email);
+    //console.log(this.v_email);
     
   });
 
@@ -184,7 +184,7 @@ getfeedback(){
     this.conectionservice.getreview()
     .subscribe(res =>{
   
-  console.log(res);
+  //console.log(res);
   for (let index = 0; index < res.length; index++) {
   
     if (res[index].venue_id == this.id) {
@@ -205,7 +205,7 @@ getfeedback(){
       });
     }
   }
-  console.log("review1",this.review);
+  //console.log("review1",this.review);
  
   });
 }
@@ -225,7 +225,7 @@ sendInquiry()
 
   this.conectionservice.venueInquiry(inquiry)
   .subscribe(res=>{
-    console.log(res);
+    //console.log(res);
     this.spinner.hide();
   });
 }
@@ -238,7 +238,7 @@ let review = {
   comment:this.feedback
 }
 
-console.log("review",review);
+//console.log("review",review);
 
 this.spinner.show();
   this.conectionservice.addreview(review)

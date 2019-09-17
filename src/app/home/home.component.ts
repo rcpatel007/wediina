@@ -67,14 +67,14 @@ msg:String;
     this.conectionservice.getVenueCategory()
     .subscribe(res=>{
       this.venue_category =res;
-      console.log(res);
+      //console.log(res);
       
     });
    
     this.conectionservice.getVendorCategory()
     .subscribe(res=>{
       this.vendor_category =res;
-      console.log(this.vendor_category);
+      //console.log(this.vendor_category);
       this.spinner.hide();  
       
     });
@@ -85,7 +85,7 @@ msg:String;
     this.conectionservice.gethomeslider()
     .subscribe(res=>{
       this.homeslider =res;
-      console.log(res);
+      //console.log(res);
 
     });
   }

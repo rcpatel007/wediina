@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   selectRoll(roll) {
 
     this.rol = roll;
-    console.log("selected roll", this.rol);
+    //console.log("selected roll", this.rol);
 
     if (this.rol == 1) {
       $('#vendor').css({ "background": "#000", "color": "#fff" });
@@ -65,16 +65,16 @@ export class LoginComponent implements OnInit {
     if (this.rol == 1) {
 
         this.vendorLogin();
-        console.log("hello");
+        //console.log("hello");
         
       }
      else if (this.rol == 2) {
         this.venueLogin();
-        console.log("hello");
+        //console.log("hello");
 
       }
       else if (this.rol == 3) {
-        console.log("hello");
+        //console.log("hello");
 
         this.customer();
       }
@@ -95,18 +95,25 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
 
-    console.log(customer);
+    //console.log(customer);
 
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
+        this.spinner.hide();
+   
         environment.customer_id = res._id;
         environment.venue_id = null;
         environment.vendor_id =null;
         environment.vemail =res.email; 
-        this.router.navigate(["/home"]);
-        this.spinner.hide();
-   
-        console.log(res, 'customerdetail');
+        if (!res) {
+          this.router.navigate(["/home"]);
+          
+        } else {
+          this.router.navigate(["/login"]);
+          
+        }
+      
+        //console.log(res, 'customerdetail');
 
       });
   }
@@ -121,7 +128,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
 
-    console.log("venue  login", venue_login);
+    //console.log("venue  login", venue_login);
 
     this.conectionservice.venueLogin(venue_login)
       .subscribe(res => {
@@ -133,7 +140,7 @@ export class LoginComponent implements OnInit {
    
         this.router.navigate(["/Venueprofile", res._id]);
 
-        console.log(res, 'venuedetail');
+        //console.log(res, 'venuedetail');
 
       });
   }
@@ -148,7 +155,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
 
-    console.log(customer);
+    //console.log(customer);
 
     this.conectionservice.vendorLogin(customer)
       .subscribe(res => {
@@ -160,7 +167,7 @@ export class LoginComponent implements OnInit {
    
         this.router.navigate(["/VenderDetail", res._id]);
 
-        console.log(res, 'vendor_detail');
+        //console.log(res, 'vendor_detail');
 
       });
   }
