@@ -16,6 +16,14 @@ export class VenderregisterComponent implements OnInit {
 
   vendorCategory=[];
   mno:String;
+  cname:String;
+  name:String;
+  email:String;
+  city:String;
+  password:String;
+  cmt:String;
+  catvalue:String;
+  
   cityarray=[];
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService,private router: Router, private conectionservice: ConnectionService) { }
