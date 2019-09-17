@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
         environment.venue_id = null;
         environment.vendor_id =null;
         environment.vemail =res.email; 
-        if (!res) {
+        if (environment.customer_id !=null) {
           this.router.navigate(["/home"]);
           
         } else {
