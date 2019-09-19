@@ -135,28 +135,35 @@ type = "ball-clip-rotate"
           <span class="fa fa-star-o"  data-rating="5"></span>
           <input type="hidden"  class="rating-value" >
         </div>  -->
-        <div class="testimonial_user" *ngIf="customer == true">
-          <div class="form-group">
+        <div class="testimonial_user" *ngIf="customer == false">
+          <div class="form-group" >
           <button class="btn btn-success form-control" data-toggle="modal" data-target="#review">Login</button>
         </div>
         </div>
        
-        <div class="testimonial_user">
-          <div>
+        <div class="testimonial_user" >
+          <div *ngIf="customer == true">
             <!-- <div class="col-lg-6 float-left">
               <i class="fa fa-user test_user"></i>
             </div>           -->
            
             <form (ngSubmit)="addFeedback();">
-               
-              <div class="star-rating col-lg-6 float-right text-right">
+                <span class='star-rating col-lg-6 float-right  text-right'>
+                    <ng-container *ngIf='!forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class='fa to-rate' (click)='mark($index)' [ngClass]='isMarked($index)'></i>
+                    </ng-container>
+                    <ng-container *ngIf='forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='isMarked($index)'></i>
+                    </ng-container>                  
+                </span>
+              <!-- <div class="star-rating col-lg-6 float-right text-right">
                     <span class="fa fa-star-o"  data-rating="1"></span>
                     <span class="fa fa-star-o"  data-rating="2"></span>
                     <span class="fa fa-star-o"  data-rating="3"></span>
                     <span class="fa fa-star-o"  data-rating="4"></span>
                     <span class="fa fa-star-o"  data-rating="5"></span>
                     <input type="hidden"  name="rat" [(ngModel)]="rat" value="4"  class="rating-value" >
-                  </div>
+                  </div> -->
               <div class="form-group">
                     <textarea rows="5" class="form-control w-100" name="feedback" [(ngModel)]="feedback"  maxlength="200" placeholder="Enter your feedback here.... "></textarea>
                   </div>
@@ -215,14 +222,22 @@ type = "ball-clip-rotate"
       </div>
     </div>
     <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left send_btn mob_mr_t-13 ">
-      <div class="star-rating ">
+      <!-- <div class="star-rating ">
         <span class="fa fa-star-o"  data-rating="1"></span>
         <span class="fa fa-star-o"  data-rating="2"></span>
         <span class="fa fa-star-o"  data-rating="3"></span>
         <span class="fa fa-star-o"  data-rating="4"></span>
         <span class="fa fa-star-o"  data-rating="5"></span>
         <input type="hidden" name="whatever1" class="rating-value" value="3">
-      </div>
+      </div> -->
+      <span class='star-rating  col-sm-12 col-lg-4 col-md-4 col-xl-4 text-center '>
+          <ng-container *ngIf='!sforDisplay'>
+            <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
+          </ng-container>
+          <ng-container *ngIf='sforDisplay'>
+            <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
+          </ng-container>                  
+      </span>
  
       <button class=" btn btn_danger mob_btn_pos inquery_btn" data-toggle="modal" data-target="#sendInquiry">Send
         Inquery</button>

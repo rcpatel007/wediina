@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -9,12 +9,21 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { IMyDpOptions } from 'mydatepicker';
 declare var $: any;
 
+// const {NgModule, Component, EventEmitter, OnInit, Input, Output } = ng.core;
+// const {bootstrap} = ng.platform.browser; 
+
 @Component({
   selector: 'app-premium-photographer-detail',
   templateUrl: './premium-photographer-detail.component.html',
   styleUrls: ['./premium-photographer-detail.component.css']
 })
 export class PremiumPhotographerDetailComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
 
   customer: boolean;
   email: String;
@@ -43,7 +52,9 @@ export class PremiumPhotographerDetailComponent implements OnInit {
   datearray = [];
   review= [];
  placeholder: string = 'Select a date';
-
+ range = [];
+ marked = 3-1;
+ smarked = 4-1;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -68,9 +79,79 @@ export class PremiumPhotographerDetailComponent implements OnInit {
       });
 
     });
+
+
+    for (var i = 0; i < this.maxScore; i++) {
+      this.range.push(i);
+    }
     this.getvendor();
 this.getfeedback();
     this.customerfetch();
+  }
+
+   
+  public mark = (index) => {
+    this.marked = this.marked == index ? index - 1 : index;
+    this.score = this.marked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+  public smark = (index) => {
+    this.marked = this.smarked == index ? index - 1 : index;
+    this.score = this.smarked;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+
+  public isMarked = (index) => {
+    if (!this.forDisplay) {
+      if (index <= this.marked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
+  public sisMarked = (index) => {
+    if (!this.sforDisplay) {
+      if (index <= this.smarked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
   }
 
   getvendor() {
@@ -192,6 +273,7 @@ this.getfeedback();
 getfeedback(){
 // let feed:any;
 let c_id:String;
+let count:Number = 0;
 // let c_name:String;
 // let comment:String;
 // let rating:String;
@@ -214,6 +296,11 @@ for (let index = 0; index < res.length; index++) {
       }
 
       this.review.push(feed);
+      count = res[index].rating + Number(count);
+      this.smarked  = (Number(count)/Number( this.review.length))-1;
+  
+console.log(count);
+console.log(this.smarked);
 
 
     });
@@ -228,7 +315,7 @@ for (let index = 0; index < res.length; index++) {
       customer_id:environment.customer_id,
       venue_id: null,
       vendor_id: this.id,
-      rating:this.rat,
+      rating:this.marked,
       comment:this.feedback
     }
     
@@ -238,6 +325,10 @@ for (let index = 0; index < res.length; index++) {
       this.conectionservice.addreview(review)
       .subscribe(res=>{
     this.spinner.hide();
+    this.getfeedback();
+
+    console.log();
+    
       });
     
     }

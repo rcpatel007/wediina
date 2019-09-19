@@ -15,6 +15,7 @@
         <div class="inner-part center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
+                
               <b class="greeting_head">Store your Memory With Click On Fotofactorystudio</b></p>
               <hr class="title">
          
@@ -28,7 +29,7 @@
                   <!-- <div class="form-group" style="margin-left: 21%;"> -->
                       <!-- <input type="date" placeholder="Your Date" style="width: 75% !important;" class=" form-control inquery_btn" /> -->
                       <my-date-picker name="booking" [(ngModel)]="booking" [placeholder]="placeholder"   [options]="myDatePickerOptions" [(ngModel)]="booking"  
-                      style="margin-left: 21%;" 
+                      style="margin-left: -2%;" 
                       (dateChanged)="datefilter($event)" required></my-date-picker>
       
                     <!-- </div> -->
@@ -48,14 +49,23 @@
             </div>
             <div class="row "> 
                 <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 mr-b-4 float-left">
-                    <div class="star-rating">
+                 
+                 <span class='star-rating'>
+                    <ng-container *ngIf='!forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
+                    </ng-container>
+                    <ng-container *ngIf='forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
+                    </ng-container>                  
+                </span>
+                  <!-- <div class="star-rating">
                         <span class="fa fa-star-o"  data-rating="1"></span>
                         <span class="fa fa-star-o"  data-rating="2"></span>
                         <span class="fa fa-star-o"  data-rating="3"></span>
                         <span class="fa fa-star-o"  data-rating="4"></span>
                         <span class="fa fa-star-o"  data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="3">
-                      </div>
+                      </div> -->
       
                 </div>
             </div>
@@ -164,6 +174,7 @@
               <div class="col-lg-6 float-left">
                 <i class="fa fa-user test_user"></i>{{r.c_name}} 
               </div>          
+              <!-- <star-rating [starType]="'svg'" [rating]="2.63"></star-rating> -->
               <div class="star-rating col-lg-6 float-right   text-right">
                   <!-- <span class="fa fa-star-o"  data-rating="1"></span>
                   <span class="fa fa-star-o"  data-rating="2"></span>
@@ -303,14 +314,22 @@
         <!-- Modal body -->
         <div class="modal-body">
   
-            <div class="star-rating text-right">
+            <span class='star-rating'>
+                <ng-container *ngIf='!forDisplay'>
+                  <i *ngFor='let n of range; let $index = index;' class='fa to-rate' (click)='mark($index)' [ngClass]='isMarked($index)'></i>
+                </ng-container>
+                <ng-container *ngIf='forDisplay'>
+                  <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='isMarked($index)'></i>
+                </ng-container>                  
+            </span>
+            <!-- <div class="star-rating text-right">
                 <span class="fa fa-star-o"  data-rating="1"></span>
                 <span class="fa fa-star-o"  data-rating="2"></span>
                 <span class="fa fa-star-o"  data-rating="3"></span>
                 <span class="fa fa-star-o"  data-rating="4"></span>
                 <span class="fa fa-star-o"  data-rating="5"></span>
                 <input type="hidden" name="rat" [(ngModel)]="rat" class="rating-value" value="3">
-              </div>
+              </div> -->
           <div class="form-group">
             <label for="fname" class="">Comment</label><span class="text-danger">*</span>
             <textarea class="form-control form_control_m" id="cmt" rows="15" maxlength="200" name="feedback" [(ngModel)]="feedback"
@@ -321,7 +340,7 @@
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success w-100" >Send</button>
+          <button type="submit" class="btn btn-success w-100" >Send</button>
         </div>
       </form>
   

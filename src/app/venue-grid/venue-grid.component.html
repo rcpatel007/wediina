@@ -26,6 +26,7 @@ type = "ball-clip-rotate"
         <div class="inner-part center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
+                <!-- <star-rating [starType]="'svg'" [rating]="2.63"></star-rating> -->
               <b class="greeting_head">Find Better place to your Function</b></p>
               <hr class="title">
          
@@ -76,16 +77,23 @@ type = "ball-clip-rotate"
         <div class="" [routerLink]="['/VenueDetail',v._id]">
           <!-- <div class="filp-top"></div> -->
             <img src="{{v.image}}" class="grid_img"  />
-           <div class="card-bottom justify-content-center">
-              <div class="star-rating">
+           <div class="card-bottom  text-center  justify-content-center">
+              <!-- <div class="star-rating">
                   <span class="fa fa-star-o"  data-rating="1"></span>
                   <span class="fa fa-star-o"  data-rating="2"></span>
                   <span class="fa fa-star-o"  data-rating="3"></span>
                   <span class="fa fa-star-o"  data-rating="4"></span>
                   <span class="fa fa-star-o"  data-rating="5"></span>
                   <input type="hidden" name="whatever1" class="rating-value" value="3">
-                </div>
-
+                </div> -->
+                <span class='star-rating  text-center '>
+                    <ng-container *ngIf='!forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
+                    </ng-container>
+                    <ng-container *ngIf='forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
+                    </ng-container>                  
+                </span>
                 <div class="grid_title pad-5"> {{v.companyName}}</div>
            </div>
            <div class="filp-bottom"></div>

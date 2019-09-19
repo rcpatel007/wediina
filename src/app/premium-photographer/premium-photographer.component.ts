@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -14,6 +15,17 @@ declare var $: any;
   styleUrls: ['./premium-photographer.component.css']
 })
 export class PremiumPhotographerComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
+  range = [];
+ marked = 3-1;
+ smarked = 4-1;
+
+  
   venueCategory = [];
   venues = [];
   city = [];
@@ -32,14 +44,78 @@ export class PremiumPhotographerComponent implements OnInit {
       this.router.routeReuseStrategy.shouldReuseRoute = () => false  }
 
   ngOnInit() {
-
+    for (var i = 0; i < this.maxScore; i++) {
+      this.range.push(i);
+    }
     // this.route.params.subscribe(params => {
     //   this.id = params['id'];
     // });
     this.getvendors();
   }
 
+  public mark = (index) => {
+    this.marked = this.marked == index ? index - 1 : index;
+    this.score = this.marked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+  public smark = (index) => {
+    this.marked = this.smarked == index ? index - 1 : index;
+    this.score = this.smarked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
 
+  public isMarked = (index) => {
+    if (!this.forDisplay) {
+      if (index <= this.marked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
+  public sisMarked = (index) => {
+    if (!this.sforDisplay) {
+      if (index <= this.smarked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
   getvendors() {
     this.spinner.show();
     this.conectionservice.getVendors()

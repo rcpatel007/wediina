@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -14,6 +15,18 @@ declare var $: any;
   styleUrls: ['./venue-detail.component.css']
 })
 export class VenueDetailComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
+
+
+  range = [];
+  marked = -1;
+  smarked:Number = -1;
+ 
   id:String;
   venue=[];
   name:String;
@@ -78,6 +91,9 @@ $(document).ready(function() {
   //     callPlayer('yt-player', 'stopVideo');
   // });
 
+  for (var i = 0; i < this.maxScore; i++) {
+    this.range.push(i);
+  }
 this.customerfetch(); 
 this.getvenueDetail();
 this.fetchemail();
@@ -90,6 +106,10 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
     Checked Color: ${$event.starRating.checkedcolor}, 
     Unchecked Color: ${$event.starRating.uncheckedcolor}`);
 }
+
+
+
+ 
 
 getvenueDetail(){
   this.conectionservice.getVenueById(this.id)
@@ -177,6 +197,7 @@ fetchemail(){
 
 getfeedback(){
   // let feed:any;
+  let count:Number= 0;
   let c_id:String;
   // let c_name:String;
   // let comment:String;
@@ -200,11 +221,17 @@ getfeedback(){
         }
   
         this.review.push(feed);
-  
+
+        count = res[index].rating + Number(count);
+        this.smarked  = (Number(count)/Number( this.review.length))-1;
+    
+  console.log(count);
+  console.log(this.smarked);
   
       });
     }
   }
+  
   //console.log("review1",this.review);
  
   });
@@ -234,7 +261,7 @@ let review = {
   customer_id:environment.customer_id,
   venue_id: this.id,
   vendor_id: null,
-  rating:this.rat,
+  rating:this.marked,
   comment:this.feedback
 }
 
@@ -245,6 +272,72 @@ this.spinner.show();
   .subscribe(res=>{
 this.spinner.hide();
   });
+this.getfeedback();
+}
+
+
+  
+public mark = (index) => {
+  this.marked = this.marked == index ? index - 1 : index;
+  this.score = this.marked + 1;
+  this.rateChanged.next(this.score);
+
+console.log("scror",this.score);
+
+}
+public smark = (index) => {
+  this.marked = this.smarked == index ? index - 1 : index;
+  this.score = Number(this.smarked);
+  this.rateChanged.next(this.score);
+
+console.log("scror",this.score);
+
+}
+
+public isMarked = (index) => {
+  if (!this.forDisplay) {
+    if (index <= this.marked) {
+      return 'fa-star';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+  else {
+    if (this.score >= index + 1) {
+      return 'fa-star';
+    }
+    else if (this.score > index && this.score < index + 1) {
+      return 'fa-star-half-o';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+console.log("scror",this.score);
+
+}
+public sisMarked = (index) => {
+  if (!this.sforDisplay) {
+    if (index <= this.smarked) {
+      return 'fa-star';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+  else {
+    if (this.score >= index + 1) {
+      return 'fa-star';
+    }
+    else if (this.score > index && this.score < index + 1) {
+      return 'fa-star-half-o';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+console.log("scror",this.score);
 
 }
 }

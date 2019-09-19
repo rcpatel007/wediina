@@ -8,6 +8,4 @@ export const environment = {
   customer_id:null,
   city:String,
   vemail:String
-
-
 };

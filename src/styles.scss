@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "~angular-star-rating/assets/scss/star-rating";
+@import "~bootstrap/scss/bootstrap";
+/* Override Colors by using style rules */
+// .rating.color-negative .star-container .star {
+//     svg {
+//       fill: #0f0;
+//     }
+//     i {
+//       color: #0f0;
+//     }
+//   }
+  
+//   .rating.color-ok .star-container .star {
+//     svg {
+//       fill: #f00;
+//     }
+//     i {
+//       color: #f00;
+//     }
+//   }
+  
+//   .rating.color-positive .star-container .star {
+//     svg {
+//       fill: #00f;
+//     }
+//     i {
+//       color: #00f;
+//     }
+//   }
+  
+//   .rating.color-default .star-container .star {
+//     svg {
+//       fill: #ff0;
+//     }
+//     i {
+//       color: #ff0;
+//     }
+//   }
+
+
+.star-rating{
+    .to-rate{
+        cursor: pointer;
+        padding: 0 3px;
+    }
+    .fa-star-o{
+        color: orange;
+    }
+    .fa-star{
+        color: orange;
+    }
+    .fa-star-half-o{
+        color: orange;
+    }
+    .to-display{
+        padding: 0 2px;
+    }
+}

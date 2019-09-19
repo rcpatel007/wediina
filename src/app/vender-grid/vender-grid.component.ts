@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -14,6 +15,17 @@ import {IMyDpOptions} from 'mydatepicker';
   styleUrls: ['./vender-grid.component.css']
 })
 export class VenderGridComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
+  range = [];
+ marked = 3-1;
+ smarked = 4-1;
+
+ 
   id:string;
   venueCategory = [];
   venues = [];
@@ -38,8 +50,73 @@ export class VenderGridComponent implements OnInit {
     this.getvendors();
     // this.getCategory();
 
+    for (var i = 0; i < this.maxScore; i++) {
+      this.range.push(i);
+    }
+  }
+  public mark = (index) => {
+    this.marked = this.marked == index ? index - 1 : index;
+    this.score = this.marked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+  public smark = (index) => {
+    this.marked = this.smarked == index ? index - 1 : index;
+    this.score = this.smarked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
   }
 
+  public isMarked = (index) => {
+    if (!this.forDisplay) {
+      if (index <= this.marked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
+  public sisMarked = (index) => {
+    if (!this.sforDisplay) {
+      if (index <= this.smarked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
   // getCategory() {
   //   this.conectionservice.getVendorCategory()
   //     .subscribe(res => {

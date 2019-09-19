@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -15,6 +17,17 @@ declare var $: any;
   styleUrls: ['./venue-grid.component.css']
 })
 export class VenueGridComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
+  range = [];
+ marked = 3-1;
+ smarked = 4-1;
+
+  
   id: String;
   venueCategory = [];
   venues = [];
@@ -37,8 +50,12 @@ export class VenueGridComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       // this.initialiseState();
+    
     });
 
+    for (var i = 0; i < this.maxScore; i++) {
+      this.range.push(i);
+    }
     var $star_rating = $('.star-rating .fa');
 
     var SetRatingStar = function () {
@@ -69,6 +86,69 @@ export class VenueGridComponent implements OnInit {
 
     environment.city = cityget;
     this.cityfilter();
+  }
+  public mark = (index) => {
+    this.marked = this.marked == index ? index - 1 : index;
+    this.score = this.marked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+  public smark = (index) => {
+    this.marked = this.smarked == index ? index - 1 : index;
+    this.score = this.smarked + 1;
+    this.rateChanged.next(this.score);
+  
+  console.log("scror",this.score);
+  
+  }
+
+  public isMarked = (index) => {
+    if (!this.forDisplay) {
+      if (index <= this.marked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
+  }
+  public sisMarked = (index) => {
+    if (!this.sforDisplay) {
+      if (index <= this.smarked) {
+        return 'fa-star';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+    else {
+      if (this.score >= index + 1) {
+        return 'fa-star';
+      }
+      else if (this.score > index && this.score < index + 1) {
+        return 'fa-star-half-o';
+      }
+      else {
+        return 'fa-star-o';
+      }
+    }
+  console.log("scror",this.score);
+
   }
 
   // getCategory() {

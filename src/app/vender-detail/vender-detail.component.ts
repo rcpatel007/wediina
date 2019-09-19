@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { getLocaleDateFormat } from '@angular/common';
@@ -14,6 +14,15 @@ declare var $: any;
   styleUrls: ['./vender-detail.component.css']
 })
 export class VenderDetailComponent implements OnInit {
+  @Input() score = 5;
+	@Input() maxScore = 5;
+	@Input() forDisplay = false;
+	@Input() sforDisplay = false;
+	@Output() rateChanged = new EventEmitter();
+  
+  range = [];
+ marked = -1;
+ smarked:Number = -1;
 
   id:String;
   address:String;
@@ -55,6 +64,11 @@ export class VenderDetailComponent implements OnInit {
       });
       
     });
+
+
+    for (var i = 0; i < this.maxScore; i++) {
+      this.range.push(i);
+    }
     this.customerfetch();
   this.getvendor();
 
@@ -152,6 +166,7 @@ export class VenderDetailComponent implements OnInit {
 
 getfeedback(){
   // let feed:any;
+  let count = 0;
   let c_id:String;
   // let c_name:String;
   // let comment:String;
@@ -159,7 +174,7 @@ getfeedback(){
     this.conectionservice.getreview()
     .subscribe(res =>{
   
-  //console.log(res);
+  console.log(res);
   for (let index = 0; index < res.length; index++) {
   
     if (res[index].vendor_id == this.id) {
@@ -176,12 +191,27 @@ getfeedback(){
   
         this.review.push(feed);
   
+
+          
+    count = res[index].rating+ Number(count);
+    this.smarked  = Number(count)/Number( this.review.length);
+
   
+
+
+console.log(this.smarked);
+
       });
+      
     }
   }
   //console.log("review1",this.review);
- 
+  
+
+// console.log(this.review.length);
+// console.log(count);
+// console.log(this.smarked);
+
   });
 }
 addFeedback(){
@@ -189,17 +219,85 @@ let review = {
   customer_id:environment.customer_id,
   venue_id: null,
   vendor_id: this.id,
-  rating:this.rat,
+  rating:this.marked+1,
   comment:this.feedback
 }
 
-//console.log("review",review);
+console.log("review",review);
 
 this.spinner.show();
   this.conectionservice.addreview(review)
   .subscribe(res=>{
 this.spinner.hide();
+this.getfeedback();
   });
+}
+
+
+
+   
+public mark = (index) => {
+  this.marked = this.marked == index ? index - 1 : index;
+  this.score = this.marked + 1;
+  this.rateChanged.next(this.score);
+
+console.log("scror",this.score);
 
 }
+public smark = (index) => {
+  this.marked = this.smarked == index ? index - 1 : index;
+  this.score = Number(this.smarked)+1;
+  this.rateChanged.next(this.score);
+
+console.log("scror",this.score);
+
+}
+
+public isMarked = (index) => {
+  if (!this.forDisplay) {
+    if (index <= this.marked) {
+      return 'fa-star';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+  else {
+    if (this.score >= index + 1) {
+      return 'fa-star';
+    }
+    else if (this.score > index && this.score < index + 1) {
+      return 'fa-star-half-o';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+console.log("scror",this.score);
+
+}
+public sisMarked = (index) => {
+  if (!this.sforDisplay) {
+    if (index <= this.smarked) {
+      return 'fa-star';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+  else {
+    if (this.score >= index + 1) {
+      return 'fa-star';
+    }
+    else if (this.score > index && this.score < index + 1) {
+      return 'fa-star-half-o';
+    }
+    else {
+      return 'fa-star-o';
+    }
+  }
+console.log("scror",this.score);
+
+}
+
 }

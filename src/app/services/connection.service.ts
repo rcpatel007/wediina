@@ -271,14 +271,23 @@ getreviewId(id) {
 
 addreview(review) {   
   let headers = new Headers;
-   headers.append('Access-Control-Allow-Origin',' *');
-  headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
-  headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token'); 
-   return this.http.post(environment.api_url + '/review',review,{headers :headers})
+  //  headers.append('Access-Control-Allow-Origin',' *');
+  // headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token'); 
+   return this.http.post(environment.api_url + '/review',review)
     .pipe(map( res => res.json()));
 
 }
 
+addcontact(contact) {   
+  let headers = new Headers;
+  //  headers.append('Access-Control-Allow-Origin',' *');
+  // headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token'); 
+   return this.http.post(environment.api_url + '/contact_detail',contact)
+    .pipe(map( res => res.json()));
+
+}
 
 getcity() {
   

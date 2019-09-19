@@ -93,6 +93,24 @@ msg:String;
 
   contactSubmit(){
 
-    this.successmsg ="your  Request accepted  We are  Contact you Soon....."
+
+    this.spinner.show();
+    let contact ={
+      name: this.name,
+        email: this.email,
+        mobileNo: this.contact_no,
+        subject: this.subject,
+        message: this.msg,
+    }
+
+    this.conectionservice.addcontact(contact)
+    .subscribe(res=>{
+
+      console.log(res);
+
+this.spinner.hide();
+      this.successmsg ="your  Request accepted  We are  Contact you Soon....."
+      
+    });
   }
 }

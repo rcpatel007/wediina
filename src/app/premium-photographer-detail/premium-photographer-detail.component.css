@@ -1,6 +1,6 @@
 .mydp{
     width: 60% !important;
-    margin-left: -21% !important; 
+    /* margin-left: -21% !important;  */
 }
 .mydp .selection{
     background: #ff353a !important;

@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RatingModule } from 'ng-starrating';
 // import { StarRatingModule } from '@angular-star-rating-lib/angular-star-rating';
 import { MyDatePickerModule } from 'mydatepicker';
+//  import { StarRatingModule } from 'angular-star-rating';
 
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
