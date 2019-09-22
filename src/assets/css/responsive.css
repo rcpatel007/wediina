@@ -88,9 +88,9 @@
     .mob_btn_pos{
         position: fixed;
         bottom: 0;
+        right: 0%;
         z-index: 9;
-
-        height: 8%;
+        height: 12%;
     }
 
     .he-24{
