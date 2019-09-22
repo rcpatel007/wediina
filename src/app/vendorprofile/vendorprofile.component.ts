@@ -276,6 +276,8 @@ date:String;
 
   logout(){
     environment.vendor_id =null;
+    this.router.navigate(["/home"]);
+   
   }
 
   bookingDate(){

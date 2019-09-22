@@ -116,6 +116,8 @@ address:String;
   
   logout(){
     environment.venue_id =null;
+    this.router.navigate(["/home"]);
+   
   }
 
 }

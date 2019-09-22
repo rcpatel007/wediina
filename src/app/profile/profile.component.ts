@@ -74,5 +74,7 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     environment.customer_id = null;
+    this.router.navigate(["/home"]);
+       
   }
 }
