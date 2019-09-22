@@ -114,5 +114,8 @@ address:String;
     
   } 
   
+  logout(){
+    environment.venue_id =null;
+  }
 
 }

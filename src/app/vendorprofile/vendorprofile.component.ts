@@ -274,6 +274,9 @@ date:String;
     
   }
 
+  logout(){
+    environment.vendor_id =null;
+  }
 
   bookingDate(){
 
