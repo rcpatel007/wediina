@@ -16,10 +16,10 @@ declare var $: any;
 })
 export class ProfileComponent implements OnInit {
 
-  id:String;
-  name:String;
-  contactno:String;
-  email:String;
+  id: String;
+  name: String;
+  contactno: String;
+  email: String;
 
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
@@ -28,26 +28,26 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
- 
 
-    $(document).ready(function(){
+
+    $(document).ready(function () {
       // Add smooth scrolling to all links
-      $("a").on('click', function(event) {
-    
+      $("a").on('click', function (event) {
+
         // Make sure this.hash has a value before overriding default behavior
         if (this.hash !== "") {
           // Prevent default anchor click behavior
           event.preventDefault();
-    
+
           // Store hash
           var hash = this.hash;
-    
+
           // Using jQuery's animate() method to add smooth page scroll
           // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
           $('html, body').animate({
             scrollTop: $(hash).offset().top
-          }, 800, function(){
-       
+          }, 800, function () {
+
             // Add hash (#) to URL when done scrolling (default click behavior)
             window.location.hash = hash;
           });
@@ -55,21 +55,24 @@ export class ProfileComponent implements OnInit {
       });
     });
 
-this.customerDetail();
+    this.customerDetail();
   }
 
-customerDetail(){
+  customerDetail() {
 
-let cid = this.id;
-  this.conectionservice.getCustomerById(cid)
-  .subscribe(res=>{
-//console.log(res);
+    let cid = this.id;
+    this.conectionservice.getCustomerById(cid)
+      .subscribe(res => {
+        //console.log(res);
 
-this.name = res.name;
-this.email = res.email;
-this.contactno =res.contact_no;
+        this.name = res.name;
+        this.email = res.email;
+        this.contactno = res.contact_no;
 
-  });
-}
+      });
+  }
 
+  logout() {
+    environment.customer_id = null;
+  }
 }
