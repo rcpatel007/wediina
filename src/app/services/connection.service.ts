@@ -177,6 +177,15 @@ vendorInquiry(vinquiry) {
   return this.http.post(environment.api_url + '/venue_inquiry/',vinquiry)
    .pipe(map( res => res.json()));
 
+
+  }
+
+  
+getVendorInquiryById(id) {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/vendor_inquiry/' +id)
+    .pipe(map( res => res.json()));
+
 }
 
   editVendor(id, updateVendor) {

@@ -53,8 +53,8 @@ export class PremiumPhotographerDetailComponent implements OnInit {
   review= [];
  placeholder: string = 'Select a date';
  range = [];
- marked = 3-1;
- smarked = 4-1;
+ marked = -1;
+ smarked:Number = -1;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -100,7 +100,7 @@ this.getfeedback();
   }
   public smark = (index) => {
     this.marked = this.smarked == index ? index - 1 : index;
-    this.score = this.smarked;
+    this.score = Number(this.smarked);
     this.rateChanged.next(this.score);
   
   console.log("scror",this.score);
@@ -274,6 +274,7 @@ getfeedback(){
 // let feed:any;
 let c_id:String;
 let count:Number = 0;
+this.smarked = -1;
 // let c_name:String;
 // let comment:String;
 // let rating:String;
@@ -311,23 +312,24 @@ console.log(this.smarked);
   });
 }
   addFeedback(){
+    this.spinner.show();
+   
     let review = {
       customer_id:environment.customer_id,
       venue_id: null,
       vendor_id: this.id,
-      rating:this.marked,
+      rating:this.marked +1 ,
       comment:this.feedback
     }
     
     //console.log("review",review);
     
-    this.spinner.show();
       this.conectionservice.addreview(review)
       .subscribe(res=>{
     this.spinner.hide();
     this.getfeedback();
 
-    console.log();
+    console.log(review);
     
       });
     

@@ -165,7 +165,7 @@ export class LoginComponent implements OnInit {
         environment.vemail =res.email;
         this.spinner.hide();
    
-        this.router.navigate(["/VenderDetail", res._id]);
+        this.router.navigate(["/Vendorprofile", res._id]);
 
         //console.log(res, 'vendor_detail');
 

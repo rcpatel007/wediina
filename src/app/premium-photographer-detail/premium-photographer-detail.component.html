@@ -51,10 +51,10 @@
                 <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 mr-b-4 float-left">
                  
                  <span class='star-rating'>
-                    <ng-container *ngIf='!forDisplay'>
+                    <ng-container *ngIf='!sforDisplay'>
                       <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
                     </ng-container>
-                    <ng-container *ngIf='forDisplay'>
+                    <ng-container *ngIf='sforDisplay'>
                       <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
                     </ng-container>                  
                 </span>

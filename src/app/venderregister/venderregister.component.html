@@ -89,7 +89,7 @@ type = "ball-clip-rotate"
                     <label for="exampleFormControlSelect1" class="">Vendor Category</label><span
                         class="text-danger">*</span>
                     <select class="form-control form_control_m" name="catvalue" [(ngModel)]="catvalue"  #selected="ngModel" required id="exampleFormControlSelect1">
-                        <option *ngFor="let vc of vendorCategory" value="vc.vendor_cat_name">{{vc.vendor_cat_name}}</option>
+                        <option *ngFor="let vc of vendorCategory" value="{{vc._id}}">{{vc.vendor_cat_name}}</option>
                        
                     </select>
                     <div *ngIf="selected?.touched">
@@ -110,10 +110,20 @@ type = "ball-clip-rotate"
                 
                 </div>
                 <div class="form-group">
-                    <label for="fname" class="">Your Name</label><span class="text-danger">*</span>
-                    <input type="text" class="form-control form_control_m" name="name" [(ngModel)]="name" #fnm="ngModel" required id="fname" placeholder="Your Name">
+                    <label for="fname" class="">First Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control form_control_m" name="fname" [(ngModel)]="fname" #fnm="ngModel" required id="fname" placeholder="Your Name">
                     <div *ngIf="fnm?.touched">
                         <div class="red-text left" *ngIf="fnm.errors?.required">
+                            Please Enter your Name *
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fname" class="">Last Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control form_control_m" name="lname" [(ngModel)]="lname" #fnm2="ngModel" required id="fname" placeholder="Your Name">
+                    <div *ngIf="fnm2?.touched">
+                        <div class="red-text left" *ngIf="fnm2.errors?.required">
                             Please Enter your Name *
                         </div>
 
@@ -133,10 +143,6 @@ type = "ball-clip-rotate"
                       </div>
                 </div>
 
-
-
-            </div>
-            <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 pad-b-8 r_r_form float-left ">
                 <div class="form-group">
                     <label for="fname" class="">Email</label><span class="text-danger">*</span>
                     <input type="email" class="form-control form_control_m" name="email" #mail="ngModel"
@@ -151,6 +157,10 @@ type = "ball-clip-rotate"
 
                     </div>
                 </div>
+
+            </div>
+            <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 pad-b-8 r_r_form float-left ">
+                
 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" class="">City</label><span
@@ -167,13 +177,26 @@ type = "ball-clip-rotate"
                 </div>
                 <div class="form-group">
                     <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
-                    <input type="text" name="password" [(ngModel)]="password"  minlength="6" #pwd="ngModel" required 
+                    <input type="password" name="password" [(ngModel)]="password"  minlength="6" #pwd="ngModel" required 
                     class="form-control form_control_m" id="fname" placeholder="password">
                     <div *ngIf="pwd?.touched">
                         <div class="red-text left" *ngIf="pwd.errors?.required">
                             please Set your password*
                         </div>
                         <div [hidden]="!pwd?.hasError('minlength')" class="red-text">
+                            Please set your password min 6 character
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
+                    <input type="password" name="password" [(ngModel)]="password"  minlength="6" #cpwd="ngModel" required 
+                    class="form-control form_control_m" id="fname" placeholder="password">
+                    <div *ngIf="cpwd?.touched">
+                        <div class="red-text left" *ngIf="cpwd.errors?.required">
+                            confirm password requier*
+                        </div>
+                        <div [hidden]="!cpwd?.hasError('minlength')" class="red-text">
                             Please set your password min 6 character
                         </div>
                     </div>

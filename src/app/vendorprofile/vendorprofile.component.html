@@ -1,3 +1,304 @@
-<p>
-  vendorprofile works!
-</p>
+<app-header></app-header>
+<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="large" color="#000000" type="ball-clip-rotate" [fullScreen]="true">
+</ngx-spinner>
+
+<div class="col-12 col-lg-12 col-md-12 col-xs-12 col-xl-12 text-center pad-0">
+  <div class="s_header-part ">
+
+  </div>
+</div>
+
+<div class=" col-lg-12 col-md-12 col-xl-12 mr-b-36 ">
+  <div class=" col-lg-3 col-md-3 col-xl-3 float-left pos-fixed">
+    <div class="v_profile_section">
+      <div class="text-center user-photo-section">
+        <img src="../../assets/image/user/user.png" class="img-fluid user_profile_img" />
+      </div>
+      <div class="mr-t-8">
+        <div class="profile_menu">
+          <a href="#profile"> My detail</a>
+        </div>
+        <div class="profile_menu">
+          <a href="#myvenue">My Venue</a>
+        </div>
+        <div class="profile_menu">
+          <a href="#bookingdate"> Booking Close (Date)</a>
+        </div>
+
+        <div class="profile_menu">
+          <a href="#myorder"> My Order</a>
+        </div>
+        <div class="profile_menu">
+          Logout
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- content section -->
+  <div id="profile" class="col-sm-12 col-12 col-lg-8 col-md-8 col-xl-8 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        welcome to your dashbord <b>{{fname}} {{lname}}</b> !
+      </div>
+      <form (ngSubmit)="editVendor()">
+        <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="fname"
+              placeholder="First Name">
+          </div>
+
+
+          <div class="form-group">
+            <label for="mobileno">Mobile No.</label>
+            <input type="text" class="form-control" id="mobileno" name="mno" [(ngModel)]="mno" placeholder="Mobile No">
+          </div>
+
+
+          <div class="form-group">
+            <label for="formGroupExampleInput">Address</label>
+            <textarea placeholder="Address" class="w-100" cols="41" name="address" [(ngModel)]="address"
+              rows="3"></textarea>
+          </div>
+        </div>
+        <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left">
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="lname" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
+          </div>
+          <div class="form-group">
+            <label for="cname">GST No.</label>
+            <input type="text" class="form-control" id="cname" placeholder="" name="gst" [(ngModel)]="gst">
+          </div>
+
+          <div class="form-group">
+            <label for="city">City</label>
+            <select class="form-control form_control_m" name="city" [(ngModel)]="city" id="exampleFormControlSelect1">                      
+              <option selected disabled>City</option>
+              <option *ngFor="let c of cityarray" value="{{c.city}}">{{c.city}}</option>
+              <!-- <option>flower decoration</option> -->
+          </select>
+                  </div>
+          <!-- <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" placeholder="state" name="state" [(ngModel)]="state">
+          </div> -->
+          <div class="form-group">
+            <label for="state"></label>
+            <input type="submit" class="float-right btn btn-success" id="state" value="update">
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div>
+
+    </div>
+  </div>
+  <div class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        My Business Detail
+      </div>
+      <form (ngSubmit)="editVendor()">
+        <div class="col-sm-12 col-12 col-xs-12  col-lg-6 col-md-6 col-xl-6 float-left ">
+          <div class="form-group">
+            <label for="fname">Vendor Name</label>
+            <input type="text" class="form-control" id="cname" name="cname" [(ngModel)]="cname"
+              placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="fname">Video Lins</label>
+            <input type="text" class="form-control" id="videolink" name="videolink" [(ngModel)]="videolink"
+              placeholder="Videos Link (example:">
+          </div>
+          <div class="form-group">
+            <label for="mimage">Main Image</label>
+            <input type="file" class="form-control" (change)="imageUpload($event)" id="mimage" name="p_img" [(ngModel)]="p_img"
+              placeholder="Select Image">
+          </div>
+
+
+          <div class="form-group">
+            <label for="simage">Sub Image</label>
+            <input type="file" multiple class="form-control" (change)="otherImageUpload($event)" id="o_img" placeholder="Select sub Image">
+          </div>         
+         
+          <!-- <div class="form-group">
+                    <label for="fname">Time permission</label>
+                    <input type="time" class="form-control" id="fname" name="time"  [(ngModel)]="time" placeholder="First Name">
+                  </div> -->
+
+
+        </div>
+        <div class="col-sm-12 col-12 col-xs-12 col-lg-6 col-md-6 col-xl-6 float-left">
+         
+
+         
+          <div class="form-group">
+            <label for="venue_detail"><b>Detail </b></label>
+            <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100" cols="50"
+              rows="12"></textarea>
+          </div>
+          <div class="form-group col-sm-12 col-12 col-xs-12 col-lg-12 col-md-12 col-xl-12">
+            <label for="state"> </label>
+            <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+
+    </div>
+  </div>
+  <!-- detail old venue -->
+  <div id="myvenue" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="venueprofile_head s_headding-text text-center">
+        <label>{{cname}}</label>
+        <!-- <label class="float-right">Price : 5,00,000</label> -->
+      </div>
+      <form action="">
+        <div class="">
+          <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+            <div class=" card-content ">
+              <img src="{{p_img}}" class="img-fluid p-card-img" />
+              <div class="card-city_name card-title">
+
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngFor="let s of oimg"  class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
+
+            <div class=" card-content " >
+              <img src="{{s}}" class="img-fluid p-card-img" />
+              <div class="card-city_name card-title">
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="col-md-12">
+           
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div>
+
+    </div>
+  </div>
+  <div id="bookingdate"
+    class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        Booking close Date
+      </div>
+      <div class="text-right"><button class="btn btn-success" data-toggle="modal" data-target="#bookedDate">Add
+          Date</button></div>
+      <table class="table table-striped">
+        <thead>
+          <tr >
+            <th scope="col">#No</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of bookingdate; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{b}}</td>
+            <td><i class="fa fa-trash red-text" (click)="deleteDate(i)"></i></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div>
+    </div>
+  </div>
+
+  <div id="myorder"
+    class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+    <div>
+      <div class="text-center venueprofile_head s_headding-text">
+        My Inquiries
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#No</th>
+            <th>Inquiry Date</th>
+            <th>Booking Date</th>
+            <th scope="col">customer Name</th>
+            <th scope="col">email</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Detail</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let inq of inquiry;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{inq.inquiry_date}} </td>
+            <td>{{inq.booking_date}} </td>
+            <td>{{inq.customer_name}}</td>
+            <td>{{inq.email}}</td>
+            <td>{{inq.mobileNo}}</td>
+            <td width=100%><b>Location</b>:{{inq.location}} <br /><b>purpose</b> : {{inq.purpose}}
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+    <div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="modal" id="bookedDate">
+  <div class="modal-dialog  modal-full    ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Booked Date</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <form (ngSubmit)="bookingDate()">
+        <!-- Modal body -->
+      <div class="modal-body">
+    
+        <div class="form-group">
+          <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
+          <input type="date" name="date" [(ngModel)]="date" class="form-control" />
+        </div>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success w-100" >Submit</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- <app-footer></app-footer> -->
