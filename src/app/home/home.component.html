@@ -217,28 +217,33 @@ type = "ball-clip-rotate"
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
                             <input type="email" #cemail="ngModel"  required
-                            ngModel  class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Email" >
+                            ngModel  class="form-control" id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="email" placeholder="Email" >
                             <div *ngIf="cemail?.touched">
                                 <div class="red-text left" *ngIf="cemail.errors?.required">
                                    Email Required*
                                 </div>
-                               
+                                <div class="red-text left" *ngIf="cemail.errors?.pattern">
+                                        Please Enter valid Email*
+                                    </div>
                               </div>  
                         </div>
                           <div class="form-group">
                             <!-- <label for="exampleFormControl1">Example  input</label> -->
                             <input type="text" class="form-control" minlength="10" maxlength="10" #mobile="ngModel"
-                            pattern="[0-9]+" required ngModel  id="contact_no" name="contact_no" [(ngModel)]="contact_no" 
+                            pattern="[0-9]+"  required ngModel  id="contact_no" name="contact_no" [(ngModel)]="contact_no" 
                             placeholder="Mobile No">
 
                             <div *ngIf="mobile?.touched">
-                                <div class="red-text left" *ngIf="mobile.errors?.required">
-                                  Contact No Required*
-                                </div>
-                                <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
-                                  Please enter valid Contact No
-                                </div>
-                              </div>
+                                    <div class="red-text left" *ngIf="mobile.errors?.required">
+                                      Contact No Required*
+                                    </div>
+                                    <div class="red-text left" *ngIf="mobile.errors?.pattern">
+                                      Please enter valid Contact No*
+                                          </div>
+                                    <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
+                                      Please enter valid Contact No
+                                    </div>
+                                  </div>
                         
                         
                         </div>

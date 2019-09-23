@@ -135,7 +135,7 @@ getvenueDetail(){
    this.time=res.time_permission;
    this.detail=res.comment;
    
-    //console.log(res);
+    console.log(res);
     
   });
   

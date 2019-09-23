@@ -18,7 +18,7 @@
           <slide class="fadding">
             <img class="background-img r-h-27vh" src="../../assets/image/page_slide.jpg" />
             <div class="slide_text prime_slide_text" style="left:25%;">
-              Our Premium Photographer
+              Prime Photographer
             </div>
           </slide>
 
@@ -259,7 +259,7 @@
           <div class="form-group">
             <label for="fname" class="">Email</label><span class="text-danger">*</span>
             <input type="email" class="form-control form_control_m" #mail="ngModel"
-            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required   id="email" name="cname" [(ngModel)]="cname" placeholder="enter your Email">
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required   id="email" name="cemail" [(ngModel)]="cemail" placeholder="enter your Email">
             <div *ngIf="mail?.touched">
                 <div class="red-text left" *ngIf="mail.errors?.required">
                     Email Required*
@@ -276,17 +276,25 @@
             pattern="[0-9]+" required name="mno"  [(ngModel)]="mno" id="mno" placeholder=" enter your Mobile no">
             <div *ngIf="mobile?.touched">
                 <div class="red-text left" *ngIf="mobile.errors?.required">
-                  Contact No Required*
+                  Contact Numeber Required*
                 </div>
+                <div class="red-text left" *ngIf="mobile.errors?.pattern">
+                    Contact Numeber invalid*
+                  </div>
                 <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
-                  Please enter valid Contact No
+                  Please enter valid Contact Numeber*
                 </div>
               </div>
           </div>
           <div class="form-group">
             <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
-            <input type="date" #dt="ngModel"
-            required class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date">
+            <!-- <input type="date" #dt="ngModel"
+            required class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date"> -->
+            <my-date-picker  #dt="ngModel"
+            required name="booking" [(ngModel)]="booking" [placeholder]="placeholder"   [options]="myDatePickerOptions" [(ngModel)]="booking"  
+            style="margin-left: -2%;" 
+             required></my-date-picker>
+  
             <div *ngIf="dt?.touched">
                 <div class="red-text left" *ngIf="dt.errors?.required">
                    Please Enter Booking Date*
