@@ -683,6 +683,7 @@ nav ul li a {
     }
 
     nav.black ul {
+    padding-right: 0;
           background: #000 !important;
     }
     .subnav-content{
