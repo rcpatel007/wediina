@@ -291,7 +291,8 @@
             <!-- <input type="date" #dt="ngModel"
             required class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date"> -->
             <my-date-picker  #dt="ngModel"
-            required name="booking" [(ngModel)]="booking" [placeholder]="placeholder"   [options]="myDatePickerOptions" [(ngModel)]="booking"  
+            required name="booking" name="date" [(ngModel)]="date" 
+            [placeholder]="placeholder"   [options]="myDatePickerOptions"   
             style="margin-left: -2%;" 
              required></my-date-picker>
   
