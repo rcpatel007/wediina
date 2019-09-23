@@ -630,7 +630,7 @@ nav ul li {
 }
 input[type="date"]::before{
     color: #ffffff;
-    content: attr(placeholder) ": ";
+    /* content: attr(placeholder) ": "; */
  }
  input[type="date"]:focus::before {
     content: "" !important;
@@ -1048,6 +1048,7 @@ cursor: pointer;
     height: 38px !important;
     border-radius: 0;
     font-size: 14px !important;
+    text-align: left !important;
 }
 .form_control_m:hover{
     box-shadow:none !important;
@@ -1328,7 +1329,9 @@ td{
     font-size: 20px;
     color: #FF353A;
 }
-
+input[type=date]{
+align-items: left !important;
+}
 .videostroy_title{
     font-size: 20px;
     background: #000;

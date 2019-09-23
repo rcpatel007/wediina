@@ -41,7 +41,7 @@
       <div class="text-center venueprofile_head s_headding-text">
         welcome to your dashbord <b>{{fname}} {{lname}}</b> !
       </div>
-      <form (ngSubmit)="editVendor()">
+      <form #frm1="ngForm" (ngSubmit)="editVendor()">
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">First Name</label>
@@ -52,9 +52,17 @@
 
           <div class="form-group">
             <label for="mobileno">Mobile No.</label>
-            <input type="text" class="form-control" id="mobileno" name="mno" [(ngModel)]="mno" placeholder="Mobile No">
+            <input type="text" class="form-control"  minlength="10" maxlength="10" #mobile="ngModel"
+            pattern="[0-9]+" required id="mobileno" name="mno" [(ngModel)]="mno" placeholder="Mobile No">
           </div>
-
+          <div *ngIf="mobile?.touched">
+              <div class="red-text left" *ngIf="mobile.errors?.required">
+                Contact No Required*
+              </div>
+              <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
+                Please enter valid Contact No
+              </div>
+            </div>
 
           <div class="form-group">
             <label for="formGroupExampleInput">Address</label>
@@ -69,7 +77,17 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="email">
+            <input type="text" class="form-control" #mail="ngModel"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required  id="email" placeholder="Email" name="email" [(ngModel)]="email">
+            <div *ngIf="mail?.touched">
+                <div class="red-text left" *ngIf="mail.errors?.required">
+                    Email Required*
+                </div>
+                <div class="red-text left" *ngIf="mail.errors?.pattern">
+                    Please Enter valid Email*
+                </div>
+
+            </div>
           </div>
           <div class="form-group">
             <label for="cname">GST No.</label>
@@ -90,7 +108,7 @@
           </div> -->
           <div class="form-group">
             <label for="state"></label>
-            <input type="submit" class="float-right btn btn-success" id="state" value="update">
+            <input type="submit" [disabled]="frm1.invalid" class="float-right btn btn-success" id="state" value="update">
           </div>
 
         </div>
@@ -147,7 +165,7 @@
           </div>
           <div class="form-group col-sm-12 col-12 col-xs-12 col-lg-12 col-md-12 col-xl-12">
             <label for="state"> </label>
-            <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
+            <input type="submit" [disabled]="frm1.invalid" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
           </div>
         </div>
       </form>

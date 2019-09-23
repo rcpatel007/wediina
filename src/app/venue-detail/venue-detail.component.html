@@ -324,21 +324,47 @@ type = "ball-clip-rotate"
         <h4 class="modal-title">Send Inquiry</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <form (ngSubmit)="sendInquiry()">
+      <form #frm1="ngForm" (ngSubmit)="sendInquiry()">
      
       <!-- Modal body -->
       <div class="modal-body">
         <div class="form-group">
           <label for="fname" class=""> Name</label><span class="text-danger">*</span>
-          <input type="text" class="form-control form_control_m" id="name" name="cname" [(ngModel)]="cname" laceholder="Enter your Name">
-        </div>
+          <input type="text" class="form-control form_control_m" #name="ngModel"
+                required id="name" name="cname" [(ngModel)]="cname" laceholder="Enter your Name">
+                <div *ngIf="name?.touched">
+                    <div class="red-text left" *ngIf="mail.errors?.required">
+                        Name Required*
+                    </div>
+                 
+                </div>
+              </div>
         <div class="form-group">
           <label for="fname" class="">Email</label><span class="text-danger">*</span>
-          <input type="email" class="form-control form_control_m" id="email" name="cemail" [(ngModel)]="cemail" placeholder="enter your Email">
+          <input type="email" class="form-control form_control_m" #mail="ngModel"
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required   id="email"  name="cemail" [(ngModel)]="cemail" placeholder="enter your Email">
+          <div *ngIf="mail?.touched">
+              <div class="red-text left" *ngIf="mail.errors?.required">
+                  Email Required*
+              </div>
+              <div class="red-text left" *ngIf="mail.errors?.pattern">
+                  Please Enter valid Email*
+              </div>
+
+          </div>
         </div>
         <div class="form-group">
           <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
-          <input type="text" class="form-control form_control_m" id="mno" name="mno" [(ngModel)]="mno" placeholder=" enter your Mobile no">
+          <input type="text" class="form-control form_control_m" minlength="10" maxlength="10" #mobile="ngModel"
+          pattern="[0-9]+" required   id="mno" name="mno" [(ngModel)]="mno" placeholder=" enter your Mobile no">
+          <div *ngIf="mobile?.touched">
+              <div class="red-text left" *ngIf="mobile.errors?.required">
+                Contact No Required*
+              </div>
+              <div [hidden]="!mobile?.hasError('minlength')" class="red-text">
+                Please enter valid Contact No
+              </div>
+            </div>
         </div>
         <div class="form-group">
           <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
@@ -346,18 +372,37 @@ type = "ball-clip-rotate"
         </div>
         <div class="form-group">
           <label for="fname" class="">No of Person</label><span class="text-danger">*</span>
-          <input type="text" class="form-control form_control_m" id="Person" name="person" [(ngModel)]="person" placeholder="Enter No of Person">
+          <input type="text" class="form-control form_control_m" #no="ngModel"
+          pattern="[0-9]+" required    id="Person" name="person" [(ngModel)]="person" placeholder="Enter No of Person">
+      
+          <div *ngIf="no?.touched">
+              <div class="red-text left" *ngIf="no.errors?.required">
+                  No Person Required*
+              </div>
+              <div class="red-text left" *ngIf="no.errors?.pattern">
+                  Please input only number*
+              </div>
+
+          </div>
         </div>
+      
         <div class="form-group">
           <label for="fname" class="">purpose</label><span class="text-danger">*</span>
-          <input type="text" class="form-control form_control_m" id="purpose" name="purpose" [(ngModel)]="purpose"
+          <input type="text" class="form-control form_control_m" #purposed="ngModel"
+          required  id="purpose" name="purpose" [(ngModel)]="purpose"
             placeholder="Please Write a purpose why are you need this place.">
-        </div>
+            <div *ngIf="purposed?.touched">
+                <div class="red-text left" *ngIf="purposed.errors?.required">
+                   Please Enter your Purpose Why Are you send this Inquiry*
+                </div>
+             
+            </div>
+          </div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success w-100" >Send</button>
+        <button type="submit" [disabled]="frm1.invalid" class="btn btn-success w-100" >Send</button>
       </div>
     </form>
     </div>
@@ -384,7 +429,7 @@ type = "ball-clip-rotate"
             placeholder="Enter your password .">
         </div>
         <div class="form-group">
-          <input type="submit" class="btn btn-success w-100"  value="Login" />
+          <input type="submit" [disabled]="frm1.invalid" class="btn btn-success w-100"  value="Login" />
         </div>
       </form>
       </div>
@@ -411,7 +456,7 @@ type = "ball-clip-rotate"
           <!-- Modal body -->
           <div class="modal-body">
     
-            <form (ngSubmit)="login()">
+            <form #frm2="ngForm" (ngSubmit)="login()">
             <div class="form-group">
               <label for="fname" class="">Email</label><span class="text-danger">*</span>
               <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="enter your Email">
@@ -423,7 +468,7 @@ type = "ball-clip-rotate"
                 placeholder="Enter your password .">
             </div>
             <div class="form-group">
-              <input type="submit" class="btn btn-success w-100"    value="Login" />
+              <input type="submit" [disabled]="frm2.invalid" class="btn btn-success w-100"    value="Login" />
             </div>
           </form>
           </div>

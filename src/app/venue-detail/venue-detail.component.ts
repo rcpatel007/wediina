@@ -263,6 +263,8 @@ sendInquiry()
   .subscribe(res=>{
     //console.log(res);
     this.spinner.hide();
+    $(".modal").modal("hide");
+
   });
 }
 addFeedback(){
