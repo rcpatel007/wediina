@@ -35,13 +35,14 @@
 
     </div>
   </div>
+  <form (ngSubmit)="editDetail()">
+     
   <!-- content section -->
   <div id="profile" class="col-sm-12 col-12 col-lg-8 col-md-8 col-xl-8 float-right p_main_section">
     <div>
       <div class="text-center venueprofile_head s_headding-text">
         welcome to your dashbord <b>{{fname}} {{lname}}</b> !
       </div>
-      <form action="">
         <div class="col-sm-12 col-12 col-xs-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">First Name</label>
@@ -90,7 +91,6 @@
           </div>
 
         </div>
-      </form>
     </div>
     <div>
 
@@ -101,7 +101,6 @@
       <div class="text-center venueprofile_head s_headding-text">
         My Venues
       </div>
-      <form action="">
         <div class="col-sm-12 col-12 col-xs-12  col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">Venue Name</label>
@@ -158,18 +157,28 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="state"> </label>
-            <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
-          </div>
+          
 
         </div>
-      </form>
+        <div class="col-md-12">
+            <div class="form-group">
+              <!-- <label for="venue_detail"><b>Venue Detail </b></label> -->
+              <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100"
+                rows="10"></textarea>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="state"> </label>
+          <input type="submit" class="mr-t-13 float-right btn btn-success" id="state" value="Update">
+        </div>
+
+     
     </div>
     <div>
 
     </div>
   </div>
+  </form>
   <!-- detail old venue -->
   <div id="myvenue" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
     <div>
@@ -201,13 +210,6 @@
 
 
 
-          <div class="col-md-12">
-            <div class="form-group">
-              <!-- <label for="venue_detail"><b>Venue Detail </b></label> -->
-              <textarea placeholder=" Enter your Venue Detail " name="desp" [(ngModel)]="desp" class="w-100" cols="50"
-                rows="20"></textarea>
-            </div>
-          </div>
 
         </div>
       </form>
@@ -217,33 +219,34 @@
     </div>
   </div>
   <div id="bookingdate"
-    class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
-    <div>
-      <div class="text-center venueprofile_head s_headding-text">
-        Booking close Date
-      </div>
-      <div class="text-right"><button class="btn btn-success" data-toggle="modal" data-target="#bookedDate">Add
-          Date</button></div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#No</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>22/06/2019 </td>
-          </tr>
+  class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+  <div>
+    <div class="text-center venueprofile_head s_headding-text">
+      Booking close Date
+    </div>
+    <div class="text-right"><button class="btn btn-success" data-toggle="modal" data-target="#bookedDate">Add
+        Date</button></div>
+    <table class="table table-striped">
+      <thead>
+        <tr >
+          <th scope="col">#No</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of bookingdate; let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{b}}</td>
+          <td><i class="fa fa-trash red-text" (click)="deleteDate(i)"></i></td>
+        </tr>
 
-        </tbody>
-      </table>
-    </div>
-    <div>
-    </div>
+      </tbody>
+    </table>
   </div>
-
+  <div>
+  </div>
+</div>
   <div id="myorder"
     class="col-sm-12 col-12 col-xs-12 overflow-auto col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
     <div>
@@ -254,24 +257,28 @@
         <thead>
           <tr>
             <th scope="col">#No</th>
-            <th>Date</th>
+            <th>Inquiry Date</th>
+            <th>Booking Date</th>
             <th scope="col">customer Name</th>
             <th scope="col">email</th>
             <th scope="col">Mobile No</th>
-            <th scope="col">Detail</th>
+            <th scope="col">No of Person</th>
+            <th scope="col">purpose</th>
 
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>22/06/2019 </td>
-            <td>chirag </td>
-            <td>chiragramani145@gmail.com</td>
-            <td>+911234567890</td>
-            <td width=100%><b>person</b>: 5000 <br /> <b>days</b> : 1 night <br /> <b>purpose</b> : marriage Function
-            </td>
-          </tr>
+            <tr *ngFor= "let inq of inquiry; let i=index;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{inq.inquiry_date}} </td>
+                <td>{{inq.booking_date}} </td>
+                <td>{{inq.customer_name}}</td>
+                <td>{{inq.email}}</td>
+                <td>{{inq.mobileNo}}</td>
+                <td>{{inq.no_of_person}}</td>
+                <td width=100%>{{inq.purpose}}
+                </td>
+              </tr>
 
 
         </tbody>
@@ -296,20 +303,22 @@
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-        
-
-        <div class="form-group">
-          <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
-          <input type="date" class="form-control" />
+      <form (ngSubmit)="bookingDate()">
+          <!-- Modal body -->
+        <div class="modal-body">
+      
+          <div class="form-group">
+            <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
+            <input type="date" name="date" [(ngModel)]="date" class="form-control" />
+          </div>
+  
         </div>
-
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success w-100" data-dismiss="modal">Submit</button>
-      </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success w-100" >Submit</button>
+        </div>
+      </form>
 
     </div>
   </div>

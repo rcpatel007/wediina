@@ -122,6 +122,13 @@ venueInquiry(vinquiry) {
    .pipe(map( res => res.json()));
 
 }
+getVenueInquiryById(id) {
+  //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/venue_inquiry/' +id)
+    .pipe(map( res => res.json()));
+
+}
+
 /******************************************************* */
 
 // vendor
@@ -188,7 +195,8 @@ getVendorInquiryById(id) {
 
 }
 
-  editVendor(id, updateVendor) {
+
+editVendor(id, updateVendor) {
 return this.http.put(environment.api_url + '/vendor_update/'+id, updateVendor)
   .pipe(map( res => res.json()));
 
