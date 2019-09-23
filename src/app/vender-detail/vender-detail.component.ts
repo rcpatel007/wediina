@@ -1,11 +1,13 @@
 import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
-import { getLocaleDateFormat } from '@angular/common';
+import { getLocaleDateFormat  } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { IMyDpOptions } from 'mydatepicker';
+
 declare var $: any;
 
 @Component({
@@ -23,6 +25,11 @@ export class VenderDetailComponent implements OnInit {
   range = [];
  marked = -1;
  smarked:Number = -1;
+ public myDatePickerOptions: IMyDpOptions = {
+  // other options...
+  dateFormat: 'dd/mm/yyyy',
+  editableDateField: false
+};
 
   id:String;
   address:String;
@@ -48,16 +55,17 @@ export class VenderDetailComponent implements OnInit {
   review=[];
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    ) { }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-
     $(document).ready(function() {
-
+     
+      
       $('#mainvideomodel').click(function() {
       //  alert('hey'); 
         $("#videopopup").attr("src","");
@@ -230,6 +238,8 @@ this.spinner.show();
   .subscribe(res=>{
 this.spinner.hide();
 this.getfeedback();
+$(".modal").modal("hide");
+
   });
 }
 

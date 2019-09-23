@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { StarRatingComponent } from 'ng-starrating';
+import { IMyDpOptions } from 'mydatepicker';
+
 declare var $: any;
 @Component({
   selector: 'app-venue-detail',
@@ -54,6 +56,12 @@ export class VenueDetailComponent implements OnInit {
   purpose:String;
   v_email:String;
   review=[];
+  public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+    editableDateField: false
+  };
+  
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 

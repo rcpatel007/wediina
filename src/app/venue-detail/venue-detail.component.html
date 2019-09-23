@@ -333,7 +333,7 @@ type = "ball-clip-rotate"
           <input type="text" class="form-control form_control_m" #name="ngModel"
                 required id="name" name="cname" [(ngModel)]="cname" laceholder="Enter your Name">
                 <div *ngIf="name?.touched">
-                    <div class="red-text left" *ngIf="mail.errors?.required">
+                    <div class="red-text left" *ngIf="name.errors?.required">
                         Name Required*
                     </div>
                  
@@ -368,7 +368,11 @@ type = "ball-clip-rotate"
         </div>
         <div class="form-group">
           <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
-          <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date">
+          <my-date-picker name="booking" [(ngModel)]="booking" [placeholder]="placeholder"   [options]="myDatePickerOptions" [(ngModel)]="booking"  
+          style="margin-left: -2%;" 
+          (dateChanged)="datefilter($event)" required></my-date-picker>
+
+          <!-- <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date"> -->
         </div>
         <div class="form-group">
           <label for="fname" class="">No of Person</label><span class="text-danger">*</span>
