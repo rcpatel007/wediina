@@ -156,7 +156,7 @@ this.getfeedback();
 
   getvendor() {
     // this.spinner.show();
-
+this.spinner.show();
     this.conectionservice.getVendorById(this.id)
       .subscribe(res => {
         this.address = res.address;
@@ -172,6 +172,7 @@ this.getfeedback();
         // this.spinner.hide();
 
         //console.log(res);
+        this.spinner.hide();
 
 
       });
@@ -220,10 +221,10 @@ this.getfeedback();
         environment.customer_id = res._id;
         environment.venue_id = null;
         environment.vendor_id = null;
-        this.spinner.hide();
         this.customer = true;
         //console.log(res, 'customerdetail');
-
+        this.spinner.hide();
+       
       });
 
   }
@@ -270,45 +271,60 @@ this.getfeedback();
 
     }
   }
-getfeedback(){
-// let feed:any;
-let c_id:String;
-let count:Number = 0;
-this.smarked = -1;
-// let c_name:String;
-// let comment:String;
-// let rating:String;
-  this.conectionservice.getreview()
-  .subscribe(res =>{
 
-//console.log(res);
-for (let index = 0; index < res.length; index++) {
-
-  if (res[index].vendor_id == this.id) {
-    
-    c_id = res[index].customer_id;
-
-    this.conectionservice.getCustomerById(c_id)
-    .subscribe(result =>{
-      let feed ={
-        c_name:result.name,
-        commnet:res[index].comment,
-        rating:res[index].rating
-      }
-
-      this.review.push(feed);
-      count = res[index].rating + Number(count);
-      this.smarked  = (Number(count)/Number( this.review.length))-1;
   
-console.log(count);
+getfeedback(){
+  this.spinner.show();
+       this.review=[];
+  // let feed:any;
+  let count = 0;
+  let c_id:String;
+  // let c_name:String;
+  // let comment:String;
+  // let rating:String;
+    this.conectionservice.getreview()
+    .subscribe(res =>{
+  
+  console.log(res);
+  for (let index = 0; index < res.length; index++) {
+  
+    if (res[index].vendor_id == this.id) {
+      
+      c_id = res[index].customer_id;
+  
+      this.conectionservice.getCustomerById(c_id)
+      .subscribe(result =>{
+        let feed ={
+          c_name:result.name,
+          commnet:res[index].comment,
+          rating:res[index].rating
+        }
+  
+        this.review.push(feed);
+  
+
+          console.log(this.review);
+          
+    count = res[index].rating+ Number(count);
+    this.smarked  = Number(count)/Number( this.review.length);
+
+    this.spinner.hide();
+       
+
+
 console.log(this.smarked);
 
-
-    });
+      });
+      
+    }
   }
-}
-//console.log("review1",this.review);
- 
+  //console.log("review1",this.review);
+  
+
+// console.log(this.review.length);
+// console.log(count);
+// console.log(this.smarked);
+
   });
 }
   addFeedback(){
@@ -332,7 +348,7 @@ console.log(this.smarked);
     console.log(review);
     
       });
-    
+      $(".modal").modal("hide");
     }
 
 }

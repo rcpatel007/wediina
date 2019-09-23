@@ -1,6 +1,13 @@
 <app-header></app-header>
-<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="large" color="#000000" type="ball-clip-rotate" [fullScreen]="true">
-
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#fff"
+size = "large"
+color = "#000000"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+<!-- <p style="color: white" > Loading... </p> -->
 </ngx-spinner>
 
 <section id="home" class="top_cont_outer contanier">
@@ -16,7 +23,7 @@
           </slide>
 
         </carousel>
-        <div class=" inner-part center">
+        <div class="inner-part center">
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
               <b class="greeting_head">{{companyName}}</b></p>
@@ -26,151 +33,61 @@
       </div>
     </div>
   </div>
+  <div class="row inner-part text-center mx-auto " >
+  <div  class="col-12 inner-part mx-auto col-lg-4  col-md-4 col-xl-4 col-xs-4 float-left">
+    <button class=" btn btn_danger mob_btn_pos inquery_btn  " data-toggle="modal" data-target="#sendInquiry">Send
+    Inquery</button>
+  </div>
+  <div class="col-12 inner-part mx-auto col-lg-4  col-md-4 col-xl-4 col-xs-4 float-left">
+    <span class='star-rating  col-sm-12 col-lg-3 col-md-3 col-xl-3 text-center '>
+      <ng-container *ngIf='!sforDisplay'>
+        <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
+      </ng-container>
+      <ng-container *ngIf='sforDisplay'>
+        <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
+      </ng-container>                  
+  </span>
+</div>
+  <div class="col-xl-4 inner-part col-xs-4 col-lg-4 col-md-4 float-left">
+    <a class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn" href="{{location}}" style="color: #fff;" target="_blank"><i
+        class="fa fa-map-marker"></i> Location</a>
+  </div>
+</div>
 </section>
-<section class="container-fluid  inner-part" style="margin-top: -1%;">
+<section class="container-fluid  inner-part" style="margin-top: 0%;" >
+  
   <div class="row">
-    <div class="col-12 col-sm-12 col-lg-8 col-md-8 col-xl-8 float-left">
+    <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 float-left">
       <div class="">
-
-        <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
+        <!-- <div class="title_section col-12 col-sm-12 col-12 col-lg-12 col-md-12 col-xl-12 float-left">
+            <div class="col-lg-6  float-left">
+                <div class="pointer text-left"> </div>
+  
+            </div>
+          <div class="price_text col-lg-6 float-right">
+            
+            
+                     </div>
+         
+        </div> -->
+        <!-- <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
           <div class="like_display">
-            <!-- <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
-            <br><i class="fa fa-heart"></i> &nbsp;&nbsp;&nbsp;10 -->
           </div>
-        </div>
+        </div> -->
 
       </div>
-      <carousel [interval]=2000 [showIndicators]="true" [noPause]="true">
+      <carousel [interval]=2000 style="" [showIndicators]="true" [noPause]="true">
         <slide *ngFor="let s of sub_images" class="fadding">
           <img class="background-img" class="v_carousel_img" src="{{s}}" />
         </slide>
 
       </carousel>
-      <div class="v_despcol-12 back-part col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
-        <h4>Address</h4>
-        <div class="detail_block col-12 col-sm-12 col-12 col-xl-12 col-sm-12 col-md-12 float-left">
-          <!-- <h5 class="detail_title">Area</h5> -->
-          <p>{{address}}</p>
-        </div>
-
-
-      </div>
-
-      <div class="v_desp back-part">
-        <h4>Summray</h4>
-        <p>
-          {{detail}}
-        </p>
-      </div>
-      <div class="mr-t-9 v_desp back-part">
-        <h4>Testimonial</h4>
-        <div class="testimonial_user">
-          <form (ngSubmit)="addFeedback()">
-            <div>
-              Add your Feedback
-              <span class='star-rating col-lg-6 float-right  text-right'>
-                  <ng-container *ngIf='!forDisplay'>
-                    <i *ngFor='let n of range; let $index = index;' class='fa to-rate' (click)='mark($index)' [ngClass]='isMarked($index)'></i>
-                  </ng-container>
-                  <ng-container *ngIf='forDisplay'>
-                    <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='isMarked($index)'></i>
-                  </ng-container>                  
-              </span>
-              <!-- <div class="star-rating col-lg-6 float-right   text-right">
-                <span class="fa fa-star-o" data-rating="1"></span>
-                <span class="fa fa-star-o" data-rating="2"></span>
-                <span class="fa fa-star-o" data-rating="3"></span>
-                <span class="fa fa-star-o" data-rating="4"></span>
-                <span class="fa fa-star-o" data-rating="5"></span>
-                <input type="hidden" name="rat" [(ngModel)]="rat" class="rating-value" value="0">
-              </div> -->
-            </div>
-            <div class=" ">
-              <div class="form-group">
-                <textarea rows="5" class="form-control w-100" [(ngModel)]="feedback" name="feedback" maxlength="200"
-                  placeholder="Enter your feedback here.... "></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <input class="form-control btn btn-danger" type="submit" value="Submit" />
-            </div>
-          </form>
-        </div>
-        <!-- <div  class="testimonial_user">
-            <div>
-              <div class="col-lg-6 float-left">
-                <i class="fa fa-user test_user"></i>Chirag Ramani 
-              </div>          
-              <div class="star-rating col-lg-6 float-right   text-right">
-                  <span class="fa fa-star-o"  data-rating="1"></span>
-                  <span class="fa fa-star-o"  data-rating="2"></span>
-                  <span class="fa fa-star-o"  data-rating="3"></span>
-                  <span class="fa fa-star-o"  data-rating="4"></span>
-                  <span class="fa fa-star-o"  data-rating="5"></span>
-                  <input type="hidden" name="whatever1" class="rating-value" value="3">
-                </div> 
-              
-              </div>
-            <div class="review">
-              This party plot is best in Rajkot
-            </div>
-          </div>
-   -->
-        <div *ngFor="let r of review" class="testimonial_user">
-          <div>
-            <div class="col-lg-6 float-left">
-              <i class="fa fa-user test_user"></i>{{r.c_name}}
-            </div>
-            <div class="star-rating col-lg-6 float-right   text-right">
-              <!-- <span class="fa fa-star-o"  data-rating="1"></span>
-            <span class="fa fa-star-o"  data-rating="2"></span>
-            <span class="fa fa-star-o"  data-rating="3"></span>
-            <span class="fa fa-star-o"  data-rating="4"></span>
-            <span class="fa fa-star-o"  data-rating="5"></span>
-            <input type="hidden" name="whatever1" class="rating-value" value="3"> -->
-              <span class="review_span">
-                {{r.rating}}/5
-              </span>
-            </div>
-
-          </div>
-          <div class="review">
-            {{r.commnet}}
-          </div>
-        </div>
-
-
-
-
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left send_btn mob_mr_t-13 ">
-      <!-- <div class="star-rating  text-center">
-        <span class="fa fa-star-o" data-rating="1"></span>
-        <span class="fa fa-star-o" data-rating="2"></span>
-        <span class="fa fa-star-o" data-rating="3"></span>
-        <span class="fa fa-star-o" data-rating="4"></span>
-        <span class="fa fa-star-o" data-rating="5"></span>
-        <input type="hidden" name="whatever1" class="rating-value" value="0">
-      </div> -->
-      <span class='star-rating  col-sm-12 col-lg-4 col-md-4 col-xl-4 text-center '>
-          <ng-container *ngIf='!sforDisplay'>
-            <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
-          </ng-container>
-          <ng-container *ngIf='sforDisplay'>
-            <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
-          </ng-container>                  
-      </span>
-      <button class=" btn btn_danger mob_btn_pos inquery_btn" data-toggle="modal" data-target="#sendInquiry">Send
-        Inquery</button>
-      <div>
-        <a class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn" href="" style="color: #fff;" target="_blank"><i
-            class="fa fa-map-marker"></i> Location</a>
-      </div>
-      <div>
-        <h6 class="videostroy_title">Video Story</h6>
+      
+    
+      <div class="row">
+        <h6 class="col-12 col-lg-12 col-md-12 col-xl-12  videostroy_title">Video Story</h6>
         <div *ngFor="let v of video;let i= index"
-          class="col-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 order-first float-left" data-toggle="modal"
+          class="col-12 col-sm-12 col-lg-2 col-md-2 col-xl-2  float-left" data-toggle="modal"
           data-target=".video_modal">
           <img src="../../assets/image/Ahmedabad.jpg" (click)="getvideo(v)" class="img-thumbnail" />
 
@@ -178,6 +95,136 @@
 
       </div>
     </div>
+    
+    
+<div class="v_despcol-12 back-part mr-t-2 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
+    <h4>Address</h4>
+    <div class="detail_block col-12 col-sm-12 col-12 col-xl-12 col-sm-12 col-md-12 float-left">
+      <!-- <h5 class="detail_title">Area</h5> -->
+      <p>{{address}}</p>
+    </div>
+</div>
+
+       <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 float-left send_btn mob_mr_t-13 ">
+      <!-- <div class="star-rating ">
+        <span class="fa fa-star-o"  data-rating="1"></span>
+        <span class="fa fa-star-o"  data-rating="2"></span>
+        <span class="fa fa-star-o"  data-rating="3"></span>
+        <span class="fa fa-star-o"  data-rating="4"></span>
+        <span class="fa fa-star-o"  data-rating="5"></span>
+        <input type="hidden" name="whatever1" class="rating-value" value="3">
+      </div> -->
+      
+ 
+
+     
+     
+      <div class="v_desp back-part">
+        <h4>Summrary</h4>
+        <p>
+          {{detail}}
+        </p>
+      </div>
+      <div class="mr-t-9 feedback-scroll v_desp back-part">
+        <h4>Testimonial</h4>
+        <!-- <div class="star-rating  col-lg-6 float-right   text-right" *ngIf="customer == false">
+          <span class="fa fa-star-o"  data-rating="1"></span>
+          <span class="fa fa-star-o"  data-rating="2"></span>
+          <span class="fa fa-star-o"  data-rating="3"></span>
+          <span class="fa fa-star-o"  data-rating="4"></span>
+          <span class="fa fa-star-o"  data-rating="5"></span>
+          <input type="hidden"  class="rating-value" >
+        </div>  -->
+        <div class="testimonial_user" *ngIf="customer == false">
+          <div class="form-group" >
+          <button class="btn btn-success form-control" data-toggle="modal" data-target="#review">Login</button>
+        </div>
+        </div>
+       
+        <div class="testimonial_user" >
+          <div *ngIf="customer == true">
+            <!-- <div class="col-lg-6 float-left">
+              <i class="fa fa-user test_user"></i>
+            </div>           -->
+           
+            <form (ngSubmit)="addFeedback();">
+                <span class='star-rating col-lg-6 float-right  text-right'>
+                    <ng-container *ngIf='!forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class='fa to-rate' (click)='mark($index)' [ngClass]='isMarked($index)'></i>
+                    </ng-container>
+                    <ng-container *ngIf='forDisplay'>
+                      <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='isMarked($index)'></i>
+                    </ng-container>                  
+                </span>
+              <!-- <div class="star-rating col-lg-6 float-right text-right">
+                    <span class="fa fa-star-o"  data-rating="1"></span>
+                    <span class="fa fa-star-o"  data-rating="2"></span>
+                    <span class="fa fa-star-o"  data-rating="3"></span>
+                    <span class="fa fa-star-o"  data-rating="4"></span>
+                    <span class="fa fa-star-o"  data-rating="5"></span>
+                    <input type="hidden"  name="rat" [(ngModel)]="rat" value="4"  class="rating-value" >
+                  </div> -->
+              <div class="form-group">
+                    <textarea rows="5" class="form-control w-100" name="feedback" [(ngModel)]="feedback"  maxlength="200" placeholder="Enter your feedback here.... "></textarea>
+                  </div>
+                <div class="form-group">
+                  <input class="form-control btn btn-danger"  type="submit" value="Submit" />
+                  <!-- <input class="form-control btn btn-danger" *ngIf="customer == false" type="button" value="Submit" data-toggle="modal" data-target="#review" /> -->
+                </div>
+            </form>
+            </div>
+            <!-- <div class="testimonial_user">
+                <div>
+                  <div class="col-lg-6 float-left">
+                    <i class="fa fa-user test_user"></i>Chirag Ramani 
+                  </div>          
+                  <div class="star-rating col-lg-6 float-right   text-right">
+                      <span class="fa fa-star-o"  data-rating="1"></span>
+                      <span class="fa fa-star-o"  data-rating="2"></span>
+                      <span class="fa fa-star-o"  data-rating="3"></span>
+                      <span class="fa fa-star-o"  data-rating="4"></span>
+                      <span class="fa fa-star-o"  data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="3">
+                    </div> 
+                  
+                  </div>
+                <div class="review">
+                  This party plot is best in Rajkot
+                </div>
+              </div> -->
+              <div *ngFor="let r of review; let i =index;" class="testimonial_user">
+                <ng-container *ngIf="review[review.length-i-1] as re">
+                <div>
+                    <div class="col-lg-6 float-left">
+                      <i class="fa fa-user test_user"></i> {{re.c_name}} 
+                    </div>          
+                    <div class="star-rating col-lg-6 float-right   text-right">
+                        <!-- <span class="fa fa-star-o"  data-rating="1"></span>
+                        <span class="fa fa-star-o"  data-rating="2"></span>
+                        <span class="fa fa-star-o"  data-rating="3"></span>
+                        <span class="fa fa-star-o"  data-rating="4"></span>
+                        <span class="fa fa-star-o"  data-rating="5"></span>
+                        <input type="hidden" name="whatever1" class="rating-value" value="3"> -->
+                        <span class="review_span">
+                        {{re.rating}}/5
+                      </span>
+                      </div> 
+                    
+                    </div>
+                  <div class="review">
+                    {{re.commnet}} 
+                  </div>
+                
+              </ng-container> 
+                </div>
+        </div>
+       
+
+
+
+      </div>
+    </div>
+   
   </div>
 
 </section>
@@ -196,7 +243,7 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" id="video" src="https://www.youtube.com/embed/t53c-tLZS7E"
+        <iframe class="embed-responsive-item"  src="{{playvideo}}"
             allowfullscreen></iframe>
         </div>
       </div>
@@ -210,14 +257,14 @@
   </div>
 </div>
 
-<div class="modal fade video_modal bd-example-modal-lg" id="mainvideomodel" tabindex="-1" role="dialog"
-  aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <iframe class="embed-responsive-item h-70vh" id="videopopup" src="{{playvideo}}" allowfullscreen></iframe>
+<div class="modal fade video_modal bd-example-modal-lg" id="mainvideomodel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <iframe class="embed-responsive-item h-70vh" id="videopopup" src="{{playvideo}}"
+          allowfullscreen></iframe>     
+      </div>
     </div>
   </div>
-</div>
 <!-- send Inquiry -->
 
 <div class="modal" id="sendInquiry">
@@ -225,85 +272,79 @@
     <div *ngIf="customer == true" class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header">
+      <div  class="modal-header">
         <h4 class="modal-title">Send Inquiry</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <form (ngSubmit)="sendInquiry()">
-        <!-- Modal body -->
-        <div class="modal-body">
-
-          <div class="form-group">
-            <label for="fname" class=""> Name</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" name="cname" [(ngModel)]="cname" id="name"
-              placeholder="Enter your Name">
-          </div>
-          <div class="form-group">
-            <label for="fname" class="">Email</label><span class="text-danger">*</span>
-            <input type="email" class="form-control form_control_m" id="email" name="cemail" [(ngModel)]="cemail"
-              placeholder="enter your Email">
-          </div>
-          <div class="form-group">
-            <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="mno" name="mno" [(ngModel)]="mno"
-              placeholder=" enter your Mobile no">
-          </div>
-          <div class="form-group">
-            <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
-            <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date"
-              placeholder="Enter your Date">
-          </div>
-          <div class="form-group">
-            <label for="fname" class="">Location</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="fname" name="location" [(ngModel)]="location"
-              placeholder="Enter Location">
-          </div>
-          <div class="form-group">
-            <label for="fname" class="">purpose</label><span class="text-danger">*</span>
-            <input type="text" class="form-control form_control_m" id="purpose" name="purpose" [(ngModel)]="purpose"
-              placeholder="Please Write a purpose why are you need this place.">
-          </div>
+     
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="fname" class=""> Name</label><span class="text-danger">*</span>
+          <input type="text" class="form-control form_control_m" id="name" name="cname" [(ngModel)]="cname" laceholder="Enter your Name">
         </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success w-100">Send</button>
+        <div class="form-group">
+          <label for="fname" class="">Email</label><span class="text-danger">*</span>
+          <input type="email" class="form-control form_control_m" id="email" name="cemail" [(ngModel)]="cemail" placeholder="enter your Email">
         </div>
-      </form>
+        <div class="form-group">
+          <label for="fname" class="">Mobile No</label><span class="text-danger">*</span>
+          <input type="text" class="form-control form_control_m" id="mno" name="mno" [(ngModel)]="mno" placeholder=" enter your Mobile no">
+        </div>
+        <div class="form-group">
+          <label for="fname" class="">Booking Date</label><span class="text-danger">*</span>
+          <input type="date" class="form-control form_control_m" id="date" name="date" [(ngModel)]="date" placeholder="Enter your Date">
+        </div>
+        <div class="form-group">
+          <label for="fname" class="">No of Person</label><span class="text-danger">*</span>
+          <input type="text" class="form-control form_control_m" id="Person" name="person" [(ngModel)]="person" placeholder="Enter No of Person">
+        </div>
+        <div class="form-group">
+          <label for="fname" class="">purpose</label><span class="text-danger">*</span>
+          <input type="text" class="form-control form_control_m" id="purpose" name="purpose" [(ngModel)]="purpose"
+            placeholder="Please Write a purpose why are you need this place.">
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success w-100" >Send</button>
+      </div>
+    </form>
     </div>
     <div *ngIf="customer == false" class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header">
+      <div  class="modal-header">
         <h4 class="modal-title">Customer Login</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
+      
       <!-- Modal body -->
       <div class="modal-body">
 
         <form (ngSubmit)="login()">
-          <div class="form-group">
-            <label for="fname" class="">Email</label><span class="text-danger">*</span>
-            <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email"
-              placeholder="enter your Email">
-          </div>
-
-          <div class="form-group">
-            <label for="fname" class="">Password</label><span class="text-danger">*</span>
-            <input type="password" name="password" [(ngModel)]="password" class="form-control form_control_m"
-              id="purpose" placeholder="Enter your password .">
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-success w-100" value="Login" />
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="fname" class="">Email</label><span class="text-danger">*</span>
+          <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="enter your Email">
+        </div>
+       
+        <div class="form-group">
+          <label for="fname" class="">Password</label><span class="text-danger">*</span>
+          <input type="password" name="password" [(ngModel)]="password" class="form-control form_control_m" id="purpose"
+            placeholder="Enter your password .">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-success w-100"  value="Login" />
+        </div>
+      </form>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
       </div>
-
+    
     </div>
   </div>
 </div>
@@ -311,73 +352,39 @@
 <!-- review -->
 <div class="modal" id="review">
   <div class="modal-dialog  modal-full    ">
-    <div *ngIf="customer ==true" class="modal-content">
+      <div *ngIf="customer == false" class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Review</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-
-        <div class="form-group">
-          <span class="rating fa fa-star"></span>
-          <span class="rating fa fa-star"></span>
-          <span class="rating fa fa-star"></span>
-          <span class="rating fa fa-star"></span>
-          <span class=" rating fa fa-star"></span>
-        </div>
-        <div class="form-group">
-          <label for="fname" class="">Comment</label><span class="text-danger">*</span>
-          <textarea class="form-control form_control_m" id="cmt" rows="15"
-            placeholder="Please Enter your valuable feedback"></textarea>
-        </div>
-
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success w-100" data-dismiss="modal">Send</button>
-      </div>
-
-    </div>
-    <div *ngIf="customer == false" class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Customer Login</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-
-        <form (ngSubmit)="login()">
-          <div class="form-group">
-            <label for="fname" class="">Email</label><span class="text-danger">*</span>
-            <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email"
-              placeholder="enter your Email">
+          <!-- Modal Header -->
+          <div  class="modal-header">
+            <h4 class="modal-title">Customer Login</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
-          <div class="form-group">
-            <label for="fname" class="">Password</label><span class="text-danger">*</span>
-            <input type="password" name="password" [(ngModel)]="password" class="form-control form_control_m"
-              id="purpose" placeholder="Enter your password .">
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+    
+            <form (ngSubmit)="login()">
+            <div class="form-group">
+              <label for="fname" class="">Email</label><span class="text-danger">*</span>
+              <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="enter your Email">
+            </div>
+           
+            <div class="form-group">
+              <label for="fname" class="">Password</label><span class="text-danger">*</span>
+              <input type="password" name="password" [(ngModel)]="password" class="form-control form_control_m" id="purpose"
+                placeholder="Enter your password .">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success w-100"    value="Login" />
+            </div>
+          </form>
           </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-success w-100" value="Login" />
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
           </div>
-        </form>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-      </div>
-
-    </div>
-
+        
+        </div> 
   </div>
 </div>
 

@@ -197,8 +197,12 @@ fetchemail(){
 
 getfeedback(){
   // let feed:any;
+  this.spinner.show();
   let count:Number= 0;
   let c_id:String;
+  let cnumber = 0;
+  this.feedback = null;
+  this.marked = 0;
   // let c_name:String;
   // let comment:String;
   // let rating:String;
@@ -207,14 +211,16 @@ getfeedback(){
   
   //console.log(res);
   for (let index = 0; index < res.length; index++) {
-  
+    cnumber  =cnumber +1;
     if (res[index].venue_id == this.id) {
       
       c_id = res[index].customer_id;
-  
+         
       this.conectionservice.getCustomerById(c_id)
       .subscribe(result =>{
+     
         let feed ={
+          No:cnumber,
           c_name:result.name,
           commnet:res[index].comment,
           rating:res[index].rating
@@ -222,14 +228,17 @@ getfeedback(){
   
         this.review.push(feed);
 
+        console.log(this.review);
+        
         count = res[index].rating + Number(count);
         this.smarked  = (Number(count)/Number( this.review.length))-1;
-    
+        this.spinner.hide();
   console.log(count);
   console.log(this.smarked);
   
       });
     }
+    
   }
   
   //console.log("review1",this.review);
@@ -261,18 +270,21 @@ let review = {
   customer_id:environment.customer_id,
   venue_id: this.id,
   vendor_id: null,
-  rating:this.marked,
+  rating:this.marked+1,
   comment:this.feedback
 }
+
 
 //console.log("review",review);
 
 this.spinner.show();
   this.conectionservice.addreview(review)
   .subscribe(res=>{
-this.spinner.hide();
-  });
-this.getfeedback();
+    this.getfeedback();
+    this.spinner.hide();
+
+});
+
 }
 
 

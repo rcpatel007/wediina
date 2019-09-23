@@ -33,31 +33,10 @@ type = "ball-clip-rotate"
       </div>
     </div>
   </div>
-  <div class="row inner-part text-center mx-auto " >
-  <div  class="col-12 inner-part mx-auto col-lg-4  col-md-4 col-xl-4 col-xs-4 float-left">
-    <button class=" btn btn_danger mob_btn_pos inquery_btn  " data-toggle="modal" data-target="#sendInquiry">Send
-    Inquery</button>
-  </div>
-  <div class="col-12 inner-part mx-auto col-lg-4  col-md-4 col-xl-4 col-xs-4 float-left">
-    <span class='star-rating  col-sm-12 col-lg-3 col-md-3 col-xl-3 text-center '>
-      <ng-container *ngIf='!sforDisplay'>
-        <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
-      </ng-container>
-      <ng-container *ngIf='sforDisplay'>
-        <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
-      </ng-container>                  
-  </span>
-</div>
-  <div class="col-xl-4 inner-part col-xs-4 col-lg-4 col-md-4 float-left">
-    <a class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn" href="{{location}}" style="color: #fff;" target="_blank"><i
-        class="fa fa-map-marker"></i> Location</a>
-  </div>
-</div>
 </section>
-<section class="container-fluid  inner-part" style="margin-top: 0%;" >
-  
+<section class="container-fluid  inner-part" style="margin-top: -1%;" >
   <div class="row">
-    <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 float-left">
+    <div class="col-12 col-sm-12 col-lg-8 col-md-8 col-xl-8 float-left">
       <div class="">
         <!-- <div class="title_section col-12 col-sm-12 col-12 col-lg-12 col-md-12 col-xl-12 float-left">
             <div class="col-lg-6  float-left">
@@ -70,10 +49,12 @@ type = "ball-clip-rotate"
                      </div>
          
         </div> -->
-        <!-- <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
+        <div class="col-12 col-sm-12 col-4 col-lg-4 col-md-4 col-xl-4 float-left">
           <div class="like_display">
+            <!-- <i class="fa fa-eye"></i> &nbsp;&nbsp;&nbsp;60
+            <br><i class="fa fa-heart"></i> &nbsp;&nbsp;&nbsp;10 -->
           </div>
-        </div> -->
+        </div>
 
       </div>
       <carousel [interval]=2000 style="" [showIndicators]="true" [noPause]="true">
@@ -82,98 +63,69 @@ type = "ball-clip-rotate"
         </slide>
 
       </carousel>
-      
-    
-      <div class="row">
-        <h6 class="col-12 col-lg-12 col-md-12 col-xl-12  videostroy_title">Video Story</h6>
-        <div *ngFor="let v of video;let i= index"
-          class="col-12 col-sm-12 col-lg-2 col-md-2 col-xl-2  float-left" data-toggle="modal"
-          data-target=".video_modal">
-          <img src="../../assets/image/Ahmedabad.jpg" (click)="getvideo(v)" class="img-thumbnail" />
+      <div class="v_despcol-12 back-part mr-t-2 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
+        <h4>Details</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <td>
 
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Area</h5>
+                  <p>{{area}}</p>
+                </div>
+              </td>
+              <td>
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Parking area</h5>
+                  <p>{{p_area}}</p>
+                </div>
+              </td>
+              <td>
+
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Capasity</h5>
+                  <p>{{capasity}} Person</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Out side Catring </h5>
+                  <p>{{catring}}</p>
+                </div>
+
+              </td>
+              <td>
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Theme Decoration</h5>
+                  <p>{{theme}}</p>
+                </div>
+
+              </td>
+              <td>
+                <div class="detail_block  float-left">
+                  <h5 class="detail_title">Time Duration </h5>
+                  <p>{{time}}</p>
+                </div>
+
+
+              </td>
+            </tr>
+          </table>
         </div>
 
+
       </div>
-    </div>
-    
-    
-<div class="v_despcol-12 back-part mr-t-2 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
-  <h4>Details</h4>
-  <div class="table-responsive">
-    <table class="table">
-      <tr>
-        <td>
 
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Area</h5>
-            <p>{{area}}</p>
-          </div>
-        </td>
-        <td>
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Parking area</h5>
-            <p>{{p_area}}</p>
-          </div>
-        </td>
-        <td>
-
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Capasity</h5>
-            <p>{{capasity}} Person</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Out side Catring </h5>
-            <p>{{catring}}</p>
-          </div>
-
-        </td>
-        <td>
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Theme Decoration</h5>
-            <p>{{theme}}</p>
-          </div>
-
-        </td>
-        <td>
-          <div class="detail_block  float-left">
-            <h5 class="detail_title">Time Duration </h5>
-            <p>{{time}}</p>
-          </div>
-
-
-        </td>
-      </tr>
-    </table>
-  </div>
-
-
-</div>
-
-       <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12 float-left send_btn mob_mr_t-13 ">
-      <!-- <div class="star-rating ">
-        <span class="fa fa-star-o"  data-rating="1"></span>
-        <span class="fa fa-star-o"  data-rating="2"></span>
-        <span class="fa fa-star-o"  data-rating="3"></span>
-        <span class="fa fa-star-o"  data-rating="4"></span>
-        <span class="fa fa-star-o"  data-rating="5"></span>
-        <input type="hidden" name="whatever1" class="rating-value" value="3">
-      </div> -->
-      
- 
-
-     
-     
       <div class="v_desp back-part">
         <h4>Summrary</h4>
         <p>
           {{detail}}
         </p>
       </div>
-      <div class="mr-t-9 feedback-scroll v_desp back-part">
+      <div class="mr-t-9 v_desp back-part">
         <h4>Testimonial</h4>
         <!-- <div class="star-rating  col-lg-6 float-right   text-right" *ngIf="customer == false">
           <span class="fa fa-star-o"  data-rating="1"></span>
@@ -240,11 +192,10 @@ type = "ball-clip-rotate"
                   This party plot is best in Rajkot
                 </div>
               </div> -->
-              <div *ngFor="let r of review; let i =index;" class="testimonial_user">
-                <ng-container *ngIf="review[review.length-i-1] as re">
-                <div>
+              <div *ngFor="let r of review" class="testimonial_user">
+                  <div>
                     <div class="col-lg-6 float-left">
-                      <i class="fa fa-user test_user"></i> {{re.c_name}} 
+                      <i class="fa fa-user test_user"></i>{{r.c_name}} 
                     </div>          
                     <div class="star-rating col-lg-6 float-right   text-right">
                         <!-- <span class="fa fa-star-o"  data-rating="1"></span>
@@ -254,16 +205,14 @@ type = "ball-clip-rotate"
                         <span class="fa fa-star-o"  data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="3"> -->
                         <span class="review_span">
-                        {{re.rating}}/5
+                        {{r.rating}}/5
                       </span>
                       </div> 
                     
                     </div>
                   <div class="review">
-                    {{re.commnet}} 
+                    {{r.commnet}} 
                   </div>
-                
-              </ng-container> 
                 </div>
         </div>
        
@@ -272,7 +221,41 @@ type = "ball-clip-rotate"
 
       </div>
     </div>
-   
+    <div class="col-12 col-sm-12 col-lg-4 col-md-4 col-xl-4 float-left send_btn mob_mr_t-13 ">
+      <!-- <div class="star-rating ">
+        <span class="fa fa-star-o"  data-rating="1"></span>
+        <span class="fa fa-star-o"  data-rating="2"></span>
+        <span class="fa fa-star-o"  data-rating="3"></span>
+        <span class="fa fa-star-o"  data-rating="4"></span>
+        <span class="fa fa-star-o"  data-rating="5"></span>
+        <input type="hidden" name="whatever1" class="rating-value" value="3">
+      </div> -->
+      <span class='star-rating  col-sm-12 col-lg-4 col-md-4 col-xl-4 text-center '>
+          <ng-container *ngIf='!sforDisplay'>
+            <i *ngFor='let n of range; let $index = index;' class='fa to-rate' [ngClass]='sisMarked($index)'></i>
+          </ng-container>
+          <ng-container *ngIf='sforDisplay'>
+            <i *ngFor='let n of range; let $index = index;' class="to-display fa" [ngClass]='sisMarked($index)'></i>
+          </ng-container>                  
+      </span>
+ 
+      <button class=" btn btn_danger mob_btn_pos inquery_btn" data-toggle="modal" data-target="#sendInquiry">Send
+        Inquery</button>
+      <div>
+        <a class="btn btn_danger mob_btn_pos mob_l_m_28 inquery_btn" href="{{location}}" style="color: #fff;" target="_blank"><i
+            class="fa fa-map-marker"></i> Location</a>
+      </div>
+      <div>
+        <h6 class="videostroy_title">Video Story</h6>
+        <div *ngFor="let v of video;let i= index"
+          class="col-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 order-first float-left" data-toggle="modal"
+          data-target=".video_modal">
+          <img src="../../assets/image/Ahmedabad.jpg" (click)="getvideo(v)" class="img-thumbnail" />
+
+        </div>
+
+      </div>
+    </div>
   </div>
 
 </section>
@@ -444,3 +427,63 @@ type = "ball-clip-rotate"
   });
 
 </script>
+
+
+
+
+
+<div class="v_despcol-12 back-part mr-t-2 col-sm-12 col-xl-12 col-sm-12 col-md-12 he-24">
+    <h4>Details</h4>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td>
+
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Area</h5>
+              <p>{{area}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Parking area</h5>
+              <p>{{p_area}}</p>
+            </div>
+          </td>
+          <td>
+
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Capasity</h5>
+              <p>{{capasity}} Person</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Out side Catring </h5>
+              <p>{{catring}}</p>
+            </div>
+
+          </td>
+          <td>
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Theme Decoration</h5>
+              <p>{{theme}}</p>
+            </div>
+
+          </td>
+          <td>
+            <div class="detail_block  float-left">
+              <h5 class="detail_title">Time Duration </h5>
+              <p>{{time}}</p>
+            </div>
+
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+  </div>
