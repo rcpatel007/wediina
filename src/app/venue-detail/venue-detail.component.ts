@@ -115,10 +115,6 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
     Unchecked Color: ${$event.starRating.uncheckedcolor}`);
 }
 
-
-
- 
-
 getvenueDetail(){
   this.conectionservice.getVenueById(this.id)
   .subscribe(res=>{
@@ -129,19 +125,20 @@ getvenueDetail(){
    this.images=res.sub_img;
    this.area=res.parking;
    this.p_area=res.parking;
-   this.capasity=res.capasity_of_person;
-   this.catring=res.catring;
-   this.theme=res.theme_decoration;
-   this.time=res.time_permission;
-   this.detail=res.comment;
+   this.capasity=res.cop;
+   this.catring=res.catringValue;
+   this.theme=res.themepermission;
+   this.time=res.timeper;
+   this.detail=res.desp;
    
     console.log(res);
+    console.log(this.video);
     
   });
   
 } 
 
-  
+
 getvideo(v){
   this.playvideo = v;
   $("#videopopup").attr("src",v);
@@ -202,10 +199,9 @@ fetchemail(){
 
 }
 
-
 getfeedback(){
   // let feed:any;
-  this.spinner.show();
+  // this.spinner.show();
   let count:Number= 0;
   let c_id:String;
   let cnumber = 0;
@@ -240,7 +236,7 @@ getfeedback(){
         
         count = res[index].rating + Number(count);
         this.smarked  = (Number(count)/Number( this.review.length))-1;
-        this.spinner.hide();
+        // this.spinner.hide();
   console.log(count);
   console.log(this.smarked);
   
