@@ -57,6 +57,7 @@ address:String;
  
    public myDatePickerOptions: IMyDpOptions = {
     // other options...
+
     dateFormat: 'dd/mm/yyyy',
 };
 
