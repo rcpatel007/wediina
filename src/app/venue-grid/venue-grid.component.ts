@@ -1,5 +1,5 @@
 // import { Component, OnInit } from '@angular/core';
-import { Component,EventEmitter, Input,Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
@@ -18,16 +18,16 @@ declare var $: any;
 })
 export class VenueGridComponent implements OnInit {
   @Input() score = 5;
-	@Input() maxScore = 5;
-	@Input() forDisplay = false;
-	@Input() sforDisplay = false;
-	@Output() rateChanged = new EventEmitter();
-  
-  range = [];
- marked = 3-1;
- smarked = 4-1;
+  @Input() maxScore = 5;
+  @Input() forDisplay = false;
+  @Input() sforDisplay = false;
+  @Output() rateChanged = new EventEmitter();
 
-  
+  range = [];
+  marked = 3 - 1;
+  smarked = 4 - 1;
+
+
   id: String;
   venueCategory = [];
   venues = [];
@@ -50,7 +50,7 @@ export class VenueGridComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       // this.initialiseState();
-    
+
     });
 
     for (var i = 0; i < this.maxScore; i++) {
@@ -91,17 +91,17 @@ export class VenueGridComponent implements OnInit {
     this.marked = this.marked == index ? index - 1 : index;
     this.score = this.marked + 1;
     this.rateChanged.next(this.score);
-  
-  console.log("scror",this.score);
-  
+
+    console.log("scror", this.score);
+
   }
   public smark = (index) => {
     this.marked = this.smarked == index ? index - 1 : index;
     this.score = this.smarked + 1;
     this.rateChanged.next(this.score);
-  
-  console.log("scror",this.score);
-  
+
+    console.log("scror", this.score);
+
   }
 
   public isMarked = (index) => {
@@ -124,7 +124,7 @@ export class VenueGridComponent implements OnInit {
         return 'fa-star-o';
       }
     }
-  console.log("scror",this.score);
+    console.log("scror", this.score);
 
   }
   public sisMarked = (index) => {
@@ -147,7 +147,7 @@ export class VenueGridComponent implements OnInit {
         return 'fa-star-o';
       }
     }
-  console.log("scror",this.score);
+    console.log("scror", this.score);
 
   }
 
@@ -191,7 +191,7 @@ export class VenueGridComponent implements OnInit {
           }
 
         });
-        //console.log(this.venues);
+        console.log(this.venues);
         this.spinner.hide();
 
       });
@@ -227,7 +227,7 @@ export class VenueGridComponent implements OnInit {
     this.venues = [];
 
     let book = booking;
-    //console.log(book);
+    console.log(book);
 
     this.spinner.show();
     // location.reload();
@@ -240,21 +240,27 @@ export class VenueGridComponent implements OnInit {
         for (let index = 0; index < res.length; index++) {
 
           if (res[index].venue_cat_id == this.id) {
+            if (res[index].bookingdate.length == []) {
+              this.venues.push(res[index]);
 
-            for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
-              // //console.log("database date",res[index].bookingdate);
-              if (res[index].bookingdate[secondindex] != book.formatted) {
-                //console.log("database date", res[index].bookingdate[secondindex]);
+            }
+            else {
+              for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
+                console.log("database date", res[index].bookingdate[secondindex]);
+                if (res[index].bookingdate[secondindex] != book.formatted) {
+                  console.log("database date", res[index].bookingdate[secondindex]);
+                  this.venues.push(res[index]);
 
-                //console.log("date", book.formatted);
+                  
+                  //console.log("date", book.formatted);
 
-                this.venues.push(res[index]);
-                //console.log(this.venues);
-                
+                  console.log(this.venues);
+
+                }
               }
             }
           }
-        }   
+        }
         //console.log(this.venues);
         this.spinner.hide();
       });

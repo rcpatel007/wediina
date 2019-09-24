@@ -303,13 +303,17 @@
       </div>
 
       <!-- Modal body -->
-      <form (ngSubmit)="bookingDate()">
+      <form (ngSubmit)="bookingDate(date)">
           <!-- Modal body -->
         <div class="modal-body">
       
           <div class="form-group">
             <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
-            <input type="date" name="date" [(ngModel)]="date" class="form-control" />
+            <!-- <input type="date" name="date" [(ngModel)]="date" class="form-control" /> -->
+            <my-date-picker [placeholder]="placeholder"
+             name="date" [(ngModel)]="date"  [options]="myDatePickerOptions"  
+            style="margin-left: -2%;"></my-date-picker>
+  
           </div>
   
         </div>

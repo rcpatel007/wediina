@@ -44,6 +44,7 @@ export class VenderDetailComponent implements OnInit {
   password:String;
   customer:boolean;
   feedback:String;
+  datearray:[];
   rat:Number;
   cname:String;
   cemail:String;
@@ -96,7 +97,7 @@ export class VenderDetailComponent implements OnInit {
       this.detail= res.desp;
       this.video=res.video_story;
       this.sub_images =res.sub_images;
-    
+    this.datearray=res.bookingdate;
       // this.spinner.hide();
   
       //console.log(res);
@@ -123,7 +124,27 @@ export class VenderDetailComponent implements OnInit {
   //console.log(this.customer);
   
   }
-  
+  datefilter(booking) {
+    let book = booking;
+    //console.log(book);
+    let status = false;
+    for (let index = 0; index < this.datearray.length; index++) {
+
+      if (this.datearray[index] == book.formatted) {
+        status = true;
+        break;
+      }
+
+    }
+
+    if (status == true) {
+      alert("Opps....!! This Date is alreay Booked form other person ");
+
+    } else {
+      alert("We Are Happy to Serve This Day Please Send Inquiry further Detail  ");
+
+    }
+  }
   
   login(){
   
@@ -176,6 +197,7 @@ getfeedback(){
   // let feed:any;
   let count = 0;
   let c_id:String;
+  this.review = [];
   // let c_name:String;
   // let comment:String;
   // let rating:String;

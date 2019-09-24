@@ -45,6 +45,7 @@ export class VenueDetailComponent implements OnInit {
   playvideo:String;
   customer:boolean;
   email:String;
+  datearray=[];
   password:String;
   feedback:String;
   rat:Number;
@@ -130,6 +131,7 @@ getvenueDetail(){
    this.theme=res.themepermission;
    this.time=res.timeper;
    this.detail=res.desp;
+   this.datearray =res.bookingdate;
    
     console.log(res);
     console.log(this.video);
@@ -138,7 +140,27 @@ getvenueDetail(){
   
 } 
 
+datefilter(booking) {
+  let book = booking;
+  //console.log(book);
+  let status = false;
+  for (let index = 0; index < this.datearray.length; index++) {
 
+    if (this.datearray[index] == book.formatted) {
+      status = true;
+      break;
+    }
+
+  }
+
+  if (status == true) {
+    alert("Opps....!! This Date is alreay Booked form other person ");
+
+  } else {
+    alert("We Are Happy to Serve This Day Please Send Inquiry further Detail  ");
+
+  }
+}
 getvideo(v){
   this.playvideo = v;
   $("#videopopup").attr("src",v);
@@ -205,6 +227,7 @@ getfeedback(){
   let count:Number= 0;
   let c_id:String;
   let cnumber = 0;
+  this.review=[];
   this.feedback = null;
   this.marked = 0;
   // let c_name:String;

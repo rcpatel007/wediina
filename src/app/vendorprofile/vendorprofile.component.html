@@ -266,6 +266,7 @@
           </tr>
         </thead>
         <tbody>
+          <ng-container *ngIf="inquiry == []">
           <tr *ngFor= "let inq of inquiry;let i=index">
             <th scope="row">{{i+1}}</th>
             <td>{{inq.inquiry_date}} </td>
@@ -276,6 +277,7 @@
             <td width=100%><b>Location</b>:{{inq.location}} <br /><b>purpose</b> : {{inq.purpose}}
             </td>
           </tr>
+        </ng-container>
 
 
         </tbody>
@@ -299,13 +301,17 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-      <form (ngSubmit)="bookingDate()">
+      <form (ngSubmit)="bookingDate(date)">
         <!-- Modal body -->
       <div class="modal-body">
     
         <div class="form-group">
           <label for="fname" class="">Add Booked Date only</label><span class="text-danger">*</span>
-          <input type="date" name="date" [(ngModel)]="date" class="form-control" />
+          <!-- <input type="date" name="date" [(ngModel)]="date" class="form-control" /> -->
+          <my-date-picker [placeholder]="placeholder"
+           name="date" [(ngModel)]="date"  [options]="myDatePickerOptions"  
+          style="margin-left: -2%;"></my-date-picker>
+
         </div>
 
       </div>
@@ -315,6 +321,7 @@
         <button type="submit" class="btn btn-success w-100" >Submit</button>
       </div>
     </form>
+
     </div>
   </div>
 </div>

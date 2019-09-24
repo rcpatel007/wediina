@@ -6,6 +6,7 @@ import { Local } from 'protractor/built/driverProviders';
 import { environment } from '../../environments/environment';
 import { ConnectionService } from '../services/connection.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { IMyDpOptions } from 'mydatepicker';
 
 declare var $: any;
 
@@ -53,7 +54,12 @@ address:String;
    otherbase64:String;
    inquiry= [];
    date:String;
-   
+ 
+   public myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+};
+
 
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
@@ -107,7 +113,7 @@ address:String;
     this.gst=res.gstno;
     this.email = res.email;
     this.parking=res.parking;
-      this.image =res.image;
+    this.image =res.image;
      this.cname=res.companyName;
      this.location=res.location;
      this.video=res.video_story;
@@ -132,7 +138,6 @@ address:String;
       console.log(res);
       
     });
-    
   } 
   
     /* Image convert base64 */
@@ -248,9 +253,9 @@ address:String;
    
   }
 
-  bookingDate(){
+  bookingDate(date){
 this.spinner.show();
-    this.bookingdate.push(this.date);
+    this.bookingdate.push(date.formatted);
 
     let booking ={
       bookingdate:this.bookingdate

@@ -156,7 +156,7 @@ export class VenderGridComponent implements OnInit {
           }
           
       });
-        //console.log(this.venues);
+        console.log(this.venues);
         this.spinner.hide();
       });
   }
@@ -215,23 +215,28 @@ export class VenderGridComponent implements OnInit {
   }
 
   datefilter(booking){
-    this.venues = [];
    
     let book =booking;
-    //console.log(book);
+    console.log(book);
     
     this.spinner.show();
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
-    this.conectionservice.getVenues()
+    this.venues = [];
+  
+    this.conectionservice.getVendors()
       .subscribe(res => {
         // this.venues = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
    
         for (let index = 0; index < res.length; index++) {
 
-          if (res[index].venue_cat_id == this.id) {
-
+          if (res[index].vendor_cat_id == this.id) {
+            if(res[index].bookingdate.length == []){
+              this.venues.push(res[index]);
+    
+            }
+            else{
             for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
               // //console.log("database date",res[index].bookingdate);
               if (res[index].bookingdate[secondindex] != book.formatted) {
@@ -242,6 +247,7 @@ export class VenderGridComponent implements OnInit {
                 this.venues.push(res[index]);
               } 
             }
+          }
           }
         }
         //console.log(this.venues);
