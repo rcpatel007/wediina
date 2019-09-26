@@ -20,7 +20,11 @@ export class ProfileComponent implements OnInit {
   name: String;
   contactno: String;
   email: String;
-
+  cpwd: String;
+  confirmpwd: String;
+  npwd: String;
+  pwderror: String;
+  pwdsucess: String;
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
@@ -72,9 +76,66 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  customerupdate() {
+    let customer ={
+      name:this.name,
+      email:this.email,
+      contact_no:this.contactno
+    }
+    
+    this.conectionservice.editCustomer(this.id,customer)
+      .subscribe(res => {
+
+      });
+
+  }
   logout() {
-    environment.customer_id = null;
+    localStorage.removeItem('customer_id');
     this.router.navigate(["/home"]);
-       
+
+  }
+
+
+  changePassword() {
+    let id = localStorage.customer_id;
+    let validate_pwd = {
+      id: localStorage.customer_id,
+      password: this.cpwd
+    }
+    console.log(validate_pwd);
+
+    this.conectionservice.validatecustomerpwd(id, validate_pwd)
+      .subscribe((res) => {
+        console.log(res);
+
+        if (res.auth == true) {
+          // console.log(this.npwd);
+          // console.log(this.confirmpwd);
+          if (this.npwd == this.confirmpwd) {
+            let pwd = {
+              password: this.npwd
+            }
+            this.conectionservice.updatecustomerpwd(id, pwd)
+              .subscribe(() => {
+                this.pwderror = null;
+                this.pwdsucess = "password Update Sucessfully"
+                // console.log(this.pwdsucess);
+
+              });
+          }
+          else {
+            this.pwdsucess = null;
+            this.pwderror = "New Password & Confirm password not match";
+            // console.log(this.pwderror);
+          }
+        }
+      },
+        (error) => {
+
+          this.pwdsucess = null;
+          this.pwderror = "Current Password is Wrong";
+          // console.log(error._body);
+        }
+      );
   }
 }

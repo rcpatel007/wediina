@@ -84,6 +84,36 @@ export class LoginComponent implements OnInit {
       }
   }
 
+  forget() {
+    // this.errormsg ="";
+        // if(this.email == null && this.password ==null){
+        //   this.errormsg = "please enter Valid user name and password";
+    
+        // }
+    
+        if (this.rol == 1) {
+          this.forgetVendor();
+    
+            // this.vendorLogin();
+            //console.log("hello");
+            
+          }
+         else if (this.rol == 2) {
+            this.forgetVenue();
+            //console.log("hello");
+    
+          }
+          else if (this.rol == 3) {
+            //console.log("hello");
+    
+            this.forgetCustomer();
+          }
+          else{
+            this.errormsg = "please select your Roll";
+    
+          }
+      }
+    
 
   customer() {
     this.spinner.show();
@@ -100,7 +130,10 @@ export class LoginComponent implements OnInit {
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
         this.spinner.hide();
-   
+        localStorage.setItem('customer_id',res._id);
+        localStorage.removeItem('venue_id');
+        localStorage.removeItem('vendor_id');
+
         environment.customer_id = res._id;
         environment.venue_id = null;
         environment.vendor_id =null;
@@ -118,7 +151,51 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  forgetCustomer(){
+    let mail ={
+      email  :this.email
+    }
+    console.log(mail);
+    
+  
+    this.conectionservice.forgetCustomer(mail)
+    .subscribe(res=>{
+      console.log(res);
+      
+  
+    });
+  }
 
+  
+  forgetVenue(){
+    let mail ={
+      email  :this.email
+    }
+    console.log(mail);
+    
+  
+    this.conectionservice.forgetVenue(mail)
+    .subscribe(res=>{
+      console.log(res);
+      
+  
+    });
+  }
+  forgetVendor(){
+
+  let mail ={
+    email  :this.email
+  }
+  console.log(mail);
+  
+
+  this.conectionservice.forgetVendor(mail)
+  .subscribe(res=>{
+    console.log(res);
+    
+
+  });
+  }
 
   venueLogin() {
     this.spinner.show();
@@ -132,6 +209,11 @@ export class LoginComponent implements OnInit {
 
     this.conectionservice.venueLogin(venue_login)
       .subscribe(res => {
+        localStorage.removeItem('customer_id');
+        localStorage.setItem('venue_id',res._id);
+        localStorage.removeItem('vendor_id');
+
+       
         environment.venue_id = res._id;
         environment.customer_id =null;
         environment.vendor_id =null;
@@ -159,6 +241,10 @@ export class LoginComponent implements OnInit {
 
     this.conectionservice.vendorLogin(customer)
       .subscribe(res => {
+        localStorage.removeItem('customer_id');
+        localStorage.removeItem('venue_id');
+        localStorage.setItem('vendor_id',res._id);
+ 
         environment.vendor_id = res._id;
         environment.customer_id =null;
         environment.venue_id =null;

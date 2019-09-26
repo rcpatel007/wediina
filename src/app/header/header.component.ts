@@ -113,16 +113,16 @@ export class HeaderComponent implements OnInit {
   }
 
   userfetch() {
-    if (environment.customer_id != null) {
-      this.router.navigate(["/profile", environment.customer_id]);
+    if (localStorage.customer_id != null) {
+      this.router.navigate(["/profile", localStorage.customer_id]);
     }
 
-    else if (environment.venue_id != null) {
-      this.router.navigate(["/Venueprofile", environment.venue_id]);
+    else if (localStorage.venue_id != null) {
+      this.router.navigate(["/Venueprofile", localStorage.venue_id]);
     }
 
-    else if (environment.vendor_id != null) {
-      this.router.navigate(["/Vendorprofile", environment.vendor_id]);
+    else if (localStorage.vendor_id != null) {
+      this.router.navigate(["/Vendorprofile", localStorage.vendor_id]);
     }
 
     else {

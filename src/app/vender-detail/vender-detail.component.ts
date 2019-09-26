@@ -51,6 +51,7 @@ export class VenderDetailComponent implements OnInit {
   mno:string;
   date:Date;
   location:String;
+  loc:String;
   purpose:String;
   v_email:String;
   review=[];
@@ -95,6 +96,8 @@ export class VenderDetailComponent implements OnInit {
       this.companyName= res.companyName;
       this.contactno= res.contactno;
       this.detail= res.desp;
+      this.v_email =res.email;
+      this.loc = res.location;
       this.video=res.video_story;
       this.sub_images =res.sub_images;
     this.datearray=res.bookingdate;
@@ -113,7 +116,7 @@ export class VenderDetailComponent implements OnInit {
   }
 
   customerfetch(){
-    if(environment.customer_id !=null)
+    if(localStorage.customer_id !=null)
   {
     this.customer = true;
   }
@@ -161,6 +164,10 @@ export class VenderDetailComponent implements OnInit {
   
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
+        localStorage.setItem('customer_id',res._id);
+        localStorage.removeItem('venue_id');
+        localStorage.removeItem('vendor_id');
+
         environment.customer_id = res._id;
         environment.venue_id = null;
         environment.vendor_id =null; 
@@ -171,25 +178,37 @@ export class VenderDetailComponent implements OnInit {
       });
   
   }
-  sendInquiry()
+  sendInquiry(date)
 {
   this.spinner.show();
   let inquiry ={
         customer_name:this.cname,
 		    v_email:this.v_email,
         vendor_id: this.id,
-        venue_id:null,
-        date:this.date,
+        date:date.formatted,
         email: this.cemail,
         mobileNo: this.mno,
         location: this.location,
         purpose:this.purpose
   }
+  console.log(inquiry);
+  
 
   this.conectionservice.vendorInquiry(inquiry)
   .subscribe(res=>{
+    this.cname =null;
+    this.v_email =null;
+     this.id =null;
+    this.date =null;
+    this.cemail =null;
+     this.mno =null;
+     this.location =null;
+    this.purpose =  null;
     //console.log(res);
     this.spinner.hide();
+    $(".modal").modal("hide");
+  
+  
   });
 }
 
@@ -246,7 +265,7 @@ console.log(this.smarked);
 }
 addFeedback(){
 let review = {
-  customer_id:environment.customer_id,
+  customer_id:localStorage.customer_id,
   venue_id: null,
   vendor_id: this.id,
   rating:this.marked+1,

@@ -56,7 +56,11 @@ export class VendorprofileComponent implements OnInit {
   otherbase64: String;
   inquiry = [];
   date:String;
- 
+  cpwd:String;
+  confirmpwd:String;
+  npwd:String;
+  pwderror:String;
+  pwdsucess:String;
   public myDatePickerOptions: IMyDpOptions = {
    // other options...
    dateFormat: 'dd/mm/yyyy',
@@ -284,7 +288,7 @@ export class VendorprofileComponent implements OnInit {
   }
 
   logout() {
-    environment.vendor_id = null;
+    localStorage.removeItem('vendor_id');
     this.router.navigate(["/home"]);
 
   }
@@ -341,5 +345,50 @@ export class VendorprofileComponent implements OnInit {
         console.log(res);
 
       });
+  }
+
+
+
+  changePassword() {
+    let id = localStorage.vendor_id;
+    let validate_pwd = {
+      id: localStorage.vendor_id,
+      password: this.cpwd
+    }
+    console.log(validate_pwd);
+
+    this.conectionservice.validatevendorpwd(id,validate_pwd)
+      .subscribe((res) => {
+        console.log(res);
+
+        if (res.auth == true) {
+          // console.log(this.npwd);
+          // console.log(this.confirmpwd);
+          if (this.npwd == this.confirmpwd) {
+            let pwd = {
+              password: this.npwd
+            }
+            this.conectionservice.updatevendorpwd(id, pwd)
+              .subscribe(() => {
+                this.pwderror = null;
+                this.pwdsucess = "password Update Sucessfully"
+                // console.log(this.pwdsucess);
+
+              });
+          }
+          else {
+            this.pwdsucess = null;
+            this.pwderror = "New Password & Confirm password not match";
+            // console.log(this.pwderror);
+          }
+        }
+      },
+        (error) => {
+
+          this.pwdsucess = null;
+          this.pwderror = "Current Password is Wrong";
+          // console.log(error._body);
+        }
+      );
   }
 }

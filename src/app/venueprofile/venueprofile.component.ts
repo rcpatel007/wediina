@@ -54,7 +54,11 @@ address:String;
    otherbase64:String;
    inquiry= [];
    date:String;
- 
+   cpwd:String;
+   confirmpwd:String;
+   npwd:String;
+   pwderror:String;
+   pwdsucess:String;
    public myDatePickerOptions: IMyDpOptions = {
     // other options...
 
@@ -249,7 +253,7 @@ address:String;
   }
 
   logout(){
-    environment.vendor_id =null;
+    localStorage.removeItem('venue_id');
     this.router.navigate(["/home"]);
    
   }
@@ -308,6 +312,53 @@ this.inquiry =res;
       console.log(this.inquiry);
       
     });
+ 
+  }
+
+
+  changePassword() {
+    let id = localStorage.venue_id;
+    let validate_pwd = {
+      id: localStorage.venue_id,
+      password: this.cpwd
+    }
+    console.log(validate_pwd);
+
+    this.conectionservice.validatevenuepwd(id,validate_pwd)
+      .subscribe((res) => {
+        console.log(res);
+        if (res.auth == true) {
+          // console.log(this.npwd);
+          // console.log(this.confirmpwd);
+          if (this.npwd == this.confirmpwd) {
+            let upwd = {
+              password: this.npwd
+            }
+            console.log(upwd);
+
+            this.conectionservice.updatevenuepwd(id, upwd)
+              .subscribe((res) => {
+                
+                this.pwderror = null;
+                this.pwdsucess = "password Update Sucessfully"
+                console.log(res);
+
+              });
+          }
+          else {
+            this.pwdsucess = null;
+            this.pwderror = "New Password & Confirm password not match";
+            // console.log(this.pwderror);
+          }
+        }
+      },
+        (error) => {
+
+          this.pwdsucess = null;
+          this.pwderror = "Current Password is Wrong";
+          // console.log(error._body);
+        }
+      );
   }
 
 }

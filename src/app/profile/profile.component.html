@@ -31,6 +31,10 @@ type = "ball-clip-rotate"
         <div class="profile_menu">
           My Venue
         </div>
+        <div class="profile_menu" data-toggle="modal" data-target="#cpassword">
+          Change Password
+        </div>
+        
         <div class="profile_menu">
           My Vendors
         </div>
@@ -195,4 +199,60 @@ type = "ball-clip-rotate"
       </div>
 
 </div>
+
+<div class="modal" id="cpassword">
+  <div class="modal-dialog  modal-full    ">
+      <div class="modal-content">
+        <div class="row">
+          <div class="col s6 l6 m6">
+            <div class="green-text right" *ngIf="pwdsucess != null">
+              {{pwdsucess}}
+            </div>
+          </div>
+          <div class="col s6 l6 m6">
+            <div class="red-text right" *ngIf="pwderror != null">
+              {{pwderror}}
+            </div>
+          </div>
+        </div>
+          <!-- Modal Header -->
+          <div  class="modal-header">
+            <h4 class="modal-title">Change Password</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+    
+            <form (ngSubmit)="changePassword()">
+            <div class="form-group">
+              <label for="fname" class="">Current Password</label><span class="text-danger">*</span>
+              <input type="text" class="form-control form_control_m" id="cpwd" name="cpwd" [(ngModel)]="cpwd" placeholder="enter your Current Password">
+            </div>
+           
+            <div class="form-group">
+              <label for="fname" class="">Password</label><span class="text-danger">*</span>
+              <input type="npwd" name="npwd" [(ngModel)]="npwd" class="form-control form_control_m" id="purpose"
+                placeholder="Enter your New password .">
+            </div>
+            
+            <div class="form-group">
+              <label for="fname" class="">Confirm Password</label><span class="text-danger">*</span>
+              <input type="text" name="confirmpwd" [(ngModel)]="confirmpwd" class="form-control form_control_m" id="purpose"
+                placeholder="Enter your New password .">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success w-100"    value="Login" />
+            </div>
+          </form>
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+          </div>
+        
+        </div> 
+  </div>
+</div>
+
 <!-- <app-footer></app-footer> -->

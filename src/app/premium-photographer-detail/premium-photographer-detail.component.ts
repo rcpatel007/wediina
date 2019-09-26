@@ -166,14 +166,14 @@ this.spinner.show();
         this.detail = res.desp;
         this.v_email=res.email;
         this.video = res.video_story;
-        this.sub_images = res.sub_image;
+        this.sub_images = res.sub_images;
         this.weblink = res.weblink;
         this.datearray = res.bookingdate;
         // this.spinner.hide();
 
-        //console.log(res);
+        console.log(res);
         this.spinner.hide();
-
+        
 
       });
   }
@@ -191,7 +191,7 @@ this.spinner.show();
 
 
   customerfetch() {
-    if (environment.customer_id != null) {
+    if (localStorage.customer_id != null) {
       this.customer = true;
     }
     else {
@@ -218,6 +218,10 @@ this.spinner.show();
 
     this.conectionservice.customerLogin(customer)
       .subscribe(res => {
+        localStorage.setItem('customer_id',res._id);
+        localStorage.removeItem('venue_id');
+        localStorage.removeItem('vendor_id');
+
         environment.customer_id = res._id;
         environment.venue_id = null;
         environment.vendor_id = null;
@@ -331,7 +335,7 @@ console.log(this.smarked);
     this.spinner.show();
    
     let review = {
-      customer_id:environment.customer_id,
+      customer_id:localStorage.customer_id,
       venue_id: null,
       vendor_id: this.id,
       rating:this.marked +1 ,
