@@ -52,7 +52,7 @@ type = "ball-clip-rotate"
       <div class="text-center venueprofile_head s_headding-text">
         welcome to your dashbord <b>{{displayname}}</b> !
       </div>
-      <form (ngsubmit)="customerupdate()">
+      <form (ngSubmit)="customerUpdate()">
         <div class="col-12 col-sm-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">Your Name</label>
@@ -135,29 +135,36 @@ type = "ball-clip-rotate"
           <div class="text-center venueprofile_head s_headding-text">
               Your booked Venues
             </div>
-        <form action="">
-          <div class="">
-            <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-              <div class="card card-content ">
-                <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                <div class="card-city_name card-title">
-                  thakar part plot, rajkot
-                </div>
-  
-              </div>
-            </div>
-            <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-              <div class="card card-content ">
-                <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                <div class="card-city_name card-title">
-                  XYZ banquet hall, Ahmedabad
-                </div>
-  
-              </div>
-            </div>
-  
-          </div>
-        </form>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#No</th>
+                  <th>Venue Name</th>
+                  <th>Inquiry Date</th>
+                  <th>Booking Date</th>
+                  <th>No Of person</th>
+                  <th scope="col">Detail</th>
+      
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="venueinquiry == []">
+                <tr *ngFor= "let i=index">
+                  <ng-container *ngFor= "let inq of venueinquiry; ">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{inq.venuename}} </td>
+                  <td>{{inq.inquirydate}} </td>
+                  <td>{{inq.bookingdate}} </td>
+                  <!-- <td>{{inq.customer_name}}</td> -->
+                  <td>{{inq.No_of_person}}</td>
+                  <td>{{inq.purpose}}</td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+      
+      
+              </tbody>
+            </table>
       </div>
       <div>
   
@@ -168,29 +175,35 @@ type = "ball-clip-rotate"
             <div class="text-center venueprofile_head s_headding-text">
                 Your booked Vendors
               </div>
-          <form action="">
-            <div class="">
-              <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-                <div class="card card-content ">
-                  <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                  <div class="card-city_name card-title">
-                    ABC DJ Artist , rajkot
-                  </div>
-    
-                </div>
-              </div>
-              <div class="col-12 col-lg-3 col-md-3 col-xl-3 col-xs-3 float-left  mr-b-1">
-                <div class="card card-content ">
-                  <img src="../../assets/image/Ahmedabad.jpg" class="img-fluid p-card-img" />
-                  <div class="card-city_name card-title">
-                    Mehndi Artist , Ahmedabad
-                  </div>
-    
-                </div>
-              </div>
-    
-            </div>
-          </form>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#No</th>
+                    <th>Vendor Name</th>
+                    <th>Inquiry Date</th>
+                    <th>Booking Date</th>
+                    <th>location</th>
+                    <th scope="col">Detail</th>
+        
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="vendorinquiry == []">
+                  <tr *ngFor= "let inq of vendorinquiry.inquirydata; let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{inq.vendorname}} </td>
+                    <td>{{inq.inquirydate}} </td>
+                    <td>{{inq.bookingdate}} </td>
+                    <!-- <td>{{inq.customer_name}}</td> -->
+                    <td>{{inq.location}}</td>
+                    <td>{{inq.purpose}}</td>
+                    
+                  </tr>
+                </ng-container>
+        
+        
+                </tbody>
+              </table>
         </div>
         <div>
     

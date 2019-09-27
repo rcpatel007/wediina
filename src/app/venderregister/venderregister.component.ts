@@ -183,6 +183,16 @@ export class VenderregisterComponent implements OnInit {
         this.spinner.hide();
         
             this.router.navigate(["/login"]);
+              vendor_cat_id:this.catvalue,
+      this.fname =null;
+      this.lname =null;
+       this.cname =null;
+       this.mno =null;
+       this.email =null;
+       this.password =null;
+       this.city =null;
+      this.desp =null;
+
           });
         }
         else{

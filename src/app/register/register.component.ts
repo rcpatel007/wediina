@@ -61,7 +61,10 @@ export class RegisterComponent implements OnInit {
               .subscribe(res=>{
           // console.log(res);
           this.spinner.hide();
-             
+             this.name =null;
+             this.contact_no =null;
+             this.email =null;
+             this.password =null;
           this.router.navigate(["/login"]);
           
           

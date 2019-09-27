@@ -55,16 +55,16 @@ export class VendorprofileComponent implements OnInit {
   oimg = [];
   otherbase64: String;
   inquiry = [];
-  date:String;
-  cpwd:String;
-  confirmpwd:String;
-  npwd:String;
-  pwderror:String;
-  pwdsucess:String;
+  date: String;
+  cpwd: String;
+  confirmpwd: String;
+  npwd: String;
+  pwderror: String;
+  pwdsucess: String;
   public myDatePickerOptions: IMyDpOptions = {
-   // other options...
-   dateFormat: 'dd/mm/yyyy',
-};
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+  };
 
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
@@ -76,8 +76,6 @@ export class VendorprofileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-
-
 
     $(document).ready(function () {
       // Add smooth scrolling to all links
@@ -107,8 +105,9 @@ export class VendorprofileComponent implements OnInit {
 
     this.getcity();
     this.getInquiry();
-
   }
+
+
 
 
   getcity() {
@@ -129,7 +128,6 @@ export class VendorprofileComponent implements OnInit {
 
         this.vendor_cat_id = res.vendor_cat_id;
         this.package = res.package;
-
         this.fname = res.fname;
         this.lname = res.lname;
         this.status = res.status;
@@ -174,13 +172,9 @@ export class VendorprofileComponent implements OnInit {
         //  this.desp=res.desp;
         //console.log(res);
         this.spinner.hide();
-
         console.log(this.oimg);
-
       });
-
   }
-
   /* Image convert base64 */
   imageUpload(evt) {
     this.spinner.show();
@@ -245,47 +239,62 @@ export class VendorprofileComponent implements OnInit {
 
   editVendor() {
 
-    //  let video = this.videolink.split(",");
-    // console.log(video);
+    // if(this.video!=0){
+
+    let video = this.videolink.split(",");
+    console.log(video.length);
+    
+    // }
     //  
     this.spinner.show();
 
-
-    let vendor = {
-      vendor_cat_id: this.vendor_cat_id,
-      package: this.package,
-      fname: this.fname,
-      lname: this.lname,
-      status: this.status,
-      companyName: this.cname,
-      contactno: this.mno,
-      email: this.email,
-      gstno: this.gst,
-      image: this.p_img,
-      sub_images: this.oimg,
-      password: this.password,
-      address: this.address,
-      city: this.city,
-      area: null,
-      state: null,
-      video_story: this.videolink,
-      desp: this.desp,
-      bookingdate: null,
-      weblink: this.weblink,
-      prime_user: this.prime
+    if (this.oimg.length > 26) {
+      this.spinner.hide();
+      alert("you are not eligible to upload more than 25 photos  please upgrade to prime photographer.")
     }
 
-    console.log(vendor);
+    else if (video.length > 16 ) {
+      alert("you are not eligible to upload more than 15 Videos  please upgrade to prime photographer.")
+      this.spinner.hide();
+    }
+    else {
 
-    this.conectionservice.editVendor(this.id, vendor)
-      .subscribe(res => {
-        //console.log(res );
 
-        //console.log(res);
-        this.spinner.hide();
+      let vendor = {
+        vendor_cat_id: this.vendor_cat_id,
+        package: this.package,
+        fname: this.fname,
+        lname: this.lname,
+        status: this.status,
+        companyName: this.cname,
+        contactno: this.mno,
+        email: this.email,
+        gstno: this.gst,
+        image: this.p_img,
+        sub_images: this.oimg,
+        password: this.password,
+        address: this.address,
+        city: this.city,
+        area: null,
+        state: null,
+        video_story: video,
+        desp: this.desp,
+        bookingdate: null,
+        weblink: this.weblink,
+        prime_user: this.prime
+      }
 
-      });
+      console.log(vendor);
 
+      this.conectionservice.editVendor(this.id, vendor)
+        .subscribe(res => {
+          //console.log(res );
+
+          //console.log(res);
+          this.spinner.hide();
+
+        });
+    }
   }
 
   logout() {
@@ -358,7 +367,7 @@ export class VendorprofileComponent implements OnInit {
     }
     console.log(validate_pwd);
 
-    this.conectionservice.validatevendorpwd(id,validate_pwd)
+    this.conectionservice.validatevendorpwd(id, validate_pwd)
       .subscribe((res) => {
         console.log(res);
 
@@ -374,7 +383,9 @@ export class VendorprofileComponent implements OnInit {
                 this.pwderror = null;
                 this.pwdsucess = "password Update Sucessfully"
                 // console.log(this.pwdsucess);
-
+                this.npwd = null;
+                this.cpwd = null;
+                this.confirmpwd = null;
               });
           }
           else {

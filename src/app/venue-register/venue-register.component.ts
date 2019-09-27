@@ -12,38 +12,38 @@ import { ConnectionService } from '../services/connection.service';
   styleUrls: ['./venue-register.component.css']
 })
 export class VenueRegisterComponent implements OnInit {
-  venue_category =new Array;
-  package:String;
-  fname:String;
-  lname:String;
-  cname:String;
-  cno:Number;
-  email:String;
-  password:String;
-  catValue:String;
-  gstno:String;
-  area:String;
-  city:String;
-  state:String;
-  address:String;
-  parking:String;
-  catringValue:String;
-  themepermission:String;
-  p_img:String;
-  oimg= new Array;
-  o_img:any;
-  cpwd:String;
-  timeper:String;
-  areavenue:String;
-  cop:String;
-  location:String;
-  error:String;
-  desp:String;
-  videolink:any;
+  venue_category = new Array;
+  package: String;
+  fname: String;
+  lname: String;
+  cname: String;
+  cno: Number;
+  email: String;
+  password: String;
+  catValue: String;
+  gstno: String;
+  area: String;
+  city: String;
+  state: String;
+  address: String;
+  parking: String;
+  catringValue: String;
+  themepermission: String;
+  p_img: String;
+  oimg = new Array;
+  o_img: any;
+  cpwd: String;
+  timeper: String;
+  areavenue: String;
+  cop: String;
+  location: String;
+  error: String;
+  desp: String;
+  videolink: any;
   status = true;
   base64: any;
   otherbase64: any;
-  cityarray=[];
+  cityarray = [];
 
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService) { }
@@ -51,16 +51,16 @@ export class VenueRegisterComponent implements OnInit {
   ngOnInit() {
 
     this.getCategory();
-   this.getcity();
+    this.getcity();
   }
 
-  getCategory(){
+  getCategory() {
     this.conectionservice.getVenueCategory()
       .subscribe(res => {
-       this.venue_category =res;
+        this.venue_category = res;
         // // console.log(this.venue_category);
       });
-}
+  }
 
 
 
@@ -69,20 +69,20 @@ export class VenueRegisterComponent implements OnInit {
     var files = evt.target.files;
     var file = files[0];
     if (files && file) {
-      
+
       var reader = new FileReader();
 
       reader.onload = this.imagetoBase64.bind(this);
       reader.readAsBinaryString(file);
-      
+
     }
   }
 
   imagetoBase64(readerEvt) {
     var binaryString = readerEvt.target.result;
     this.base64 = btoa(binaryString);
-      // // console.log(this.base64);
-      
+    // // console.log(this.base64);
+
     // // console.log(btoa(binaryString));
     this.conectionservice.imgurImage(this.base64)
       .subscribe((result) => {
@@ -120,56 +120,65 @@ export class VenueRegisterComponent implements OnInit {
     // // console.log(this.oimg);
   }
 
-  addVenue(){
-  // let video = this.videolink.split(",");
-  // // console.log(video);
-  if (this.password == this.cpwd) {
-      
-    this.error = "";
-    // this.existuser = false;
+  addVenue() {
+    // let video = this.videolink.split(",");
+    // // console.log(video);
+    if (this.password == this.cpwd) {
+
+      this.error = "";
+      // this.existuser = false;
 
 
 
-    let venue={
+      let venue = {
         venue_cat_id: this.catValue,
         fname: this.fname,
-        lname:this.lname ,
-        package_time:null,
+        lname: this.lname,
+        package_time: null,
         companyName: this.cname,
-        contactno: this.cno ,
-        email:this.email ,
+        contactno: this.cno,
+        email: this.email,
         gstno: null,
-        status:false,
+        status: false,
         password: this.password,
         address: null,
         city: this.city,
-        state: null ,
-        parking:null,
+        state: null,
+        parking: null,
         catringValue: null,
-        themepermission:null,
+        themepermission: null,
         p_img: null,
         oimg: null,
-        timeper:null,
-        areavenue:null,
-        cop:null,
-        location:null,
-        desp:this.desp,
-        video_story:null,
-        }
+        timeper: null,
+        areavenue: null,
+        cop: null,
+        location: null,
+        desp: this.desp,
+        video_story: null,
+      }
 
-        // console.log(venue);
-        
-        this.conectionservice.addVenue(venue)
-        .subscribe(res=>{
+      // console.log(venue);
+
+      this.conectionservice.addVenue(venue)
+        .subscribe(res => {
 
           // console.log(res);
-          
+
           this.router.navigate(["/login"]);
-              });
-            }
-            else{
-              this.error = "Passwrod not match";
-            }
+          this.catValue = null;
+          this.fname = null;
+          this.lname = null;
+          this.cname = null;
+          this.cno = null;
+          this.email = null;
+          this.password = null;
+          this.city = null;
+          this.desp = null;
+        });
+    }
+    else {
+      this.error = "Passwrod not match";
+    }
   }
 
   getcity() {

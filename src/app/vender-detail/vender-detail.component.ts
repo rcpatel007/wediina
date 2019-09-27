@@ -113,6 +113,24 @@ this.videoimg();
       });
   }
 
+  // videoimg() {
+
+  //   let url: String;
+
+  //   for (let index = 0; index < this.video.length; index++) {
+
+  //     let urlarray = this.video[index].split("embed/")[1];
+
+  //     console.log(urlarray);
+
+  //     let array = {
+  //       image: urlarray,
+  //       link: this.video[index]
+  //     }
+  //     this.videoArray.push(array);
+
+  //   }
+  // }
   videoimg() {
 
     let url: String;
@@ -120,16 +138,18 @@ this.videoimg();
     for (let index = 0; index < this.video.length; index++) {
 
       let urlarray = this.video[index].split("embed/")[1];
-
+     
       console.log(urlarray);
 
-      let array = {
-        image: urlarray,
-        link: this.video[index]
+      let array={
+        image:urlarray,
+        link:this.video[index]
       }
       this.videoArray.push(array);
 
     }
+    console.log(this.videoArray);
+    
   }
 
   getvideo(v) {

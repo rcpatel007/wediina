@@ -1,4 +1,14 @@
 <app-header></app-header>
+<ngx-spinner
+bdOpacity = 0.9
+bdColor = "#fff"
+size = "large"
+color = "#000000"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
 <section id="home" class="top_cont_outer contanier">
   <div class="top_cont_inner">
     <div class="">
@@ -27,7 +37,7 @@
             <div class="form-group">
               <label class="them-color">Select your function city</label>
               <select class="form-control form_control_m" name="cityget" [(ngModel)]="cityget"
-                (change)="fetchcity(cityget)" id="exampleFormControlSelect1">
+              (change)="fetchcity(cityget)" id="exampleFormControlSelect1">
                 <option selected disabled>City</option>
                 <option *ngFor="let c of city" value="{{c}}">{{c}}</option>
                 <!-- <option>flower decoration</option> -->

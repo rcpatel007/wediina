@@ -91,21 +91,21 @@ export class LoginComponent implements OnInit {
     // }
 
     if (this.rol == 1) {
-      this.forgetVendor();
+      this.Confirmvendoremail();
 
       // this.vendorLogin();
       //console.log("hello");
 
     }
     else if (this.rol == 2) {
-      this.forgetVenue();
+      this.Confirmvnenueemail();
       //console.log("hello");
 
     }
     else if (this.rol == 3) {
       //console.log("hello");
 
-      this.forgetCustomer();
+      this.Confirmcustomeremail();
     }
     else {
       this.errormsg = "please select your Roll";
@@ -141,7 +141,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('customer_id', res.result._id);
             localStorage.removeItem('venue_id');
             localStorage.removeItem('vendor_id');
-
+            this.email =null;
+            this.password =null;
             environment.customer_id = res._id;
             environment.venue_id = null;
             environment.vendor_id = null;
@@ -323,5 +324,42 @@ export class LoginComponent implements OnInit {
       
       );
   }
+}
+
+Confirmcustomeremail() {
+  var x = confirm("New password has been sent in your mail please check your Email");
+  if (x) {
+    // console.log(this.auth);
+
+    return this.forgetCustomer();
+  }
+
+  else
+    return false;
+}
+
+
+Confirmvendoremail() {
+  var x = confirm("New password has been sent in your mail please check your Email");
+  if (x) {
+    // console.log(this.auth);
+
+    return this.forgetVendor();
+  }
+
+  else
+    return false;
+}
+
+Confirmvnenueemail() {
+  var x = confirm("New password has been sent in your mail please check your Email");
+  if (x) {
+    // console.log(this.auth);
+
+    return this.forgetVenue();
+  }
+
+  else
+    return false;
 }
 }

@@ -135,6 +135,19 @@ export class ConnectionService {
       .pipe(map(res => res.json()));
 
   }
+  getvenueInquiry() {
+    //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/venue_inquiry')
+      .pipe(map(res => res.json()));
+
+  }
+  
+  getvendorInquiry() {
+    //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/vendor_inquiry')
+      .pipe(map(res => res.json()));
+
+  }
 
   /******************************************************* */
 

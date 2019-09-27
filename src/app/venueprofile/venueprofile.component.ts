@@ -342,6 +342,9 @@ this.inquiry =res;
                 this.pwderror = null;
                 this.pwdsucess = "password Update Sucessfully"
                 console.log(res);
+                this.npwd = null;
+                this.cpwd = null;
+                this.confirmpwd = null;
 
               });
           }

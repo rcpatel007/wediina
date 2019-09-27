@@ -23,9 +23,13 @@ export class ProfileComponent implements OnInit {
   cpwd: String;
   confirmpwd: String;
   npwd: String;
-  displayname:String;
+  displayname: String;
   pwderror: String;
   pwdsucess: String;
+  venueinquiry=[];
+  vendorinquiry=[];
+  inquirydata: any;
+
   constructor(private route: ActivatedRoute,
     private spinner: NgxSpinnerService, private router: Router, private conectionservice: ConnectionService) { }
 
@@ -61,6 +65,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.customerDetail();
+    this.getInquiry();
   }
 
   customerDetail() {
@@ -71,24 +76,90 @@ export class ProfileComponent implements OnInit {
         //console.log(res);
 
         this.name = res.name;
-        this.displayname  =  res.name;
+        this.displayname = res.name;
         this.email = res.email;
         this.contactno = res.contact_no;
 
       });
   }
 
-  customerupdate() {
-  this.spinner.show();
-    let customer ={
-      name:this.name,
-      email:this.email,
-      contact_no:this.contactno
+  customerUpdate() {
+    this.spinner.show();
+    let customer = {
+      name: this.name,
+      email: this.email,
+      contact_no: this.contactno
     }
-    
-    this.conectionservice.editCustomer(this.id,customer)
+
+    this.conectionservice.editCustomer(this.id, customer)
       .subscribe(res => {
-this.spinner.hide();
+        this.spinner.hide();
+      });
+
+  }
+
+
+  getInquiry() {
+    this.conectionservice.getvenueInquiry()
+      .subscribe(res => {
+        for (let index = 0; index < res.length; index++) {
+          if (res[index].customer_id == this.id) {
+
+            this.conectionservice.getVenueById(res[index].venue_id)
+              .subscribe(data => {
+
+                let inquirydata = {
+                  venuename: data.companyName,
+                  inquirydate: res[index].inquiry_date,
+                  bookingdate: res[index].booking_date,
+                  purpose: res[index].purpose,
+                  No_of_person: res[index].no_of_person
+                }
+
+                this.venueinquiry.push(inquirydata);
+
+                // console.log(this.venueinquiry);
+
+              });
+
+          }
+
+          console.log(this.venueinquiry);
+
+        }
+
+
+      });
+
+
+
+    this.conectionservice.getvendorInquiry()
+      .subscribe(res => {
+        for (let index = 0; index < res.length; index++) {
+          if (res[index].customer_id == this.id) {
+
+            this.conectionservice.getVendorById(res[index].vendor_id)
+              .subscribe(data => {
+
+                console.log(this.vendorinquiry);
+                let inquirydata = {
+                  vendorname: data.companyName,
+                  inquirydate: res[index].inquiry_date,
+                  bookingdate: res[index].booking_date,
+                  location: res[index].location,
+                  purpose: res[index].purpose,
+                  // No_of_person:res[index].no_of_person
+                }
+                this.vendorinquiry.push({ inquirydata });
+              });
+
+          }
+
+          console.log(this.vendorinquiry);
+
+        }
+
+
       });
 
   }
@@ -102,7 +173,7 @@ this.spinner.hide();
   changePassword() {
     let id = localStorage.customer_id;
     console.log(localStorage.customer_id);
-    
+
     let validate_pwd = {
       id: localStorage.customer_id,
       password: this.cpwd
