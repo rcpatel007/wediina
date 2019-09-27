@@ -40,11 +40,31 @@ type = "ball-clip-rotate"
           <input type="submit"  class="btn  btn-success" value="Login">
         </div>
       </form>
-          <div class=" forget-text" (click)="forget();">Forget Password ?</div>
+          <div class=" forget-text"  ><a href="#forget" data-toggle="modal">
+            Forget Password ? </a></div>
       
     </div>
 
   </div>
 </div>
 
+<!-- Modal HTML -->
+<div id="forget" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="icon-box">
+            <i class="fa fa-check"></i>
+          </div>				
+          <h4 class="modal-title">Awesome!</h4>	
+        </div>
+        <div class="modal-body">
+          <p class="text-center">Your New Password has been sent . Please Check your email.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success btn-block" (click)="forget();" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <app-footer></app-footer>
