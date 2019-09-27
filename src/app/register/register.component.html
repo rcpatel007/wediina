@@ -145,7 +145,7 @@ type = "ball-clip-rotate"
                         </div>
                         <div class="form-group">
                             <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
-                            <input type="password" name="cpawd" (change)="checkpwd();"  [(ngModel)]="cpawd"  minlength="6" #cpwd="ngModel" required 
+                            <input type="password" name="cpawd"  [(ngModel)]="cpawd"  minlength="6" #cpwd="ngModel" required 
                             class="form-control form_control_m" id="fname" placeholder="password">
                             <div *ngIf="cpwd?.touched">
                                 <div class="red-text left" *ngIf="cpwd.errors?.required">
