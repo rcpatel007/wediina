@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   cpwd: String;
   confirmpwd: String;
   npwd: String;
+  displayname:String;
   pwderror: String;
   pwdsucess: String;
   constructor(private route: ActivatedRoute,
@@ -70,6 +71,7 @@ export class ProfileComponent implements OnInit {
         //console.log(res);
 
         this.name = res.name;
+        this.displayname  =  res.name;
         this.email = res.email;
         this.contactno = res.contact_no;
 
@@ -77,6 +79,7 @@ export class ProfileComponent implements OnInit {
   }
 
   customerupdate() {
+  this.spinner.show();
     let customer ={
       name:this.name,
       email:this.email,
@@ -85,7 +88,7 @@ export class ProfileComponent implements OnInit {
     
     this.conectionservice.editCustomer(this.id,customer)
       .subscribe(res => {
-
+this.spinner.hide();
       });
 
   }
