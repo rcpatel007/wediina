@@ -918,6 +918,7 @@ font-size:25px;
     padding: 4% !important;
 border-bottom:1px solid #e2e2e2; 
 cursor: pointer;
+border: 1px solid #e2e2e2;
 }
 
 .login-tab-text:hover{
