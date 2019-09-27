@@ -35,6 +35,7 @@ export class VenueGridComponent implements OnInit {
   area = [];
   cityget: String;
   booking: String;
+  venuephoto:String;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -79,7 +80,18 @@ export class VenueGridComponent implements OnInit {
     });
 
     this.getvenue();
+    this.getprimads();
     // this.getCategory();
+  }
+
+
+  getprimads() {
+    this.conectionservice.getads()
+      .subscribe(res => {
+        this.venuephoto = res[1].image;
+     console.log(res);
+     
+      });
   }
 
   fetchcity(cityget) {
@@ -168,6 +180,7 @@ export class VenueGridComponent implements OnInit {
 
   //     });
   // }
+
   getvenue() {
     this.spinner.show();
 

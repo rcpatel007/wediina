@@ -161,7 +161,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
-                    <input type="email" name="password" minlength="6" #pwd="ngModel" [(ngModel)]="password" class="form-control form_control_m"
+                    <input type="password" name="password" minlength="6" #pwd="ngModel" [(ngModel)]="password" class="form-control form_control_m"
                         id="fname" placeholder="password">
                         <div *ngIf="pwd?.touched">
                             <div class="red-text left" *ngIf="pwd.errors?.required">
@@ -172,7 +172,20 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
+                        <input type="password" name="cpwd" [(ngModel)]="cpwd"  minlength="6" #cpawd="ngModel" required 
+                        class="form-control form_control_m" id="fname" placeholder="password">
+                        <div *ngIf="cpawd?.touched">
+                            <div class="red-text left" *ngIf="cpawd.errors?.required">
+                                confirm password requier*
+                            </div>
+                            <div [hidden]="!cpawd?.hasError('minlength')" class="red-text">
+                                Please set your password min 6 character
+                            </div>
+                            {{error}}
+                        </div>
+                    </div>
                 <div class="form-group">
 
                     <label for="exampleFormControlSelect1" class=" ">City</label><span class="text-danger">*</span>

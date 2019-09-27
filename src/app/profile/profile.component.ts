@@ -98,6 +98,8 @@ export class ProfileComponent implements OnInit {
 
   changePassword() {
     let id = localStorage.customer_id;
+    console.log(localStorage.customer_id);
+    
     let validate_pwd = {
       id: localStorage.customer_id,
       password: this.cpwd

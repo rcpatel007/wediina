@@ -27,7 +27,7 @@
           <div class="col-8 mx-auto col-lg-8  col-md-8 col-xl-8 col-xs-8 r_greeting_format ">
             <p class="text-center">
                 
-              <b class="greeting_head">Store your Memory With Click On Fotofactorystudio</b></p>
+              <b class="greeting_head">Store your Memory With Click On {{companyName}}</b></p>
               <hr class="title">
          
             </div>
@@ -104,9 +104,9 @@
   </div>
     <div class="row ">
       
-      <div  *ngFor="let v of video" class="col-lg-3 float-left venues mr-b-4 venue-grid" data-toggle="modal" data-target=".video_modal">
+      <div  *ngFor="let v of videoArray" class="col-lg-3 float-left venues mr-b-4 venue-grid" data-toggle="modal" data-target=".video_modal">
         <div class="venue-card">
-            <img src="../../assets/image/photographer/24-Hero-Aadi-and-Aruna-Marriage-Photos-Wedding-HD-Photos-Gallery-Stills.jpg" (click)="getvideo(v)"  class="grid_img"  />
+            <img src="http://img.youtube.com/vi/{{v.image}}/hqdefault.jpg" (click)="getvideo(v.link)"  class="grid_img"  />
            
             <div>
 
@@ -323,14 +323,13 @@
                   <div class="red-text left" *ngIf="purposed.errors?.required">
                      Please Enter your Purpose Why Are you send this Inquiry*
                   </div>
-               
               </div>
             </div>
         </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" [disabled]="frm1.invalid" class="btn btn-success w-100" data-dismiss="modal">Send</button>
+          <button type="submit" [disabled]="frm1.invalid" class="btn btn-success w-100">Send</button>
         </div>
       </form>
       </div>

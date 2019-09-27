@@ -294,11 +294,10 @@ export class ConnectionService {
 
 
   customerLogin(customer) {
-    let headers = new Headers;
     //  headers.append('Access-Control-Allow-Origin',' *');
     // headers.append('Access-Control-Allow-Methods',' GET, POST, PATCH, PUT, DELETE, OPTIONS');
     // headers.append('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token');
-    return this.http.post(environment.api_url + '/customerLogin/', customer, { headers: headers })
+    return this.http.post(environment.api_url + '/customerLogin/', customer)
       .pipe(map(res => res.json()));
 
   }
@@ -330,6 +329,13 @@ export class ConnectionService {
   /*********************************************************************** */
   // review
   /********************************************************** */
+
+  getads() {
+    //  headers = new Headers();    
+    return this.http.get(environment.api_url + '/ads_image')
+      .pipe(map(res => res.json()));
+
+  }
 
 
   getreviewById(id) {

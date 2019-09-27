@@ -146,6 +146,7 @@ export class VendorprofileComponent implements OnInit {
         this.state = res.state;
         this.videolink = res.video_story;
         this.desp = res.desp;
+        this.prime = res.prime_user;
         this.bookingdate = res.bookingdate;
         this.weblink = res.weblink;
         this.prime = res.prime_user;

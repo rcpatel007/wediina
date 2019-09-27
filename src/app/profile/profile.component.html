@@ -25,9 +25,9 @@ type = "ball-clip-rotate"
         <div class="profile_menu">
         <a href ="#profile">  My detail </a>
         </div>
-        <div class="profile_menu">
+        <!-- <div class="profile_menu">
          <a href="#Wishlist"> Wishlist</a>
-        </div>
+        </div> -->
         <div class="profile_menu">
           <a href="#myvenue" >My Venue</a>
         </div>
@@ -52,7 +52,7 @@ type = "ball-clip-rotate"
       <div class="text-center venueprofile_head s_headding-text">
         welcome to your dashbord <b>{{name}}</b> !
       </div>
-      <form action="">
+      <form (ngsubmit)="profileUpdate();">
         <div class="col-12 col-sm-12 col-6 col-lg-6 col-md-6 col-xl-6 float-left ">
           <div class="form-group">
             <label for="fname">Your Name</label>
@@ -85,11 +85,11 @@ type = "ball-clip-rotate"
           <!-- <div class="form-group">
             <label for="state">State</label>
             <input type="text" class="form-control" id="state" placeholder="First Name">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="state"></label>
             <input type="submit" class="float-right btn btn-success" id="state" value="update">
-          </div> -->
+          </div> 
           
         </div>
       </form>
@@ -98,7 +98,7 @@ type = "ball-clip-rotate"
 
     </div>
   </div>
-  <div id="Wishlist" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
+  <!-- <div id="Wishlist" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
       <div>
           <div class="text-center venueprofile_head s_headding-text">
               Wishlist
@@ -130,7 +130,7 @@ type = "ball-clip-rotate"
       <div>
   
       </div>
-    </div>
+    </div> -->
   <div id="myvenue" class="col-lg-8 col-md-8 col-xl-8 mr-t-5 float-right p_main_section">
       <div>
           <div class="text-center venueprofile_head s_headding-text">
@@ -227,18 +227,18 @@ type = "ball-clip-rotate"
             <form (ngSubmit)="changePassword()">
             <div class="form-group">
               <label for="fname" class="">Current Password</label><span class="text-danger">*</span>
-              <input type="text" class="form-control form_control_m" id="cpwd" name="cpwd" [(ngModel)]="cpwd" placeholder="enter your Current Password">
+              <input type="password" class="form-control form_control_m" id="cpwd" name="cpwd" [(ngModel)]="cpwd" placeholder="enter your Current Password">
             </div>
            
             <div class="form-group">
               <label for="fname" class="">Password</label><span class="text-danger">*</span>
-              <input type="npwd" name="npwd" [(ngModel)]="npwd" class="form-control form_control_m" id="purpose"
+              <input type="password" name="npwd" [(ngModel)]="npwd" class="form-control form_control_m" id="purpose"
                 placeholder="Enter your New password .">
             </div>
             
             <div class="form-group">
               <label for="fname" class="">Confirm Password</label><span class="text-danger">*</span>
-              <input type="text" name="confirmpwd" [(ngModel)]="confirmpwd" class="form-control form_control_m" id="purpose"
+              <input type="password" name="confirmpwd" [(ngModel)]="confirmpwd" class="form-control form_control_m" id="purpose"
                 placeholder="Enter your New password .">
             </div>
             <div class="form-group">

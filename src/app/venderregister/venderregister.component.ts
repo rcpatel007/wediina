@@ -32,6 +32,8 @@ export class VenderregisterComponent implements OnInit {
   pwd:String;
   cpwd:String;
   catValue:String;
+  // cpwd:String;
+  error:string;
   // package:String;
   // gstno:String;
   // area:String;
@@ -140,7 +142,12 @@ export class VenderregisterComponent implements OnInit {
     // let video = this.videolink.split(",");
     // console.log(video);
     // let name = this.name.split(" ");
-    
+    if (this.password == this.cpwd) {
+      
+      this.spinner.show();
+      this.error = "";
+      // this.existuser = false;
+
   this.spinner.show();
   
   
@@ -177,7 +184,10 @@ export class VenderregisterComponent implements OnInit {
         
             this.router.navigate(["/login"]);
           });
-
+        }
+        else{
+          this.error =" password not match"
+        }
         
 
     }

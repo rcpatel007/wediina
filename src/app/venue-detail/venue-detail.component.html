@@ -15,8 +15,8 @@ type = "ball-clip-rotate"
     <div class="">
       <div class="top_content pad-0">
         <carousel [interval]=2000 [showIndicators]="true" [noPause]="false">
-          <slide class="fadding">
-            <img class="background-img r-h-27vh" src="../../assets/image/page_slide.jpg" style="width: 100%;" />
+          <slide class="fadding" style="height: 56vh;">
+            <img class="background-img r-h-27vh" src="{{mainimg}}" style="width: 100%;" />
             <div class="slide_text mob_f_3">
               Venue Detail
             </div>
@@ -85,10 +85,10 @@ type = "ball-clip-rotate"
     
       <div class="row">
         <h6 class="col-12 col-lg-12 col-md-12 col-xl-12  videostroy_title">Video Story</h6>
-        <div *ngFor="let v of video; let i = index"
+        <div *ngFor="let v of videoArray; let i = index"
           class="col-12 col-sm-12 col-lg-2 col-md-2 col-xl-2  float-left" data-toggle="modal"
           data-target=".video_modal">
-          <img src="../../assets/image/Ahmedabad.jpg" (click)="getvideo(v)" class="img-thumbnail" />
+          <img src="http://img.youtube.com/vi/{{v.image}}/hqdefault.jpg" (click)="getvideo(v.link)" class="img-thumbnail" />
 
         </div>
 
@@ -421,6 +421,7 @@ type = "ball-clip-rotate"
       <div class="modal-body">
 
         <form (ngSubmit)="login()">
+            <div class="errormsg">{{errormsg}}</div>
         <div class="form-group">
           <label for="fname" class="">Email</label><span class="text-danger">*</span>
           <input type="email" class="form-control form_control_m" id="email" name="email" [(ngModel)]="email" placeholder="enter your Email">
@@ -453,11 +454,14 @@ type = "ball-clip-rotate"
           <!-- Modal Header -->
           <div  class="modal-header">
             <h4 class="modal-title">Customer Login</h4>
+
             <button type="button" class="close" data-dismiss="modal">&times;</button>
+
           </div>
           
           <!-- Modal body -->
           <div class="modal-body">
+              <div class="errormsg">{{errormsg}}</div>
     
             <form #frm2="ngForm" (ngSubmit)="login()">
             <div class="form-group">

@@ -32,10 +32,12 @@ export class VenueRegisterComponent implements OnInit {
   p_img:String;
   oimg= new Array;
   o_img:any;
+  cpwd:String;
   timeper:String;
   areavenue:String;
   cop:String;
   location:String;
+  error:String;
   desp:String;
   videolink:any;
   status = true;
@@ -121,7 +123,11 @@ export class VenueRegisterComponent implements OnInit {
   addVenue(){
   // let video = this.videolink.split(",");
   // // console.log(video);
-  
+  if (this.password == this.cpwd) {
+      
+    this.error = "";
+    // this.existuser = false;
+
 
 
     let venue={
@@ -160,6 +166,10 @@ export class VenueRegisterComponent implements OnInit {
           
           this.router.navigate(["/login"]);
               });
+            }
+            else{
+              this.error = "Passwrod not match";
+            }
   }
 
   getcity() {

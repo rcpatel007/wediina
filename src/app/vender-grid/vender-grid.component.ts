@@ -33,6 +33,8 @@ export class VenderGridComponent implements OnInit {
   area = [];
   cityget: String;
   booking: String;
+  vendorphoto:String;
+  
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -49,7 +51,7 @@ export class VenderGridComponent implements OnInit {
     });
     this.getvendors();
     // this.getCategory();
-
+this.getprimads();
     for (var i = 0; i < this.maxScore; i++) {
       this.range.push(i);
     }
@@ -158,6 +160,16 @@ export class VenderGridComponent implements OnInit {
         });
         console.log(this.venues);
         this.spinner.hide();
+      });
+  }
+
+  
+  getprimads() {
+    this.conectionservice.getads()
+      .subscribe(res => {
+        this.vendorphoto = res[2].image;
+     console.log(res);
+     
       });
   }
 

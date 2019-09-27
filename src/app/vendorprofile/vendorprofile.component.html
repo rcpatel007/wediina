@@ -134,8 +134,13 @@
               placeholder="First Name">
           </div>
           <div class="form-group">
-            <label for="fname">Video Lins</label>
+            <label for="fname">Video Link</label>
             <input type="text" class="form-control" id="videolink" name="videolink" [(ngModel)]="videolink"
+              placeholder="Videos Link (example:">
+          </div>
+          <div class="form-group" *ngIf="prime == true">
+            <label for="fname">Web Link</label>
+            <input type="text" class="form-control" id="videolink" name="weblink" [(ngModel)]="weblink"
               placeholder="Videos Link (example:">
           </div>
           <div class="form-group">
@@ -329,7 +334,6 @@
   </div>
 </div>
 
-
 <div class="modal" id="cpassword">
   <div class="modal-dialog  modal-full    ">
       <div class="modal-content">
@@ -357,18 +361,18 @@
             <form (ngSubmit)="changePassword()">
             <div class="form-group">
               <label for="fname" class="">Current Password</label><span class="text-danger">*</span>
-              <input type="text" class="form-control form_control_m" id="cpwd" name="cpwd" [(ngModel)]="cpwd" placeholder="enter your Current Password">
+              <input type="password" class="form-control form_control_m" id="cpwd" name="cpwd" [(ngModel)]="cpwd" placeholder="enter your Current Password">
             </div>
            
             <div class="form-group">
               <label for="fname" class="">Password</label><span class="text-danger">*</span>
-              <input type="npwd" name="npwd" [(ngModel)]="npwd" class="form-control form_control_m" id="purpose"
+              <input type="password" name="npwd" [(ngModel)]="npwd" class="form-control form_control_m" id="purpose"
                 placeholder="Enter your New password .">
             </div>
             
             <div class="form-group">
               <label for="fname" class="">Confirm Password</label><span class="text-danger">*</span>
-              <input type="text" name="confirmpwd" [(ngModel)]="confirmpwd" class="form-control form_control_m" id="purpose"
+              <input type="password" name="confirmpwd" [(ngModel)]="confirmpwd" class="form-control form_control_m" id="purpose"
                 placeholder="Enter your New password .">
             </div>
             <div class="form-group">

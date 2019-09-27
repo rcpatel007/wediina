@@ -28,7 +28,7 @@ export class VenueDetailComponent implements OnInit {
   range = [];
   marked = -1;
   smarked: Number = -1;
-
+  mainimg:String;
   id: String;
   venue = [];
   name: String;
@@ -45,6 +45,7 @@ export class VenueDetailComponent implements OnInit {
   playvideo: String;
   customer: boolean;
   email: String;
+  errormsg: string;
   datearray = [];
   password: String;
   feedback: String;
@@ -56,7 +57,7 @@ export class VenueDetailComponent implements OnInit {
   person: number;
   purpose: String;
   v_email: String;
-
+  videoArray =[];
 
   review = [];
   public myDatePickerOptions: IMyDpOptions = {
@@ -109,6 +110,7 @@ export class VenueDetailComponent implements OnInit {
     this.getvenueDetail();
     this.fetchemail();
     this.getfeedback();
+    this.videoimg();
   }
 
   onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
@@ -126,6 +128,7 @@ export class VenueDetailComponent implements OnInit {
         this.location = res.location;
         this.video = res.video_story;
         this.images = res.sub_img;
+        this.mainimg=res.image;
         this.area = res.areavenue;
         this.p_area = res.parking;
         this.capasity = res.cop;
@@ -137,9 +140,28 @@ export class VenueDetailComponent implements OnInit {
 
         console.log(res);
         console.log(this.video);
-
+        this.videoimg();
       });
 
+  }
+
+  videoimg() {
+
+    let url: String;
+
+    for (let index = 0; index < this.video.length; index++) {
+
+      let urlarray = this.video[index].split("embed/")[1];
+     
+      console.log(urlarray);
+
+      let array={
+        image:urlarray,
+        link:this.video[index]
+      }
+      this.videoArray.push(array);
+
+    }
   }
 
   datefilter(booking) {
@@ -182,37 +204,95 @@ export class VenueDetailComponent implements OnInit {
 
   }
 
+  // login() {
+
+  //   this.spinner.show();
+
+  //   // this.router.navigate(["/home"]);
+
+  //   let customer = {
+  //     email: this.email,
+  //     password: this.password
+  //   }
+
+  //   //console.log(customer);
+
+  //   this.conectionservice.customerLogin(customer)
+  //     .subscribe(res => {
+  //       localStorage.setItem('customer_id', res._id);
+  //       localStorage.removeItem('vendor_id');
+  //       localStorage.removeItem('venue_id');
+  //       // localStorage.setItem('customer_id',res._id)
+  //       localStorage.setItem('vemail', res.email);
+
+  //       // environment.customer_id = res._id;
+  //       // environment.venue_id = null;
+  //       // environment.vendor_id =null; 
+  //       environment.vemail = res.email;
+  //       this.spinner.hide();
+  //       this.customer = true;
+  //       //  this.addFeedback();
+  //       //console.log(res, 'customerdetail');
+
+  //     });
+
+  // }
+
+
   login() {
-
     this.spinner.show();
+    if (this.email == null || this.password == null) {
+      this.errormsg = null;
+      this.errormsg = "please enter email or password";
+      this.spinner.hide();
 
-    // this.router.navigate(["/home"]);
-
-    let customer = {
-      email: this.email,
-      password: this.password
     }
+    else {
+      let customer = {
+        email: this.email,
+        password: this.password
+      }
 
-    //console.log(customer);
+      //console.log(customer);
 
-    this.conectionservice.customerLogin(customer)
-      .subscribe(res => {
-        localStorage.setItem('customer_id', res._id);
-        localStorage.removeItem('vendor_id');
-        localStorage.removeItem('venue_id');
-        // localStorage.setItem('customer_id',res._id)
-        localStorage.setItem('vemail', res.email);
+      this.conectionservice.customerLogin(customer)
+        .subscribe(res => {
 
-        // environment.customer_id = res._id;
-        // environment.venue_id = null;
-        // environment.vendor_id =null; 
-        environment.vemail = res.email;
-        this.spinner.hide();
-        this.customer = true;
-        //  this.addFeedback();
-        //console.log(res, 'customerdetail');
+          console.log("result", res);
 
-      });
+          localStorage.setItem('customer_id', res.result._id);
+          localStorage.removeItem('venue_id');
+          localStorage.removeItem('vendor_id');
+
+          environment.customer_id = res.result._id;
+          environment.venue_id = null;
+          environment.vendor_id = null;
+          environment.vemail = res.email;
+          // this.router.navigate(["/home"]);
+          this.customer = true;
+          $(".modal").modal("hide");
+
+          //console.log(res, 'customerdetail');
+          this.spinner.hide();
+
+        },
+          (error) => {
+            this.errormsg = null;
+            if (error._body === '{"message":"No user found."}') {
+              this.errormsg = "No User Found";
+            }
+            else {
+              this.errormsg = error._body;
+              console.log(error);
+            }
+            this.spinner.hide();
+
+          }
+
+        );
+
+    }
+    // this.router.navigate(["/home"]);
 
   }
 
@@ -296,15 +376,15 @@ export class VenueDetailComponent implements OnInit {
       .subscribe(res => {
         //console.log(res);
         this.spinner.hide();
-   
+
         this.cname = null;
-        this.date =null;
+        this.date = null;
         this.v_email = null;
         this.id = null;
         this.cemail = null;
         this.mno = null;
         this.purpose = null;
-        this.person= null;
+        this.person = null;
         $(".modal").modal("hide");
 
       });
@@ -327,9 +407,9 @@ export class VenueDetailComponent implements OnInit {
         this.getfeedback();
         this.spinner.hide();
 
-         
-         this.marked = 1,
-         this.feedback =null;
+
+        this.marked = 1,
+          this.feedback = null;
       });
 
   }

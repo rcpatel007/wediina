@@ -18,9 +18,8 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
-  errormsg: String;
   rol: number;
-
+  errormsg: String;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private conectionservice: ConnectionService,
@@ -56,150 +55,180 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-// this.errormsg ="";
+    // this.errorerrormsg ="";
     // if(this.email == null && this.password ==null){
-    //   this.errormsg = "please enter Valid user name and password";
+    //   this.errorerrormsg = "please enter Valid user name and password";
 
     // }
 
     if (this.rol == 1) {
 
-        this.vendorLogin();
-        //console.log("hello");
-        
-      }
-     else if (this.rol == 2) {
-        this.venueLogin();
-        //console.log("hello");
+      this.vendorLogin();
+      //console.log("hello");
 
-      }
-      else if (this.rol == 3) {
-        //console.log("hello");
+    }
+    else if (this.rol == 2) {
+      this.venueLogin();
+      //console.log("hello");
 
-        this.customer();
-      }
-      else{
-        this.errormsg = "please select your Roll";
+    }
+    else if (this.rol == 3) {
+      //console.log("hello");
 
-      }
+      this.customer();
+    }
+    else {
+      this.errormsg = "please select your Roll";
+
+    }
   }
 
   forget() {
-    // this.errormsg ="";
-        // if(this.email == null && this.password ==null){
-        //   this.errormsg = "please enter Valid user name and password";
-    
-        // }
-    
-        if (this.rol == 1) {
-          this.forgetVendor();
-    
-            // this.vendorLogin();
-            //console.log("hello");
-            
-          }
-         else if (this.rol == 2) {
-            this.forgetVenue();
-            //console.log("hello");
-    
-          }
-          else if (this.rol == 3) {
-            //console.log("hello");
-    
-            this.forgetCustomer();
-          }
-          else{
-            this.errormsg = "please select your Roll";
-    
-          }
-      }
-    
+    // this.errorerrormsg ="";
+    // if(this.email == null && this.password ==null){
+    //   this.errorerrormsg = "please enter Valid user name and password";
+
+    // }
+
+    if (this.rol == 1) {
+      this.forgetVendor();
+
+      // this.vendorLogin();
+      //console.log("hello");
+
+    }
+    else if (this.rol == 2) {
+      this.forgetVenue();
+      //console.log("hello");
+
+    }
+    else if (this.rol == 3) {
+      //console.log("hello");
+
+      this.forgetCustomer();
+    }
+    else {
+      this.errormsg = "please select your Roll";
+
+    }
+  }
+
 
   customer() {
     this.spinner.show();
-   
+  
+    if (this.email == null || this.password == null) {
+      this.errormsg = null;
+      this.errormsg = "please enter email or password";
+      this.spinner.hide();
+
+    }
+    else {
+
+    
+      let customer = {
+        email: this.email,
+        password: this.password
+      }
+
+      //console.log(customer);
+
+      this.conectionservice.customerLogin(customer)
+        .subscribe(res => {
+          
+            console.log("result", res);
+
+            localStorage.setItem('customer_id', res.result._id);
+            localStorage.removeItem('venue_id');
+            localStorage.removeItem('vendor_id');
+
+            environment.customer_id = res._id;
+            environment.venue_id = null;
+            environment.vendor_id = null;
+            // environment.vemail = res.email;
+            this.router.navigate(["/home"]);
+          
+    
+          //console.log(res, 'customerdetail');
+          this.spinner.hide();
+
+        },
+          (error)=>{
+            this.errormsg = null;
+            if (error._body === '{"message":"No user found."}') {
+              this.errormsg = "No User Found";
+            }
+            else {
+              this.errormsg = error._body;
+              console.log(error);
+            }
+            this.spinner.hide();
+
+          }
+
+          );
+
+    }
     // this.router.navigate(["/home"]);
 
-    let customer = {
-      email: this.email,
-      password: this.password
+  }
+
+  forgetCustomer() {
+    let mail = {
+      email: this.email
     }
+    console.log(mail);
 
-    //console.log(customer);
 
-    this.conectionservice.customerLogin(customer)
+    this.conectionservice.forgetCustomer(mail)
       .subscribe(res => {
-        this.spinner.hide();
-        localStorage.setItem('customer_id',res._id);
-        localStorage.removeItem('venue_id');
-        localStorage.removeItem('vendor_id');
+        console.log(res);
 
-        environment.customer_id = res._id;
-        environment.venue_id = null;
-        environment.vendor_id =null;
-        environment.vemail =res.email; 
-        if (environment.customer_id !=null) {
-          this.router.navigate(["/home"]);
-          
-        } else {
-          this.router.navigate(["/login"]);
-          
-        }
-      
-        //console.log(res, 'customerdetail');
 
       });
   }
 
-  forgetCustomer(){
-    let mail ={
-      email  :this.email
-    }
-    console.log(mail);
-    
-  
-    this.conectionservice.forgetCustomer(mail)
-    .subscribe(res=>{
-      console.log(res);
-      
-  
-    });
-  }
 
-  
-  forgetVenue(){
-    let mail ={
-      email  :this.email
+  forgetVenue() {
+    let mail = {
+      email: this.email
     }
     console.log(mail);
-    
-  
+
+
     this.conectionservice.forgetVenue(mail)
-    .subscribe(res=>{
-      console.log(res);
-      
-  
-    });
+      .subscribe(res => {
+        console.log(res);
+
+
+      });
   }
-  forgetVendor(){
+  forgetVendor() {
 
-  let mail ={
-    email  :this.email
-  }
-  console.log(mail);
-  
+    let mail = {
+      email: this.email
+    }
+    console.log(mail);
 
-  this.conectionservice.forgetVendor(mail)
-  .subscribe(res=>{
-    console.log(res);
-    
 
-  });
+    this.conectionservice.forgetVendor(mail)
+      .subscribe(res => {
+        console.log(res);
+
+
+      });
   }
 
   venueLogin() {
     this.spinner.show();
-   
+    if (this.email == null || this.password == null) {
+      this.errormsg = null;
+      this.errormsg = "please enter email or password";
+      this.spinner.hide();
+
+    }
+    else {
+  
     let venue_login = {
       email: this.email,
       password: this.password
@@ -210,28 +239,50 @@ export class LoginComponent implements OnInit {
     this.conectionservice.venueLogin(venue_login)
       .subscribe(res => {
         localStorage.removeItem('customer_id');
-        localStorage.setItem('venue_id',res._id);
+        localStorage.setItem('venue_id', res._id);
         localStorage.removeItem('vendor_id');
 
-       
+
         environment.venue_id = res._id;
-        environment.customer_id =null;
-        environment.vendor_id =null;
-        environment.vemail =res.email;
+        environment.customer_id = null;
+        environment.vendor_id = null;
+        environment.vemail = res.email;
         this.spinner.hide();
-   
+
         this.router.navigate(["/Venueprofile", res._id]);
 
         //console.log(res, 'venuedetail');
+      },
 
-      });
+      (error)=>{
+        this.errormsg = null;
+        if (error._body === '{"message":"No user found."}') {
+          this.errormsg = "No User Found";
+        }
+        else {
+          this.errormsg = error._body;
+          console.log(error);
+        }
+        this.spinner.hide();
+
+      }
+   
+    );
+    }
   }
 
 
   vendorLogin() {
     this.spinner.show();
-   
 
+    if (this.email == null || this.password == null) {
+      this.errormsg = null;
+      this.errormsg = "please enter email or password";
+      this.spinner.hide();
+
+    }
+    else {
+  
     let customer = {
       email: this.email,
       password: this.password
@@ -243,18 +294,34 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         localStorage.removeItem('customer_id');
         localStorage.removeItem('venue_id');
-        localStorage.setItem('vendor_id',res._id);
- 
+        localStorage.setItem('vendor_id', res._id);
+
         environment.vendor_id = res._id;
-        environment.customer_id =null;
-        environment.venue_id =null;
-        environment.vemail =res.email;
+        environment.customer_id = null;
+        environment.venue_id = null;
+        environment.vemail = res.email;
         this.spinner.hide();
-   
+
         this.router.navigate(["/Vendorprofile", res._id]);
 
         //console.log(res, 'vendor_detail');
 
-      });
+      },
+      (error)=>{
+        this.errormsg = null;
+        if (error._body === '{"message":"No user found."}') {
+          this.errormsg = "No User Found";
+        }
+        else {
+          this.errormsg = error._body;
+          console.log(error);
+        }
+        this.spinner.hide();
+
+      }
+
+      
+      );
   }
+}
 }

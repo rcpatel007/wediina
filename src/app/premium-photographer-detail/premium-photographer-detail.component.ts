@@ -53,6 +53,7 @@ export class PremiumPhotographerDetailComponent implements OnInit {
   review= [];
  placeholder: string = 'Select a date';
  range = [];
+ videoArray =[];
  marked = -1;
  smarked:Number = -1;
   public myDatePickerOptions: IMyDpOptions = {
@@ -174,9 +175,28 @@ this.spinner.show();
         console.log(res);
         this.spinner.hide();
         
-
+this.videoimg();
       });
   }
+  videoimg() {
+
+    let url: String;
+
+    for (let index = 0; index < this.video.length; index++) {
+
+      let urlarray = this.video[index].split("embed/")[1];
+
+      console.log(urlarray);
+
+      let array = {
+        image: urlarray,
+        link: this.video[index]
+      }
+      this.videoArray.push(array);
+
+    }
+  }
+
 
   getvideo(v) {
     this.playvideo = v;
@@ -252,6 +272,8 @@ this.spinner.show();
     .subscribe(res=>{
       //console.log(res);
       this.spinner.hide();
+      $(".modal").modal("hide");
+  
     });
   }
   datefilter(booking) {

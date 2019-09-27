@@ -16,20 +16,21 @@ declare var $: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  successmsg:String;
-  homeslider:any;
-  venue_category=[];
-  vendor_category=[];
+  successmsg: String;
+  homeslider: any;
+  venue_category = [];
+  vendor_category = [];
 
-name:String;
-email:String;
-contact_no:String;
-subject:String;
-msg:String;
+  name: String;
+  email: String;
+  contact_no: String;
+  subject: String;
+  msg: String;
+  primeadsphoto: String;
   constructor(private router: Router,
-    private conectionservice:ConnectionService,
+    private conectionservice: ConnectionService,
     private spinner: NgxSpinnerService
-    ) { }
+  ) { }
 
   ngOnInit() {
 
@@ -37,7 +38,7 @@ msg:String;
     // $("script[src='node_modules/bootstrap/dist/css/bootstrap.min.css']").remove();
     // $("script[src='node_modules/jquery/dist/jquery.min.js']").remove();
     // $("script[src='node_modules/bootstrap/dist/js/bootstrap.min.js']").remove();
-    
+
     // var dynamicScripts = [
     // "assets/css/style.css",
     // "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -55,62 +56,74 @@ msg:String;
     // }
 
 
-
+    this.getprimads();
     this.getcategory();
     this.getHomeSlider();
 
-  
+
   }
 
-  getcategory(){
+
+  getprimads() {
+    this.conectionservice.getads()
+      .subscribe(res => {
+        this.primeadsphoto = res[0].image;
+     console.log(res);
+     
+      });
+  }
+
+
+
+  getcategory() {
     this.spinner.show();
     this.conectionservice.getVenueCategory()
-    .subscribe(res=>{
-      this.venue_category =res;
-      //console.log(res);
-      
-    });
-   
+      .subscribe(res => {
+        this.venue_category = res;
+        //console.log(res);
+
+      });
+
     this.conectionservice.getVendorCategory()
-    .subscribe(res=>{
-      this.vendor_category =res;
-      //console.log(this.vendor_category);
-      this.spinner.hide();  
-      
-    });
-  
+      .subscribe(res => {
+        this.vendor_category = res;
+        //console.log(this.vendor_category);
+        this.spinner.hide();
+
+      });
+
   }
 
-  getHomeSlider(){
+  getHomeSlider() {
     this.conectionservice.gethomeslider()
-    .subscribe(res=>{
-      this.homeslider =res;
-      //console.log(res);
+      .subscribe(res => {
+        this.homeslider = res;
+        //console.log(res);
 
-    });
+      });
   }
 
 
-  contactSubmit(){
+  contactSubmit() {
 
 
     this.spinner.show();
-    let contact ={
+    let contact = {
       name: this.name,
-        email: this.email,
-        mobileNo: this.contact_no,
-        subject: this.subject,
-        message: this.msg,
+      email: this.email,
+      mobileNo: this.contact_no,
+      subject: this.subject,
+      message: this.msg,
     }
 
     this.conectionservice.addcontact(contact)
-    .subscribe(res=>{
+      .subscribe(res => {
 
-      console.log(res);
+        console.log(res);
 
-this.spinner.hide();
-      this.successmsg ="your  Request accepted  We are  Contact you Soon....."
-      
-    });
+        this.spinner.hide();
+        this.successmsg = "your  Request accepted  We are  Contact you Soon....."
+
+      });
   }
 }

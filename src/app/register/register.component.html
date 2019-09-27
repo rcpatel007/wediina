@@ -143,6 +143,20 @@ type = "ball-clip-rotate"
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="fname" class=" ">Password</label><span class="text-danger">*</span>
+                            <input type="password" name="cpawd" (change)="checkpwd();"  [(ngModel)]="cpawd"  minlength="6" #cpwd="ngModel" required 
+                            class="form-control form_control_m" id="fname" placeholder="password">
+                            <div *ngIf="cpwd?.touched">
+                                <div class="red-text left" *ngIf="cpwd.errors?.required">
+                                    confirm password requier*
+                                </div>
+                                <div [hidden]="!cpwd?.hasError('minlength')" class="red-text">
+                                    Please set your password min 6 character
+                                </div>
+                            </div>
+                            {{error}}
+                        </div>
                         <div class="col-lg-12 col-md-12 col-xl-12 mx-auto mr-t-17">
                             <div class="text-center red">{{errormsg}}</div>
                   

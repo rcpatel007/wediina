@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 
   password:String;
   name:String;
+  cpawd:String;
+  error:String;
   email:String;
   contact_no:String;
   errormsg:String;
@@ -25,45 +27,95 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
   
-
   customerRegister(){
-    this.spinner.show();
-    this.errormsg = "";
-    this.existuser = false;
-      this.conectionservice.getCustomer()
-        .subscribe(res=>{
-          
-          for (let index = 0; index < res.length; index++) {
-          
-            if(res[index].email == this.email){
-              this.spinner.hide();
-              this.existuser =true;
-              alert("this Email is already exist  Please try Another....")
-            }
-          }
-        
-          if (!this.existuser) {
+    
 
-                  let customer ={
-              name: this.name,
-              contact_no:this.contact_no,
-              email: this.email,
-              password: this.password
-            }
-          this.conectionservice.addcustomer(customer)
-          .subscribe(res=>{
-      // console.log(res);
-      this.spinner.hide();
-         
-      this.router.navigate(["/login"]);
+    if (this.password == this.cpawd) {
       
+        this.spinner.show();
+        this.errormsg = "";
+        this.existuser = false;
+          this.conectionservice.getCustomer()
+            .subscribe(res=>{
+              
+              for (let index = 0; index < res.length; index++) {
+              
+                if(res[index].email == this.email){
+                  this.spinner.hide();
+                  this.existuser =true;
+                  alert("this Email is already exist  Please try Another....")
+                }
+              }
+            
+              if (!this.existuser) {
+    
+                      let customer ={
+                  name: this.name,
+                  contact_no:this.contact_no,
+                  email: this.email,
+                  password: this.password
+                }
+              this.conectionservice.addcustomer(customer)
+              .subscribe(res=>{
+          // console.log(res);
+          this.spinner.hide();
+             
+          this.router.navigate(["/login"]);
+          
+          
+          
+              });            
+              }
+            });
+    
       
-      
-          });            
-          }
-        });
-
+    
+    }
+    else {
+      this.error = " password not match";
+      // console.log(this.pwderror);
+    }
   }
+
+  // customerRegister(){
+  //   this.spinner.show();
+  //   this.errormsg = "";
+  //   this.existuser = false;
+  //     this.conectionservice.getCustomer()
+  //       .subscribe(res=>{
+          
+  //         for (let index = 0; index < res.length; index++) {
+          
+  //           if(res[index].email == this.email){
+  //             this.spinner.hide();
+  //             this.existuser =true;
+  //             alert("this Email is already exist  Please try Another....")
+  //           }
+  //         }
+        
+  //         if (!this.existuser) {
+
+  //                 let customer ={
+  //             name: this.name,
+  //             contact_no:this.contact_no,
+  //             email: this.email,
+  //             password: this.password
+  //           }
+  //         this.conectionservice.addcustomer(customer)
+  //         .subscribe(res=>{
+  //     // console.log(res);
+  //     this.spinner.hide();
+         
+  //     this.router.navigate(["/login"]);
+      
+      
+      
+  //         });            
+  //         }
+  //       });
+
+  // }
 
 }
