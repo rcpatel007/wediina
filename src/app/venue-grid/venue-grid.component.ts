@@ -273,7 +273,6 @@ export class VenueGridComponent implements OnInit {
           if (index !== this.city.findIndex(i => i._id === item._id)) {
             this.venues.splice(index, 1);
           }
-    
         });
         // }
       }

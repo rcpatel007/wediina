@@ -25,7 +25,7 @@ export class VenderGridComponent implements OnInit {
   marked = 3 - 1;
   smarked = 4 - 1;
 
-
+  venuefilter = [];
   id: string;
   venueCategory = [];
   venues = [];
@@ -33,8 +33,8 @@ export class VenderGridComponent implements OnInit {
   area = [];
   cityget: String;
   booking: String;
-  vendorphoto:String;
-  
+  vendorphoto: String;
+
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -51,7 +51,7 @@ export class VenderGridComponent implements OnInit {
     });
     this.getvendors();
     // this.getCategory();
-this.getprimads();
+    this.getprimads();
     for (var i = 0; i < this.maxScore; i++) {
       this.range.push(i);
     }
@@ -145,8 +145,9 @@ this.getprimads();
         for (let index = 0; index < res.length; index++) {
 
           if (res[index].vendor_cat_id == this.id) {
-            if(res[index].prime_user == false && res[index].status == true){
+            if (res[index].prime_user == false && res[index].status == true) {
               this.venues.push(res[index]);
+              this.venuefilter.push(res[index]);
             }
             this.city.push(res[index].city);
           }
@@ -163,13 +164,13 @@ this.getprimads();
       });
   }
 
-  
+
   getprimads() {
     this.conectionservice.getads()
       .subscribe(res => {
         this.vendorphoto = res[2].image;
-     console.log(res);
-     
+        console.log(res);
+
       });
   }
 
@@ -211,7 +212,11 @@ this.getprimads();
           if (res[index].vendor_cat_id == this.id) {
 
             if (res[index].city == environment.city) {
-              this.venues.push(res[index]);
+
+
+              if (res[index].prime_user == false && res[index].status == true) {
+                this.venues.push(res[index]);
+              }
             }
 
 
@@ -235,30 +240,32 @@ this.getprimads();
     this.spinner.show();
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
-    this.conectionservice.getVendorcatById(this.id)
-      .subscribe(res => {
+    // this.conectionservice.getVendorcatById(this.id)
+    //   .subscribe(res => {
         // this.venues = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
 
-        for (let index = 0; index < res.length; index++) {
+        for (let index = 0; index < this.venuefilter.length; index++) {
 
-          if (res[index].bookingdate.length == []) {
-            console.log('datevvcv', res[index].bookingdate);
+          if (this.venuefilter[index].bookingdate.length == []) {
+            console.log('datevvcv', this.venuefilter[index].bookingdate);
 
-            this.venues.push(res[index]);
+            if (this.venuefilter[index].prime_user == false && this.venuefilter[index].status == true) {
+              this.venues.push(this.venuefilter[index]);
+            }
           }
           else {
 
-            for (let secondindex = 0; secondindex < res[index].bookingdate.length; secondindex++) {
-              console.log("database date", res[index].bookingdate[secondindex]);
-              if (res[index].bookingdate[secondindex] == book.formatted) {
+            for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
+              console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+              if (this.venuefilter[index].bookingdate[secondindex] == book.formatted) {
                 break;
               }
               else {
 
-                console.log("database date", res[index].bookingdate[secondindex]);
-                this.venues.push(res[index]);
-                //console.log("date", book.formatted);
+                console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+             
+                  this.venues.push(this.venuefilter[index]);
                 console.log(this.venues);
               }
             }
@@ -270,14 +277,13 @@ this.getprimads();
           if (index !== this.city.findIndex(i => i._id === item._id)) {
             this.venues.splice(index, 1);
             console.log(this.venues);
-
           }
+          this.spinner.hide();
 
         });
 
         //console.log(this.venues);
-        this.spinner.hide();
-      });
+      // });
 
 
   }
@@ -292,7 +298,7 @@ this.getprimads();
   //   this.venues = [];
 
   //   this.conectionservice.getVendorcatById(this.id)
-  //     .subscribe(res => {
+  //     .subscribe(this.venuefilter => {
   //       // this.venues = res;
   //       // this.router.navigateByUrl('/Venues/'+this.id);
 
