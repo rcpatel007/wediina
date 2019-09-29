@@ -344,6 +344,7 @@ font-weight: 600;
 .venue-grid{
     transition: 0.5s;
     cursor: pointer;
+    margin-bottom: 2%;
 }
 .venue-grid:hover{
 transform: scale(1.1);

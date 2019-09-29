@@ -52,7 +52,7 @@ type = "ball-clip-rotate"
                     <label class="them-color">Select your Function Date</label>
             
                     <my-date-picker name="booking" [options]="myDatePickerOptions"
-                    [(ngModel)]="booking" (dateChanged)="datefilter($event)" required></my-date-picker>
+                    [(ngModel)]="booking" (dateChanged)="venueDateFilter($event)" required></my-date-picker>
                     <!-- <input type="date"  placeholder="Select your function date"  class="form-control form_control_m"/> -->
                   </div>
   

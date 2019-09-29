@@ -25,10 +25,10 @@ export class VenderGridComponent implements OnInit {
   marked = 3 - 1;
   smarked = 4 - 1;
 
-  venuefilter = [];
+  vendorfilter = [];
   id: string;
   venueCategory = [];
-  venues = [];
+  vendor = [];
   city = [];
   area = [];
   cityget: String;
@@ -131,7 +131,7 @@ export class VenderGridComponent implements OnInit {
   //   this.conectionservice.getVendorCategoryById(v_id)
   //     .subscribe(res => {
   //       for (let index = 0; index < res.length; index++) {
-  //         this.venues.push(res[index]);
+  //         this.vendor.push(res[index]);
   //       }
 
   //     });
@@ -140,14 +140,14 @@ export class VenderGridComponent implements OnInit {
     this.spinner.show();
     this.conectionservice.getVendors()
       .subscribe(res => {
-        // this.venues = res;
+        // this.vendor = res;
 
         for (let index = 0; index < res.length; index++) {
 
           if (res[index].vendor_cat_id == this.id) {
             if (res[index].prime_user == false && res[index].status == true) {
-              this.venues.push(res[index]);
-              this.venuefilter.push(res[index]);
+              this.vendor.push(res[index]);
+              this.vendorfilter.push(res[index]);
             }
             this.city.push(res[index].city);
           }
@@ -159,7 +159,7 @@ export class VenderGridComponent implements OnInit {
           }
 
         });
-        console.log(this.venues);
+        console.log(this.vendor);
         this.spinner.hide();
       });
   }
@@ -184,12 +184,12 @@ export class VenderGridComponent implements OnInit {
 
   //   this.conectionservice.getVendors()
   //     .subscribe(res => {
-  //       // this.venues = res;
+  //       // this.vendor = res;
 
   //       for (let index = 0; index < res.length; index++) {
 
   //         if (res[index].vendor_cat_id == this.id) {
-  //           this.venues.push(res[index]);
+  //           this.vendor.push(res[index]);
 
   //         }
   //       }
@@ -200,12 +200,12 @@ export class VenderGridComponent implements OnInit {
 
   cityfilter() {
     this.spinner.show();
-    this.venues = [];
+    this.vendor = [];
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
     this.conectionservice.getVendors()
       .subscribe(res => {
-        // this.venues = res;
+        // this.vendor = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
         for (let index = 0; index < res.length; index++) {
 
@@ -215,14 +215,14 @@ export class VenderGridComponent implements OnInit {
 
 
               if (res[index].prime_user == false && res[index].status == true) {
-                this.venues.push(res[index]);
+                this.vendor.push(res[index]);
               }
             }
 
 
           }
         }
-        //console.log(this.venues);
+        //console.log(this.vendor);
         this.spinner.hide();
 
       });
@@ -232,57 +232,56 @@ export class VenderGridComponent implements OnInit {
   }
 
   datefilter(booking) {
-    this.venues = [];
+    this.vendor = [];
 
     let book = booking;
     console.log(book);
 
-    this.spinner.show();
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
     // this.conectionservice.getVendorcatById(this.id)
     //   .subscribe(res => {
-        // this.venues = res;
+        // this.vendor = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
 
-        for (let index = 0; index < this.venuefilter.length; index++) {
+        for (let index = 0; index < this.vendorfilter.length; index++) {
 
-          if (this.venuefilter[index].bookingdate.length == []) {
-            console.log('datevvcv', this.venuefilter[index].bookingdate);
+          if (this.vendorfilter[index].bookingdate.length == []) {
+            console.log('datevvcv', this.vendorfilter[index].bookingdate);
 
-            if (this.venuefilter[index].prime_user == false && this.venuefilter[index].status == true) {
-              this.venues.push(this.venuefilter[index]);
+            if (this.vendorfilter[index].prime_user == false && this.vendorfilter[index].status == true) {
+              this.vendor.push(this.vendorfilter[index]);
             }
           }
           else {
 
-            for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
-              console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
-              if (this.venuefilter[index].bookingdate[secondindex] == book.formatted) {
+            for (let secondindex = 0; secondindex < this.vendorfilter[index].bookingdate.length; secondindex++) {
+              console.log("database date", this.vendorfilter[index].bookingdate[secondindex]);
+              if (this.vendorfilter[index].bookingdate[secondindex] == booking.formatted) {
                 break;
               }
               else {
 
-                console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+                console.log("database date", this.vendorfilter[index].bookingdate[secondindex]);
              
-                  this.venues.push(this.venuefilter[index]);
-                console.log(this.venues);
+                  this.vendor.push(this.vendorfilter[index]);
+                console.log(this.vendor);
               }
             }
           }
           continue;
         }
 
-        this.venues.forEach((item, index) => {
-          if (index !== this.city.findIndex(i => i._id === item._id)) {
-            this.venues.splice(index, 1);
-            console.log(this.venues);
-          }
-          this.spinner.hide();
+        // this.vendor.forEach((item, index) => {
+        //   if (index !== this.city.findIndex(i => i._id === item._id)) {
+        //     this.vendor.splice(index, 1);
+        //     console.log(this.vendor);
+        //   }
+        //   this.spinner.hide();
 
-        });
+        // });
 
-        //console.log(this.venues);
+        //console.log(this.vendor);
       // });
 
 
@@ -295,18 +294,18 @@ export class VenderGridComponent implements OnInit {
   //   this.spinner.show();
   //   // location.reload();
   //   // window.history.replaceState({},'/Venues/'+this.id);
-  //   this.venues = [];
+  //   this.vendor = [];
 
   //   this.conectionservice.getVendorcatById(this.id)
-  //     .subscribe(this.venuefilter => {
-  //       // this.venues = res;
+  //     .subscribe(this.vendorfilter => {
+  //       // this.vendor = res;
   //       // this.router.navigateByUrl('/Venues/'+this.id);
 
   //       // for (let index = 0; index < res.length; index++) {
 
   //       //   if (res[index].vendor_cat_id == this.id) {
   //       //     if(res[index].bookingdate.length == []){
-  //       //       this.venues.push(res[index]);
+  //       //       this.vendor.push(res[index]);
 
   //       //     }
   //       //     else{
@@ -317,7 +316,7 @@ export class VenderGridComponent implements OnInit {
 
   //       //        //console.log("date",book.formatted);
 
-  //       //         this.venues.push(res[index]);
+  //       //         this.vendor.push(res[index]);
   //       //       } 
   //       //     }
   //       //   }
@@ -329,7 +328,7 @@ export class VenderGridComponent implements OnInit {
   //       for (let index = 0; index < res.length; index++) {
 
   //         if (res[index].bookingdate.length == []) {
-  //           this.venues.push(res[index]);
+  //           this.vendor.push(res[index]);
   //         }
   //         else {
 
@@ -337,9 +336,9 @@ export class VenderGridComponent implements OnInit {
   //             console.log("database date", res[index].bookingdate[secondindex]);
   //             if (res[index].bookingdate[secondindex] != book.formatted) {
   //               console.log("database date", res[index].bookingdate[secondindex]);
-  //               this.venues.push(res[index]);    
+  //               this.vendor.push(res[index]);    
   //               //console.log("date", book.formatted);
-  //               console.log(this.venues);
+  //               console.log(this.vendor);
 
   //             }
   //           }
@@ -347,15 +346,15 @@ export class VenderGridComponent implements OnInit {
 
 
   //     }
-  //     this.venues.forEach((item, index) => {
-  //       if (index !== this.venues.findIndex(i => i._id === item._id)) {
-  //         this.venues.splice(index, 1);
-  //     console.log(this.venues);
+  //     this.vendor.forEach((item, index) => {
+  //       if (index !== this.vendor.findIndex(i => i._id === item._id)) {
+  //         this.vendor.splice(index, 1);
+  //     console.log(this.vendor);
 
   //       }
 
   //     });
-  //     //console.log(this.venues);
+  //     //console.log(this.vendor);
   //     this.spinner.hide();
   //   });
 

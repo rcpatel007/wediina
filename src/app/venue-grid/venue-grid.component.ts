@@ -10,6 +10,7 @@ import { ConnectionService } from '../services/connection.service';
 import { } from "angular-star-rating";
 import { NgxSpinnerService } from "ngx-spinner";
 import { IMyDpOptions } from 'mydatepicker';
+import { empty, EMPTY } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'app-venue-grid',
@@ -192,7 +193,6 @@ export class VenueGridComponent implements OnInit {
         // this.venues = res;
         // this.router.navigateByUrl('/Venues/'+this.id);
         for (let index = 0; index < res.length; index++) {
-
           if (res[index].venue_cat_id == this.id) {
             if (res[index].status == true) {
               this.venues.push(res[index]);
@@ -205,9 +205,8 @@ export class VenueGridComponent implements OnInit {
           if (index !== this.city.findIndex(i => i.name === item.name)) {
             this.city.splice(index, 1);
           }
-
         });
-        console.log(this.venues);
+        console.log(this.venuefilter);
         this.spinner.hide();
 
       });
@@ -239,49 +238,161 @@ export class VenueGridComponent implements OnInit {
   }
 
 
-  datefilter(booking) {
+  venueDateFilter(booking) {
     this.venues = [];
 
     let book = booking;
     console.log(book);
 
-    this.spinner.show();
     // location.reload();
     // window.history.replaceState({},'/Venues/'+this.id);
+    // this.conectionservice.getvenuescatById(this.id)
+    //   .subscribe(res => {
+        // this.venues = res;
+        // this.router.navigateByUrl('/Venues/'+this.id);
 
-    // this.venues = res;
-    // this.router.navigateByUrl('/Venues/'+this.id);
-    console.log(this.venuefilter);
+        for (let index = 0; index < this.venuefilter.length; index++) {
 
-    for (let index = 0; index < this.venuefilter.length; index++) {
+          if (this.venuefilter[index].bookingdate.length == []) {
+            console.log('datevvcv', this.venuefilter[index].bookingdate);
 
-      // if (this.venuefilter[index].bookingdate == []) {
-      //   this.venues.push(this.venuefilter[index]);
-
-      // }
-      // else {
-
-      for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
-        console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
-        if (this.venuefilter[index].bookingdate[secondindex] != book.formatted) {
-          console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
-          this.venues.push(this.venuefilter[index]);
-          //console.log("date", book.formatted);
-          console.log(this.venues);
-        }
-        this.venues.forEach((item, index) => {
-          if (index !== this.city.findIndex(i => i._id === item._id)) {
-            this.venues.splice(index, 1);
+              this.venues.push(this.venuefilter[index]);
           }
-        });
-        // }
-      }
-    }
+          else {
 
-    //console.log(this.venues);
-    this.spinner.hide();
+            for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
+              console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+              if (this.venuefilter[index].bookingdate[secondindex] == booking.formatted) {
+                break;
+              }
+              else {
+
+                console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+             
+                  this.venues.push(this.venuefilter[index]);
+                console.log(this.venues);
+              }
+            }
+          }
+          continue;
+        }
+
+        this.venues.forEach((item, index) => {
+          if (index !== this.venues.findIndex(i => i._id === item._id)) {
+            this.venues.splice(index, 1);
+            console.log(this.venues);
+          }
+          this.spinner.hide();
+
+        });
+
+        //console.log(this.vendor);
+      // });
 
 
   }
+
+
+
+  // venueDateFilter(booking) {
+  //   // alert(booking.formatted);
+  //   console.log(this.venuefilter);
+  //   // this.venues = this.venuefilter;
+  //   // this.getvenue();
+  //   let dt = [];
+
+  //   for (let index = 0; index < this.venuefilter.length; index++) {
+  //     if (this.venuefilter[index].bookingdate.length != 0) {
+  //       for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
+  //         if (this.venuefilter[index].bookingdate[secondindex] == booking.formatted) {
+  //           dt.push(this.venuefilter[index]);
+  //           for (let index = 0; index < dt.length; index++) {
+  //             if (this.venues[index]._id === dt[index]._id) {
+  //               this.venues.splice(index, 1);
+  //               console.log(this.venues, "venues");
+  //             }
+  //           }
+  //         }
+  //         else {
+  //           this.venues.push(this.venuefilter[index]);
+  //         }
+  //       }
+  //     }
+  //     else {
+  //       this.venues.push(this.venuefilter[index]);
+  //       console.log(this.venues, "venues");
+
+  //     }
+  //     // this.venues.filter((index ,item)=> this.venues.indexOf(item._id)===index);
+
+  //   }
+  //   this.venues.forEach((item, index) => {
+  //     if (index != this.venues.findIndex(i => i._id === item._id)) {
+  //       this.venues.splice(index, 1);
+  //       console.log(this.venues);
+  //     }
+  //     this.spinner.hide();
+   
+  //   });
+
+  //   console.log(this.venuefilter);
+
+  //   // for (let thirdindex = 0; thirdindex < this.venues.length; thirdindex++) {
+  //   //   for (let forthindex = 0; forthindex < dt.length; forthindex++) {
+  //   //     if (this.venues[thirdindex]._id == dt[forthindex]._id) {
+  //   //       this.venues.splice(thirdindex, 1);
+  //   //     }
+  //   //   }
+  //   // }
+
+  // }
+
+
+
+
+  // datefilter(booking) {
+  //   this.venues = [];
+
+  //   let book = booking;
+  //   console.log(book);
+
+  //   this.spinner.show();
+  //   // location.reload();
+  //   // window.history.replaceState({},'/Venues/'+this.id);
+
+  //   // this.venues = res;
+  //   // this.router.navigateByUrl('/Venues/'+this.id);
+  //   console.log(this.venuefilter);
+
+  //   for (let index = 0; index < this.venuefilter.length; index++) {
+
+  //     // if (this.venuefilter[index].bookingdate == []) {
+  //     //   this.venues.push(this.venuefilter[index]);
+
+  //     // }
+  //     // else {
+
+  //     for (let secondindex = 0; secondindex < this.venuefilter[index].bookingdate.length; secondindex++) {
+  //       console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+  //       if (this.venuefilter[index].bookingdate[secondindex] != book.formatted) {
+  //         console.log("database date", this.venuefilter[index].bookingdate[secondindex]);
+  //         this.venues.push(this.venuefilter[index]);
+  //         //console.log("date", book.formatted);
+  //         console.log(this.venues);
+  //       }
+  //       this.venues.forEach((item, index) => {
+  //         if (index !== this.city.findIndex(i => i._id === item._id)) {
+  //           this.venues.splice(index, 1);
+  //         }
+  //       });
+  //       // }
+  //     }
+  //   }
+
+  //   //console.log(this.venues);
+  //   this.spinner.hide();
+
+
+  // }
 
 }

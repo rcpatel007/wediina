@@ -27,7 +27,7 @@ export class PremiumPhotographerComponent implements OnInit {
 
 
   venueCategory = [];
-  venues = [];
+  vendor = [];
   city = [];
   area = [];
   cityget: String;
@@ -123,12 +123,12 @@ export class PremiumPhotographerComponent implements OnInit {
     this.spinner.show();
     this.conectionservice.getVendors()
       .subscribe(res => {
-        // this.venues = res;
+        // this.vendor = res;
 
         for (let index = 0; index < res.length; index++) {
 
-          if (res[index].prime_user == true) {
-            this.venues.push(res[index]);
+          if (res[index].prime_user == true && res[index].status ==true) {
+            this.vendor.push(res[index]);
             this.primevendor.push(res[index]);
             this.city.push(res[index].city);
 
@@ -141,7 +141,7 @@ export class PremiumPhotographerComponent implements OnInit {
           }
 
         });
-        //console.log(this.venues);
+        //console.log(this.vendor);
         this.spinner.hide();
       });
   }
@@ -160,12 +160,12 @@ this.spinner.show();
 
   //   this.conectionservice.getVendors()
   //     .subscribe(res => {
-  //       // this.venues = res;
+  //       // this.vendor = res;
 
   //       for (let index = 0; index < res.length; index++) {
 
   //         if (res[index].vendor_cat_id == this.id) {
-  //           this.venues.push(res[index]);
+  //           this.vendor.push(res[index]);
 
   //         }
   //       }
@@ -180,83 +180,140 @@ this.spinner.show();
 
   cityfilter() {
     this.spinner.show();
-    this.venues = [];
+    this.vendor = [];
     // location.reload();
-    // window.history.replaceState({},'/Venues/'+this.id);
+    // window.history.replaceState({},'/vendor/'+this.id);
     
-        // this.venues = res;
-         // this.router.navigateByUrl('/Venues/'+this.id);
+        // this.vendor = res;
+         // this.router.navigateByUrl('/vendor/'+this.id);
    
         for (let index = 0; index < this.primevendor.length; index++) {
         
             console.log(this.cityget);
-            console.log(this.venues);
+            console.log(this.vendor);
             
             if (this.primevendor[index].city == this.cityget) {
-                  this.venues.push(this.primevendor[index]);
+                  this.vendor.push(this.primevendor[index]);
 
-              console.log(this.venues);
+              console.log(this.vendor);
               
                 }
                 }
 
-        //console.log(this.venues);
+        //console.log(this.vendor);
      this.spinner.hide();
 
 
 
   }
 
+
   datefilter(booking) {
-    this.venues = [];
+    this.vendor = [];
 
     let book = booking;
     console.log(book);
 
-    this.spinner.show();
     // location.reload();
-    // window.history.replaceState({},'/Venues/'+this.id);
-        // this.venues = res;
-        // this.router.navigateByUrl('/Venues/'+this.id);
+    // window.history.replaceState({},'/vendor/'+this.id);
+    // this.conectionservice.getVendorcatById(this.id)
+    //   .subscribe(res => {
+        // this.vendor = res;
+        // this.router.navigateByUrl('/vendor/'+this.id);
 
         for (let index = 0; index < this.primevendor.length; index++) {
 
           if (this.primevendor[index].bookingdate.length == []) {
             console.log('datevvcv', this.primevendor[index].bookingdate);
 
-            this.venues.push(this.primevendor[index]);
+            if (this.primevendor[index].prime_user == true && this.primevendor[index].status == true) {
+              this.vendor.push(this.primevendor[index]);
+            }
           }
           else {
 
             for (let secondindex = 0; secondindex < this.primevendor[index].bookingdate.length; secondindex++) {
               console.log("database date", this.primevendor[index].bookingdate[secondindex]);
-              if (this.primevendor[index].bookingdate[secondindex] == book.formatted) {
+              if (this.primevendor[index].bookingdate[secondindex] == booking.formatted) {
                 break;
               }
               else {
 
                 console.log("database date", this.primevendor[index].bookingdate[secondindex]);
-                    this.venues.push(this.primevendor[index]);
-
-                //console.log("date", book.formatted);
-                console.log(this.venues);
+             
+                  this.vendor.push(this.primevendor[index]);
+                console.log(this.vendor);
               }
             }
           }
           continue;
         }
 
-        this.venues.forEach((item, index) => {
-          if (index !== this.city.findIndex(i => i._id === item._id)) {
-            this.venues.splice(index, 1);
-            console.log(this.venues);
-          }
-        });
+        // this.vendor.forEach((item, index) => {
+        //   if (index !== this.city.findIndex(i => i._id === item._id)) {
+        //     this.vendor.splice(index, 1);
+        //     console.log(this.vendor);
+        //   }
+        //   this.spinner.hide();
 
-        //console.log(this.venues);
-        this.spinner.hide();
-    
+        // });
+
+        //console.log(this.vendor);
+      // });
+
 
   }
+
+  // datefilter(booking) {
+  //   this.vendor = [];
+
+  //   let book = booking;
+  //   console.log(book);
+
+  //   this.spinner.show();
+  //   // location.reload();
+  //   // window.history.replaceState({},'/vendor/'+this.id);
+  //       // this.vendor = res;
+  //       // this.router.navigateByUrl('/vendor/'+this.id);
+
+  //       for (let index = 0; index < this.primevendor.length; index++) {
+
+  //         if (this.primevendor[index].bookingdate.length == []) {
+  //           console.log('datevvcv', this.primevendor[index].bookingdate);
+
+  //           this.vendor.push(this.primevendor[index]);
+  //         }
+  //         else {
+
+  //           for (let secondindex = 0; secondindex < this.primevendor[index].bookingdate.length; secondindex++) {
+  //             console.log("database date", this.primevendor[index].bookingdate[secondindex]);
+  //             if (this.primevendor[index].bookingdate[secondindex] == book.formatted) {
+  //               break;
+  //             }
+  //             else {
+
+  //               console.log("database date", this.primevendor[index].bookingdate[secondindex]);
+  //                   this.vendor.push(this.primevendor[index]);
+
+  //               //console.log("date", book.formatted);
+  //               console.log(this.vendor);
+  //             }
+  //           }
+  //         }
+  //         continue;
+  //       }
+
+  //       this.vendor.forEach((item, index) => {
+  //         if (index !== this.city.findIndex(i => i._id === item._id)) {
+  //           this.vendor.splice(index, 1);
+  //           console.log(this.vendor);
+  //         }
+  //       });
+
+  //       //console.log(this.vendor);
+  //       this.spinner.hide();
+    
+
+  // }
 
 }
